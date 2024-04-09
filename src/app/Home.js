@@ -18,6 +18,7 @@ const Home = (props) => {
         setAdvert(props.advert)
         setBlogs(props.badikhabar)
     }, [])
+    // this is 
 
     const MAX_WORDS = 12;
 
