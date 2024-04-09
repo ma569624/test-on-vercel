@@ -1,7 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react';
 
-import TodayNew from './TodayNew';
 import { MdDoubleArrow } from "react-icons/md";
 
 
@@ -34,7 +33,6 @@ const Home = (props) => {
 
     return (
         <main>
-            <TodayNew API={props.API} toplinks={props.toplinks} todaynews={props.todaynews} />
             <div className="container">
                 <div className="row">
                     <div className="col-lg-12">
