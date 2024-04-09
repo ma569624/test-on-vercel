@@ -3,14 +3,14 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
 
-const News = ({ data, category }) => {
-  const API = 'http://localhost:5000'
+const News = ({API, data, category }) => {
+  // const API = 'http://localhost:5000'
 
   const router = useRouter();
 
   // Function to handle link click
   const handleClick = () => {
-    router.push(`/inner/${data._id}`);
+    // router.push(`/inner/${data._id}`);
   };
 
   const MAX_WORDS = 14;

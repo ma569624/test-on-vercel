@@ -33,7 +33,7 @@ const Home = (props) => {
 
     return (
         <main>
-            <TodayNew toplinks={props.toplinks} todaynews={props.todaynews} />
+            <TodayNew API={props.API} toplinks={props.toplinks} todaynews={props.todaynews} />
             <div className="container">
                 <div className="row">
                     <div className="col-lg-12">

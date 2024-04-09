@@ -2,7 +2,7 @@ import React from 'react'
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
-const MainNews = ({ data, category }) => {
+const MainNews = ({API, data, category }) => {
     const router = useRouter();
 
     const MAX_WORDS = 16;
@@ -18,10 +18,9 @@ const MainNews = ({ data, category }) => {
 
     // Function to handle link click
     const handleClick = () => {
-        router.push(`/inner/${data._id}`);
+        // router.push(`/inner/${data._id}`);
     };
     
-    const API = 'http://localhost:5000';
 
     return (
         <div className="postbox mb-25">

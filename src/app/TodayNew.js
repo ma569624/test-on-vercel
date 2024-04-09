@@ -6,12 +6,10 @@ import { Link } from 'react-scroll';
 import { MdDoubleArrow } from "react-icons/md";
 import React from 'react'
 import ReactPlayer from 'react-player'
-// import Zoom from 'react-medium-image-zoom'
-// import 'react-medium-image-zoom/dist/styles.css'
 
 const TodayNew = (props) => {
   // console.warn(props.todaynews);
-  const API = "http://localhost:5000";
+  const API = props.API;
   const [data, setdata] = useState([])
   const [category, setCategory] = useState([])
   const [toplink, setToplink] = useState([])
@@ -92,23 +90,23 @@ const TodayNew = (props) => {
                 </div>
                 <div className="col-lg-6" style={{ paddingRight: 0 }}>
                   {
-                    data.length > 0 ? <MainNews data={data[0]} category={'primenews'} /> : <></>
+                    data.length > 0 ? <MainNews API={props.API} data={data[0]} category={'primenews'} /> : <></>
                   }
                 </div>
                 <div className="col-lg-6 pl-10 pr-0">
                   <div className="d-flex flex-wrap gap-3" style={{ gap: '.5rem' }}>
 
                     {
-                      data.length > 1 ? <News data={data[1]} category={'primenews'} /> : <></>
+                      data.length > 1 ? <News API={props.API} data={data[1]} category={'primenews'} /> : <></>
                     }
                     {
-                      data.length > 2 ? <News data={data[2]} category={'primenews'} /> : <></>
+                      data.length > 2 ? <News API={props.API} data={data[2]} category={'primenews'} /> : <></>
                     }
                     {
-                      data.length > 3 ? <News data={data[3]} category={'primenews'} /> : <></>
+                      data.length > 3 ? <News API={props.API} data={data[3]} category={'primenews'} /> : <></>
                     }
                     {
-                      data.length > 4 ? <News data={data[4]} category={'primenews'} /> : <></>
+                      data.length > 4 ? <News API={props.API} data={data[4]} category={'primenews'} /> : <></>
                     }
 
                   </div>
