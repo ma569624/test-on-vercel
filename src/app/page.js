@@ -17,7 +17,7 @@ export default async function Main() {
       <h1> this is api {API} {
         toplinks.map((item) => <>{item._id}</>)
       }</h1>
-      <Home API={API} toplinks={toplinks} advert={advert} badikhabar={badikhabar.data} todaynews={todaynews.data} />
+      {/* <Home API={API} toplinks={toplinks} advert={advert} badikhabar={badikhabar.data} todaynews={todaynews.data} /> */}
     </>
   );
 }
