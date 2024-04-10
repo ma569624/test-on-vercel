@@ -15,14 +15,14 @@ export default async function Main() {
 
     <>
       <h1> this is api {API} {
-        toplinks.map((item) => <>{item._id}</>)
+        toplinks.map((item) => <>{item._id} <br></br></>)
       }</h1>
       <h1> this is api for advert {API} {
-        todaynews.data.map((item) => <>{item._id}</>)
+        todaynews.data.map((item) => <>{item._id} <br></br></>)
       }</h1>
-      <h1> this is api for advert {API} {
+      {/* <h1> this is api for advert {API} {
         badikhabar.data.map((item) => <>{item._id}</>)
-      }</h1>
+      }</h1> */}
       {/* <Home API={API} toplinks={toplinks} advert={advert} badikhabar={badikhabar.data} todaynews={todaynews.data} /> */}
     </>
   );
