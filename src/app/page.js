@@ -1,12 +1,4 @@
-async function getData() {
-  const res = await fetch("https://api.example.com/...");
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-
-  return res.json();
-}
 
 export default async function Main() {
   const API = process.env.API;
@@ -30,15 +22,15 @@ export default async function Main() {
     <>
       <h1>API for toplinks: {API}</h1>
       <ul>
-        {toplinks.map((item) => (
-          <li key={item._id}>{item._id}</li>
+        {toplinks.map((item, key) => (
+          <li key={key}>{item._id}</li>
         ))}
       </ul>
 
       <h1>API for today's news: {API}</h1>
       <ul>
         {todaynews.data.map((item) => (
-          <li key={item._id}>{item._id}</li>
+          <li key={key}>{item._id}</li>
         ))}
       </ul>
     </>
