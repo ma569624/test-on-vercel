@@ -1,4 +1,12 @@
+async function getData() {
+  const res = await fetch("https://api.example.com/...");
 
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+}
 
 export default async function Main() {
   const API = process.env.API;
@@ -8,8 +16,12 @@ export default async function Main() {
 
   try {
     toplinks = await fetch(`${API}/api/toplinks`).then((res) => res.json());
-    todaynews = await fetch(`${API}/api/blogs?Status=active&Category=primenews`).then((res) => res.json());
-    badikhabar = await fetch(`${API}/api/blogs?Status=active&Category=mainnews`).then((res) => res.json());
+    todaynews = await fetch(
+      `${API}/api/blogs?Status=active&Category=primenews`
+    ).then((res) => res.json());
+    badikhabar = await fetch(
+      `${API}/api/blogs?Status=active&Category=mainnews`
+    ).then((res) => res.json());
   } catch (error) {
     console.error("Error fetching data:", error);
   }
