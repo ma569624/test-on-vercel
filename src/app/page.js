@@ -29,7 +29,7 @@ export default async function Main() {
 
       <h1>API for today's news: {API}</h1>
       <ul>
-        {todaynews.data.map((item) => (
+        {todaynews.data.map((item, key) => (
           <li key={key}>{item._id}</li>
         ))}
       </ul>
