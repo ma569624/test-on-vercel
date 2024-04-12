@@ -1,41 +1,27 @@
-
+import Home from "./_component/Home";
 
 export default async function Main() {
   const API = process.env.API;
-  let toplinks = [];
-  let todaynews = [];
-  let badikhabar = [];
-
-  try {
-    toplinks = await fetch(`${API}/api/toplinks`).then((res) => res.json());
-    todaynews = await fetch(
-      `${API}/api/blogs?Status=active&Category=primenews`
-    ).then((res) => res.json());
-    badikhabar = await fetch(
-      `${API}/api/blogs?Status=active&Category=mainnews`
-    ).then((res) => res.json());
-  } catch (error) {
-    console.error("Error fetching data:", error);
-  }
+  const toplinks = await fetch(`${API}/api/toplinks`).then((res) => res.json());
+  const advert = await fetch(`${API}/api/advert?Status=active`).then((res) =>
+    res.json()
+  );
+  const todaynews = await fetch(
+    `${API}/api/blogs?Status=active&Category=primenews`
+  ).then((res) => res.json());
+  const badikhabar = await fetch(
+    `${API}/api/blogs?Status=active&Category=mainnews`
+  ).then((res) => res.json());
 
   return (
     <>
-      <h1>API for toplinks: {API}</h1>
-      
-      <ul>
-        {toplinks.map((item, key) => (
-          <li key={key}>{item._id}</li>
-        ))}
-      </ul>
-
-      <h1>API for today's news: {API}</h1>
-
-      <ul>
-        {todaynews.data.map((item, key) => (
-          <li key={key}>{item._id}</li>
-        ))}
-      </ul>
-
+      <Home
+        API={API}
+        toplinks={toplinks}
+        advert={advert}
+        badikhabar={badikhabar.data}
+        todaynews={todaynews.data}
+      />
     </>
   );
 }
