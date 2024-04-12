@@ -49,9 +49,7 @@ const Detail = (props) => {
     const message = `Third Eye World News`;
     const hashtag = "ख़बर";
 
-    const whatsAppUrl = `https://web.whatsapp.com:/send?text=${encodeURIComponent(
-        ` ${hashtag}\n\n${message} \n${currentPageUrl} \n\n Hamare Sath jude rahane ke liye `
-    )}`;
+    const whatsAppUrl = `https://web.whatsapp.com:/send?text=hello`;
     const [sidename, setSideName] = useState([])
     const [sidenamerajiya, setSideNameRajiya] = useState([])
 
