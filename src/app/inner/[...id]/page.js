@@ -26,6 +26,7 @@ export async function generateMetadata({ params }, parent) {
     const previousImages = (await parent).openGraph?.images || []
     return {
         title: product.data[0].Heading,
+        // description: product.data[0].Matter.slice(0, 82),
         openGraph: {
             images: [`https://new-backend-server-production.up.railway.app${product.data[0].Image}`],
         },

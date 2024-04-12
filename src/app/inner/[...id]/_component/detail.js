@@ -51,13 +51,18 @@ const Detail = (props) => {
 
   const currentPageUrl =
     typeof window !== "undefined" ? window.location.href : "";
-//   const currentPageUrl = "dkjdjhf";
-  console.warn(currentPageUrl);
+  //   const currentPageUrl = "dkjdjhf";
+  console.warn(data);
   const title = data.Heading;
   const message = `Third Eye World News`;
-  const hashtag = "ख़बर";
+  const sectionname = data.Category;
+  const youtubechannel =
+    "https://whatsapp.com/channel/0029Va65zjQKbYMGyJFMnh0y";
+  const youtubeheading = "हमारे वाट्सअप चैनल को फॉलो करें।";
 
-  const whatsAppUrl = `https://web.whatsapp.com/send?text=${data.Heading}+${currentPageUrl}`;
+  const whatsAppUrl = `https://web.whatsapp.com/send?text= ${encodeURIComponent(
+    `*${message}* \n\n *${sectionname}* \n ${data.Heading} \n\n *${youtubeheading}* \n ${youtubechannel} `
+  )}`;
   const [sidename, setSideName] = useState([]);
   const [sidenamerajiya, setSideNameRajiya] = useState([]);
 
