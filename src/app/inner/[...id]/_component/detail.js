@@ -61,7 +61,7 @@ const Detail = (props) => {
   const youtubeheading = "हमारे वाट्सअप चैनल को फॉलो करें।";
 
   const whatsAppUrl = `https://web.whatsapp.com/send?text= ${encodeURIComponent(
-    `*${message}* \n\n *${sectionname}* \n ${data.Heading} \n\n *${youtubeheading}* \n ${youtubechannel} \n ${currentPageUrl}`
+    `*${message}* \n\n *${sectionname}* \n ${data.Heading} \n *Link*:- ${currentPageUrl} \n\n *${youtubeheading}* \n ${youtubechannel} `
   )}`;
   // const whatsAppUrl = `https://web.whatsapp.com/send?text=${encodeURIComponent(`*${message}*%0A%0A*${sectionname}*%0A${data.Heading}%0A%0A*${youtubeheading}*%0A${youtubechannel}`)}&url=${currentPageUrl}`;
   const [sidename, setSideName] = useState([]);
