@@ -26,7 +26,7 @@ body {
   font-style: normal;
   color: #666666;
   background-image: url("/bg.jpg");
-  background-color: rgba(252, 252, 252, 0.5);
+  background-color: rgba(252, 252, 252, 0.5) !important;
   /* Change the opacity (fourth value) as needed */
   /* Combine background image and color overlay */
   background-blend-mode: overlay;
@@ -5069,18 +5069,6 @@ iframe {
   color: #fff;
 }
 
-/* .post-more .hero__thumb img{
-  border-radius: 12px !important;
-  cursor: pointer;
-  
-}
-.post-more .hero__thumb{
-  transition: transform 2s ease-in-out;
-  transform: scale(1);
-}
-.post-more .hero__thumb:hover {
-  transform: scale(-2);
-} */
 
 .video h3 {
   text-shadow: #a1a6b8 2px 2px !important;
@@ -5175,3 +5163,9 @@ iframe {
 
   filter: drop-shadow(rgb(135, 126, 126) 1px 0px 1px);
 }
+/* a:hover {
+  text-decoration: none !important;
+}
+ul{
+  margin-bottom: 0;
+} */

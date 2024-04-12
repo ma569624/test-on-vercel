@@ -122,7 +122,7 @@ const Header = (props) => {
                       </a>
                     ))}
                 </div>
-                <div className="container">
+                <div className="">
                   <div className="box-shodow top-header-bg main pl-4 pr-4">
                     <div className="header__top-menu pt-1 pb-1 d-flex justify-content-between">
                       <Link href="tel: 9999999999" className="hover-effect">
@@ -279,7 +279,7 @@ const Header = (props) => {
                     "url(https://img.freepik.com/free-vector/decorative-golden-mandala-red-background_1035-25425.jpg?w=740)",
                 }}
               >
-                <div className="container">
+                <div className="">
                   <div className="row">
                     <div className="col-xl-12">
                       <div className="header__menu f-left">

@@ -60,7 +60,7 @@ const Home = (props) => {
       </div>
       <section className="features-area pb-2">
         <div className="container">
-          <div className="content-pad border pb-0">
+          <div className="content-pad pb-0">
             <div
               className="section-title d-flex align-items-center justify-content-center mb-1 box-shodow text-Shadow"
               style={{
