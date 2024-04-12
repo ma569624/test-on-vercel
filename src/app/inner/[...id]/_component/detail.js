@@ -65,7 +65,11 @@ const Detail = (props) => {
   )}`;
 
   const facebookMessage = `${message}\n\n${sectionname}\n\n${data.Heading}\nLink: ${currentPageUrl}\n\n${youtubeheading} ${youtubechannel}`;
-
+  const newfburl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+    currentPageUrl
+  )}&title=${encodeURIComponent(message)}&description=${encodeURIComponent(
+    sectionname
+  )}`;
   const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
     currentPageUrl
   )}&quote=${encodeURIComponent(facebookMessage)}`;
@@ -464,7 +468,7 @@ const Detail = (props) => {
                               <a
                                 data-activity="whatsapp_share"
                                 data-action="share/whatsapp/share"
-                                href={facebookShareUrl}
+                                href={newfburl}
                                 className="m-0"
                                 target="_blank"
                                 aria-label="Share on WhatsApp"
@@ -477,13 +481,8 @@ const Detail = (props) => {
                                   round={true}
                                 />
                               </a>
-                              <FacebookShareButton
-                                url={facebookShareUrl}
-                              >
-                                <FacebookIcon
-                                  size={25}
-                                  round={true}
-                                />
+                              <FacebookShareButton url={newfburl}>
+                                <FacebookIcon size={25} round={true} />
                               </FacebookShareButton>
                             </li>
                             <li>
