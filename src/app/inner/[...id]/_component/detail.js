@@ -64,7 +64,7 @@ const Detail = (props) => {
     `\r *${message}* \n\n *${sectionname}* \n\n ${data.Heading} \n *Link*:- ${currentPageUrl} \n\n *${youtubeheading}* ${youtubechannel} `
   )}`;
 
-  const newfburl = `https://www.facebook.com/share.php?u=${currentPageUrl}&title=${title}&quotes=ये और एक जुमला है... विपक्ष ने सिलेंडर की कीमत में कटौती की टाइमिंग पर उठाए सवाल`
+  const newfburl = `https://www.facebook.com/share.php?u=${currentPageUrl}&title=${title}`
 
   // const whatsAppUrl = `https://web.whatsapp.com/send?text=${encodeURIComponent(`*${message}*%0A%0A*${sectionname}*%0A${data.Heading}%0A%0A*${youtubeheading}*%0A${youtubechannel}`)}&url=${currentPageUrl}`;
   const [sidename, setSideName] = useState([]);
