@@ -30,15 +30,20 @@ const Home = (props) => {
 
   return (
     <main>
-      <TodayNew API={props.API} toplinks={props.toplinks} todaynews={props.todaynews} />
+      <TodayNew
+        API={props.API}
+        toplinks={props.toplinks}
+        todaynews={props.todaynews}
+      />
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
             <div className="d-flex justify-content-center mb-1 mt-1">
               {advert
-                .filter((item) => item.location.includes("top badi khabar"))
+                .filter((item, key) => item.location.includes("top badi khabar"))
                 .map((item) => (
                   <a
+                    key={key}
                     target="_blank"
                     href={item.url ? item.url : `${API}${item.Image2}`}
                   >
@@ -91,8 +96,8 @@ const Home = (props) => {
             </div>
 
             <div className="row">
-              {blogs.slice(0, 9).map((item) => (
-                <div className="col-lg-4">
+              {blogs.slice(0, 9).map((item, key) => (
+                <div className="col-lg-4" key={key}>
                   <div className="cat-sm-post">
                     <div className="post__small mb-1">
                       <div className="post__small-thumb f-left image-container">
@@ -129,9 +134,10 @@ const Home = (props) => {
           <div className="col-lg-12">
             <div className="d-flex justify-content-center mb-1 mt-1">
               {advert
-                .filter((item) => item.location.includes("jara idhar bhi top"))
+                .filter((item, key) => item.location.includes("jara idhar bhi top"))
                 .map((item) => (
                   <a
+                    key={key}
                     target="_blank"
                     href={item.url ? item.url : `${API}${item.Image2}`}
                   >
