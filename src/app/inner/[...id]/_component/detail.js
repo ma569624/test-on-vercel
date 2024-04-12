@@ -60,7 +60,7 @@ const Detail = (props) => {
     "https://whatsapp.com/channel/0029Va65zjQKbYMGyJFMnh0y";
   const youtubeheading = "हमारे वाट्सअप चैनल को फॉलो करें।";
 
-  const whatsAppUrl = `https://whatsapp.com/send?text= ${encodeURIComponent(
+  const whatsAppUrl = `https://www.whatsapp.com/send?text= ${encodeURIComponent(
     `\r *${message}* \n\n *${sectionname}* \n\n ${data.Heading} \n *Link*:- ${currentPageUrl} \n\n *${youtubeheading}* ${youtubechannel} `
   )}`;
 
