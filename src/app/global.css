@@ -21,7 +21,7 @@ html {
 }
 
 body {
-  /* font-family: 'Mangal Devanagari', sans-serif; */
+  font-family: 'Noto Sans Devanagari';
   font-weight: normal;
   font-style: normal;
   color: #666666;
@@ -5029,14 +5029,14 @@ iframe {
 }
 
 .post-details .details-title {
-  letter-spacing: -2px;
+  letter-spacing: -1px;
   margin-top: 1.5rem;
   line-height: 1.3;
   text-align: center;
 }
 
 .post-details .details-subheading {
-  letter-spacing: -2px;
+  letter-spacing: -1px;
   line-height: 1.3;
   font-size: 32px;
   font-weight: 600;
@@ -5160,8 +5160,27 @@ iframe {
   height: 110px;
   border-radius: 50%;
   border: 2px solid yellow;
-
   filter: drop-shadow(rgb(135, 126, 126) 1px 0px 1px);
+}
+
+.scroll-to-top-button{
+  position: fixed;
+  bottom: 10px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: #009dff;
+  color: #fff;
+  text-align: center;
+  border: 2px solid #f79b15;
+  right: 20px;
+  box-shadow: 2px 1px 10px #060606c4;
+  padding: 0;
+}
+.scroll-to-top-button svg{
+  text-shadow: 2px 1px 10px #060606c4;
+  filter: drop-shadow(rgb(61, 20, 90) 2px 2px 2px);
+
 }
 /* a:hover {
   text-decoration: none !important;

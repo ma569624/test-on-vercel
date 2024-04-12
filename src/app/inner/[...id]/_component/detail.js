@@ -18,7 +18,6 @@ import { FcShare } from "react-icons/fc";
 import YouTube from "react-youtube";
 import Model from "@/app/_component/model";
 import { useRouter } from "next/router";
-
 const Detail = (props) => {
   const { id, section } = props.params;
   const Category = section;
@@ -61,10 +60,10 @@ const Detail = (props) => {
   const youtubeheading = "हमारे वाट्सअप चैनल को फॉलो करें।";
 
   const whatsAppUrl = `whatsapp://send?text= ${encodeURIComponent(
-    `\r *${message}* \n\n *${sectionname}* \n\n ${data.Heading} \n *Link*:- ${currentPageUrl} \n\n *${youtubeheading}* ${youtubechannel} `
+    `\r *${message}* \n\n *${sectionname}* \n\n ${data.Heading} \n *Link*:- ${currentPageUrl} \n\n *${youtubeheading}* \n ${youtubechannel} `
   )}`;
 
-  const newfburl = `https://www.facebook.com/share.php?u=${currentPageUrl}&title=${title}`
+  const newfburl = `https://www.facebook.com/share.php?u=${currentPageUrl}&title=${title}`;
 
   // const whatsAppUrl = `https://web.whatsapp.com/send?text=${encodeURIComponent(`*${message}*%0A%0A*${sectionname}*%0A${data.Heading}%0A%0A*${youtubeheading}*%0A${youtubechannel}`)}&url=${currentPageUrl}`;
   const [sidename, setSideName] = useState([]);
@@ -114,7 +113,8 @@ const Detail = (props) => {
   const Khabare = () => {
     return (
       <div className="col-lg-4">
-        <div className="section-title2 text-center mb-2 box-shodow">
+        
+        <div className="section-title2 text-center mb-2 box-shodow" style={{border: '4px solid yellow'}}>
           <h2>
             Khabare
             {sidename && sidename.SecondSection}
@@ -180,7 +180,7 @@ const Detail = (props) => {
         <div className="container">
           <div className="row" ref={componentRef}>
             <div className="col-xl-8 col-lg-8">
-              <div className="section-title2  box-shodow">
+              <div className="patti-bg" style={{border: '4px solid yellow'}}>
                 <h2 className="text-center">{data.Category}</h2>
               </div>
               <div className="post-details mt-2">
@@ -468,11 +468,7 @@ const Detail = (props) => {
                                 data-tooltip-id="my-tooltip"
                                 data-tooltip-content="Hello world!"
                               >
-                                <FacebookIcon
-                                  
-                                  size={25}
-                                  round={true}
-                                />
+                                <FacebookIcon size={25} round={true} />
                               </a>
                               {/* <FacebookShareButton url={currentPageUrl} quote="this is" hashtag="this title" >
                                 <FacebookIcon size={25} round={true} />

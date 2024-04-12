@@ -157,7 +157,7 @@ const Rajiya = ({ color }) => {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <div className="patti-bg  mb-3 section-title text-center section-title2  box-shodow ">
+              <div className="patti-bg  mb-3 section-title text-center section-title2  box-shodow " style={{border: '4px solid yellow'}}>
                 <h2 className="m-0 p-0">
                   <MdDoubleArrow size={50} className="mr-2" />
                   ख़बरें राज्यों से
