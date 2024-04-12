@@ -64,15 +64,8 @@ const Detail = (props) => {
     `\r *${message}* \n\n *${sectionname}* \n\n ${data.Heading} \n *Link*:- ${currentPageUrl} \n\n *${youtubeheading}* ${youtubechannel} `
   )}`;
 
-  const facebookMessage = `${message}\n\n${sectionname}\n\n${data.Heading}\nLink: ${currentPageUrl}\n\n${youtubeheading} ${youtubechannel}`;
-  const newfburl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-    currentPageUrl
-  )}&title=${encodeURIComponent(message)}&description=${encodeURIComponent(
-    sectionname
-  )}`;
-  const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-    currentPageUrl
-  )}&quote=${encodeURIComponent(facebookMessage)}`;
+  const newfburl = `https://www.facebook.com/share.php?u={currentPageUrl}&title=${title}`
+
   // const whatsAppUrl = `https://web.whatsapp.com/send?text=${encodeURIComponent(`*${message}*%0A%0A*${sectionname}*%0A${data.Heading}%0A%0A*${youtubeheading}*%0A${youtubechannel}`)}&url=${currentPageUrl}`;
   const [sidename, setSideName] = useState([]);
   const [sidenamerajiya, setSideNameRajiya] = useState([]);
@@ -476,14 +469,14 @@ const Detail = (props) => {
                                 data-tooltip-content="Hello world!"
                               >
                                 <FacebookIcon
-                                  title={"hello"}
+                                  
                                   size={25}
                                   round={true}
                                 />
                               </a>
-                              <FacebookShareButton url={newfburl}>
+                              {/* <FacebookShareButton url={currentPageUrl} quote="this is" hashtag="this title" >
                                 <FacebookIcon size={25} round={true} />
-                              </FacebookShareButton>
+                              </FacebookShareButton> */}
                             </li>
                             <li>
                               <TwitterShareButton
