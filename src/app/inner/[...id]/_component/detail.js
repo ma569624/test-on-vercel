@@ -61,8 +61,14 @@ const Detail = (props) => {
   const youtubeheading = "हमारे वाट्सअप चैनल को फॉलो करें।";
 
   const whatsAppUrl = `https://web.whatsapp.com/send?text= ${encodeURIComponent(
-    `*${message}* \n\n *${sectionname}* \n ${data.Heading} \n *Link*:- ${currentPageUrl} \n\n *${youtubeheading}* \n ${youtubechannel} `
+    `\r *${message}* \n\n *${sectionname}* \n\n ${data.Heading} \n *Link*:- ${currentPageUrl} \n\n *${youtubeheading}* ${youtubechannel} `
   )}`;
+
+  const facebookMessage = `${message}\n\n${sectionname}\n\n${data.Heading}\nLink: ${currentPageUrl}\n\n${youtubeheading} ${youtubechannel}`;
+
+  const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+    facebookMessage
+  )}&quote=${encodeURIComponent(facebookMessage)}`;
   // const whatsAppUrl = `https://web.whatsapp.com/send?text=${encodeURIComponent(`*${message}*%0A%0A*${sectionname}*%0A${data.Heading}%0A%0A*${youtubeheading}*%0A${youtubechannel}`)}&url=${currentPageUrl}`;
   const [sidename, setSideName] = useState([]);
   const [sidenamerajiya, setSideNameRajiya] = useState([]);
@@ -164,8 +170,6 @@ const Detail = (props) => {
       </div>
     );
   };
-
-  const instagramProfileUrl = "https://www.instagram.com";
 
   const [open, setOpen] = useState(false);
 
@@ -457,20 +461,23 @@ const Detail = (props) => {
                               </a>
                             </li>
                             <li>
-                              <FacebookShareButton
-                                url={currentPageUrl}
-                                quote={title}
-                                style={{
-                                  boxShadow:
-                                    "rgba(62, 143, 11, 0.53) 3px 4px 4px 1px",
-                                }}
+                              <a
+                                data-activity="whatsapp_share"
+                                data-action="share/whatsapp/share"
+                                href={facebookShareUrl}
+                                className="m-0"
+                                target="_blank"
+                                aria-label="Share on WhatsApp"
+                                data-tooltip-id="my-tooltip"
+                                data-tooltip-content="Hello world!"
                               >
                                 <FacebookIcon
                                   title={"hello"}
                                   size={25}
                                   round={true}
                                 />
-                              </FacebookShareButton>
+                              </a>
+                              
                             </li>
                             <li>
                               <TwitterShareButton
@@ -489,7 +496,7 @@ const Detail = (props) => {
                               <a
                                 data-activity="instagram_share"
                                 data-action="share/instagram/share"
-                                href={instagramProfileUrl}
+                                href="gbg"
                                 className="m-0"
                                 target="_blank"
                                 aria-label="Share on Instagram"
