@@ -67,7 +67,7 @@ const Detail = (props) => {
   const facebookMessage = `${message}\n\n${sectionname}\n\n${data.Heading}\nLink: ${currentPageUrl}\n\n${youtubeheading} ${youtubechannel}`;
 
   const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-    facebookMessage
+    currentPageUrl
   )}&quote=${encodeURIComponent(facebookMessage)}`;
   // const whatsAppUrl = `https://web.whatsapp.com/send?text=${encodeURIComponent(`*${message}*%0A%0A*${sectionname}*%0A${data.Heading}%0A%0A*${youtubeheading}*%0A${youtubechannel}`)}&url=${currentPageUrl}`;
   const [sidename, setSideName] = useState([]);
@@ -477,7 +477,20 @@ const Detail = (props) => {
                                   round={true}
                                 />
                               </a>
-                              
+                              <FacebookShareButton
+                                url={currentPageUrl}
+                                quote={title}
+                                style={{
+                                  boxShadow:
+                                    "rgba(62, 143, 11, 0.53) 3px 4px 4px 1px",
+                                }}
+                              >
+                                <FacebookIcon
+                                  title={"hello"}
+                                  size={25}
+                                  round={true}
+                                />
+                              </FacebookShareButton>
                             </li>
                             <li>
                               <TwitterShareButton
