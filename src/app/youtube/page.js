@@ -122,8 +122,8 @@ const page = () => {
                                         </div>
                                     ))}
 
-                                    {videos.slice(1, 12).map((video) => (
-                                        <div key={video.id.videoId} className="col-lg-4 mb-5">
+                                    {videos.slice(1, 12).map((video, key) => (
+                                        <div key={key} className="col-lg-4 mb-5">
                                             <div class="card pt-2" style={{borderRadius: '12px',  backgroundColor: 'lightblue', boxShadow: 'rgb(255 0 0 / 26%) 3px 4px 4px 1px', minHeight: '100%', maxHeight: '408px' }} >
                                                 {/* style={{ filter: 'drop-shadow(rgb(23, 137, 60) 7px 8px 13px)' }} */}
                                                 <div className="video">

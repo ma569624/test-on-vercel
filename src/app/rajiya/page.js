@@ -90,8 +90,8 @@ const Rajiya = ({ color }) => {
 
                             <div className="container">
                                 <div className="row rajiya">
-                                    {data.map((item) => <div className="col-lg-3">
-                                        <div className="postbox mb-25">
+                                    {data.map((item, key) => <div className="col-lg-3">
+                                        <div className="postbox mb-25" key={key}>
                                             <div className="postbox__thumb image-container">
                                                 <a href="#">
                                                     <img
@@ -164,9 +164,9 @@ const Rajiya = ({ color }) => {
                     </div>
                 </div>
                 {
-                    data.map((item) => (
+                    data.map((item, key) => (
 
-                        <div className="container pb-5">
+                        <div className="container pb-5" key={key}>
                             <div className="row ">
                                 <div className="col-lg-12">
                                     <div className="section-title2 d-flex justify-content-center" style={{ backgroundColor: '#3e256e' }}>
