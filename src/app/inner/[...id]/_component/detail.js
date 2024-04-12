@@ -478,15 +478,9 @@ const Detail = (props) => {
                                 />
                               </a>
                               <FacebookShareButton
-                                url={currentPageUrl}
-                                quote={title}
-                                style={{
-                                  boxShadow:
-                                    "rgba(62, 143, 11, 0.53) 3px 4px 4px 1px",
-                                }}
+                                url={facebookShareUrl}
                               >
                                 <FacebookIcon
-                                  title={"hello"}
                                   size={25}
                                   round={true}
                                 />
