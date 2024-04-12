@@ -21,6 +21,8 @@ export default page;
 
 
 export async function generateMetadata({ params }, parent) {
+    const currentPageUrl =
+    typeof window !== "undefined" ? window.location.href : "";
     const id = params.id[0]
     const product = await fetch(`${process.env.API}/api/blogs?_id=${id}`).then((res) => res.json())
     const previousImages = (await parent).openGraph?.images || []
@@ -29,6 +31,7 @@ export async function generateMetadata({ params }, parent) {
         // description: product.data[0].Matter.slice(0, 82),
         openGraph: {
             images: [`https://new-backend-server-production.up.railway.app${product.data[0].Image}`],
+            url: currentPageUrl,
         },
         
     }
