@@ -3,9 +3,9 @@ import MainNews from './MainNews';
 
 import YouTube from 'react-youtube';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-scroll';
 import { MdDoubleArrow } from "react-icons/md";
 import React from 'react'
+import Link from 'next/link';
 
 const TodayNew = (props) => {
   const [data, setdata] = useState([])
@@ -33,18 +33,18 @@ const TodayNew = (props) => {
           setVideos(JSON.parse(storedVideos));
         } else {
           // Data doesn't exist in local storage, fetch from API
-          const response = await fetch(
-            `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=10`
-          );
-          const data = await response.json();
-          if (data.items) {
-            setVideos(data.items);
+          // const response = await fetch(
+          //   `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=10`
+          // );
+          // const data = await response.json();
+          // if (data.items) {
+          //   setVideos(data.items);
 
-            // Save fetched data to local storage
-            localStorage.setItem('videos', JSON.stringify(data.items));
-          } else {
-            console.error('No videos found');
-          }
+          //   // Save fetched data to local storage
+          //   localStorage.setItem('videos', JSON.stringify(data.items));
+          // } else {
+          //   console.error('No videos found');
+          // }
         }
       } catch (error) {
         console.error('Error fetching videos:', error);
@@ -123,8 +123,7 @@ const TodayNew = (props) => {
                 borderRadius: '8px',
                 textShadow: 'rgb(21, 47, 130) 4px 4px',
               }}>
-                <Link href={'/youtube'} className='d-flex align-items-center'>
-
+                <Link href='/youtube' className='d-flex align-items-center'>
 
                   <img style={{ borderRadius: '8px', width: '80px', height: '50px', marginRight: '2px', padding: '2px', filter: 'drop-shadow(rgb(132, 85, 99) 4px 3px 1px)' }} className='me-2 ml-2' src={category.length > 0 ? `${API}${category[2].Image}` : ''} alt="" />
 
@@ -149,8 +148,8 @@ const TodayNew = (props) => {
 
               <div className="postbox">
                 {/* <div dangerouslySetInnerHTML={{ __html: item.youTubelink }} /> */}
-                {videos.slice(0, 1).map((video) => (
-                  <div key={video.id.videoId}>
+                {/* {videos.slice(0, 1).map((video, key) => (
+                  <div key={key}>
                     <div className="video">
                       <YouTube class="card-img-top"
                         videoId={video.id.videoId}
@@ -160,7 +159,7 @@ const TodayNew = (props) => {
                       />
                     </div>
                   </div>
-                ))}
+                ))} */}
                 <div className="section-title mb-1 box-shodow" style={{
                   backgroundColor: '#a01f1f',
                   // backgroundColor: category.length > 0 ? category[2].background : 'transparent', color: color.TextColor2,
