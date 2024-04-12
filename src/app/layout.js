@@ -1,9 +1,8 @@
 import { Inter } from "next/font/google";
-import "./style.css";
-import "./bootstrap.min.css";
+import './global.css';
+import './bootstrap.min.css';
 import Header from "./_component/Header";
 import Footer from "./_component/Footer";
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Create Next App",
@@ -44,8 +43,7 @@ export default async function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body className={inter.className}>
-        
+      <body>
         <Header
           API={API}
           data={data}

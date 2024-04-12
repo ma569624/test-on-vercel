@@ -1,27 +1,3 @@
-/*-----------------------------------------------------------------------------------
-
-    Template Name: BunGee - Blog, News & Magazine HTML5 Template
-    Description: BunGee - Blog, News & Magazine HTML5 Template
-    Author: bangladevs
-    Version: 1.0
-
------------------------------------------------------------------------------------
-
-    CSS INDEX
-    ===================
-
-    1. Theme default css
-	  2. Overlay
-    3. Header
-    4. Hero
-    5. News
-    6. Breadcrumb
-    7. Post details
-    8. Portfolio area
-    9. Contact area
-    10. Footer
-
------------------------------------------------------------------------------------*/
 /* @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Poppins:300,400,500,600,700,800"); */
 /* @import url('../fonts/Mangal/Regular.ttf'); */
 
@@ -31,8 +7,6 @@
   font-weight: normal;
   font-style: normal;
 } */
-
-/* @import 'node_modules/scroll-carousel/dist/scroll.carousel.min.css'; */
 
 @media only screen and (min-width: 1200px) and (max-width: 1600px) {
   .container {
@@ -51,7 +25,7 @@ body {
   font-weight: normal;
   font-style: normal;
   color: #666666;
-  background-image: url('/bg.jpg');
+  background-image: url("/bg.jpg");
   background-color: rgba(252, 252, 252, 0.5);
   /* Change the opacity (fourth value) as needed */
   /* Combine background image and color overlay */
@@ -60,7 +34,7 @@ body {
   border-style: dashed;
   border-radius: 4px;
   max-width: 1164px;
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1600px) {
@@ -69,9 +43,7 @@ body {
     margin: 0;
     padding: 0;
   }
-
 }
-
 
 .img,
 img {
@@ -148,7 +120,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Mangal', sans-serif;
+  font-family: "Mangal", sans-serif;
   font-weight: normal;
   color: #212428;
   margin-top: 0px;
@@ -156,7 +128,6 @@ h6 {
   font-weight: 400;
   text-transform: normal;
   line-height: 1.7;
-
 }
 
 h1 a,
@@ -1765,7 +1736,7 @@ label {
 }
 
 .section-title h2 {
-  font-family: 'Mangal Devanagari', sans-serif;
+  font-family: "Mangal Devanagari", sans-serif;
   font-size: 20px;
   font-weight: 700;
   text-transform: uppercase;
@@ -1783,8 +1754,6 @@ label {
   top: 0;
   left: 0;
 }
-
-
 
 .section-title-2 h2 {
   background: #f70d28;
@@ -1864,7 +1833,7 @@ label {
   font-size: 35px;
   opacity: 0;
   z-index: 9;
-  transition: .3s;
+  transition: 0.3s;
   transform: translateY(-50%);
 }
 
@@ -1880,12 +1849,12 @@ label {
   right: 0;
   height: 100%;
   width: 100%;
-  transition: .3s;
+  transition: 0.3s;
   opacity: 0;
 }
 
 .instagram-item:hover a:before {
-  opacity: .7;
+  opacity: 0.7;
 }
 
 /* 13. pagination */
@@ -1981,9 +1950,15 @@ label {
 }
 
 [data-overlay="dark-gradient"]::before {
-  background-image: -moz-linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.904) 100%);
-  background-image: -webkit-linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.904) 100%);
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.904) 100%);
+  background-image: -moz-linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0.904) 100%);
+  background-image: -webkit-linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0.904) 100%);
+  background-image: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0.904) 100%);
 }
 
 /*-- Overlay Opacity --*/
@@ -2082,7 +2057,7 @@ label {
   line-height: 1;
   font-size: 15px;
   /* font-family: "Poppins", sans-serif; */
-  font-family: 'Mangal', sans-serif;
+  font-family: "Mangal", sans-serif;
   display: block;
   font-weight: 500;
   position: relative;
@@ -2114,7 +2089,6 @@ label {
 
 .header__menu ul li:hover>a::before,
 .header__menu ul li.active>a::before {
-
   opacity: 0;
 }
 
@@ -2341,7 +2315,7 @@ label {
 
 .top-form input::placeholder {
   color: #ffffff;
-  opacity: .6;
+  opacity: 0.6;
 }
 
 .top-form button {
@@ -2563,13 +2537,13 @@ label {
 .header__top-search form input::placeholder,
 .header__top-search form input::-moz-placeholder {
   color: #ffffff;
-  opacity: .7;
+  opacity: 0.7;
 }
 
 .header__top-search form input::placeholder {
   color: #fff;
   font-size: 14px;
-  opacity: .8;
+  opacity: 0.8;
 }
 
 .header__top-search form button {
@@ -2595,7 +2569,7 @@ label {
 .header-red ul li:hover>a,
 .header-red ul li.active>a {
   background: transparent;
-  opacity: .8;
+  opacity: 0.8;
 }
 
 .header-red ul li ul.submenu li a {
@@ -2639,9 +2613,12 @@ label {
   DO NOT hotlink the assets/font included in this demo. If you wish to use the same font icon then download it to your local assets at the link above. If you use the links below odds are at some point they will be removed and your version will break.
 */
 @font-face {
-  font-family: 'weather';
+  font-family: "weather";
   src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.eot");
-  src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.eot?#iefix") format("embedded-opentype"), url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.woff") format("woff"), url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.ttf") format("truetype"), url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.svg#artill_clean_weather_iconsRg") format("svg");
+  src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.eot?#iefix") format("embedded-opentype"),
+    url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.woff") format("woff"),
+    url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.ttf") format("truetype"),
+    url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.svg#artill_clean_weather_iconsRg") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -3121,8 +3098,6 @@ label {
   }
 }
 
-
-
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .breaking__wrapper .breaking__title {
     display: block;
@@ -3289,7 +3264,6 @@ label {
   border-radius: 12px;
 }
 
-
 @media (max-width: 767px) {
   .postbox__thumb a img {
     width: 100%;
@@ -3337,7 +3311,6 @@ label {
   font-size: 18px;
   line-height: 30px;
   text-shadow: rgb(214 216 222 / 61%) 1px 1px 1px;
-
 }
 
 .postbox__text h4.title-18:hover {
@@ -3366,7 +3339,7 @@ label {
   font-weight: 600;
   color: yellow;
   text-shadow: rgb(8 12 6) 4px 4px;
-  cursor: 'pointer';
+  cursor: "pointer";
 }
 
 .jara h4.title-16:hover {
@@ -3379,7 +3352,6 @@ label {
 }
 
 .postbox__text h4.title-16 {
-
   cursor: pointer;
   text-shadow: #d4c9c9a1 1px 1px 1px;
   font-size: 16px;
@@ -3445,7 +3417,6 @@ label {
   text-shadow: #aaafc0 1px 1px !important;
   cursor: pointer;
   color: yellow;
-
 }
 
 .postbox__text h4.title-13 {
@@ -3590,7 +3561,7 @@ label {
 }
 
 .post__features-content h4 a:hover {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .post__features-author span {
@@ -3644,9 +3615,7 @@ label {
   height: 40px;
   padding: 0;
   line-height: 0;
-
 }
-
 
 .title-theme h2 {
   background: #f70d28;
@@ -3706,7 +3675,7 @@ label {
   text-align: center;
   line-height: 30px;
   color: #444;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .post-sm-gallery .owl-nav div:hover {
@@ -3812,7 +3781,7 @@ label {
   text-align: center;
   line-height: 30px;
   color: #444;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .cat-gallery .owl-nav div:hover {
@@ -3985,7 +3954,7 @@ label {
 }
 
 .share-post-link a:hover {
-  opacity: .7;
+  opacity: 0.7;
 }
 
 blockquote::before {
@@ -3995,7 +3964,7 @@ blockquote::before {
   font-weight: 700;
   font-size: 40px;
   top: 0;
-  color: #EEEEEE;
+  color: #eeeeee;
   z-index: -1;
   left: 0;
 }
@@ -4004,7 +3973,7 @@ blockquote {
   margin: 25px 0 25px 0px;
   padding-left: 30px;
   position: relative;
-  border-left: 6px solid #EEEEEE;
+  border-left: 6px solid #eeeeee;
 }
 
 blockquote p {
@@ -4214,7 +4183,7 @@ blockquote footer::before {
 
 .portfolio-thumb img {
   width: 100%;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .portfolio-thumb::before {
@@ -4250,7 +4219,7 @@ blockquote footer::before {
 }
 
 .portfolio-wrapper:hover .portfolio-thumb::before {
-  opacity: .85;
+  opacity: 0.85;
   visibility: visible;
 }
 
@@ -4403,7 +4372,7 @@ blockquote footer::before {
 .subscribe-form form input::placeholder {
   color: #fff;
   font-size: 14px;
-  opacity: .8;
+  opacity: 0.8;
 }
 
 .subscribe-form form button {
@@ -4475,7 +4444,7 @@ blockquote footer::before {
 }
 
 .footer-social a:hover {
-  opacity: .7;
+  opacity: 0.7;
 }
 
 .footer-widget h3 {
@@ -4562,7 +4531,7 @@ li {
   transform: rotate(0deg);
   transition-delay: 0.08s;
   z-index: 2;
-  box-shadow: rgba(62, 143, 11, 0.53) 3px 4px 4px
+  box-shadow: rgba(62, 143, 11, 0.53) 3px 4px 4px;
 }
 
 .article-share-icon li:hover .article-share-platform li:nth-child(2) {
@@ -4572,7 +4541,7 @@ li {
   transform: rotate(0deg);
   transition-delay: 0.16s;
   z-index: 2;
-  box-shadow: rgba(62, 143, 11, 0.53) 3px 4px 4px
+  box-shadow: rgba(62, 143, 11, 0.53) 3px 4px 4px;
 }
 
 .article-share-icon li:hover .article-share-platform li:nth-child(3) {
@@ -4582,7 +4551,7 @@ li {
   transform: rotate(0deg);
   transition-delay: 0.24s;
   z-index: 2;
-  box-shadow: rgba(62, 143, 11, 0.53) 3px 4px 4px
+  box-shadow: rgba(62, 143, 11, 0.53) 3px 4px 4px;
 }
 
 .article-share-icon li:hover .article-share-platform li:nth-child(4) {
@@ -4592,7 +4561,7 @@ li {
   transform: rotate(0deg);
   transition-delay: 0.24s;
   z-index: 2;
-  box-shadow: rgba(62, 143, 11, 0.53) 3px 4px 4px
+  box-shadow: rgba(62, 143, 11, 0.53) 3px 4px 4px;
 }
 
 .article-share-icon li:hover .article-share-platform li:nth-child(5) {
@@ -4602,7 +4571,7 @@ li {
   transform: rotate(0deg);
   transition-delay: 0.24s;
   z-index: 2;
-  box-shadow: rgba(62, 143, 11, 0.53) 3px 4px 4px
+  box-shadow: rgba(62, 143, 11, 0.53) 3px 4px 4px;
 }
 
 .article-share-icon li:hover .article-share-platform li:nth-child(6) {
@@ -4612,7 +4581,7 @@ li {
   transform: rotate(0deg);
   transition-delay: 0.24s;
   z-index: 2;
-  box-shadow: rgba(62, 143, 11, 0.53) 3px 4px 4px
+  box-shadow: rgba(62, 143, 11, 0.53) 3px 4px 4px;
 }
 
 .article-share-icon li:hover .article-share-platform li:nth-child(7) {
@@ -4622,13 +4591,11 @@ li {
   transform: rotate(0deg);
   transition-delay: 0.24s;
   z-index: 2;
-  box-shadow: rgba(62, 143, 11, 0.53) 3px 4px 4px
+  box-shadow: rgba(62, 143, 11, 0.53) 3px 4px 4px;
 }
 
-
-
 .article-share-icon li .article-share-platform li {
-  transition: all ease-in-out .5s;
+  transition: all ease-in-out 0.5s;
   position: absolute;
   top: 0;
   left: 0;
@@ -4641,10 +4608,6 @@ li {
   border-radius: 100%;
   overflow: hidden;
 }
-
-
-
-
 
 /* home header icons */
 
@@ -4703,11 +4666,8 @@ li {
   /* box-shadow: rgba(62, 143, 11, 0.53) 3px 4px 4px  */
 }
 
-
-
-
 .article-share-icon1 li .article-share-platform1 li {
-  transition: all ease-in-out .5s;
+  transition: all ease-in-out 0.5s;
   position: absolute;
   top: 0;
   left: 0;
@@ -4769,7 +4729,6 @@ li {
 }
 
 .animate-charcter {
-
   background-image: linear-gradient(-225deg,
       /* #4c17fb 40%, */
       red 69%,
@@ -4820,8 +4779,6 @@ iframe {
   color: #6ff53f;
   transform: translateY(-3px);
   text-shadow: rgb(21, 47, 130) 1px 1px !important;
-
-
 }
 
 .youtube-embed .ytp-title-link,
@@ -4829,7 +4786,6 @@ iframe {
   display: none !important;
   /* Hide YouTube title and branding icon */
 }
-
 
 .main {
   background: #ddd;
@@ -4867,11 +4823,9 @@ iframe {
   cursor: pointer;
   padding: 10px;
   animation: dash 10s linear infinite;
-
 }
 
 .header__top-menu .top {
-
   color: white;
   font-weight: bold;
   border-radius: 9px;
@@ -4886,7 +4840,6 @@ iframe {
   cursor: pointer;
   padding: 10px;
   animation: dash 10s linear infinite;
-
 }
 
 @keyframes dash {
@@ -4947,8 +4900,6 @@ iframe {
   /* Zoom in by doubling the size */
 }
 
-
-
 .image-container2 img {
   transition: transform 0.9s ease-in-out;
   transform: scale(1);
@@ -4984,13 +4935,11 @@ iframe {
 .custom-model img {
   border-radius: 20px;
   border: 2px solid yellow;
-
 }
 
 .custom-model .table {
   border-radius: 10px !important;
   border: 2px solid yellow;
-
 }
 
 .model-heading-bg {
@@ -5017,7 +4966,6 @@ iframe {
   font-size: 16px;
   padding: 6px;
   font-weight: bold;
-
 }
 
 [data-title]:after {
@@ -5038,7 +4986,11 @@ iframe {
   -webkit-box-shadow: 0px 0px 4px #222;
   box-shadow: 0px 0px 4px #222;
   background-image: -moz-linear-gradient(top, #f8f8f8, #cccccc);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f8f8f8), color-stop(1, #cccccc));
+  background-image: -webkit-gradient(linear,
+      left top,
+      left bottom,
+      color-stop(0, #f8f8f8),
+      color-stop(1, #cccccc));
   background-image: -webkit-linear-gradient(top, #f8f8f8, #cccccc);
   background-image: -moz-linear-gradient(top, #f8f8f8, #cccccc);
   background-image: -ms-linear-gradient(top, #f8f8f8, #cccccc);
@@ -5090,7 +5042,6 @@ iframe {
   font-weight: 600;
   color: #0a0ae2;
   text-align: center;
-
 }
 
 .youtube-sec {
@@ -5131,7 +5082,6 @@ iframe {
   transform: scale(-2);
 } */
 
-
 .video h3 {
   text-shadow: #a1a6b8 2px 2px !important;
   cursor: pointer;
@@ -5148,70 +5098,80 @@ iframe {
   border-radius: 20px;
   background-color: rgb(8 104 92);
 }
-.patti-bg h2{
+
+.patti-bg h2 {
   font-size: 24px;
-    font-weight: 700;
-    color: #fff;
+  font-weight: 700;
+  color: #fff;
 }
-.rajiya-btn{
+
+.rajiya-btn {
   border-radius: 12px;
   background-color: green;
   font-size: 18px;
 }
-.rajiya .col-lg-3{
-  padding-left:  0;
+
+.rajiya .col-lg-3 {
+  padding-left: 0;
 }
+
 .rajiya {
   padding-left: 17px;
 }
 
-.rajiya-patti .section-title-2{
+.rajiya-patti .section-title-2 {
   font-size: 28px !important;
 }
-.rajiya p{
+
+.rajiya p {
   letter-spacing: -1px;
 }
 
-.rajiya .title-18{
+.rajiya .title-18 {
   text-shadow: #777a84 1px 1px !important;
   cursor: pointer;
   font-size: 22px !important;
   font-weight: 600;
   letter-spacing: -1px !important;
-
 }
-.team .main-row{
+
+.team .main-row {
   padding-left: 15px;
   padding-bottom: 20px;
 }
+
 .team .col-lg-6 {
   padding-left: 0;
   padding-bottom: 12px;
 }
+
 .team .card {
   border-radius: 18px;
 }
-.team h4{
+
+.team h4 {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 2px;
 }
-.team h5{
+
+.team h5 {
   font-size: 15px;
   font-weight: 600;
   margin-bottom: 2px;
 }
-.team .card-top{
- display: flex;
- align-items: center;
- gap: 2rem;
+
+.team .card-top {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 
-.team img{
+.team img {
   width: 110px;
   height: 110px;
   border-radius: 50%;
   border: 2px solid yellow;
 
-  filter: drop-shadow(rgb(135, 126, 126) 1px 0px 1px)
+  filter: drop-shadow(rgb(135, 126, 126) 1px 0px 1px);
 }
