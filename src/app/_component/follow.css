@@ -15,7 +15,7 @@
   box-shadow: 2px 1px 10px #9f6e6e;
   visibility: visible;
   cursor: pointer;
-  z-index: 9;
+  z-index: 999;
 }
 
 .share-button-wrap__share-icon .fa-share-alt {
@@ -39,6 +39,7 @@
   right: 22px;
   transition: 0.3s linear all;
   margin: 0 auto;
+  z-index: 99;
 }
 
 .share-button-wrap__social-icon-wrap i {
