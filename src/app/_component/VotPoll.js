@@ -14,7 +14,6 @@ const VotPoll = ({ color }) => {
 
     const resdata = await fetch(`${API}/api/poll`);
     const data = await resdata.json();
-    // console.log(data);
     setdata(data);
   };
 

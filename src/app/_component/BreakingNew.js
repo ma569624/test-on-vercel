@@ -15,7 +15,6 @@ const BreakingNew = () => {
   const swiperRef = useRef(null);
 
   const handleMouseEnter = () => {
-    console.warn("enet");
     if (swiperRef.current && !autoplayPaused) {
       swiperRef.current.swiper.autoplay.stop();
       setAutoplayPaused(true);

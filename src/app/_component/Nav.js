@@ -9,7 +9,6 @@ import Image from "next/image";
 
 export const Nav = (props) => {
   const API = props.API;
-  console.warn(props);
   const [blogs, setBlogs] = useState([]);
   const [data, setdata] = useState([]);
   const [rajiya, setRajiya] = useState([]);

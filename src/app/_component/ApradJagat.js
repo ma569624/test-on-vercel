@@ -30,7 +30,6 @@ const ApradJagat = (props) => {
         item.Category.includes(Rajiya)
       );
       setData(filteredData);
-      console.warn(data);
     }, [Rajiya]);
 
     return (
@@ -59,7 +58,6 @@ const ApradJagat = (props) => {
         item.Category.includes(Rajiya)
       );
       setData(filteredData);
-      console.warn(data);
     }, [Rajiya]);
 
     return (

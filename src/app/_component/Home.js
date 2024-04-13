@@ -9,7 +9,6 @@ const Home = (props) => {
   const [blogs, setBlogs] = useState([]);
   const [category, setCategory] = useState([]);
   const API = props.API;
-  // console.warn(props.toplinks)
   const [advert, setAdvert] = useState([]);
 
   useEffect(() => {

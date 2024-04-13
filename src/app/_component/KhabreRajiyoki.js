@@ -31,7 +31,6 @@ const KhabreRajiyoki = (props) => {
         item.Category.includes(Rajiya)
       );
       setData(filteredData);
-      console.warn(data);
     }, [Rajiya]);
 
     return (
@@ -60,7 +59,6 @@ const KhabreRajiyoki = (props) => {
         item.Category.includes(Rajiya)
       );
       setData(filteredData);
-      console.warn(data);
     }, [Rajiya]);
 
     return (
