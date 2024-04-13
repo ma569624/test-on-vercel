@@ -38,7 +38,7 @@ const TopKhaber = (props) => {
     }, [props])
 
     const MAX_WORDS = 8;
-
+    const isClient = typeof window !== 'undefined';
     function sliceByWords(text, maxWords) {
         const words = text.split(' ');
         if (words.length > maxWords) {
@@ -59,7 +59,7 @@ const TopKhaber = (props) => {
                             <div className="" style={{ gap: '6px' }}>
                                 <Swiper
                                     ref={swiperRef} // Attach ref to the Swiper component
-                                    slidesPerView={window.innerWidth > 768 ? 5 : 1}
+                                    slidesPerView={isClient && window.innerWidth > 768 ? 5 : 1}
                                     spaceBetween={6}
                                     loop={true}
                                     autoplay={{
@@ -72,7 +72,7 @@ const TopKhaber = (props) => {
                                     }}
                                     modules={[Autoplay, Pagination, Navigation]}
                                     className="mySwiper"
-                                    speed={ 1000 }
+                                    speed={ isClient && window.innerWidth > 768 ? 1000 : 0 }
                                 >
                                     
                                     {
