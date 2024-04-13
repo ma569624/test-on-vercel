@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-const page = () => {
+const Page = () => {
   return (
     <div className="container mt-3 team">
       <div className="row">
@@ -126,4 +126,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

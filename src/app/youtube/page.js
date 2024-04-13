@@ -8,7 +8,7 @@ import { useReactToPrint } from 'react-to-print';
 import { FcShare } from "react-icons/fc";
 import Model from '../_component/model';
 
-const page = () => {
+const Page = () => {
     const [videos, setVideos] = useState([]);
     const apiKey = 'AIzaSyCgyLsmQ-V1EgGXKXIxuPosIz7J2NlmE8w';
     // const apiKey = 'AIzaSyAvgv1F4OfE_gtDlAtaikPgNxd-uxy-lm0';
@@ -236,4 +236,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page

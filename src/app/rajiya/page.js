@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { MdDoubleArrow } from "react-icons/md";
 
-const page = ({ color }) => {
+const Page = ({ color }) => {
   const router = useRouter();
   const API = "https://new-backend-server-production.up.railway.app";
   const [data, setdata] = useState([]);
@@ -91,7 +91,7 @@ const page = ({ color }) => {
                 <div className="row rajiya">
                   {data.map((item, key) => (
                     <div className="col-lg-3" key={key}>
-                      <div className="postbox mb-25" >
+                      <div className="postbox mb-25">
                         <div className="postbox__thumb image-container">
                           <a href="#">
                             <img
@@ -155,7 +155,10 @@ const page = ({ color }) => {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <div className="patti-bg  mb-3 section-title text-center section-title2  box-shodow " style={{border: '4px solid yellow'}}>
+              <div
+                className="patti-bg  mb-3 section-title text-center section-title2  box-shodow "
+                style={{ border: "4px solid yellow" }}
+              >
                 <h2 className="m-0 p-0">
                   <MdDoubleArrow size={50} className="mr-2" />
                   ख़बरें राज्यों से
@@ -202,4 +205,4 @@ const page = ({ color }) => {
   );
 };
 
-export default page;
+export default Page;
