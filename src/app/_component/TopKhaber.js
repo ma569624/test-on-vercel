@@ -59,7 +59,7 @@ const TopKhaber = (props) => {
                             <div className="" style={{ gap: '6px' }}>
                                 <Swiper
                                     ref={swiperRef} // Attach ref to the Swiper component
-                                    slidesPerView={ 5 }
+                                    slidesPerView={window.innerWidth > 768 ? 5 : 1}
                                     spaceBetween={6}
                                     loop={true}
                                     autoplay={{
