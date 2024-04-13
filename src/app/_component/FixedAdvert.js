@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 const FixedAdvert = ({advert, endpoint, position }) => {
     const API = 'https://new-backend-server-production.up.railway.app';
