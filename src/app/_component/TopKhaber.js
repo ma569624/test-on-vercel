@@ -79,7 +79,7 @@ const TopKhaber = (props) => {
                                         data && Array.isArray(data) && data.map((item, key) =>
                                             <SwiperSlide key={key}>
                                                 <span className="slide filter">
-                                                    <div className="hero pos-relative" style={{ width:'220px' }}>
+                                                    <div className="hero pos-relative" style={{ width: isClient && window.innerWidth > 768 ? '220px' : 'auto' }}>
                                                         <div className="hero__thumb" data-overlay="dark-gradient">
                                                             <Image
                                                                 width={165}
@@ -106,7 +106,7 @@ const TopKhaber = (props) => {
                                         data && Array.isArray(data) && data.map((item, key) =>
                                             <SwiperSlide key={key}>
                                                 <span className="slide filter">
-                                                    <div className="hero pos-relative" style={{ width: '220px' }}>
+                                                    <div className="hero pos-relative" style={{  width: isClient && window.innerWidth > 768 ? '220px' : 'auto' }}>
                                                         <div className="hero__thumb" data-overlay="dark-gradient">
                                                             <Image
                                                                 width={165}
