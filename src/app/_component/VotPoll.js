@@ -171,7 +171,7 @@ const VotPoll = () => {
                 <Image
                   width={900}
                   height={236}
-                  src="ShowImage.gif"
+                  src="/ShowImage.gif"
                   alt="hero image"
                   style={{
                     borderRadius: "8px",
