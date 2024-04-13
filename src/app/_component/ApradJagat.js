@@ -68,7 +68,7 @@ const ApradJagat = (props) => {
 
   return (
     <section className="news-area">
-      <div className="container p-0">
+      <div className="container p-lg-0">
         {data.map((item, key) => (
           
             <div className="row" key={key}>

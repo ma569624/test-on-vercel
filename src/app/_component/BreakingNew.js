@@ -14,7 +14,7 @@ const BreakingNew = () => {
 
   return (
     <section className="breaking">
-      <div className="container p-0">
+      <div className="container p-lg-0">
         <div className="row">
           <div className="col-12">
             <div

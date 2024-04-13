@@ -20,7 +20,7 @@ const Header = (props) => {
           endpoint={"below breaking News"}
         />
 
-        <div className="container p-0">
+        <div className="container p-lg-0">
           <div className="row">
             <div className="col-lg-12">
               <Advert advert={props.advert} endpoint={"top of header"} />

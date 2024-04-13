@@ -23,7 +23,7 @@ const VotPoll = () => {
 
   return (
     <section className="features-area">
-      <div className="container p-0">
+      <div className="container p-lg-0">
         <div className="box">
           <div className="row">
             <div className="col-lg-3">
@@ -167,7 +167,6 @@ const VotPoll = () => {
                   </h2>
                 </div>
               </div>
-
                 <Image
                   width={900}
                   height={236}

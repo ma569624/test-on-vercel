@@ -50,7 +50,7 @@ const TopKhaber = (props) => {
 
     return (
         <section className="hero-area" >
-            <div className="container p-0">
+            <div className="container p-lg-0">
                 <div className="row">
                     <div className="col-lg-12">
                         <div className='text-Shadow' style={{ backgroundColor: '#a01f1f', borderRadius: '7px', padding: 5, }} onMouseEnter={handleMouseEnter} // Call handleMouseEnter when mouse enters Swiper

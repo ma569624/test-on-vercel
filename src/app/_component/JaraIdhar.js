@@ -57,6 +57,8 @@ const JaraIdhar = (props) => {
       return text;
     }
   }
+  const isClient = typeof window !== 'undefined';
+
 
   useEffect(() => {
     setdata(props.idharbhi)
@@ -97,11 +99,11 @@ const JaraIdhar = (props) => {
           <div className="row" onMouseEnter={handleMouseEnter} // Call handleMouseEnter when mouse enters Swiper
             onMouseLeave={handleMouseLeave} // Call handleMouseLeave when mouse leaves Swiper
           >
-            <div className="col-lg-12 ">
+            <div className="col-lg-12">
               <div className="" style={{ gap: '6px' }}>
                 <Swiper
-                  ref={swiperRef} // Attach ref to the Swiper component
-                  slidesPerView={5}
+                  ref={swiperRef} 
+                  slidesPerView={isClient && window.innerWidth > 768 ? 5 : 1}
                   spaceBetween={6}
                   loop={true}
                   autoplay={{

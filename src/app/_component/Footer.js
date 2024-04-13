@@ -84,7 +84,7 @@ const Footer = (props) => {
       <Advert advert={props.advert} endpoint={"footer upper"} />
 
       <footer>
-        <div className="container p-0">
+        <div className="container p-lg-0">
           <div className="main">
             <div className="row">
               <div className="col-lg-12">
@@ -199,7 +199,7 @@ const Footer = (props) => {
 
         <Advert advert={props.advert} endpoint={"footer below"} />
       </footer>
-      <div className="container p-0">
+      <div className="container p-lg-0">
           <div className="copyright-area main ">
             <div className="row align-items-center">
               <div className="col-xl-12 col-lg-12 col-md-6">

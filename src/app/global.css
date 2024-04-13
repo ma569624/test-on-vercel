@@ -1695,6 +1695,20 @@ label {
     right: 30px;
     bottom: 20px;
   }
+  .col-lg-1,
+  .col-lg-2,
+  .col-lg-3,
+  .col-lg-4,
+  .col-lg-5,
+  .col-lg-6,
+  .col-lg-7,
+  .col-lg-8,
+  .col-lg-9,
+  .col-lg-10,
+  .col-lg-11,
+  .col-lg-12 {
+    padding: 0 ;
+  }
 
   .header__top-menu {
     flex-wrap: wrap;
@@ -1707,13 +1721,12 @@ label {
   .animate-charcter {
     font-size: 24px !important;
   }
-  .header__menu ul li ul.submenu{
+  .header__menu ul li ul.submenu {
     width: 100% !important;
   }
-  body{
-    padding: 2px;
-    border: 4px solid #ecebeb;
-
+  body {
+    padding: 0 !important;
+    border: none !important;
   }
 }
 
@@ -5351,7 +5364,7 @@ footer .sec-tag li a {
   color: #fff;
   text-decoration: dotted;
 }
-.copyright-area{
+.copyright-area {
   padding: 4px;
 }
 .copyright-area p {
