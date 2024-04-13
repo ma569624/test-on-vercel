@@ -1,4 +1,5 @@
 'use client'
+
 import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -58,7 +59,7 @@ const TopKhaber = (props) => {
                             <div className="" style={{ gap: '6px' }}>
                                 <Swiper
                                     ref={swiperRef} // Attach ref to the Swiper component
-                                    slidesPerView={window.innerWidth > 768 ? 5 : 1}
+                                    slidesPerView={ 5 }
                                     spaceBetween={6}
                                     loop={true}
                                     autoplay={{
@@ -71,14 +72,14 @@ const TopKhaber = (props) => {
                                     }}
                                     modules={[Autoplay, Pagination, Navigation]}
                                     className="mySwiper"
-                                    speed={window.innerWidth > 768 ? 1000 : 0}
+                                    speed={ 1000 }
                                 >
                                     
                                     {
                                         data && Array.isArray(data) && data.map((item, key) =>
                                             <SwiperSlide key={key}>
                                                 <span className="slide filter">
-                                                    <div className="hero pos-relative" style={{ width: window.innerWidth > 768 ? '220px' : 'auto' }}>
+                                                    <div className="hero pos-relative" style={{ width:'220px' }}>
                                                         <div className="hero__thumb" data-overlay="dark-gradient">
                                                             <Image
                                                                 width={165}
@@ -105,7 +106,7 @@ const TopKhaber = (props) => {
                                         data && Array.isArray(data) && data.map((item, key) =>
                                             <SwiperSlide key={key}>
                                                 <span className="slide filter">
-                                                    <div className="hero pos-relative" style={{ width: window.innerWidth > 768 ? '220px' : 'auto' }}>
+                                                    <div className="hero pos-relative" style={{ width: '220px' }}>
                                                         <div className="hero__thumb" data-overlay="dark-gradient">
                                                             <Image
                                                                 width={165}

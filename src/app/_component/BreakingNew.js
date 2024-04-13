@@ -14,20 +14,6 @@ const BreakingNew = () => {
   const [autoplayPaused, setAutoplayPaused] = useState(false);
   const swiperRef = useRef(null);
 
-  const handleMouseEnter = () => {
-    if (swiperRef.current && !autoplayPaused) {
-      swiperRef.current.swiper.autoplay.stop();
-      setAutoplayPaused(true);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (swiperRef.current && autoplayPaused) {
-      swiperRef.current.swiper.autoplay.start();
-      setAutoplayPaused(false);
-    }
-  };
-
   return (
     <section className="breaking">
       <div className="container p-0">
@@ -35,7 +21,6 @@ const BreakingNew = () => {
           <div className="col-12">
             <div
               className="breaking__wrapper align-items-center main box-shodow"
-              
             >
               <div className="row align-items-center">
                 <div className="col-lg-3">

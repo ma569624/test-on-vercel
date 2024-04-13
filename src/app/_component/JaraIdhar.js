@@ -101,7 +101,7 @@ const JaraIdhar = (props) => {
               <div className="" style={{ gap: '6px' }}>
                 <Swiper
                   ref={swiperRef} // Attach ref to the Swiper component
-                  slidesPerView={window.innerWidth > 768 ? 5 : 1}
+                  slidesPerView={5}
                   spaceBetween={6}
                   loop={true}
                   autoplay={{
