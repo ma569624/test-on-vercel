@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect, useState, useRef } from 'react';
 // import { a } from 'react-router-dom';
 import Carousel from 'react-multi-carousel';

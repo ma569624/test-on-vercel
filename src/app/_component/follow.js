@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from 'react';
 import { FaShareAlt, FaFacebookF, FaTwitter, FaWhatsapp, FaGoogle, FaYoutube, FaTelegramPlane, FaInstagram } from 'react-icons/fa'; // Import required icons
 import './follow.css'

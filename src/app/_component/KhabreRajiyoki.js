@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect, useState } from "react";
 import News from "./News";
 import MainNews from "./MainNews";
