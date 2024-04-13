@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Rules = () => {
+const Page = () => {
     return (
         <div className="container">
             <div className="row mt-2">
@@ -66,4 +66,4 @@ const Rules = () => {
     )
 }
 
-export default Rules
+export default Page

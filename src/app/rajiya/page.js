@@ -5,13 +5,11 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { MdDoubleArrow } from "react-icons/md";
 
-const Rajiya = ({ color }) => {
+const Page = ({ color }) => {
   const router = useRouter();
-  const API = "http://localhost:5000";
+  const API = "https://new-backend-server-production.up.railway.app";
   const [data, setdata] = useState([]);
   const [blogs, setBlogs] = useState([]);
-  const [id, setid] = useState("");
-  const [category, setCategory] = useState([]);
 
   const getdata = async () => {
     const allblogs = await fetch(`${API}/api/allblogs`).then((res) =>
@@ -204,4 +202,4 @@ const Rajiya = ({ color }) => {
   );
 };
 
-export default Rajiya;
+export default Page;
