@@ -7,6 +7,7 @@ import React, { useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
 import { FcShare } from "react-icons/fc";
 import Model from '../_component/model';
+import Image from 'next/image';
 
 const Page = () => {
     const [videos, setVideos] = useState([]);
@@ -151,7 +152,7 @@ const Page = () => {
                                                 </h4>
                                             </div>
                                             <button className="border-0 bg-white mt-2" onClick={toggleModal}>
-                                                <img src={'/Donate.svg'} alt="help" style={{ filter: 'drop-shadow(rgb(102, 102, 102) 4px 4px 1px )', width: '30px' }} />
+                                                <Image width={50} height={50} src={'/Donate.svg'} alt="help" style={{ filter: 'drop-shadow(rgb(102, 102, 102) 4px 4px 1px )', width: '30px' }} />
                                             </button>
                                         </div>
 
@@ -204,7 +205,7 @@ const Page = () => {
                                                                 data-tooltip-content="Share on Instagram"
                                                                 style={{ display: 'block', border: 'none', width: '27px', height: '25px', position: 'relative', boxShadow: 'rgba(62, 143, 11, 0.53) 3px 4px 4px 1px' }}
                                                             >
-                                                                <img src='/email.svg' alt="" />
+                                                                <Image width={90} height={90} src='/email.svg' alt="" />
                                                             </a>
 
                                                         </li>

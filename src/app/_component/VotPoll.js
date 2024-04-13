@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { MdDoubleArrow } from "react-icons/md";
-
+import Image from "next/image";
 const VotPoll = () => {
   const [data, setdata] = useState([]);
   const API = "https://new-backend-server-production.up.railway.app";
@@ -168,7 +168,9 @@ const VotPoll = () => {
                 </div>
               </div>
 
-                <img
+                <Image
+                  width={900}
+                  height={236}
                   src="ShowImage.gif"
                   alt="hero image"
                   style={{

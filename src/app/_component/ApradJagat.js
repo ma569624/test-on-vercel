@@ -18,7 +18,6 @@ const ApradJagat = (props) => {
 
   useEffect(() => {
     getdata();
-    setdata(data);
   }, [props]);
 
   const NewsRow = ({ Rajiya }) => {
