@@ -17,7 +17,7 @@ export const Nav = (props) => {
     setBlogs(props.data.data);
     setdata(props.blogdisplay.filter((item) => item.isHeader === true));
     setRajiya(props.rajiya);
-  }, []);
+  }, [props]);
   const MAX_WORDS = 16;
 
   function sliceByWords(text, maxWords) {

@@ -344,7 +344,9 @@ const Detail = (props) => {
                           className="border-0 bg-white mt-2"
                           onClick={handlePrint}
                         >
-                          <img
+                          <Image
+                            width={100}
+                            height={100}
                             src="/printer.svg"
                             alt="print"
                             style={{
@@ -381,7 +383,9 @@ const Detail = (props) => {
                         className="border-0 bg-white mt-2"
                         onClick={toggleModal}
                       >
-                        <img
+                        <Image
+                          width={150}
+                          height={200}
                           src={"/Donate.svg"}
                           alt="help"
                           style={{
@@ -507,7 +511,7 @@ const Detail = (props) => {
                                     "rgba(62, 143, 11, 0.53) 3px 4px 4px 1px",
                                 }}
                               >
-                                <img src="/email.svg" alt="" />
+                                <Image width={200} height={200} src="/email.svg" alt="" />
                               </a>
                             </li>
                             <li>

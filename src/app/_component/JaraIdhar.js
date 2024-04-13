@@ -61,7 +61,7 @@ const JaraIdhar = (props) => {
   useEffect(() => {
     setdata(props.idharbhi)
     setCategory(props.toplinks)
-  }, [])
+  }, [props])
 
   const handleNextButtonClick = () => {
     if (swiperRef.current) {

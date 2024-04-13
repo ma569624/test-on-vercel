@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import TodayNew from "./TodayNew";
 import { MdDoubleArrow } from "react-icons/md";
 import Advert from "./Advert";
+import Image from "next/image";
 
 const Home = (props) => {
   const [blogs, setBlogs] = useState([]);
@@ -15,7 +16,7 @@ const Home = (props) => {
     setCategory(props.toplinks);
     setAdvert(props.advert);
     setBlogs(props.badikhabar);
-  }, []);
+  }, [props]);
 
   const MAX_WORDS = 12;
 
@@ -41,7 +42,9 @@ const Home = (props) => {
         <div className="container p-lg-0">
           <div className="content-pad p-0">
             <div className="home-patti-tittle justify-content-center">
-              <img className="me-4 ml-1"
+              <Image className="me-4 ml-1"
+                width={200}
+                height={200}
                 src={category.length > 0 ? `${API}${category[4].Image}` : ""}
                 alt=""
               />
@@ -56,7 +59,9 @@ const Home = (props) => {
                   <div className="cat-sm-post">
                     <div className="post__small mb-1">
                       <div className="post__small-thumb f-left image-container">
-                        <img
+                        <Image
+                          width={200}
+                          height={200}
                           src={`${API}${item.Image}`}
                           style={{
                             borderRadius: "12px",
@@ -96,7 +101,9 @@ const Home = (props) => {
                     target="_blank"
                     href={item.url ? item.url : `${API}${item.Image2}`}
                   >
-                    <img
+                    <Image
+                      width={200}
+                      height={200}
                       style={{ width: "900px", height: "160px" }}
                       src={`${API}${item.Image1}`}
                       alt=""

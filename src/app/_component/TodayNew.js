@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { MdDoubleArrow } from "react-icons/md";
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const TodayNew = (props) => {
   const [data, setdata] = useState([]);
@@ -15,7 +16,7 @@ const TodayNew = (props) => {
   useEffect(() => {
     setCategory(props.toplinks);
     setdata(props.todaynews);
-  }, []);
+  }, [props]);
 
   const API = props.API;
 
@@ -59,7 +60,9 @@ const TodayNew = (props) => {
         <div className="row">
           <div className="col-lg-9">
             <div className="home-patti-tittle mb-2">
-              <img
+              <Image
+                width={200}
+                height={200}
                 src={category.length > 0 ? `${API}${category[1].Image}` : ""}
                 alt=""
               />
@@ -126,7 +129,9 @@ const TodayNew = (props) => {
           <div className="col-lg-3">
             <div className="home-patti-side-tittle mb-1">
               <Link href="/youtube" className="d-flex align-items-center">
-                <img
+                <Image
+                  width={200}
+                  height={200}
                   src={category.length > 0 ? `${API}${category[2].Image}` : ""}
                   alt=""
                 />
@@ -140,20 +145,27 @@ const TodayNew = (props) => {
             <div className="postbox">
               {/* <div dangerouslySetInnerHTML={{ __html: item.youTubelink }} /> */}
               {videos.slice(0, 1).map((video, key) => (
-                  <div key={key}>
-                    <div className="video">
-                      <YouTube class="card-img-top"
-                        videoId={video.id.videoId}
-                        // onReady={onReady}
-                        style={{ borderRadius: '20px' }}
-                        opts={{ width: '100%', height: '280', borderRadius: '20px' }}
-                      />
-                    </div>
+                <div key={key}>
+                  <div className="video">
+                    <YouTube
+                      class="card-img-top"
+                      videoId={video.id.videoId}
+                      // onReady={onReady}
+                      style={{ borderRadius: "20px" }}
+                      opts={{
+                        width: "100%",
+                        height: "280",
+                        borderRadius: "20px",
+                      }}
+                    />
                   </div>
-                ))}
+                </div>
+              ))}
               <div className="home-patti-side-tittle">
                 <a className="d-flex align-items-center hover-effect">
-                  <img
+                  <Image
+                    width={200}
+                    height={200}
                     src={
                       category.length > 0 ? `${API}${category[3].Image}` : ""
                     }
@@ -166,8 +178,10 @@ const TodayNew = (props) => {
               </div>
             </div>
             <div className="postbox__thumb">
-              <img
-                src="ShowImage.gif"
+              <Image
+                width={500}
+                height={231}
+                src="/ShowImage.gif"
                 alt="hero image"
                 style={{ borderRadius: "12px", width: "100%", height: 231 }}
               />

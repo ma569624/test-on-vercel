@@ -1,5 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
+import Image from 'next/image';
 
 const Weather = (props) => {
     const [weatherData, setWeatherData] = useState(null);
@@ -101,7 +102,7 @@ const Weather = (props) => {
     return (
         <div >
             <div className="d-flex justify-content-center align-items-md-center">
-                <img clas src={iconUrl} alt="Weather Icon" />
+                <Image width={200} height={200} src={iconUrl} alt="Weather Icon" />
                 <p className='text-center mb-0' >{temperatureCelsius} °C</p>
             </div>
             <p className='text-center mb-0' >Temperature Max: {maxTemperatureCelsius} °C</p>

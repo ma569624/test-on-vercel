@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { MdDoubleArrow } from "react-icons/md";
 
-const VotPoll = ({ color }) => {
+const VotPoll = () => {
   const [data, setdata] = useState([]);
   const API = "https://new-backend-server-production.up.railway.app";
   const [advert, setAdvert] = useState([]);

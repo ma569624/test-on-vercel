@@ -12,7 +12,7 @@ const HitCounter = () => {
       }
 
       localStorage.setItem('hitCount', hits + 1);
-    }, []);
+    }, [hits]);
   
   return (
       <span className='mb-0 visitor flex-lg-shrink-0 hover-effect'>Number of Visitors: {hits}</span>

@@ -35,7 +35,7 @@ const TopKhaber = (props) => {
 
     useEffect(() => {
         setdata(props.topKhabare)
-    }, [])
+    }, [props])
 
     const MAX_WORDS = 8;
 

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Modal from 'react-modal';
 import { ImCross } from "react-icons/im";
+import Image from 'next/image';
+
 
 const Model = ({ open }) => {
     const [modalIsOpen, setIsOpen] = useState(false);
@@ -56,7 +58,7 @@ const Model = ({ open }) => {
             <div className="text-center">
                 <div className="custom-model">
                     <button className='cross' onClick={closeModal}><ImCross /></button>
-                    <img src='/donate.jpg'  alt="" width={160} />
+                    <Image  src='/donate.jpg'  alt="" width={160} height={120} />
 
                     <div className="mb-1 mt-1 model-heading-bg">
                         <h4 className="model-heading">

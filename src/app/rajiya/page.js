@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { MdDoubleArrow } from "react-icons/md";
-
+import Image from "next/image";
 const Page = ({ color }) => {
   const router = useRouter();
   const API = "https://new-backend-server-production.up.railway.app";
@@ -47,7 +47,9 @@ const Page = ({ color }) => {
       <div className="postbox mb-25">
         <div className="postbox__thumb">
           <a href="#">
-            <img
+            <Image
+              width={800}
+              height={300}
               src={`${API}${data.Image}`}
               style={{
                 width: 722,
@@ -94,7 +96,9 @@ const Page = ({ color }) => {
                       <div className="postbox mb-25">
                         <div className="postbox__thumb image-container">
                           <a href="#">
-                            <img
+                            <Image
+                              width={800}
+                              height={300}
                               src={`${API}${item.Image}`}
                               style={{
                                 width: 722,
@@ -175,7 +179,9 @@ const Page = ({ color }) => {
                   className="section-title2 d-flex justify-content-center"
                   style={{ backgroundColor: "#3e256e" }}
                 >
-                  <img
+                  <Image
+                    width={100}
+                    height={100}
                     style={{
                       borderRadius: "8px",
                       width: "80px",

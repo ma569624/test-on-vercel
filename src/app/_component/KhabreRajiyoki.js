@@ -5,6 +5,7 @@ import News from "./News";
 import MainNews from "./MainNews";
 import SideNews from "./SideNews";
 import { MdDoubleArrow } from "react-icons/md";
+import Image from "next/image";
 
 const KhabreRajiyoki = (props) => {
   const API = "https://new-backend-server-production.up.railway.app/api";
@@ -22,7 +23,7 @@ const KhabreRajiyoki = (props) => {
   useEffect(() => {
     getdata();
     setdata(data);
-  }, []);
+  }, [props]);
 
   const NewsRow = ({ Rajiya }) => {
     const [data, setData] = useState([]);
@@ -86,7 +87,7 @@ const KhabreRajiyoki = (props) => {
           <div className="row" key={key}>
             <div className="col-lg-9">
               <div className="home-patti-tittle">
-                <img src={`${API}${item.Image1}`} alt="" />
+                <Image width={200} height={200} src={`${API}${item.Image1}`} alt="" />
                 <MdDoubleArrow size={50} />
                 <h2 className="title">{item.StateName}</h2>
               </div>
@@ -94,7 +95,7 @@ const KhabreRajiyoki = (props) => {
             </div>
             <div className="col-lg-3">
               <div className="home-patti-side-tittle">
-                <img src={`${API}${item.Image2}`} alt="" />
+                <Image width={200} height={200} src={`${API}${item.Image2}`} alt="" />
                 <h2 className="title">{item.StateName}</h2>
               </div>
               <SideRow Rajiya={item.StateName} />

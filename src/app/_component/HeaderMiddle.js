@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useRef, useState } from "react";
 import { MdAccessTime } from "react-icons/md";
 import { RxCalendar } from "react-icons/rx";
+import Image from "next/image";
 
 const HeaderMiddle = (props) => {
   const API = props.API;
@@ -20,7 +21,7 @@ const HeaderMiddle = (props) => {
   useEffect(() => {
     setAdvert(props.advert);
     setTagline(props.tagline[0]);
-  }, []);
+  }, [props]);
 
   return (
     <div
@@ -30,7 +31,7 @@ const HeaderMiddle = (props) => {
       <div className="container">
         <div className="row justify-content-center">
           <div className="header__logo text-center">
-            <img src="logo.png" alt="Header Logo" width={155} height={50} />
+            <Image src="/logo.png" alt="Header Logo" width={155} height={50} />
             <ul className="d-flex mt-1" style={{ gap: "10px" }}>
               <li style={{ color: "white" }}>
                 <RxCalendar

@@ -1,7 +1,5 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
-import Link from "next/link";
-import Image from "next/image";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { MdDoubleArrow } from "react-icons/md";
