@@ -29,22 +29,22 @@ const Footer = (props) => {
   };
   const [showButton, setShowButton] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.pageYOffset;
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const scrollTop = window.pageYOffset;
 
-      // Show button when user scrolls beyond a certain threshold (e.g., 100 pixels)
-      setShowButton(scrollTop > 1800 && scrollTop !== 0);
-    };
+  //     // Show button when user scrolls beyond a certain threshold (e.g., 100 pixels)
+  //     setShowButton(scrollTop > 1800 && scrollTop !== 0);
+  //   };
 
-    // Add scroll event listener
-    window.addEventListener("scroll", handleScroll);
+  //   // Add scroll event listener
+  //   window.addEventListener("scroll", handleScroll);
 
-    // Remove scroll event listener on component unmount
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  //   // Remove scroll event listener on component unmount
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -55,15 +55,16 @@ const Footer = (props) => {
 
   return (
     <>
-      {
-        showButton ? <button
-        className={`scroll-to-top-button ${showButton ? "show" : "hide"}`}
-        onClick={scrollToTop}
-      >
-        <MdAirplanemodeActive size={40} />
-      </button> : <></>
-      }
-      
+      {showButton ? (
+        <button
+          className={`scroll-to-top-button ${showButton ? "show" : "hide"}`}
+          onClick={scrollToTop}
+        >
+          <MdAirplanemodeActive size={40} />
+        </button>
+      ) : (
+        <></>
+      )}
 
       <Model open={open} />
 
@@ -82,47 +83,37 @@ const Footer = (props) => {
       <VotPoll />
       <Advert advert={props.advert} endpoint={"footer upper"} />
 
-      <div className="container mt-1 ">
-        <footer
-          className=" main "
-          style={{
-            borderRadius: "8px",
-          }}
-        >
-          <div className="footer-bottom-area pt-1 pb-2 pl-4 pr-4">
-            <div className="container">
-              <div className="row mb-3 mt-3">
-                <div className="col-lg-12">
-                  <ul className="d-flex" style={{ gap: "1rem" }}>
-                    <li>
-                      <Link href={"/team"} className=" footer-tab hover-effect">
-                        हमारी टीम
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href={"/contact"}
-                        className=" footer-tab hover-effect"
-                      >
-                        हमारा पता / संपर्क करें
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href={"/rules"}
-                        className=" footer-tab hover-effect"
-                      >
-                        नियम और शर्तें
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
+      <footer>
+        <div className="container p-0">
+          <div className="main">
+            <div className="row">
+              <div className="col-lg-12">
+                <ul className="sec-tag">
+                  <li>
+                    <Link href={"/team"} className="hover-effect">
+                      हमारी टीम
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link href={"/contact"} className="hover-effect">
+                      हमारा पता / संपर्क करें
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link href={"/rules"} className="hover-effect">
+                      नियम और शर्तें
+                    </Link>
+                  </li>
+                </ul>
               </div>
-              <div className="row">
-                <div className="col-xl-4">
-                  <div className="footer-widget">
-                    <div className="row align-items-center">
-                      {/* <div className="col-lg-4 pr-0">
+            </div>
+            <div className="row">
+              <div className="col-xl-4">
+                <div className="footer-widget">
+                  <div className="row align-items-center">
+                    {/* <div className="col-lg-4 pr-0">
                                                 <img
                                                     src="ShowImage.jpg"
                                                     className="border rounded"
@@ -130,118 +121,101 @@ const Footer = (props) => {
                                                     style={{ width: 120, boxShadow: "rgba(11, 11, 19, 0.25) 8px 6px 2px 1px" }}
                                                 />
                                             </div> */}
-                      <div className="col-lg-6">
-                        <ul>
-                          <li>
-                            <span
-                              className="text-white"
-                              style={{
-                                textShadow: "rgb(21, 47, 130) 4px 4px",
-                                fontWeight: 900,
-                              }}
-                            >
-                              नाम
-                            </span>
-                          </li>
-                          <li>
-                            <span
-                              className="text-white"
-                              style={{
-                                textShadow: "rgb(21, 47, 130) 4px 4px",
-                                fontWeight: 900,
-                              }}
-                            >
-                              डेजीनेशन
-                            </span>
-                          </li>
-                          <li>
-                            <span
-                              className="text-white"
-                              style={{
-                                textShadow: "rgb(21, 47, 130) 4px 4px",
-                                fontWeight: 900,
-                              }}
-                            >
-                              {" "}
-                              ईमेल आईडी{" "}
-                            </span>
-                          </li>
-                          <li>
-                            <span
-                              className="text-white"
-                              style={{
-                                textShadow: "rgb(21, 47, 130) 4px 4px",
-                                fontWeight: 900,
-                              }}
-                            >
-                              मोबाइल नंबर
-                            </span>
-                          </li>
-                        </ul>
-                      </div>
+                    <div className="col-lg-6">
+                      <ul>
+                        <li>
+                          <span
+                            className="text-white"
+                            style={{
+                              textShadow: "rgb(21, 47, 130) 4px 4px",
+                              fontWeight: 900,
+                            }}
+                          >
+                            नाम
+                          </span>
+                        </li>
+                        <li>
+                          <span
+                            className="text-white"
+                            style={{
+                              textShadow: "rgb(21, 47, 130) 4px 4px",
+                              fontWeight: 900,
+                            }}
+                          >
+                            डेजीनेशन
+                          </span>
+                        </li>
+                        <li>
+                          <span
+                            className="text-white"
+                            style={{
+                              textShadow: "rgb(21, 47, 130) 4px 4px",
+                              fontWeight: 900,
+                            }}
+                          >
+                            {" "}
+                            ईमेल आईडी{" "}
+                          </span>
+                        </li>
+                        <li>
+                          <span
+                            className="text-white"
+                            style={{
+                              textShadow: "rgb(21, 47, 130) 4px 4px",
+                              fontWeight: 900,
+                            }}
+                          >
+                            मोबाइल नंबर
+                          </span>
+                        </li>
+                      </ul>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          {/* <Advert advert={props.advert} endpoint={'side mousam news'} /> */}
-
-          <div className="p-2">
-            <div className="container">
-              <div className="row align-items-center">
-                <div className="col-lg-12">
-                  <div className="header__top-menu d-flex align-items-baseline justify-content-between">
-                    <Link
-                      href="tel: 9999999999"
-                      className="hover-effect flex-lg-shrink-0"
-                    >
-                      विज्ञापन के लिए संपर्क करें 👈
-                    </Link>
-                    <HitCounter />
-                    <div
-                      className="top box box-h hover-effect flex-lg-shrink-0"
-                      onClick={toggleModal}
-                    >
-                      अपना सहयोग दें{" "}
-                      <Image
-                        width={24}
-                        height={25}
-                        src={"/Donate.svg"}
-                        alt=""
-                      />
-                    </div>
+            <div className="row align-items-center">
+              <div className="col-lg-12">
+                <div className="header__top-menu d-flex align-items-canter justify-content-between">
+                  <Link
+                    href="tel: 9999999999"
+                    className="hover-effect flex-lg-shrink-0"
+                  >
+                    विज्ञापन के लिए संपर्क करें 👈
+                  </Link>
+                  <HitCounter />
+                  <div
+                    className="top box box-h hover-effect flex-lg-shrink-0"
+                    onClick={toggleModal}
+                  >
+                    अपना सहयोग दें{" "}
+                    <Image width={24} height={25} src={"/Donate.svg"} alt="" />
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <Advert advert={props.advert} endpoint={"footer below"} />
+        </div>
 
-          <div className="copyright-area main mt-1">
-            <div className="container">
-              <div className="row align-items-center">
-                <div className="col-xl-12 col-lg-12 col-md-6">
-                  <div className="copyright text-start p-1">
-                    <p
-                      className="text-center"
-                      style={{
-                        fontWeight: 900,
-                        fontSize: "16px",
-                        textShadow: "rgb(21, 47, 130) 4px 4px",
-                      }}
-                    >
-                      © Third Eye World News Copyrights 2024. All rights
-                      reserved.
-                    </p>
-                  </div>
+        <Advert advert={props.advert} endpoint={"footer below"} />
+      </footer>
+      <div className="container p-0">
+          <div className="copyright-area main ">
+            <div className="row align-items-center">
+              <div className="col-xl-12 col-lg-12 col-md-6">
+                <div className="copyright text-start">
+                  <p
+                    className="text-center"
+                  >
+                    © Third Eye World News Copyrights 2024. All rights reserved.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
-          <Advert advert={props.advert} endpoint={"copyright upper"} />
-        </footer>
-      </div>
+        </div>
+        <Advert advert={props.advert} endpoint={"copyright upper"} />
+
       <Follow />
     </>
   );

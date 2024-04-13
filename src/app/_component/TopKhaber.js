@@ -49,7 +49,7 @@ const TopKhaber = (props) => {
 
     return (
         <section className="hero-area" >
-            <div className="container">
+            <div className="container p-0">
                 <div className="row">
                     <div className="col-lg-12">
                         <div className='text-Shadow' style={{ backgroundColor: '#a01f1f', borderRadius: '7px', padding: 5, }} onMouseEnter={handleMouseEnter} // Call handleMouseEnter when mouse enters Swiper
@@ -58,11 +58,11 @@ const TopKhaber = (props) => {
                             <div className="" style={{ gap: '6px' }}>
                                 <Swiper
                                     ref={swiperRef} // Attach ref to the Swiper component
-                                    slidesPerView={5}
+                                    slidesPerView={window.innerWidth > 768 ? 5 : 1}
                                     spaceBetween={6}
                                     loop={true}
                                     autoplay={{
-                                        delay: 20,
+                                        delay: 0,
                                         disableOnInteraction: false,
                                     }}
                                     pagination={{
@@ -71,14 +71,14 @@ const TopKhaber = (props) => {
                                     }}
                                     modules={[Autoplay, Pagination, Navigation]}
                                     className="mySwiper"
-                                    speed={1000}
+                                    speed={window.innerWidth > 768 ? 1000 : 0}
                                 >
                                     
                                     {
                                         data && Array.isArray(data) && data.map((item, key) =>
                                             <SwiperSlide key={key}>
                                                 <span className="slide filter">
-                                                    <div className="hero pos-relative" style={{ width: '220px' }}>
+                                                    <div className="hero pos-relative" style={{ width: window.innerWidth > 768 ? '220px' : 'auto' }}>
                                                         <div className="hero__thumb" data-overlay="dark-gradient">
                                                             <Image
                                                                 width={165}
@@ -105,7 +105,7 @@ const TopKhaber = (props) => {
                                         data && Array.isArray(data) && data.map((item, key) =>
                                             <SwiperSlide key={key}>
                                                 <span className="slide filter">
-                                                    <div className="hero pos-relative" style={{ width: '220px' }}>
+                                                    <div className="hero pos-relative" style={{ width: window.innerWidth > 768 ? '220px' : 'auto' }}>
                                                         <div className="hero__thumb" data-overlay="dark-gradient">
                                                             <Image
                                                                 width={165}

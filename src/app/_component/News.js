@@ -27,14 +27,7 @@ const News = ({ data, category }) => {
 
   return (
     <>
-      <div
-        style={{
-          minWidth: "190px",
-          width: "205px !important",
-          maxWidth: "min-content",
-        }}
-        className="postbox__text"
-      >
+      <div className="postbox__text col-6" >
         {data.Image && (
           <div className="image-container2">
             <Image

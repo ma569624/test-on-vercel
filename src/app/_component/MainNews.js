@@ -23,7 +23,7 @@ const MainNews = ({ data, category, API }) => {
 
 
   return (
-    <div className="postbox mb-25">
+    <>
       <div className="postbox__thumb image-container">
         <Image
           width={752}
@@ -59,7 +59,7 @@ const MainNews = ({ data, category, API }) => {
           </div>
         </h4>
       </div>
-    </div>
+    </>
   );
 };
 

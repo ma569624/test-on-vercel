@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { MdDoubleArrow } from "react-icons/md";
-import Weather from "./weather";
 
 const VotPoll = ({ color }) => {
   const [data, setdata] = useState([]);
@@ -24,36 +23,14 @@ const VotPoll = ({ color }) => {
   }, []);
 
   return (
-    <section className="features-area ">
-      <div className="container">
-        <div
-          className="content-pad border pb-0"
-          style={{
-            background: "rgb(202 249 177)",
-            boxShadow: "rgba(255, 0, 0, 0.53) 0px 2px 2px 1px",
-            borderRadius: "8px",
-          }}
-        >
+    <section className="features-area">
+      <div className="container p-0">
+        <div className="box">
           <div className="row">
             <div className="col-lg-3">
-              <div className="section-title mb-2">
-                <div
-                  className="box-shodow"
-                  style={{
-                    display: "flex",
-                    backgroundColor: "rgb(6, 115, 196)",
-                    borderRadius: "8px",
-                    padding: 5,
-                  }}
-                >
-                  <h2
-                    className="p-0 m-0"
-                    style={{
-                      textShadow: "rgb(21, 47, 130) 4px 4px",
-                      color: "white",
-                      fontSize: "18px",
-                    }}
-                  >
+              <div className=" section-title">
+                <div className="box-shodow tag">
+                  <h2>
                     <MdDoubleArrow size={30} />
                     इस पर आपकी क्या राय है?
                   </h2>
@@ -61,15 +38,7 @@ const VotPoll = ({ color }) => {
               </div>
               {data.map((item, key) => (
                 <div key={key}>
-                  <h4
-                    style={{
-                      fontWeight: 600,
-                      color: "red",
-                      textShadow: "rgb(21, 47, 130) 1px 1px",
-                    }}
-                  >
-                    {item.heading}
-                  </h4>
+                  <h4>{item.heading}</h4>
                   <form>
                     <table width="97%" border={0} cellSpacing={0}>
                       <tbody>
@@ -167,24 +136,9 @@ const VotPoll = ({ color }) => {
             </div>
 
             <div className="col-lg-3">
-              <div className="section-title mb-30">
-                <div
-                  className="box-shodow"
-                  style={{
-                    display: "flex",
-                    backgroundColor: "rgb(6, 115, 196)",
-                    borderRadius: "8px",
-                    padding: 5,
-                  }}
-                >
-                  <h2
-                    className="p-0 m-0"
-                    style={{
-                      textShadow: "rgb(21, 47, 130) 4px 4px",
-                      color: "white",
-                      fontSize: "18px",
-                    }}
-                  >
+              <div className="section-title">
+                <div className="box-shodow tag">
+                  <h2>
                     <MdDoubleArrow size={30} />
                     शेयर बाज़ार का ताज़ा ग्राफ
                   </h2>
@@ -193,58 +147,27 @@ const VotPoll = ({ color }) => {
             </div>
 
             <div className="col-lg-3">
-              <div className="section-title mb-30">
-                <div
-                  className="box-shodow mb-4"
-                  style={{
-                    display: "flex",
-                    backgroundColor: "rgb(6, 115, 196)",
-                    borderRadius: "8px",
-                    padding: 5,
-                  }}
-                >
-                  <MdDoubleArrow size={30} style={{ color: "white" }} />
-                  <h2
-                    className="p-0 m-0 p-0 flex-fill text-center mt-2"
-                    style={{
-                      textShadow: "rgb(21, 47, 130) 3px 2px",
-                      color: "white",
-                      fontSize: "18px",
-                      marginLeft: "-20px !important",
-                    }}
-                  >
+              <div className="section-title">
+                <div className="box-shodow tag">
+                  <h2>
+                    <MdDoubleArrow size={30} />
                     मौसम का हाल
                   </h2>
                 </div>
-                {/* <Weather /> */}
               </div>
             </div>
+            
 
             <div className="col-lg-3">
               <div className="section-title ">
-                <div
-                  className="box-shodow"
-                  style={{
-                    marginBottom: 4,
-                    display: "flex",
-                    backgroundColor: "rgb(6, 115, 196)",
-                    borderRadius: "8px",
-                    padding: 4,
-                  }}
-                >
-                  <MdDoubleArrow size={30} style={{ color: "white" }} />
-                  <h2
-                    className="p-0 flex-fill text-center mt-2"
-                    style={{
-                      textShadow: "rgb(21, 47, 130) 3px 2px",
-                      color: "white",
-                      fontSize: "18px",
-                      marginLeft: "-20px !important",
-                    }}
-                  >
+              <div className="section-title">
+                <div className="box-shodow tag">
+                  <h2>
+                    <MdDoubleArrow size={30} />
                     विज्ञापन
                   </h2>
                 </div>
+              </div>
 
                 <img
                   src="ShowImage.gif"
@@ -256,12 +179,6 @@ const VotPoll = ({ color }) => {
                     filter: "drop-shadow(rgb(102, 102, 102) 4px 4px 1px )",
                   }}
                 />
-                {/* {
-                                    advert.filter(item => item.location.includes('side mousam news')).slice(0, 1).map((item) => (
-                                        <a target='_blank' href={item.url ? item.url : `${API}${item.Image2}`}><img style={{ width: '500px', height: '200px' }} src={`${API}${item.Image1}`} alt="" /></a>
-
-                                    ))
-                                } */}
               </div>
             </div>
           </div>

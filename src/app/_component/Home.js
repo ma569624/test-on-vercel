@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 import TodayNew from "./TodayNew";
 import { MdDoubleArrow } from "react-icons/md";
+import Advert from "./Advert";
 
 const Home = (props) => {
   const [blogs, setBlogs] = useState([]);
@@ -35,66 +36,21 @@ const Home = (props) => {
         toplinks={props.toplinks}
         todaynews={props.todaynews}
       />
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-12">
-            <div className="d-flex justify-content-center mb-1 mt-1">
-              {advert
-                .filter((item, key) => item.location.includes("top badi khabar"))
-                .map((item) => (
-                  <a
-                    key={key}
-                    target="_blank"
-                    href={item.url ? item.url : `${API}${item.Image2}`}
-                  >
-                    <img
-                      style={{ width: "900px", height: "280px" }}
-                      src={`${API}${item.Image1}`}
-                      alt=""
-                    />
-                  </a>
-                ))}
-            </div>
-          </div>
-        </div>
-      </div>
-      <section className="features-area pb-2">
-        <div className="container">
-          <div className="content-pad pb-0">
-            <div
-              className="section-title d-flex align-items-center justify-content-center mb-1 box-shodow text-Shadow"
-              style={{
-                backgroundColor: "#a01f1f",
-                color: "white",
-                borderRadius: "18px",
-              }}
-            >
-              <img
-                style={{
-                  borderRadius: "8px",
-                  width: "71px",
-                  height: "50px",
-                  marginRight: "2px",
-                  padding: "2px",
-                  filter: "drop-shadow(rgb(132, 85, 99) 4px 3px 1px)",
-                }}
-                className="me-4 ml-1"
+      <Advert advert={props.advert} endpoint={"top badi khabar"} />
+
+      <section className="features-area">
+        <div className="container p-lg-0">
+          <div className="content-pad p-0">
+            <div className="home-patti-tittle justify-content-center">
+              <img className="me-4 ml-1"
                 src={category.length > 0 ? `${API}${category[4].Image}` : ""}
                 alt=""
               />
               <MdDoubleArrow size={50} />
-              <h2
-                style={{
-                  padding: 13,
-                  margin: 0,
-                  fontSize: 21,
-                  color: "white",
-                }}
-              >
+              <h2 className="title">
                 {category.length > 4 ? category[4].name : <></>}
               </h2>
             </div>
-
             <div className="row">
               {blogs.slice(0, 9).map((item, key) => (
                 <div className="col-lg-4" key={key}>

@@ -76,38 +76,20 @@ const JaraIdhar = (props) => {
 
   return (
     <section className="features-area">
-      <div className="container">
-        <div className="content-pad border pb-0 position-relative">
-          <div className="section-title d-flex align-items-center justify-content-between mb-1 main box-shodow" style={{
-            // position: 'relative',
-            borderRadius: '18px',
-            paddingLeft: 25,
-            paddingRight: 25,
-            color: 'white',
-
-          }}>
+      <div className="container p-lg-0">
+        <div className="position-relative">
+          <div className="home-patti-tittle d-flex justify-content-between main mb-1">
             <button className='prev' onClick={handlePrevButtonClick}><IoIosArrowBack size={35} style={{ fontWeight: 900, color: 'white', paddingRight: '2px' }} /></button>
             <div className='d-flex align-items-center'>
               <Image width={71} height={50} style={{ borderRadius: '8px', width: '80px', height: '50px', marginRight: '2px', padding: '2px', filter: 'drop-shadow(rgb(132, 85, 99) 4px 3px 1px)' }} className='me-4 ml-1' src={category.length > 0 ? `${API}${category[0].Image}` : ''} alt="" />
-              <MdDoubleArrow size={50} />
-              <h2
-                style={{
-                  textShadow: 'rgb(21, 47, 130) 4px 4px',
-                  padding: 4,
-                  margin: 0,
-                  fontSize: 21,
-                  color: 'white',
-                }}
-              >
-
+              <MdDoubleArrow className='text-white' size={50} />
+              <h2 className='title'>
                 {
                   category.length > 0 ? category[0].name : <></>
                 }
-
               </h2>
             </div>
             <button className='next' onClick={handleNextButtonClick}><IoIosArrowForward size={35} style={{ fontWeight: 900, color: 'white', paddingLeft: '2px' }} /></button>
-
           </div>
 
           <div className="row" onMouseEnter={handleMouseEnter} // Call handleMouseEnter when mouse enters Swiper
@@ -117,7 +99,7 @@ const JaraIdhar = (props) => {
               <div className="" style={{ gap: '6px' }}>
                 <Swiper
                   ref={swiperRef} // Attach ref to the Swiper component
-                  slidesPerView={5}
+                  slidesPerView={window.innerWidth > 768 ? 5 : 1}
                   spaceBetween={6}
                   loop={true}
                   autoplay={{
@@ -135,7 +117,7 @@ const JaraIdhar = (props) => {
                     <SwiperSlide key={index} className='h-auto'>
                       <div className="h-100" style={{maxHeight: '286px'}}>
                         <div className="cat-sm-post h-100" style={{ backgroundColor: '#86042e', borderRadius: '12px', overflow: 'hidden' }}>
-                          <div className="post__small mb-2 h-100" style={{ display: 'grid' }}>
+                          <div className="post__small h-100" style={{ display: 'grid' }}>
                             <div className="post__small-thumb f-left">
                               <Image
                                 width={227}
@@ -146,10 +128,8 @@ const JaraIdhar = (props) => {
                                 onClick={handleClick}
                               />
                             </div>
-
                             <div className="post__small-text jara" style={{ height: '126px' }}>
                               <h4 className="title-16 pr-0 mt-2 pl-2 pr-1"  onClick={() => handleClick(item._id)}>
-                                {/* {item.Heading.slice(0, 61)}... */}
                                 {item.Heading && sliceByWords(item.Heading, MAX_WORDS)}
                               </h4>
                             </div>
@@ -162,7 +142,7 @@ const JaraIdhar = (props) => {
                     <SwiperSlide key={index} className='h-auto'>
                       <div className="h-100" style={{maxHeight: '286px'}}>
                         <div className="cat-sm-post h-100" style={{ backgroundColor: '#86042e', borderRadius: '12px', overflow: 'hidden' }}>
-                          <div className="post__small mb-2 h-100" style={{ display: 'grid' }}>
+                          <div className="post__small h-100" style={{ display: 'grid' }}>
                             <div className="post__small-thumb f-left">
                               <Image
                                 width={227}
@@ -173,10 +153,8 @@ const JaraIdhar = (props) => {
                                 onClick={handleClick}
                               />
                             </div>
-
                             <div className="post__small-text jara" style={{ height: '126px' }}>
                               <h4 className="title-16 pr-0 mt-2 pl-2 pr-1"  onClick={() => handleClick(item._id)}>
-                                {/* {item.Heading.slice(0, 61)}... */}
                                 {item.Heading && sliceByWords(item.Heading, MAX_WORDS)}
                               </h4>
                             </div>
@@ -190,9 +168,7 @@ const JaraIdhar = (props) => {
 
               </div>
             </div>
-            <div style={{ textAlign: 'center', marginTop: '10px' }}>
-
-            </div>
+            
           </div>
         </div>
       </div>
