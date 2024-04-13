@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { MdDoubleArrow } from "react-icons/md";
 
-const Page = ({ color }) => {
+const page = ({ color }) => {
   const router = useRouter();
   const API = "https://new-backend-server-production.up.railway.app";
   const [data, setdata] = useState([]);
@@ -202,4 +202,4 @@ const Page = ({ color }) => {
   );
 };
 
-export default Page;
+export default page;

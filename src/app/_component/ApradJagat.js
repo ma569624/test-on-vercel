@@ -75,7 +75,7 @@ const ApradJagat = (props) => {
     <section className="news-area">
       <div className="container p-0">
         {data.map((item, key) => (
-          <>
+          
             <div className="row" key={key}>
               <div className="col-lg-9">
                 <div className="home-patti-tittle">
@@ -93,7 +93,7 @@ const ApradJagat = (props) => {
                 <SideRow Rajiya={item.SectionName} />
               </div>
             </div>
-          </>
+          
         ))}
       </div>
     </section>

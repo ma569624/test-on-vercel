@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Page = () => {
+const page = () => {
     return (
         <div className="container">
             <div className="row mt-2">
@@ -66,4 +66,4 @@ const Page = () => {
     )
 }
 
-export default Page
+export default page

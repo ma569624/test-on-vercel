@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-const Team = () => {
+const page = () => {
   return (
     <div className="container mt-3 team">
       <div className="row">
@@ -126,4 +126,4 @@ const Team = () => {
   );
 };
 
-export default Team;
+export default page;
