@@ -3,7 +3,7 @@ import React from "react";
 
 const Page = () => {
   return (
-    <div className="container mt-3 team">
+    <div className="container mt-3 mb-3 team p-lg-0">
       <div className="row">
         <div className="col-lg-12">
           <div
@@ -99,7 +99,7 @@ const Page = () => {
             <div className="row">
               <div className="col-lg-12">
                 <div className="card-top">
-                <Image width={200} height={200} src="/team.jpeg" alt="" />
+                  <Image width={200} height={200} src="/team.jpeg" alt="" />
 
                   <div>
                     <h4 className="text-Shadow">राम कुमार यादव</h4>
@@ -119,6 +119,19 @@ const Page = () => {
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+        
+      </div>
+      <div className="row">
+      <div className="col-lg-12">
+          <div className="card card-note box-shodow  p-2" >
+                <p className="m-0">
+                  नोट: आई वर्ल्ड न्यूज़ डॉट कॉम (www.thirdeyeworldnews.com) से
+                  जुड़े सभी सहयोगी अवैतानिक है जो स्वतंत्र रूप से अपना योगदान दे
+                  रहे हैं। ©Third Eye World News , www.thirdeyeworldnews.com
+                  नियम व शर्तें लागू।
+                </p>
           </div>
         </div>
       </div>

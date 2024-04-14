@@ -27,7 +27,7 @@ const Header = (props) => {
             </div>
           </div>
 
-          <div className="row">
+          <div className="row mb-1">
             <div className="col-lg-12">
               <HeaderTop />
             </div>
@@ -39,7 +39,7 @@ const Header = (props) => {
             </div>
           </div>
 
-          <div className="row">
+          <div className="row mb-1">
             <div className="col-lg-12">
               <HeaderMiddle {...props} />
             </div>
@@ -51,7 +51,7 @@ const Header = (props) => {
             </div>
           </div>
 
-          <div className="row">
+          <div className="row mb-1">
             <div className="col-lg-12">
               <Nav {...props} />
             </div>

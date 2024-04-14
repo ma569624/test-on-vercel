@@ -333,6 +333,10 @@ label {
 #scrollUp:hover {
   background: #f70d28;
 }
+.card-note{
+  background-color: #f5f2ea !important;
+  border: 3px solid rgb(184, 205, 143) !important;
+}
 
 @media (max-width: 767px) {
 
@@ -358,9 +362,8 @@ label {
     flex-wrap: wrap;
     gap: 10px;
   }
-  .header__top-menu a,
-  .top {
-    font-size: 12px;
+  .header__top-menu a,.top {
+    font-size: 14px;
   }
   .animate-charcter {
     font-size: 24px !important;
@@ -3817,7 +3820,7 @@ iframe {
 
 .team .main-row {
   padding-left: 15px;
-  padding-bottom: 20px;
+  padding-bottom: 2px;
 }
 
 .team .col-lg-6 {
@@ -4023,4 +4026,31 @@ footer .sec-tag li a {
   font-weight: 900;
   font-size: 16px;
   text-shadow: rgb(21, 47, 130) 4px 4px;
+}
+
+.top-header-bg{
+  border-radius: 8px;
+}
+
+.jara-idhar{
+  justify-content: space-around;
+  border-radius: 20px;
+  margin-bottom: 0px;
+}
+
+@media (min-width: 992px){
+  .news-area .col-lg-9{
+    max-width: 70%;
+    flex: 0 0 70%;
+  }
+  .news-area .col-lg-3{
+    flex: 0 0 30%;
+    padding-left: 0;
+    max-width: 30%;
+  }
+}
+.news-area .main{
+  margin-top: 20px;
+  border-radius: 20px;
+  margin-bottom: 10px;
 }

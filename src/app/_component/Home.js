@@ -41,7 +41,7 @@ const Home = (props) => {
       <section className="features-area">
         <div className="container p-lg-0">
           <div className="content-pad p-0">
-            <div className="home-patti-tittle justify-content-center">
+            <div className="mb-2 home-patti-tittle justify-content-center">
               <Image className="me-4 ml-1"
                 width={200}
                 height={200}

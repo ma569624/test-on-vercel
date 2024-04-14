@@ -49,7 +49,7 @@ const TopKhaber = (props) => {
     }
 
     return (
-        <section className="hero-area" >
+        <section className="hero-area mb-1" >
             <div className="container p-lg-0">
                 <div className="row">
                     <div className="col-lg-12">

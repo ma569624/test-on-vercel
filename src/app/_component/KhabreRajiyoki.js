@@ -83,7 +83,7 @@ const KhabreRajiyoki = (props) => {
           </div>
         </div>
         {data.map((item, key) => (
-          <div className="row" key={key}>
+          <div className="row mb-1" key={key}>
             <div className="col-lg-9">
               <div className="home-patti-tittle">
                 <Image width={200} height={200} src={`${API}${item.Image1}`} alt="" />
