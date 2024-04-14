@@ -1,8 +1,9 @@
 import { Inter } from "next/font/google";
-import './global.css';
-import './bootstrap.min.css';
+import "./global.css";
+import "./bootstrap.min.css";
 import Header from "./_component/Header";
 import Footer from "./_component/Footer";
+import { AppProvider } from "./_context/AppContext";
 
 export const metadata = {
   title: "Third Eye World News",
@@ -44,23 +45,25 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Header
-          API={API}
-          data={data}
-          advert={advert}
-          tagline={tagline}
-          blogdisplay={blogdisplay}
-          rajiya={rajiya}
-          topKhabare={topKhabare.data}
-        />
-        {children}
-        <Footer
-          API={API}
-          advert={advert}
-          idharbhi={idharbhi.data}
-          toplinks={toplinks}
-          allblogs={allblogs.data}
-        />
+        <AppProvider API={API}>
+          <Header
+            API={API}
+            data={data}
+            advert={advert}
+            tagline={tagline}
+            blogdisplay={blogdisplay}
+            rajiya={rajiya}
+            topKhabare={topKhabare.data}
+          />
+          {children}
+          <Footer
+            API={API}
+            advert={advert}
+            idharbhi={idharbhi.data}
+            toplinks={toplinks}
+            allblogs={allblogs.data}
+          />
+        </AppProvider>
       </body>
     </html>
   );

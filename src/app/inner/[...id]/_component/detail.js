@@ -78,7 +78,7 @@ const Detail = (props) => {
 
   useEffect(() => {
     getdata();
-  }, [props]);
+  }, [data]);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -86,9 +86,10 @@ const Detail = (props) => {
 
   const getblogs = async () => {
     const blogs = await fetch(
-      `https://new-backend-server-production.up.railway.app/api/blogs?page=${currentPage}&limit=${limit}&Category=${data.Category}`
+      `https://new-backend-server-production.up.railway.app/api/blogs?Status=active&page=${currentPage}&limit=${limit}&Category=${data.Category}`
     );
     const blogdata = await blogs.json();
+    console.warn(blogdata)
     setBlogs(blogdata.data);
   };
 
@@ -129,7 +130,7 @@ const Detail = (props) => {
                 <Image
                   height={195}
                   width={200}
-                  src={item.Image && `${API}${item.Image}`}
+                  src={item.Image ? `${API}${item.Image}` : '/default.jpg'}
                   // style={{ height: 195, }}
                   alt="hero image"
                   onClick={(e) => LoadingNewdata(item._id)}
@@ -340,7 +341,7 @@ const Detail = (props) => {
                             प्रिंट करें
                           </h4>
                         </div>
-                        <button
+                        <div
                           className="border-0 bg-white mt-2"
                           onClick={handlePrint}
                         >
@@ -356,7 +357,7 @@ const Detail = (props) => {
                               height: "30px",
                             }}
                           />
-                        </button>
+                        </div>
                       </div>
                     </div>
 
@@ -379,8 +380,8 @@ const Detail = (props) => {
                           अपना सहयोग दें
                         </h4>
                       </div>
-                      <button
-                        className="border-0 bg-white mt-2"
+                      <div
+                        className="mt-2"
                         onClick={toggleModal}
                       >
                         <Image
@@ -391,10 +392,10 @@ const Detail = (props) => {
                           style={{
                             filter:
                               "drop-shadow(rgb(102, 102, 102) 4px 4px 1px )",
-                            width: "30px",
+                            width: "30px", height: '30px'
                           }}
                         />
-                      </button>
+                      </div>
                     </div>
 
                     <div>
@@ -511,7 +512,7 @@ const Detail = (props) => {
                                     "rgba(62, 143, 11, 0.53) 3px 4px 4px 1px",
                                 }}
                               >
-                                <Image width={200} height={200} src="/email.svg" alt="" />
+                                <Image width={30} height={30} src="/email.svg" alt="" />
                               </a>
                             </li>
                             <li>

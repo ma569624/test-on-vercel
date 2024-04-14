@@ -42,39 +42,6 @@ const Page = ({ color }) => {
     getdata();
   }, []);
 
-  const MainNews = ({ data }) => {
-    return (
-      <div className="postbox mb-25">
-        <div className="postbox__thumb">
-          <a href="#">
-            <Image
-              width={800}
-              height={300}
-              src={`${API}${data.Image}`}
-              style={{
-                width: 722,
-                height: 200,
-                filter: "drop-shadow(rgb(102, 102, 102) 4px 4px 1px )",
-              }}
-              alt="hero image"
-            />
-          </a>
-        </div>
-        <div className="postbox__text pt-10">
-          <h4 className="title-18 pr-0 mainheading" onClick={handleClick}>
-            {data.Heading && sliceByWords(data.Heading, MAX_WORDS)}
-          </h4>
-          <h4 className="title-16 pr-0">
-            <div>
-              <div
-                dangerouslySetInnerHTML={{ __html: data.Matter.slice(0, 140) }}
-              />
-            </div>
-          </h4>
-        </div>
-      </div>
-    );
-  };
   const NewsRow = ({ Rajiya }) => {
     const [data, setData] = useState([]);
     useEffect(() => {
@@ -99,7 +66,7 @@ const Page = ({ color }) => {
                             <Image
                               width={800}
                               height={300}
-                              src={`${API}${item.Image}`}
+                              src={item.Image !== 'undefined' ? `${API}${item.Image}` : ""}
                               style={{
                                 width: 722,
                                 height: 200,
@@ -137,7 +104,7 @@ const Page = ({ color }) => {
 
         <div className="row ">
           <div className="col-lg-12">
-            <div className="pagination text-center">
+            <div className="justify-content-center pagination text-center">
               <ul>
                 <li>
                   <a className="hover-effect">पिछली ख़बर</a>
@@ -156,7 +123,7 @@ const Page = ({ color }) => {
   return (
     <>
       <section className="news-area pt-2 pb-2">
-        <div className="container">
+        <div className="container p-lg-0">
           <div className="row">
             <div className="col-lg-12">
               <div
@@ -172,7 +139,7 @@ const Page = ({ color }) => {
           </div>
         </div>
         {data.map((item, key) => (
-          <div className="container pb-5" key={key}>
+          <div className="container p-lg-0 pb-5" key={key}>
             <div className="row ">
               <div className="col-lg-12">
                 <div
@@ -191,7 +158,7 @@ const Page = ({ color }) => {
                       filter: "drop-shadow(rgb(132, 85, 99) 4px 3px 1px)",
                     }}
                     className="me-4 ml-1"
-                    src={`${API}${item.Image1}`}
+                    src={item.Image1 !== undefined ? `${API}${item.Image1}` : ''}
                     alt=""
                   />
                   <h2 className="m-0 ">

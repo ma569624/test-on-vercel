@@ -74,8 +74,8 @@ const KhabreRajiyoki = (props) => {
       <div className="container p-lg-0">
         <div className="row">
           <div className="col-lg-12">
-            <div className="section-title text-center text-Shadow box-shodow">
-              <h2 className="main text-white m-0">
+            <div className="section-title main text-center text-Shadow box-shodow">
+              <h2 className=" text-white m-0">
                 <MdDoubleArrow size={50} className="mr-2" />
                 ख़बरें राज्यों से
               </h2>
