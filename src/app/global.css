@@ -362,6 +362,7 @@ label {
     flex-wrap: wrap;
     gap: 10px;
   }
+  
   .header__top-menu a,.top {
     font-size: 14px;
   }

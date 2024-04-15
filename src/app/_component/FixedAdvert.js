@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 
 const FixedAdvert = ({advert, endpoint, position }) => {
-    const API = 'https://new-backend-server-production.up.railway.app';
+    const API = 'http://89.116.20.142:5000';
     const addposition = position;
   return (
     <div style={{ position: "fixed", top: "0", [addposition]: "5px", zIndex: "999" }}>

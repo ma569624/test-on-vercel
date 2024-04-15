@@ -1,6 +1,6 @@
 import Image from "next/image";
 const Advert = ({ advert, endpoint }) => {
-  const API = "https://new-backend-server-production.up.railway.app";
+  const API = "http://89.116.20.142:5000";
   return (
     <div className="container">
       {

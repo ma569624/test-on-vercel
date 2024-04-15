@@ -3,7 +3,7 @@ import { MdDoubleArrow } from "react-icons/md";
 import Image from "next/image";
 const VotPoll = () => {
   const [data, setdata] = useState([]);
-  const API = "https://new-backend-server-production.up.railway.app";
+  const API = "http://89.116.20.142:5000";
   const [advert, setAdvert] = useState([]);
 
   const getdata = async () => {

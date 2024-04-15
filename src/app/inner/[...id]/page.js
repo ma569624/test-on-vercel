@@ -30,7 +30,7 @@ export async function generateMetadata({ params }, parent) {
         title: product.data[0].Heading,
         // description: product.data[0].Matter.slice(0, 82),
         openGraph: {
-            images: [`https://new-backend-server-production.up.railway.app${product.data[0].Image}`],
+            images: [`http://89.116.20.142:5000${product.data[0].Image}`],
             url: currentPageUrl,
         },
         

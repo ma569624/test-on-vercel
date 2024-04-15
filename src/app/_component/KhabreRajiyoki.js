@@ -8,7 +8,7 @@ import { MdDoubleArrow } from "react-icons/md";
 import Image from "next/image";
 
 const KhabreRajiyoki = (props) => {
-  const API = "https://new-backend-server-production.up.railway.app/api";
+  const API = "http://89.116.20.142:5000/api";
   const [data, setdata] = useState([]);
   const [blogs, setBlogs] = useState([]);
   const [id, setid] = useState("");

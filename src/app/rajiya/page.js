@@ -7,7 +7,7 @@ import { MdDoubleArrow } from "react-icons/md";
 import Image from "next/image";
 const Page = ({ color }) => {
   const router = useRouter();
-  const API = "https://new-backend-server-production.up.railway.app";
+  const API = "http://89.116.20.142:5000";
   const [data, setdata] = useState([]);
   const [blogs, setBlogs] = useState([]);
 
