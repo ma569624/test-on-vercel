@@ -31,12 +31,12 @@
 }
 
 .share-button-wrap__center-icon {
-  height: 150px;
-  width: 150px;
+  height: 125px;
+  width: 125px;
   border-radius: 50%;
   position: fixed;
   bottom: 20px;
-  right: 22px;
+  right: 12px;
   transition: 0.3s linear all;
   margin: 0 auto;
   z-index: 99;

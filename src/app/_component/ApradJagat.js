@@ -74,7 +74,7 @@ const ApradJagat = (props) => {
             <div className="row mb-1" key={key}>
               <div className="col-lg-9">
                 <div className="home-patti-tittle">
-                  <Image width={200} height={200} src={`${API}${item.Image1}`} alt="" />
+                  <Image width={200} height={200} src={item.Image2 && `${API}${item.Image1}`} alt="" />
                   <MdDoubleArrow size={50} />
                   <h2 className="title">{item.SectionName}</h2>
                 </div>
@@ -82,7 +82,7 @@ const ApradJagat = (props) => {
               </div>
               <div className="col-lg-3">
                 <div className="home-patti-side-tittle">
-                  <Image width={200} height={200} src={`${API}${item.Image2}`} alt="" />
+                  <Image width={200} height={200} src={item.Image2 && `${API}${item.Image2}`} alt="" />
                   <h2 className="title">{item.SecondSection}</h2>
                 </div>
                 <SideRow Rajiya={item.SectionName} />

@@ -24,7 +24,7 @@ const SideNews = ({ data, category }) => {
   }
 
   return (
-    <div className="post__small mb-1">
+    <div className="post__small mb-3">
       <div className="post__small-thumb f-left">
         <a href="#">
           <div className="image-container2">
@@ -36,8 +36,8 @@ const SideNews = ({ data, category }) => {
               style={{
                 borderRadius: "12px",
                 cursor: "pointer",
-                width: 132,
-                height: 90,
+                width: 150,
+                height: 110,
               }}
               onClick={handleClick}
             />

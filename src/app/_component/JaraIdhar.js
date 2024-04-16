@@ -82,7 +82,7 @@ const JaraIdhar = (props) => {
     <section className="features-area">
       <div className="container p-lg-0">
         <div className="position-relative">
-          <div className="home-patti-tittle d-flex justify-content-between main mb-1 jara-idhar">
+          <div className="home-patti-tittle d-flex main mb-1 jara-idhar">
             <button className='prev' onClick={handlePrevButtonClick}><IoIosArrowBack size={35} style={{ fontWeight: 900, color: 'white', paddingRight: '2px' }} /></button>
             <div className='d-flex align-items-center'>
               <Image width={71} height={50} style={{ borderRadius: '8px', width: '80px', height: '50px', marginRight: '2px', padding: '2px', filter: 'drop-shadow(rgb(132, 85, 99) 4px 3px 1px)' }} className='me-4 ml-1' src={category.length > 0 ? `${API}${category[0].Image}` : ''} alt="" />
@@ -103,7 +103,7 @@ const JaraIdhar = (props) => {
               <div className="" style={{ gap: '6px' }}>
                 <Swiper
                   ref={swiperRef} 
-                  slidesPerView={isClient && window.innerWidth > 768 ? 5 : 1}
+                  slidesPerView={Math.min(5, isClient && window.innerWidth > 768 ? 5 : data.length)}
                   spaceBetween={6}
                   loop={true}
                   autoplay={{

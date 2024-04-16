@@ -94,8 +94,8 @@ const Home = (props) => {
           <div className="col-lg-12">
             <div className="d-flex justify-content-center mb-1 mt-1">
               {advert
-                .filter((item, key) => item.location.includes("jara idhar bhi top"))
-                .map((item) => (
+                .filter((item) => item.location.includes("jara idhar bhi top"))
+                .map((item, key) => (
                   <a
                     key={key}
                     target="_blank"

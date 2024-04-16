@@ -27,17 +27,17 @@ const News = ({ data, category }) => {
 
   return (
     <>
-      <div className="postbox__text col-6" >
+      <div className="postbox__text res-postbox__text">
         {data.Image && (
           <div className="image-container2">
             <Image
-              width={190}
-              height={153}
+              width={188}
+              height={165}
               src={data.Image && `${API}${data.Image}`}
               style={{
                 borderRadius: "14px",
                 cursor: "pointer",
-                maxWidth: "190px",
+                maxWidth: "200px",
                 minHeight: "153px",
               }}
               alt="hero image"

@@ -89,7 +89,7 @@ const Detail = (props) => {
       `https://new-backend-server-production.up.railway.app/api/blogs?Status=active&page=${currentPage}&limit=${limit}&Category=${data.Category}`
     );
     const blogdata = await blogs.json();
-    console.warn(blogdata)
+    console.warn(blogdata);
     setBlogs(blogdata.data);
   };
 
@@ -114,9 +114,11 @@ const Detail = (props) => {
   const Khabare = () => {
     return (
       <div className="col-lg-4">
-        
-        <div className="section-title2 text-center mb-2 box-shodow" style={{border: '4px solid yellow'}}>
-          <h2>
+        <div
+          className="section-title2 text-center mb-2 box-shodow"
+          style={{ border: "4px solid yellow" }}
+        >
+          <h2 className="m-0">
             Khabare
             {sidename && sidename.SecondSection}
             {sidenamerajiya && sidenamerajiya.FirstLink}
@@ -127,14 +129,16 @@ const Detail = (props) => {
           return (
             <div className="hero pos-relative mb-2 post-more" key={key}>
               <div className="hero__thumb" data-overlay="dark-gradient">
-                <Image
-                  height={195}
-                  width={200}
-                  src={item.Image ? `${API}${item.Image}` : '/default.jpg'}
-                  // style={{ height: 195, }}
-                  alt="hero image"
-                  onClick={(e) => LoadingNewdata(item._id)}
-                />
+                <div className="image-container3">
+                  <Image
+                    height={195}
+                    width={200}
+                    src={item.Image ? `${API}${item.Image}` : "/default.jpg"}
+                    // style={{ height: 195, }}
+                    alt="hero image"
+                    onClick={(e) => LoadingNewdata(item._id)}
+                  />
+                </div>
               </div>
 
               <div className="hero__text" style={{ padding: "0px 15px" }}>
@@ -178,13 +182,13 @@ const Detail = (props) => {
   return (
     <>
       <section className="post-details-area pt-3 pb-3">
-        <div className="container">
+        <div className="container p-0">
           <div className="row" ref={componentRef}>
             <div className="col-xl-8 col-lg-8">
-              <div className="patti-bg" style={{border: '4px solid yellow'}}>
-                <h2 className="text-center">{data.Category}</h2>
+              <div className="patti-bg" style={{ border: "4px solid yellow" }}>
+                <h2 className="text-center mb-0">{data.Category}</h2>
               </div>
-              <div className="post-details mt-2">
+              <div className="post-details ">
                 <div ref={componentRef}>
                   <h1 className="details-title">
                     {data && data.Heading !== undefined && data.Heading}
@@ -193,66 +197,17 @@ const Detail = (props) => {
                     {data && data.Subheading !== undefined && data.Subheading}
                   </h4>
                   <div className="post-content">
-                    <div className="postbox__text-meta pb-2 mb-2">
-                      <ul>
-                        <li>
-                          <i
-                            className="far fa-user-circle"
-                            style={{ fontSize: 12, color: "#000" }}
-                          ></i>
-                          <span
-                            className="pr-2"
-                            style={{ fontSize: 12, color: "#000" }}
-                          >
-                            आकाश श्रीवास्तव
-                          </span>
-                        </li>
-                        <li>
-                          <i
-                            className="fas fa-calendar-alt "
-                            style={{ fontSize: 12, color: "#000" }}
-                          ></i>
-                          <span
-                            className="pr-2"
-                            style={{ fontSize: 12, color: "#000" }}
-                          >
-                            16 feb 2024
-                          </span>
-                        </li>
-                        <li>
-                          <i
-                            className="far fa-clock"
-                            style={{ fontSize: 12, color: "#000" }}
-                          ></i>{" "}
-                          <span
-                            className="pr-2"
-                            style={{ fontSize: 12, color: "#000" }}
-                          >
-                            12:03:00
-                          </span>
-                        </li>
-                        <li>
-                          <i
-                            className="far fa-clock"
-                            style={{ fontSize: 12, color: "#000" }}
-                          ></i>{" "}
-                          <span
-                            className="pr-2"
-                            style={{ fontSize: 12, color: "#000" }}
-                          >
-                            Delhi
-                          </span>
-                        </li>
-                        <li>
-                          <i
-                            className="far fa-comment"
-                            style={{ fontSize: 12, color: "#000" }}
-                          ></i>
-                          <span style={{ fontSize: 12, color: "#000" }}>
-                            (03)
-                          </span>
-                        </li>
-                      </ul>
+                    <div className="postbox__text-meta mt-5">
+                      <div className="small-meta-text">
+                        <span>आकाश श्रीवास्तव</span>
+                        <div className="gourp">
+                          <span>update 16 feb 2024</span>
+                          <span>12:03:00</span>
+                          <span>Delhi</span>
+                          <span>(03)</span>
+                        </div>
+                      </div>
+                      
                     </div>
                     <div className="mb-4" style={{ display: "grid", gap: 2 }}>
                       {data !== undefined &&
@@ -280,7 +235,7 @@ const Detail = (props) => {
                       <strong style={{ fontSize: 15, color: "#000" }}>
                         {data && data.DatePlace !== undefined
                           ? data.DatePlace
-                          : "No date available"}
+                          : ""}
                       </strong>
                       <strong style={{ fontSize: 15, color: "#000" }}>
                         {data &&
@@ -323,21 +278,8 @@ const Detail = (props) => {
                   <div className="col-lg-12 d-flex justify-content-between">
                     <div className="d-flex gap-2">
                       <div className="text-center">
-                        <div
-                          style={{
-                            backgroundColor: "red",
-                            padding: "3px 12px 3px 12px",
-                            borderRadius: "40px ",
-                            boxShadow: "rgb(255 0 0 / 53%) 3px 4px 4px 1px",
-                          }}
-                        >
-                          <h4
-                            className="text-right text-white m-0"
-                            style={{
-                              fontWeight: 900,
-                              textShadow: "rgb(21 47 130) 4px 4px",
-                            }}
-                          >
+                        <div className="button-tag">
+                          <h4 className="text-right text-white m-0 ">
                             प्रिंट करें
                           </h4>
                         </div>
@@ -362,28 +304,12 @@ const Detail = (props) => {
                     </div>
 
                     <div className="text-center">
-                      <div
-                        style={{
-                          backgroundColor: "red",
-                          padding: "3px 12px 3px 12px",
-                          borderRadius: "40px ",
-                          boxShadow: "rgb(255 0 0 / 53%) 3px 4px 4px 1px",
-                        }}
-                      >
-                        <h4
-                          className="text-right text-white m-0"
-                          style={{
-                            fontWeight: 900,
-                            textShadow: "rgb(21 47 130) 4px 4px",
-                          }}
-                        >
+                      <div className="button-tag">
+                        <h4 className="text-right text-white m-0">
                           अपना सहयोग दें
                         </h4>
                       </div>
-                      <div
-                        className="mt-2"
-                        onClick={toggleModal}
-                      >
+                      <div className="mt-2" onClick={toggleModal}>
                         <Image
                           width={150}
                           height={200}
@@ -392,30 +318,16 @@ const Detail = (props) => {
                           style={{
                             filter:
                               "drop-shadow(rgb(102, 102, 102) 4px 4px 1px )",
-                            width: "30px", height: '30px'
+                            width: "30px",
+                            height: "30px",
                           }}
                         />
                       </div>
                     </div>
 
                     <div>
-                      <div
-                        style={{
-                          backgroundColor: "red",
-                          padding: "3px 12px 3px 12px",
-                          borderRadius: "40px ",
-                          boxShadow: "rgb(255 0 0 / 53%) 3px 4px 4px 1px",
-                        }}
-                      >
-                        <h4
-                          className="text-right text-white m-0"
-                          style={{
-                            fontWeight: 900,
-                            textShadow: "rgb(21 47 130) 4px 4px",
-                          }}
-                        >
-                          शेयर करें
-                        </h4>
+                      <div className="button-tag">
+                        <h4 className="text-right text-white m-0">शेयर करें</h4>
                       </div>
                       <ul className="article-share-icon mt-2">
                         <li>
@@ -512,7 +424,12 @@ const Detail = (props) => {
                                     "rgba(62, 143, 11, 0.53) 3px 4px 4px 1px",
                                 }}
                               >
-                                <Image width={30} height={30} src="/email.svg" alt="" />
+                                <Image
+                                  width={30}
+                                  height={30}
+                                  src="/email.svg"
+                                  alt=""
+                                />
                               </a>
                             </li>
                             <li>

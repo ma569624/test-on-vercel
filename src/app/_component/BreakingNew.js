@@ -13,7 +13,7 @@ const BreakingNew = () => {
   const swiperRef = useRef(null);
 
   return (
-    <section className="breaking mb-1">
+    <section className="breaking patti-margin-bottom">
       <div className="container p-lg-0">
         <div className="row">
           <div className="col-12">

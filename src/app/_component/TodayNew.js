@@ -55,9 +55,9 @@ const TodayNew = (props) => {
   }, []);
 
   return (
-    <section className="news-area">
+    <section className="news-area patti-margin-bottom mb-2">
       <div className="container p-lg-0">
-        <div className="row">
+        <div className="row res-lg-space">
           <div className="col-lg-9">
             <div className="home-patti-tittle mb-2">
               <Image
@@ -71,7 +71,7 @@ const TodayNew = (props) => {
                 {category.length > 0 ? category[1].name : <></>}
               </h2>
             </div>
-            <div className="row ">
+            <div className="row">
               <div className="col-lg-6">
                 {data.length > 0 ? (
                   <MainNews
@@ -83,45 +83,22 @@ const TodayNew = (props) => {
                   <></>
                 )}
               </div>
-              <div className="col-lg-6">
-                <div className="row">
-                  {data.length > 1 ? (
-                    <News
-                      API={props.API}
-                      data={data[1]}
-                      category={"primenews"}
-                    />
-                  ) : (
-                    <></>
-                  )}
-
-                  {data.length > 2 ? (
-                    <News
-                      API={props.API}
-                      data={data[2]}
-                      category={"primenews"}
-                    />
-                  ) : (
-                    <></>
-                  )}
-                  {data.length > 3 ? (
-                    <News
-                      API={props.API}
-                      data={data[3]}
-                      category={"primenews"}
-                    />
-                  ) : (
-                    <></>
-                  )}
-                  {data.length > 4 ? (
-                    <News
-                      API={props.API}
-                      data={data[4]}
-                      category={"primenews"}
-                    />
-                  ) : (
-                    <></>
-                  )}
+              <div className="col-lg-6 res-space">
+                <div className=" res-postbox_new_row">
+                  {data
+                    .slice(1, 5)
+                    .map((item, index) =>
+                      data.length > index + 1 ? (
+                        <News
+                          key={index}
+                          API={props.API}
+                          data={item}
+                          category={"primenews"}
+                        />
+                      ) : (
+                        <></>
+                      )
+                    )}
                 </div>
               </div>
             </div>
@@ -142,7 +119,7 @@ const TodayNew = (props) => {
               </Link>
             </div>
 
-            <div className="postbox">
+            <div className="postbox mb-1">
               {/* <div dangerouslySetInnerHTML={{ __html: item.youTubelink }} /> */}
               {videos.slice(0, 1).map((video, key) => (
                 <div key={key}>
@@ -161,29 +138,27 @@ const TodayNew = (props) => {
                   </div>
                 </div>
               ))}
-              <div className="home-patti-side-tittle">
-                <a className="d-flex align-items-center hover-effect">
-                  <Image
-                    width={200}
-                    height={200}
-                    src={
-                      category.length > 0 ? `${API}${category[3].Image}` : ""
-                    }
-                    alt=""
-                  />
-                  <h2 className="title text-center hover-effect">
-                    {category.length > 0 ? category[3].name : <></>}
-                  </h2>
-                </a>
-              </div>
+            </div>
+            <div className="home-patti-side-tittle">
+              <a className="d-flex align-items-center hover-effect">
+                <Image
+                  width={200}
+                  height={200}
+                  src={category.length > 0 ? `${API}${category[3].Image}` : ""}
+                  alt=""
+                />
+                <h2 className="title text-center hover-effect">
+                  {category.length > 0 ? category[3].name : <></>}
+                </h2>
+              </a>
             </div>
             <div className="postbox__thumb">
               <Image
                 width={500}
-                height={231}
+                height={228}
                 src="/ShowImage.gif"
                 alt="hero image"
-                style={{ borderRadius: "12px", width: "100%", height: 231 }}
+                style={{ borderRadius: "12px", width: "100%", height: 228 }}
               />
             </div>
           </div>

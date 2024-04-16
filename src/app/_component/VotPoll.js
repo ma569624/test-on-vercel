@@ -29,8 +29,8 @@ const VotPoll = () => {
             <div className="col-lg-3">
               <div className=" section-title">
                 <div className="box-shodow tag">
-                  <h2>
                     <MdDoubleArrow size={30} />
+                  <h2>
                     इस पर आपकी क्या राय है?
                   </h2>
                 </div>
@@ -137,8 +137,8 @@ const VotPoll = () => {
             <div className="col-lg-3">
               <div className="section-title">
                 <div className="box-shodow tag">
-                  <h2>
                     <MdDoubleArrow size={30} />
+                  <h2>
                     शेयर बाज़ार का ताज़ा ग्राफ
                   </h2>
                 </div>
@@ -148,8 +148,8 @@ const VotPoll = () => {
             <div className="col-lg-3">
               <div className="section-title">
                 <div className="box-shodow tag">
-                  <h2>
                     <MdDoubleArrow size={30} />
+                  <h2>
                     मौसम का हाल
                   </h2>
                 </div>
@@ -161,8 +161,8 @@ const VotPoll = () => {
               <div className="section-title ">
               <div className="section-title">
                 <div className="box-shodow tag">
-                  <h2>
                     <MdDoubleArrow size={30} />
+                  <h2>
                     विज्ञापन
                   </h2>
                 </div>

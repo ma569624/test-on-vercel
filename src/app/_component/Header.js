@@ -21,47 +21,60 @@ const Header = (props) => {
         />
 
         <div className="container p-lg-0">
-          <div className="row">
-            <div className="col-lg-12">
-              <Advert advert={props.advert} endpoint={"top of header"} />
+          {props.advert.filter((item) =>
+            item.location.includes("top of header")
+          ).length > 0 && (
+            <div className="row patti-margin-bottom">
+              <div className="col-lg-12">
+                <Advert advert={props.advert} endpoint={"top of header"} />
+              </div>
             </div>
-          </div>
+          )}
 
-          <div className="row mb-1">
+          <div className="row patti-margin-bottom">
             <div className="col-lg-12">
               <HeaderTop />
             </div>
           </div>
 
-          <div className="row">
-            <div className="col-lg-12">
-              <Advert advert={props.advert} endpoint={"below header"} />
+          {props.advert.filter((item) => item.location.includes("below header"))
+            .length > 0 && (
+            <div className="row patti-margin-bottom">
+              <div className="col-lg-12">
+                <Advert advert={props.advert} endpoint={"below header"} />
+              </div>
             </div>
-          </div>
+          )}
 
-          <div className="row mb-1">
+          <div className="row patti-margin-bottom">
             <div className="col-lg-12">
               <HeaderMiddle {...props} />
             </div>
           </div>
 
-          <div className="row">
-            <div className="col-lg-12">
-              <Advert advert={props.advert} endpoint={"top menu"} />
+          {props.advert.filter((item) => item.location.includes("top menu"))
+            .length > 0 && (
+            <div className="row patti-margin-bottom">
+              <div className="col-lg-12">
+                <Advert advert={props.advert} endpoint={"top menu"} />
+              </div>
             </div>
-          </div>
+          )}
 
-          <div className="row mb-1">
+          <div className="row patti-margin-bottom">
             <div className="col-lg-12">
               <Nav {...props} />
             </div>
           </div>
 
-          <div className="row">
-            <div className="col-lg-12">
-              <Advert advert={props.advert} endpoint={"below menu"} />
+          {props.advert.filter((item) => item.location.includes("below menu"))
+            .length > 0 && (
+            <div className="row patti-margin-bottom">
+              <div className="col-lg-12">
+                <Advert advert={props.advert} endpoint={"below menu"} />
+              </div>
             </div>
-          </div>
+          )}
         </div>
         <FixedAdvert
           advert={props.advert}

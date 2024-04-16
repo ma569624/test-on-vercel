@@ -25,25 +25,25 @@ const HeaderMiddle = (props) => {
 
   return (
     <div
-      className="header__middle pt-1 main box-shodow"
+      className="header__middle main box-shodow"
       style={{ borderRadius: "8px" }}
     >
       <div className="container">
         <div className="row justify-content-center">
-          <div className="header__logo text-center">
-            <Image src="/logo.png" alt="Header Logo" width={155} height={50} />
-            <ul className="d-flex mt-1" style={{ gap: "10px" }}>
+          <div className="header__logo text-center ">
+            <Image className="ml-4" src="/thirdeyeworldnews logo.svg" alt="Header Logo" width={255} height={120} />
+            <ul className="d-flex mt-1 mb-0 ml-1" style={{ gap: "10px" }}>
               <li style={{ color: "white" }}>
                 <RxCalendar
                   className="ml-1 mr-1"
                   style={{
-                    fontWeight: 600,
+                    fontWeight: 800,
                     fontSize: "13px",
                     color: "white",
                   }}
                 />
-                <span style={{ fontSize: "13px", fontWeight: 600 }}>
-                  {date.toLocaleDateString("en-GB", {
+                <span style={{ fontSize: "13px", fontWeight: 800 }}>
+                  {date.toLocaleDateString("hi-IN", {
                     weekday: "long",
                     day: "numeric",
                     month: "short",
@@ -53,10 +53,10 @@ const HeaderMiddle = (props) => {
               </li>
               <li>
                 <MdAccessTime
-                  size={15}
+                  size={16}
                   className="mr-1"
                   style={{
-                    fontSize: "13px",
+                    
                     fontWeight: 900,
                     color: "white",
                   }}
@@ -64,7 +64,7 @@ const HeaderMiddle = (props) => {
                 <span
                   style={{
                     color: "white",
-                    fontWeight: 600,
+                    fontWeight: 800,
                     fontSize: "13px",
                   }}
                 >

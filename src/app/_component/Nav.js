@@ -48,7 +48,7 @@ export const Nav = (props) => {
                     style={{
                       color: "yellow",
                       fontWeight: 900,
-                      filter: "drop-shadow(rgb(102, 102, 102) 6px 5px 1px)",
+                      filter: "drop-shadow(rgb(102, 102, 102) 3px 2px 1px)",
                       fontSize: "15px",
                     }}
                     size={38}
@@ -58,14 +58,8 @@ export const Nav = (props) => {
 
               {data.map((item, key) => (
                 <li key={key}>
-                  <a
-                    className="hover-effect"
-                    style={{
-                      color: "white",
-                      fontWeight: "900",
-                      fontSize: "15px",
-                    }}
-                  >
+                  <a className="hover-effect">
+
                     {item.SectionName}
                     <IoMdArrowDropdown size={30} />
                   </a>
@@ -131,11 +125,7 @@ export const Nav = (props) => {
                 </li>
               ))}
               <li>
-                <a
-                  href={`/rajiya`}
-                  className="hover-effect"
-                  style={{ color: "white", fontWeight: "900" }}
-                >
+                <a href={`/rajiya`}className="hover-effect">
                   ख़बरें राज्यों से
                   <IoMdArrowDropdown size={30} />
                 </a>
