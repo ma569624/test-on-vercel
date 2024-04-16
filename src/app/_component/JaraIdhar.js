@@ -103,7 +103,7 @@ const JaraIdhar = (props) => {
               <div className="" style={{ gap: '6px' }}>
                 <Swiper
                   ref={swiperRef} 
-                  slidesPerView={Math.min(5, isClient && window.innerWidth > 768 ? 5 : data.length)}
+                  slidesPerView={isClient && window.innerWidth > 768 ? 5 : 1}
                   spaceBetween={6}
                   loop={true}
                   autoplay={{
@@ -121,8 +121,8 @@ const JaraIdhar = (props) => {
                     <SwiperSlide key={index} className='h-auto'>
                       <div className="h-100" style={{maxHeight: '286px'}}>
                         <div className="cat-sm-post h-100" style={{ backgroundColor: '#86042e', borderRadius: '12px', overflow: 'hidden' }}>
-                          <div className="post__small h-100" style={{ display: 'grid' }}>
-                            <div className="post__small-thumb f-left">
+                          <div className=" h-100" style={{ display: 'grid' }}>
+                            <div className=" f-left">
                               <Image
                                 width={227}
                                 height={189}

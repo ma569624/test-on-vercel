@@ -89,6 +89,7 @@ const TopKhaber = (props) => {
                                                                 alt="hero image"
                                                             />
                                                         </div>
+                                                        
                                                         <div className="hero__text hero__text-small">
                                                             <h3 className="pr-0 text-Shadow" style={{ fontWeight: 900,lineHeight: '25px' }}>
                                                                 <Link href={`/inner/${item._id}/TopKhabare`}>
