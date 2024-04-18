@@ -513,6 +513,7 @@ footer {
         filter: drop-shadow(rgb(102, 102, 102) 4px 4px 1px);
         border-radius: 12px;
         overflow: hidden;
+        cursor: pointer;
 
         img {
           transition: transform 4s ease-in-out;
@@ -559,6 +560,7 @@ footer {
           filter: drop-shadow(rgb(102, 102, 102) 4px 4px 1px);
           border-radius: 12px;
           overflow: hidden;
+          cursor: pointer;
 
           img {
             transition: transform 0.3s ease-in-out;
@@ -571,9 +573,10 @@ footer {
         }
 
         h4 {
+          cursor: pointer;
           padding-left: 8px;
           max-width: 188px;
-          font-size: 18px;
+          font-size: 16px;
           margin-top: 10px;
           font-weight: 800;
           line-height: 28px;
@@ -714,7 +717,8 @@ footer {
       margin-left: 10px;
       max-width: 40%;
       flex: 0 0 40%;
-      font-size: 20px;
+      font-size: 17px;
+      line-height: 26px;
       font-weight: 700;
       cursor: pointer;
     }

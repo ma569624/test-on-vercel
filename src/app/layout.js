@@ -39,7 +39,7 @@ export default async function RootLayout({ children }) {
   const toplinks = await fetch(`${process.env.API}/api/toplinks`).then((res) =>
     res.json()
   );
-  const allblogs = await fetch(`${process.env.API}/api/allblogs`).then((res) =>
+  const allblogs = await fetch(`${process.env.API}/api/allblogs?name=block`).then((res) =>
     res.json()
   );
 
