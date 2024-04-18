@@ -22,7 +22,7 @@ import Image from "next/image";
 const Page = () => {
 
   const [videos, setVideos] = useState([]);
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState([]);
   const [open, setOpen] = useState(false);
   const toggleModal = () => {
     setOpen(!open);
