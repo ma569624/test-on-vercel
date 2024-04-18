@@ -533,12 +533,16 @@ footer {
         cursor: pointer;
         cursor: pointer;
       }
-
-      p {
-        margin-left: 10px;
-        font-weight: 600;
-        color: #4b3939bb;
+      .containt{
+        max-width: 340px;
+        overflow: hidden;
+        p {
+          margin-left: 10px;
+          font-weight: 600;
+          color: #4b3939bb;
+        }
       }
+      
     }
 
     .mutiple_small_post_wrapper {
@@ -575,21 +579,27 @@ footer {
         h4 {
           cursor: pointer;
           padding-left: 8px;
-          max-width: 188px;
+          // max-width: 188px;
           font-size: 16px;
           margin-top: 10px;
           font-weight: 800;
           line-height: 28px;
           
         }
-
-        p {
-          padding-left: 8px;
-          font-weight: 600;
-          color: #4b3939bb;
-          font-size: 14px;
-          letter-spacing: -1px;
+        .containt{
+          max-width: 340px;
+          overflow: hidden;
+          height: 120px;
+          p {
+            padding-left: 8px;
+           
+            font-weight: 600;
+            color: #4b3939bb;
+            font-size: 14px;
+            letter-spacing: -1px;
+          }
         }
+        
       }
     }
   }
@@ -979,4 +989,10 @@ $background-color_1: #eee6e6;
       padding: 6px;
     }
   }
+}
+.youtube-video-container .ytp-title {
+  display: none !important;
+}
+.ytp-title-enable-channel-logo .ytp-title-channel{
+  display: none !important;
 }

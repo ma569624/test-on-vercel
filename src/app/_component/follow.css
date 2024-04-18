@@ -35,7 +35,7 @@
   width: 125px;
   border-radius: 50%;
   position: fixed;
-  bottom: 20px;
+  bottom: 61px;
   right: 12px;
   transition: 0.3s linear all;
   margin: 0 auto;
@@ -311,7 +311,7 @@ i.fa.fa-youtube {
 
 .title-show {
   position: absolute;
-  top: 25px;
+  top: 10px;
   opacity: 1;
   font-weight: 700;
   font-size: 14px;

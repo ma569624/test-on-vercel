@@ -13,21 +13,14 @@ export const Nav = (props) => {
   const [data, setdata] = useState([]);
   const [rajiya, setRajiya] = useState([]);
 
+  console.warn(props.allblogs)
   useEffect(() => {
-    setBlogs(props.data.data);
-    setdata(props.blogdisplay.filter((item) => item.isHeader === true));
-    setRajiya(props.rajiya);
+    console.warn(props.allblogs.filter((item) => item.isHeader === true))
+    // setBlogs(props.allblogs);
+    // setdata(props.blogdisplay.filter((item) => item.isHeader === true));
+    // setRajiya(props.rajiya);
   }, [props]);
-  const MAX_WORDS = 16;
-
-  function sliceByWords(text, maxWords) {
-    const words = text.split(" ");
-    if (words.length > maxWords) {
-      return words.slice(0, maxWords).join(" ") + "...";
-    } else {
-      return text;
-    }
-  }
+  
 
   return (
     <>

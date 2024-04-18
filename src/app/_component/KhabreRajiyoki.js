@@ -41,12 +41,13 @@ const KhabreRajiyoki = (props) => {
   }, [props]);
 
   const NewsRow = ({ Rajiya }) => {
+    // console.warn(Object.values(Rajiya)[0])
     const [data, setData] = useState([]);
     useEffect(() => {
-      const filteredData = props.allblogs.filter((item) =>
-        item.Category.includes(Rajiya)
-      );
-      setData(filteredData);
+      // const filteredData = props.allblogs.filter((item) =>
+      //   item.Category.includes(Rajiya)
+      // );
+      setData(Rajiya);
     }, [Rajiya]);
 
     return (
@@ -70,10 +71,11 @@ const KhabreRajiyoki = (props) => {
                 onClick={() => handleClick(data[0]._id)}
               >
                 {/* {data.Heading}   */}
-                {data[0].Heading && sliceByWords(data[0].Heading, MAX_WORDS)}
+                {data[0].Heading && sliceByWords(data[0].Heading, 20)}
               </h4>
               
                   <div
+                   className="containt"
                     dangerouslySetInnerHTML={{
                       __html:
                         data && data[0].Matter
@@ -81,8 +83,8 @@ const KhabreRajiyoki = (props) => {
                           : "",
                     }}
                   />
-                
-            </div>
+                </div>
+              
           </div>
         ) : (
           <></>
@@ -96,7 +98,7 @@ const KhabreRajiyoki = (props) => {
               <div className="mutiple_small_post" key={key}>
                 <div className="image-container">
                   <Image
-                    width={188}
+                    width={298}
                     height={165}
                     // src={data.Image && `${API}${data.Image}`}
                     src={item.Image ? `${API}${item.Image}` : "/default.jpg"}
@@ -107,8 +109,16 @@ const KhabreRajiyoki = (props) => {
                 </div>
 
                 <h4 onClick={() => handleClick(item._id)}>
-                  {item.Heading && sliceByWords(item.Heading, MAX_WORDS)}
+                  {item.Heading && sliceByWords(item.Heading, 14)}
                 </h4>
+                <div className="containt"
+                    dangerouslySetInnerHTML={{
+                      __html:
+                      item && item.Matter
+                          ? sliceByWords(item.Matter, 15)
+                          : "",
+                    }}
+                  />
               </div>
             );
           })}
@@ -120,15 +130,15 @@ const KhabreRajiyoki = (props) => {
   const SideRow = ({ Rajiya }) => {
     const [data, setData] = useState([]);
     useEffect(() => {
-      const filteredData = props.allblogs.filter((item) =>
-        item.Category.includes(Rajiya)
-      );
-      setData(filteredData);
+      // const filteredData = props.allblogs.filter((item) =>
+      //   item.Category.includes(Rajiya)
+      // );
+      setData(Rajiya);
     }, [Rajiya]);
 
     return (
       <>
-        {data.slice(5, 10).map((item, key) => {
+        {data.slice(5, 11).map((item, key) => {
           return (
             <div className="news_postbox_wrapper_side" key={key}>
               <div className="image-container">
@@ -144,6 +154,7 @@ const KhabreRajiyoki = (props) => {
               <h4 onClick={() => handleClick(item._id)}>
                 {item.Heading && sliceByWords(item.Heading, MAX_WORDS)}
               </h4>
+              
             </div>
           );
         })}
@@ -164,32 +175,33 @@ const KhabreRajiyoki = (props) => {
             </div>
           </div>
         </div>
-        {data.map((item, key) => (
+        {props.allblogs.map((item, key) => (
           <div className="row mb-1" key={key}>
             <div className="col-lg-9">
               <div className="new_post_title">
                 <Image
                   width={200}
                   height={200}
-                  src={ item.Image1 &&`${API}${item.Image1}`}
+                  src={item.section.Image2 && `${API}${item.section.Image1}`}
                   alt=""
                 />
                 <MdDoubleArrow size={50} />
-                <h2 className="title_text">{item.StateName}</h2>
+                <h2 className="title_text">{item.section.StateName}</h2>
               </div>
-              <NewsRow Rajiya={item.StateName} />
+
+              <NewsRow Rajiya={item.data} />
             </div>
             <div className="col-lg-3">
               <div className="new_post_title">
                 <Image
                   width={200}
                   height={200}
-                  src={item.Image2 && `${API}${item.Image2}`}
+                  src={item.section.Image2 && `${API}${item.section.Image2}`}
                   alt=""
                 />
-                <h2 className="title_text_side">{item.StateName}</h2>
+                <h2 className="title_text_side">{item.section.FirstLink}</h2>
               </div>
-              <SideRow Rajiya={item.FirstLink} />
+              <SideRow Rajiya={item.data} />
             </div>
           </div>
         ))}

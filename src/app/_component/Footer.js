@@ -72,7 +72,7 @@ const Footer = (props) => {
       <ApradJagat allblogs={props.allblogs} />
       <Advert advert={props.advert} endpoint={"khabare rajiyo top"} />
 
-      {/* <KhabreRajiyoki allblogs={props.allblogs} /> */}
+      <KhabreRajiyoki allblogs={props.Rajiyablogs} />
       <Advert advert={props.advert} endpoint={"upper vote poll"} />
 
       <VotPoll />

@@ -2,7 +2,7 @@ import News from "./News";
 import MainNews from "./MainNews";
 
 import YouTube from "react-youtube";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { MdDoubleArrow } from "react-icons/md";
 import React from "react";
 import Link from "next/link";
@@ -10,6 +10,8 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 const TodayNew = (props) => {
+  
+
   const [data, setdata] = useState([]);
   const [category, setCategory] = useState([]);
   const [toplink, setToplink] = useState([]);
@@ -38,41 +40,41 @@ const TodayNew = (props) => {
   };
 
   const [videos, setVideos] = useState([]);
-  // const apiKey = "AIzaSyAvgv1F4OfE_gtDlAtaikPgNxd-uxy-lm0";
-  // const channelId = "UC4qhbs7b2TEy2_dmd2xxXzw";
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       // Check if data exists in local storage
-  //       const storedVideos = localStorage.getItem("videos");
+  const playerRef = useRef(null);
 
-  //       // If data exists in local storage, set state with the stored data
-  //       if (storedVideos) {
-  //         setVideos(JSON.parse(storedVideos));
-  //       } else {
-  //         // Data doesn't exist in local storage, fetch from API
-  //         // const response = await fetch(
-  //         //   `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=10`
-  //         // );
-  //         // const data = await response.json();
-  //         // if (data.items) {
-  //         //   setVideos(data.items);
-  //         //   // Save fetched data to local storage
-  //         //   localStorage.setItem('videos', JSON.stringify(data.items));
-  //         // } else {
-  //         //   console.error('No videos found');
-  //         // }
-  //       }
-  //     } catch (error) {
-  //       console.error("Error fetching videos:", error);
-  //     }
-  //   };
+  useEffect(() => {
+    if (playerRef.current) {
+      // Find the title and channel elements inside the iframe and hide them
+      const iframe = playerRef.current.getIframe();
+      // Check if the iframe exists and if it has contentDocument
+      if (iframe && iframe.contentDocument) {
+        const doc = iframe.contentDocument || iframe.contentWindow.document;
+        const titleElement = doc.querySelector('.ytp-title');
+        const channelElement = doc.querySelector('.ytp-title-channel');
+        
+        if (titleElement && channelElement) {
+          titleElement.style.display = 'none';
+          channelElement.style.display = 'none';
+        }
+      }
+    }
+  }, [videos]);
+  const fetchData = async () => {
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/youtube`);
+      const data = await response.json();
+      setVideos(data.data);
+    } catch (error) {
+      console.error("Error fetching videos:", error);
+    }
+  };
 
-  //   fetchData();
-  // }, []);
+  useEffect(() => {
+    fetchData();
+  },[]);
 
   return (
-    <section className="news-area new_post_area">
+    <section className="news-area new_post_area mt-2 mb-3">
       <div className="container p-lg-0">
         <div className="row res-lg-space">
           <div className="col-lg-9">
@@ -109,9 +111,10 @@ const TodayNew = (props) => {
                     >
                       {/* {data.Heading}   */}
                       {data[0].Heading &&
-                        sliceByWords(data[0].Heading, MAX_WORDS)}
+                        sliceByWords(data[0].Heading, 20)}
                     </h4>
                     <div
+                    className="containt"
                       dangerouslySetInnerHTML={{
                         __html:
                           data && data[0].Matter
@@ -140,7 +143,7 @@ const TodayNew = (props) => {
                     </div>
 
                     <h4 className="" onClick={() => handleClick(data._id)}>
-                      {data.Heading && sliceByWords(data.Heading, MAX_WORDS)}
+                      {data.Heading && sliceByWords(data.Heading, 14)}
                     </h4>
                   </div>
                 ))}
@@ -166,7 +169,7 @@ const TodayNew = (props) => {
 
             <div className="postbox mb-1">
               {/* <div dangerouslySetInnerHTML={{ __html: item.youTubelink }} /> */}
-              {videos.slice(0, 1).map((video, key) => (
+              {/* {videos.slice(0, 1).map((video, key) => (
                 <div key={key}>
                   <div className="video">
                     <YouTube
@@ -178,6 +181,35 @@ const TodayNew = (props) => {
                         width: "100%",
                         height: "280",
                         borderRadius: "20px",
+                      }}
+                    />
+                  </div>
+                </div>
+              ))} */}
+              {videos.slice(0, 1).map((video, key) => (
+                <div key={key}>
+                  <div className="video">
+                    <YouTube
+                      className="card-img-top" // Use className instead of class
+                      videoId={video.id[0].videoId} // Access videoId inside the id array
+                      // onReady={onReady}
+                      style={{ borderRadius: "20px" }}
+                      containerClassName="youtube-video-container"
+                      opts={{
+                        width: "100%",
+                        height: "280",
+                        borderRadius: "20px",
+                        playerVars: {
+                          'playsinline': 1,
+                          autoplay: 1, // Disable autoplay
+                          controls: 0, // Show player controls
+                          modestbranding: 1, // Hide YouTube branding
+                          rel: 0, // Do not show related videos at the end
+                          showinfo: 0,
+                        },
+                      }}
+                      onReady={(event) => {
+                        playerRef.current = event.target;
                       }}
                     />
                   </div>

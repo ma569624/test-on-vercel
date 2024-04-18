@@ -93,12 +93,14 @@ const TopKhaber = (props) => {
                                 : "auto",
                           }}
                         >
-                          <Image
-                            width={165}
-                            height={165}
-                            src={`${API}${item.Image}`}
-                            alt="hero image"
-                          />
+                          {item.Image !== undefined && (
+                            <Image
+                              width={165}
+                              height={165}
+                              src={`${API}${item.Image}`}
+                              alt="hero image"
+                            />
+                          )}
 
                           <h3 onClick={() => handleClick(item._id)}>
                             {item.Heading &&

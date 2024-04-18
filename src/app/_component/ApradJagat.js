@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { MdDoubleArrow } from "react-icons/md";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import ImageTag from "./ImageTag";
 
 const ApradJagat = (props) => {
   const All = props.allblogs
@@ -12,6 +13,7 @@ const ApradJagat = (props) => {
   const MAX_WORDS = 10;
 
   function sliceByWords(text, maxWords) {
+    
     const words = text.split(" ");
     if (words.length > maxWords) {
       return words.slice(0, maxWords).join(" ") + "...";
@@ -60,6 +62,9 @@ const ApradJagat = (props) => {
                 alt="hero image"
                 onClick={() => handleClick(data[0]._id)}
               />
+              {/* <ImageTag width={500}
+                height={275}
+                src={`${data[0].Image}`} /> */}
             </div>
             <div className="">
               <h4
@@ -68,10 +73,10 @@ const ApradJagat = (props) => {
                 onClick={() => handleClick(data[0]._id)}
               >
                 {/* {data.Heading}   */}
-                {data[0].Heading && sliceByWords(data[0].Heading, MAX_WORDS)}
+                {data[0].Heading && sliceByWords(data[0].Heading, 20)}
               </h4>
               
-                  <div
+                  <div className="containt"
                     dangerouslySetInnerHTML={{
                       __html:
                         data && data[0].Matter
@@ -105,9 +110,9 @@ const ApradJagat = (props) => {
                 </div>
 
                 <h4 onClick={() => handleClick(item._id)}>
-                  {item.Heading && sliceByWords(item.Heading, MAX_WORDS)}
+                  {item.Heading && sliceByWords(item.Heading, 14)}
                 </h4>
-                <div
+                <div className="containt"
                     dangerouslySetInnerHTML={{
                       __html:
                       item && item.Matter
@@ -168,11 +173,11 @@ const ApradJagat = (props) => {
                 <Image
                   width={200}
                   height={200}
-                  src={item.Image2 && `${API}${item.Image1}`}
+                  src={item.section.Image2 && `${API}${item.section.Image1}`}
                   alt=""
                 />
                 <MdDoubleArrow size={50} />
-                {console.warn(item.data)}
+                {/* {console.warn(item.data)} */}
                 <h2 className="title_text">{item.section.SectionName}</h2>
               </div>
 
@@ -183,10 +188,10 @@ const ApradJagat = (props) => {
                 <Image
                   width={200}
                   height={200}
-                  src={item.Image2 && `${API}${item.Image2}`}
+                  src={item.section.Image2 && `${API}${item.section.Image2}`}
                   alt=""
                 />
-                {/* <h2 className="title_text_side">{item.SecondSection}</h2> */}
+                <h2 className="title_text_side">{item.section.SecondSection}</h2>
               </div>
               <SideRow Rajiya={item.data} />
             </div>
