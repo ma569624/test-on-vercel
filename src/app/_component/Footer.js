@@ -29,7 +29,7 @@ const Footer = (props) => {
       const scrollTop = window.pageYOffset;
 
       // Show button when user scrolls beyond a certain threshold (e.g., 100 pixels)
-      setShowButton(scrollTop > 500 && scrollTop !== 0);
+      setShowButton(scrollTop > 1400 && scrollTop !== 0);
     };
 
     // Add scroll event listener
