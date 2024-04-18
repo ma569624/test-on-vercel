@@ -20,14 +20,12 @@ import Model from "../_component/model";
 import Image from "next/image";
 
 const Page = () => {
-
   const [videos, setVideos] = useState([]);
   const [show, setShow] = useState([]);
   const [open, setOpen] = useState(false);
   const toggleModal = () => {
     setOpen(!open);
   };
-
 
   const currentPageUrl = "";
   const title = "My Page Title";
@@ -39,38 +37,40 @@ const Page = () => {
   )}`;
   const fetchData = async () => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/youtube`);
+      const API = `${process.env.NEXT_PUBLIC_BASE_URL}`;
+        console.warn(API)
+      const response = await fetch(
+        `${API}/api/youtube`
+      );
       const data = await response.json();
       console.warn(data.data);
       setVideos(data.data);
-      setShow(data.data[0])
-    
+      setShow([data.data[0]]);
     } catch (error) {
       console.error("Error fetching videos:", error);
     }
   };
 
   const mainvideo = (id) => {
-    setShow(videos.filter(item => item._id == id))
-    console.warn(show)
-  }
+    setShow(videos.filter((item) => item._id == id));
+    console.warn(show);
+  };
 
   useEffect(() => {
     fetchData();
-    
   }, []);
-  console.warn(show)
+  console.warn(show);
   const opts = {
     width: "100%",
     height: "280",
     playerVars: {
-        'playsinline': 1,
-        autoplay: 1, // Disable autoplay
-        controls: 0, // Show player controls
-        modestbranding: 1, // Hide YouTube branding
-        rel: 0, // Do not show related videos at the end
-        showinfo: 0,
-      },
+      playsinline: 1,
+      autoplay: 1, // Disable autoplay
+      controls: 0, // Show player controls
+      modestbranding: 1, // Hide YouTube branding
+      rel: 0, // Do not show related videos at the end
+      showinfo: 0,
+    },
   };
   const onReady = (event) => {
     event.target.pauseVideo();
@@ -98,7 +98,7 @@ const Page = () => {
                 }}
               >
                 <div className="row">
-                  {show.map((video, key) => (
+                {Array.isArray(show) && show.map((video, key) => (
                     <div key={key} className="col-lg-12 mb-5">
                       <div
                         class="card min-h-100"
@@ -150,13 +150,15 @@ const Page = () => {
                         }}
                       >
                         {/* style={{ filter: 'drop-shadow(rgb(23, 137, 60) 7px 8px 13px)' }} */}
-                        <div className="video"  onClick={() => mainvideo(video._id)}>
+                        <div
+                          className="video"
+                          onClick={() => mainvideo(video._id)}
+                        >
                           <YouTube
                             class="card-img-top"
                             videoId={video.id[0].videoId}
                             // onReady={onReady}
                             opts={opts}
-                           
                           />
                           <div class="card-body">
                             <h3
