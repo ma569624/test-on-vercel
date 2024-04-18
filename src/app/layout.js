@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
-import "./global.css";
+import "./global.css";  
+import  './style.scss'
 import "./bootstrap.min.css";
 import Header from "./_component/Header";
 import Footer from "./_component/Footer";
@@ -7,7 +8,7 @@ import { AppProvider } from "./_context/AppContext";
 
 export const metadata = {
   title: "Third Eye World News",
-  description: "Third Eye World News",
+  description: "Third Eye World News",  
 };
 
 export default async function RootLayout({ children }) {
@@ -38,13 +39,13 @@ export default async function RootLayout({ children }) {
   const toplinks = await fetch(`${process.env.API}/api/toplinks`).then((res) =>
     res.json()
   );
-  const allblogs = await fetch(`${process.env.API}/api/allblogs`).then((res) =>
+  const allblogs = await fetch(`${process.env.API}/api/allblogs?name=block`).then((res) =>
     res.json()
   );
 
   return (
     <html lang="en">
-      <body>
+      <body >
         <AppProvider API={API}>
           <Header
             API={API}

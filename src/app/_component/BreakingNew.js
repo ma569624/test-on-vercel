@@ -47,13 +47,13 @@ const BreakingNew = () => {
                       speed={8000}
                     >
                       <SwiperSlide>
-                        <a>
+                        <a className="breaking__text">
                           "प्रधानमंत्री की लक्ष्यद्वीप यात्रा से यह देश क्यों
                           तिलमिलाया है..पढ़िए ख़ास खबर"
                         </a>
                       </SwiperSlide>
                       <SwiperSlide>
-                        <a>
+                      <a className="breaking__text">
                           "प्रधानमंत्री की लक्ष्यद्वीप यात्रा से यह देश क्यों
                           तिलमिलाया है..पढ़िए ख़ास खबर"
                         </a>

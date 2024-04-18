@@ -1,21 +1,37 @@
-'use client'
+"use client";
 
 import { useEffect, useState } from "react";
-import News from "./News";
-import MainNews from "./MainNews";
-import SideNews from "./SideNews";
 import { MdDoubleArrow } from "react-icons/md";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const KhabreRajiyoki = (props) => {
-  const API = "http://89.116.20.142:5000/api";
+  const router = useRouter();
+
+  const MAX_WORDS = 16;
+
+  function sliceByWords(text, maxWords) {
+    const words = text.split(" ");
+    if (words.length > maxWords) {
+      return words.slice(0, maxWords).join(" ") + "...";
+    } else {
+      return text;
+    }
+  }
+
+  // Function to handle link click
+  const handleClick = (id) => {
+    router.push(`/inner/${id}`);
+  };
+
+  const API = `${process.env.NEXT_PUBLIC_BASE_URL}`;
   const [data, setdata] = useState([]);
   const [blogs, setBlogs] = useState([]);
   const [id, setid] = useState("");
   const [category, setCategory] = useState([]);
 
   const getdata = async () => {
-    const response = await fetch(`${API}/rajiya?Status=active`);
+    const response = await fetch(`${API}/api/rajiya?Status=active`);
     const json = await response.json();
     setdata(json);
   };
@@ -34,21 +50,70 @@ const KhabreRajiyoki = (props) => {
     }, [Rajiya]);
 
     return (
-      <div className="row">
-        <div className="col-lg-6">
-          {data.length > 0 ? (
-            <MainNews API={API} data={data[0]} category={Rajiya} />
-          ) : (
-            <></>
-          )}
-        </div>
-        <div className="col-lg-6">
-          <div className="row">
-            {data.slice(1, 5).map((item, key) => {
-              return <News API={API} data={item} category={Rajiya} key={key} />;
-            })}
+      <div className="news_postbox_wrapper">
+        {/* <div className="col-lg-6"> */}
+        {data.length > 0 ? (
+          <div className="single_post">
+            <div className="image-container">
+              <Image
+                width={500}
+                height={275}
+                src={data[0].Image && `${API}${data[0].Image}`}
+                alt="hero image"
+                onClick={() => handleClick(data[0]._id)}
+              />
+            </div>
+            <div className="">
+              <h4
+                className="mainheading"
+                style={{ cursor: "pointer" }}
+                onClick={() => handleClick(data[0]._id)}
+              >
+                {/* {data.Heading}   */}
+                {data[0].Heading && sliceByWords(data[0].Heading, MAX_WORDS)}
+              </h4>
+              
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        data && data[0].Matter
+                          ? sliceByWords(data[0].Matter, 45)
+                          : "",
+                    }}
+                  />
+                
+            </div>
           </div>
+        ) : (
+          <></>
+        )}
+        {/* </div> */}
+
+        {/* <div className="col-lg-6"> */}
+        <div className="mutiple_small_post_wrapper">
+          {data.slice(1, 5).map((item, key) => {
+            return (
+              <div className="mutiple_small_post" key={key}>
+                <div className="image-container">
+                  <Image
+                    width={188}
+                    height={165}
+                    // src={data.Image && `${API}${data.Image}`}
+                    src={item.Image ? `${API}${item.Image}` : "/default.jpg"}
+                    
+                    alt="hero image"
+                    onClick={() => handleClick(item._id)}
+                  />
+                </div>
+
+                <h4 onClick={() => handleClick(item._id)}>
+                  {item.Heading && sliceByWords(item.Heading, MAX_WORDS)}
+                </h4>
+              </div>
+            );
+          })}
         </div>
+        {/* </div> */}
       </div>
     );
   };
@@ -64,18 +129,35 @@ const KhabreRajiyoki = (props) => {
     return (
       <>
         {data.slice(5, 10).map((item, key) => {
-          return <SideNews API={API} data={item} category={Rajiya} key={key} />;
+          return (
+            <div className="news_postbox_wrapper_side" key={key}>
+              <div className="image-container">
+                <Image
+                  width={198}
+                  height={113}
+                  // src={`${API}${data.Image}`}
+                  src={item.Image ? `${API}${item.Image}` : "/default.jpg"}
+                  alt="hero image"
+                  onClick={() => handleClick(item._id)}
+                />
+              </div>
+              <h4 onClick={() => handleClick(item._id)}>
+                {item.Heading && sliceByWords(item.Heading, MAX_WORDS)}
+              </h4>
+            </div>
+          );
         })}
       </>
     );
   };
+
   return (
-    <section className="news-area">
+    <section className="news-area new_post_area">
       <div className="container p-lg-0">
         <div className="row">
           <div className="col-lg-12">
-            <div className="section-title main text-center text-Shadow box-shodow">
-              <h2 className=" text-white m-0">
+            <div className="new_post_title main">
+              <h2 className="title_text">
                 <MdDoubleArrow size={50} className="mr-2" />
                 ख़बरें राज्यों से
               </h2>
@@ -85,19 +167,29 @@ const KhabreRajiyoki = (props) => {
         {data.map((item, key) => (
           <div className="row mb-1" key={key}>
             <div className="col-lg-9">
-              <div className="home-patti-tittle">
-                <Image width={200} height={200} src={`${API}${item.Image1}`} alt="" />
+              <div className="new_post_title">
+                <Image
+                  width={200}
+                  height={200}
+                  src={ item.Image1 &&`${API}${item.Image1}`}
+                  alt=""
+                />
                 <MdDoubleArrow size={50} />
-                <h2 className="title">{item.StateName}</h2>
+                <h2 className="title_text">{item.StateName}</h2>
               </div>
               <NewsRow Rajiya={item.StateName} />
             </div>
             <div className="col-lg-3">
-              <div className="home-patti-side-tittle">
-                <Image width={200} height={200} src={`${API}${item.Image2}`} alt="" />
-                <h2 className="title">{item.StateName}</h2>
+              <div className="new_post_title">
+                <Image
+                  width={200}
+                  height={200}
+                  src={item.Image2 && `${API}${item.Image2}`}
+                  alt=""
+                />
+                <h2 className="title_text_side">{item.StateName}</h2>
               </div>
-              <SideRow Rajiya={item.StateName} />
+              <SideRow Rajiya={item.FirstLink} />
             </div>
           </div>
         ))}

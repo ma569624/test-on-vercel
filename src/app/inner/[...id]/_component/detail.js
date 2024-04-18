@@ -86,7 +86,7 @@ const Detail = (props) => {
 
   const getblogs = async () => {
     const blogs = await fetch(
-      `https://new-backend-server-production.up.railway.app/api/blogs?Status=active&page=${currentPage}&limit=${limit}&Category=${data.Category}`
+      `https://api.techdeveloper.in/api/blogs?Status=active&page=${currentPage}&limit=${limit}&Category=${data.Category}`
     );
     const blogdata = await blogs.json();
     console.warn(blogdata);
@@ -95,7 +95,7 @@ const Detail = (props) => {
 
   useEffect(() => {
     getblogs();
-  }, [currentPage, data, limit, id]);
+  }, [currentPage, limit]);
 
   const nextPage = () => {
     setCurrentPage(currentPage + 1);
@@ -196,8 +196,23 @@ const Detail = (props) => {
                   <h4 className="details-subheading">
                     {data && data.Subheading !== undefined && data.Subheading}
                   </h4>
-                  <div className="post-content">
-                    <div className="postbox__text-meta mt-5">
+                  <div className="post-content ps-2 mt-4">
+                    <Image
+                      width={87}
+                      height={99}
+                      src={
+                        data.ReporterImage
+                          ? `${API}${data.ReporterImage}`
+                          : "/default_repoter.png"
+                      }
+                      style={{
+                        marginBottom: "10px",
+                        borderRadius: "50%",
+                        filter: "drop-shadow(rgb(102, 102, 102) 1px 2px 3px)",
+                      }}
+                      alt=""
+                    />
+                    <div className="postbox__text-meta ">
                       <div className="small-meta-text">
                         <span>आकाश श्रीवास्तव</span>
                         <div className="gourp">
@@ -207,26 +222,8 @@ const Detail = (props) => {
                           <span>(03)</span>
                         </div>
                       </div>
-                      
                     </div>
                     <div className="mb-4" style={{ display: "grid", gap: 2 }}>
-                      {data !== undefined &&
-                        data.ReporterImage !== undefined && (
-                          <Image
-                            width={87}
-                            height={99}
-                            src={
-                              data.ReporterImage &&
-                              `${API}${data.ReporterImage}`
-                            }
-                            style={{
-                              marginBottom: "10px",
-                              filter:
-                                "drop-shadow(rgb(102, 102, 102) 6px 5px 4px)",
-                            }}
-                            alt=""
-                          />
-                        )}
                       <strong style={{ fontSize: 15, color: "#000" }}>
                         {data !== undefined &&
                           data.ReporterName !== undefined &&
@@ -249,7 +246,7 @@ const Detail = (props) => {
                           src={data.Image && `${API}${data.Image}`} // Construct the full image URL
                           width={803}
                           height={454}
-                          className="main-img"
+                          className="main-img mb-2"
                           alt="Image"
                         />
                       }
@@ -276,7 +273,7 @@ const Detail = (props) => {
                   style={{ marginTop: "50px" }}
                 >
                   <div className="col-lg-12 d-flex justify-content-between">
-                    <div className="d-flex gap-2">
+                    <div className="d-flex gap-2 ms-2">
                       <div className="text-center">
                         <div className="button-tag">
                           <h4 className="text-right text-white m-0 ">

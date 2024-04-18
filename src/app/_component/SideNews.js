@@ -25,13 +25,15 @@ const SideNews = ({ data, category }) => {
 
   return (
     <div className="post__small mb-3">
-      <div className="post__small-thumb f-left">
+      <div className="post__small-thumb f-left img-filter-shadow">
         <a href="#">
           <div className="image-container2">
             <Image
               width={158}
               height={113}
-              src={`${API}${data.Image}`}
+              // src={`${API}${data.Image}`}
+              src={data.Image ? `${API}${data.Image}` : "/default.jpg"}
+
               alt="hero image"
               style={{
                 borderRadius: "12px",

@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { MdAccessTime } from "react-icons/md";
 import { RxCalendar } from "react-icons/rx";
 import Image from "next/image";
+import { Col, Container, Row } from "react-bootstrap";
 
 const HeaderMiddle = (props) => {
   const API = props.API;
@@ -24,69 +25,78 @@ const HeaderMiddle = (props) => {
   }, [props]);
 
   return (
-    <div
-      className="header__middle main box-shodow"
-      style={{ borderRadius: "8px" }}
-    >
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="header__logo text-center ">
-            <Image className="ml-4" src="/thirdeyeworldnews logo.svg" alt="Header Logo" width={255} height={120} />
-            <ul className="d-flex mt-1 mb-0 ml-1" style={{ gap: "10px" }}>
-              <li style={{ color: "white" }}>
-                <RxCalendar
-                  className="ml-1 mr-1"
-                  style={{
-                    fontWeight: 800,
-                    fontSize: "13px",
-                    color: "white",
-                  }}
-                />
-                <span style={{ fontSize: "13px", fontWeight: 800 }}>
-                  {date.toLocaleDateString("hi-IN", {
-                    weekday: "long",
-                    day: "numeric",
-                    month: "short",
-                    year: "numeric",
-                  })}
-                </span>
-              </li>
-              <li>
-                <MdAccessTime
-                  size={16}
-                  className="mr-1"
-                  style={{
-                    
-                    fontWeight: 900,
-                    color: "white",
-                  }}
-                />
-                <span
-                  style={{
-                    color: "white",
-                    fontWeight: 800,
-                    fontSize: "13px",
-                  }}
-                >
-                  {date.toLocaleString("en-US", {
-                    hour: "numeric",
-                    minute: "numeric",
-                    second: "numeric",
-                    hour12: true,
-                  })}
-                </span>
-              </li>
-            </ul>
-          </div>
-          <div className="flex-fill">
-            <div
-              className="header__add text-center"
-              style={{ paddingBottom: 2 }}
+    <div className="header__middle_area">
+      <div className="first">
+        <Image
+          className="ml-4"
+          src="/thirdeyeworldnews logo.svg"
+          alt="Header Logo"
+          width={255}
+          height={120}
+        />
+        <ul className="d-flex mt-1 mb-0 ml-1" style={{ gap: "10px" }}>
+          <li style={{ color: "white" }}>
+            <RxCalendar
+              className="ml-1 mr-1"
+              style={{
+                fontWeight: 800,
+                fontSize: "13px",
+                color: "white",
+              }}
+            />
+            <span style={{ fontSize: "13px", fontWeight: 800 }}>
+              {date.toLocaleDateString("hi-IN", {
+                weekday: "long",
+                day: "numeric",
+                month: "short",
+                year: "numeric",
+              })}
+            </span>
+          </li>
+          <li>
+            <MdAccessTime
+              size={16}
+              className="mr-1"
+              style={{
+                fontWeight: 900,
+                color: "white",
+              }}
+            />
+            <span
+              style={{
+                color: "white",
+                fontWeight: 800,
+                fontSize: "13px",
+              }}
             >
-              <h4 className="animate-charcter">{tagline.Heading}</h4>
-            </div>
-          </div>
-        </div>
+              {date.toLocaleString("en-US", {
+                hour: "numeric",
+                minute: "numeric",
+                second: "numeric",
+                hour12: true,
+              })}
+            </span>
+          </li>
+        </ul>
+      </div>
+      <div className="second">
+        <h4
+          className="animate-charcter"
+          style={{
+            fontSize:
+              tagline && tagline.Heading && tagline.Heading.length > 70
+                ? "35px"
+                : "52px",
+                    "@media (max-width: 768px)": {
+                  fontSize:
+                  tagline && tagline.Heading && tagline.Heading.length > 70
+                  ? "25px"
+                  : "32px",
+            },
+          }}
+        >
+          {tagline && tagline.Heading}
+        </h4>
       </div>
     </div>
   );

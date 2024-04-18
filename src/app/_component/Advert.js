@@ -1,6 +1,7 @@
 import Image from "next/image";
 const Advert = ({ advert, endpoint }) => {
-  const API = "http://89.116.20.142:5000";
+  const API = process.env.NEXT_PUBLIC_BASE_URL;
+  
   return (
     <>
       {

@@ -10,7 +10,7 @@ export default async function Main() {
     `${API}/api/blogs?Status=active&Category=primenews`
   ).then((res) => res.json());
   const badikhabar = await fetch(
-    `${API}/api/blogs?Status=active&Category=mainnews`
+    `${API}/api/blogs?page=1&limit=12&Status=active&Category=mainnews`
   ).then((res) => res.json());
 
   return (

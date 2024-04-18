@@ -7,20 +7,22 @@ import { Nav } from "./Nav";
 import FixedAdvert from "./FixedAdvert";
 import HeaderTop from "./HeaderTop";
 import HeaderMiddle from "./HeaderMiddle";
+import { Container } from "react-bootstrap";
 
 const Header = (props) => {
   const API = props.API;
 
   return (
     <>
-      <header className="header">
+      <header>
         <FixedAdvert
           advert={props.advert}
           position={"left"}
           endpoint={"below breaking News"}
         />
-
-        <div className="container p-lg-0">
+        
+        
+        <Container className="px-lg-0" fluid>
           {props.advert.filter((item) =>
             item.location.includes("top of header")
           ).length > 0 && (
@@ -75,7 +77,7 @@ const Header = (props) => {
               </div>
             </div>
           )}
-        </div>
+        </Container>
         <FixedAdvert
           advert={props.advert}
           position={"right"}

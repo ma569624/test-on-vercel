@@ -31,7 +31,7 @@ export const Nav = (props) => {
 
   return (
     <>
-      <div className="header__menu-area box-shodow">
+      <div className="header__menu_area box-shodow">
         <div className="header__menu">
           <nav id="mobile-menu">
             <ul>

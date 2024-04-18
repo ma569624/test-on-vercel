@@ -5,12 +5,20 @@ import TodayNew from "./TodayNew";
 import { MdDoubleArrow } from "react-icons/md";
 import Advert from "./Advert";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+
 
 const Home = (props) => {
   const [blogs, setBlogs] = useState([]);
   const [category, setCategory] = useState([]);
-  const API = props.API;
+  const API = process.env.NEXT_PUBLIC_BASE_URL;
   const [advert, setAdvert] = useState([]);
+
+  const router = useRouter();
+
+  const handleClick = (id) => {
+    router.push(`/inner/${id}`);
+  };
 
   useEffect(() => {
     setCategory(props.toplinks);
@@ -18,7 +26,7 @@ const Home = (props) => {
     setBlogs(props.badikhabar);
   }, [props]);
 
-  const MAX_WORDS = 12;
+  const MAX_WORDS = 11;
 
   function sliceByWords(text, maxWords) {
     const words = text.split(" ");
@@ -38,49 +46,39 @@ const Home = (props) => {
       />
       <Advert advert={props.advert} endpoint={"top badi khabar"} />
 
-      <section className="features-area">
+      <section className="features_post_area">
         <div className="container p-lg-0">
-          <div className="content-pad p-0">
-            <div className="mb-2 home-patti-tittle justify-content-center">
-              <Image className="me-4 ml-1"
+          <div className="">
+            <div className="features_post_title">
+              <Image
                 width={200}
-                height={200}
+                height={80}
                 src={category.length > 0 ? `${API}${category[4].Image}` : ""}
                 alt=""
               />
               <MdDoubleArrow size={50} />
-              <h2 className="title">
+              <h2 className="title_text">
                 {category.length > 4 ? category[4].name : <></>}
               </h2>
             </div>
             <div className="row">
-              {blogs.slice(0, 9).map((item, key) => (
+              {blogs.slice(0, 12).map((item, key) => (
                 <div className="col-lg-4" key={key}>
-                  <div className="cat-sm-post">
-                    <div className="post__small mb-1">
-                      <div className="post__small-thumb f-left image-container">
-                        <Image
-                          width={200}
-                          height={200}
-                          src={`${API}${item.Image}`}
-                          style={{
-                            borderRadius: "12px",
-                            width: "210px",
-                            height: "140px",
-                          }}
-                          alt="hero image"
-                        />
-                      </div>
-
-                      <div className="post__small-text fix pl-10">
-                        <h4 className="title-16 pr-0 mt-0">
-                          <a href={`/inner/${item._id}/mainnews`}>
-                            {item.Heading &&
-                              sliceByWords(item.Heading, MAX_WORDS)}
-                          </a>
-                        </h4>
-                      </div>
+                  <div className="post_wraper">
+                    <div className="image-container">
+                      <Image
+                        width={200}
+                        height={200}
+                        src={`${API}${item.Image}`}
+                        alt="hero image"
+                      />
                     </div>
+                    <h4 className="title" onClick={() => handleClick(item._id)}>
+                       
+                          {item.Heading &&
+                            sliceByWords(item.Heading, MAX_WORDS)}
+                        
+                      </h4>
                   </div>
                 </div>
               ))}

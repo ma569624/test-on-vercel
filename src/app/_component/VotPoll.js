@@ -3,7 +3,7 @@ import { MdDoubleArrow } from "react-icons/md";
 import Image from "next/image";
 const VotPoll = () => {
   const [data, setdata] = useState([]);
-  const API = "http://89.116.20.142:5000";
+  const API = process.env.NEXT_PUBLIC_BASE_URL;
   const [advert, setAdvert] = useState([]);
 
   const getdata = async () => {
@@ -22,7 +22,7 @@ const VotPoll = () => {
   }, []);
 
   return (
-    <section className="features-area">
+    <section className="features-area footer_sec_top">
       <div className="container p-lg-0">
         <div className="box">
           <div className="row">
@@ -160,7 +160,7 @@ const VotPoll = () => {
             <div className="col-lg-3">
               <div className="section-title ">
               <div className="section-title">
-                <div className="box-shodow tag">
+                <div className="box-shodow tag mb-1">
                     <MdDoubleArrow size={30} />
                   <h2>
                     विज्ञापन

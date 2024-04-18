@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 
 const FixedAdvert = ({advert, endpoint, position }) => {
-    const API = 'http://89.116.20.142:5000';
+    const API = process.env.NEXT_PUBLIC_BASE_URL;
     const addposition = position;
   return (
     <div style={{ position: "fixed", top: "0", [addposition]: "5px", zIndex: "999" }}>
