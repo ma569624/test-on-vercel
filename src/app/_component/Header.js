@@ -8,10 +8,15 @@ import FixedAdvert from "./FixedAdvert";
 import HeaderTop from "./HeaderTop";
 import HeaderMiddle from "./HeaderMiddle";
 import { Container } from "react-bootstrap";
+import { useContext, useEffect } from "react";
 
 const Header = (props) => {
   const API = props.API;
-
+  // const{setAllBlogs, setRajiya} = useContext(AppContext)
+  // useEffect(() => {
+  //  setAllBlogs(props.allblogs)
+  //  setRajiya(props.Rajiyablogs)
+  // },[])
   return (
     <>
       <header>

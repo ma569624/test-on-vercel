@@ -14,7 +14,7 @@ export const metadata = {
 const API = process.env.API;
 
 async function fetchtoplinks() {
-  const res = await fetch(`${process.env.API}/api/toplinks`, { next: { revalidate: 120 } });
+  const res = await fetch(`${process.env.API}/api/toplinks`, { cache: 'no-store' } );
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
@@ -23,7 +23,7 @@ async function fetchtoplinks() {
 async function fetchAdvert() {
   try {
     const advert = await fetch(
-      `${process.env.API}/api/advert?Status=active`, { next: { revalidate: 120 } }
+      `${process.env.API}/api/advert?Status=active`, { cache: 'no-store' }
     );
     return advert.json();
   } catch (error) {
@@ -35,7 +35,7 @@ async function fetchAdvert() {
 async function fetchTagline() {
   try {
     const tagline = await fetch(
-      `${process.env.API}/api/tagline?_id=6602a87711e47f88c9059347`, { next: { revalidate: 120 } }
+      `${process.env.API}/api/tagline?_id=6602a87711e47f88c9059347`, { cache: 'no-store' }
     );
     return tagline.json();
   } catch (error) {
@@ -47,7 +47,7 @@ async function fetchTagline() {
 async function fetchTopKhabare() {
   try {
     const topKhabare = await fetch(
-      `${process.env.API}/api/blogs?Category=TopKhabare&Status=active`, { next: { revalidate: 120 } }
+      `${process.env.API}/api/blogs?Category=TopKhabare&Status=active`, { cache: 'no-store' }
     );
     return topKhabare.json();
   } catch (error) {
@@ -59,7 +59,7 @@ async function fetchTopKhabare() {
 async function fetchIdharbhi() {
   try {
     const idharbhi = await fetch(
-      `${process.env.API}/api/blogs?Category=idharbhi&Status=active`, { next: { revalidate: 120 } }
+      `${process.env.API}/api/blogs?Category=idharbhi&Status=active`, { cache: 'no-store' }
     );
     return idharbhi.json();
   } catch (error) {
@@ -83,7 +83,7 @@ async function fetchAllBlogs() {
 async function fetchRajiyablogs() {
   try {
     const Rajiyablogs = await fetch(
-      `${process.env.API}/api/allblogs?name=rajiya`, { next: { revalidate: 120 } }
+      `${process.env.API}/api/allblogs?name=rajiya`, { cache: 'no-store' }
     );
     return Rajiyablogs.json();
   } catch (error) {

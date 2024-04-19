@@ -10,7 +10,7 @@ import AppContext from "../_context/AppContext";
 
 
 const Home = (props) => {
-
+ 
   const {setData} = useContext(AppContext)
   const [blogs, setBlogs] = useState([]);
   const [category, setCategory] = useState([]);
