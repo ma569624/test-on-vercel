@@ -589,10 +589,10 @@ footer {
         .containt{
           max-width: 340px;
           overflow: hidden;
-          height: 120px;
+          max-height: 190px;
           p {
             padding-left: 8px;
-           
+            padding-right: 8px;
             font-weight: 600;
             color: #4b3939bb;
             font-size: 14px;

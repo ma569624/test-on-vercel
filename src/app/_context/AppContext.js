@@ -7,32 +7,16 @@ const AppContext = createContext();
 export const AppProvider = ({ children }) => {
   const [data, setData] = useState([]);
   const [advert, setAdvert] = useState([]);
-  // Add more state variables as needed
-  
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const dataResponse = await fetch(`${process.env.API}/api/blogs?Status=active?page=1&limit=40&`);
-        const advertResponse = await fetch(`${process.env.API}/api/advert?Status=active`);
-        // Fetch other data here
-        
-        const dataJson = await dataResponse.json();
-        const advertJson = await advertResponse.json();
-        // Convert other responses to JSON here
-        
-        setData(dataJson);
-        setAdvert(advertJson);
-        // Set other state variables here
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
+  const [toplink, setToplink] = useState([]);
+  const [AllBlogs, setAllBlogs] = useState([]);
+  const [Rajiya, setRajiya] = useState([]);
+  const [tagline, setTagline] = useState({});
+  const [topKhabare, setTopKhabare] = useState({});
+  const [idharbhi, setIdharbhi] = useState({});
+  const [toplinks, setToplinks] = useState([]);
 
   return (
-    <AppContext.Provider value={{ data, setData, advert, setAdvert }}>
+    <AppContext.Provider value={{ toplinks, setToplinks,idharbhi, setIdharbhi,topKhabare, setTopKhabare,data, setData, advert, setAdvert, toplink, setToplink, AllBlogs, setAllBlogs, Rajiya, setRajiya, tagline, setTagline}}>
       {children}
     </AppContext.Provider>
   );

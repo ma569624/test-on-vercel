@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import YouTube from "react-youtube";
 import {
   FacebookIcon,
@@ -18,8 +18,11 @@ import { useReactToPrint } from "react-to-print";
 import { FcShare } from "react-icons/fc";
 import Model from "../_component/model";
 import Image from "next/image";
+import AppContext from "../_context/AppContext";
 
 const Page = () => {
+  const {data} = useContext(AppContext)
+  console.warn(data)
   const [videos, setVideos] = useState([]);
   const [show, setShow] = useState([]);
   const [open, setOpen] = useState(false);

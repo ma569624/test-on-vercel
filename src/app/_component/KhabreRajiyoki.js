@@ -19,6 +19,19 @@ const KhabreRajiyoki = (props) => {
     }
   }
 
+  function extractFirstPTag(htmlString, minLength, textlimt) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlString, "text/html");
+    const paragraphs = Array.from(doc.querySelectorAll("p"));
+    for (const paragraph of paragraphs) {
+      const text = paragraph.textContent.trim();
+      if (text.length >= minLength) {
+        return sliceByWords(paragraph.outerHTML, textlimt);
+      }
+    }
+    return "";
+  }
+
   // Function to handle link click
   const handleClick = (id) => {
     router.push(`/inner/${id}`);
@@ -73,25 +86,21 @@ const KhabreRajiyoki = (props) => {
                 {/* {data.Heading}   */}
                 {data[0].Heading && sliceByWords(data[0].Heading, 20)}
               </h4>
-              
-                  <div
-                   className="containt"
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        data && data[0].Matter
-                          ? sliceByWords(data[0].Matter, 45)
-                          : "",
-                    }}
-                  />
-                </div>
-              
+
+              <div
+                className="containt"
+                dangerouslySetInnerHTML={{
+                  __html:
+                    data && data[0].Matter
+                      ? extractFirstPTag(data[0].Matter, 46, 80)
+                      : "",
+                }}
+              />
+            </div>
           </div>
         ) : (
           <></>
         )}
-        {/* </div> */}
-
-        {/* <div className="col-lg-6"> */}
         <div className="mutiple_small_post_wrapper">
           {data.slice(1, 5).map((item, key) => {
             return (
@@ -102,7 +111,6 @@ const KhabreRajiyoki = (props) => {
                     height={165}
                     // src={data.Image && `${API}${data.Image}`}
                     src={item.Image ? `${API}${item.Image}` : "/default.jpg"}
-                    
                     alt="hero image"
                     onClick={() => handleClick(item._id)}
                   />
@@ -111,14 +119,15 @@ const KhabreRajiyoki = (props) => {
                 <h4 onClick={() => handleClick(item._id)}>
                   {item.Heading && sliceByWords(item.Heading, 14)}
                 </h4>
-                <div className="containt"
-                    dangerouslySetInnerHTML={{
-                      __html:
-                      item && item.Matter
-                          ? sliceByWords(item.Matter, 15)
-                          : "",
-                    }}
-                  />
+                <div
+                  className="containt"
+                  dangerouslySetInnerHTML={{
+                    __html:
+                    item && item.Matter
+                        ? extractFirstPTag(item.Matter, 46, 25)
+                        : "",
+                  }}
+                />
               </div>
             );
           })}
@@ -154,7 +163,6 @@ const KhabreRajiyoki = (props) => {
               <h4 onClick={() => handleClick(item._id)}>
                 {item.Heading && sliceByWords(item.Heading, MAX_WORDS)}
               </h4>
-              
             </div>
           );
         })}

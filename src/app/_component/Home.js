@@ -1,14 +1,17 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import TodayNew from "./TodayNew";
 import { MdDoubleArrow } from "react-icons/md";
 import Advert from "./Advert";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import AppContext from "../_context/AppContext";
 
 
 const Home = (props) => {
+
+  const {setData} = useContext(AppContext)
   const [blogs, setBlogs] = useState([]);
   const [category, setCategory] = useState([]);
   const API = process.env.NEXT_PUBLIC_BASE_URL;
@@ -20,7 +23,10 @@ const Home = (props) => {
     router.push(`/inner/${id}`);
   };
 
+  
+
   useEffect(() => {
+    setData(props)
     setCategory(props.toplinks);
     setAdvert(props.advert);
     setBlogs(props.badikhabar);

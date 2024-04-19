@@ -13,12 +13,9 @@ export const Nav = (props) => {
   const [data, setdata] = useState([]);
   const [rajiya, setRajiya] = useState([]);
 
-  console.warn(props.allblogs)
   useEffect(() => {
-    console.warn(props.allblogs.filter((item) => item.isHeader === true))
-    // setBlogs(props.allblogs);
-    // setdata(props.blogdisplay.filter((item) => item.isHeader === true));
-    // setRajiya(props.rajiya);
+    setdata(props.allblogs.filter((item) => item.section.isHeader === true));
+    setRajiya(props.Rajiyablogs);
   }, [props]);
   
 
@@ -52,8 +49,8 @@ export const Nav = (props) => {
               {data.map((item, key) => (
                 <li key={key}>
                   <a className="hover-effect">
-
-                    {item.SectionName}
+                   
+                    {item.section.SectionName}
                     <IoMdArrowDropdown size={30} />
                   </a>
                   <ul className="submenu">
@@ -65,18 +62,7 @@ export const Nav = (props) => {
                         margin: 8,
                       }}
                     >
-                      {blogs
-                        .filter((blog) => {
-                          if (Array.isArray(blog.Category)) {
-                            return blog.Category.includes(
-                              `${item.SectionName}`
-                            );
-                          } else {
-                            return blog.Category === `${item.SectionName}`;
-                          }
-                        })
-                        .slice(0, 5)
-                        .map((filteredBlog, key) => (
+                      {item.data.map((filteredBlog, key) => (
                           <li key={key}>
                             <div
                               className="d-grid align-items-center justify-content-around p-2"
@@ -87,18 +73,18 @@ export const Nav = (props) => {
                               <Image
                                 width={190}
                                 height={110}
-                                src={
-                                  filteredBlog.Image &&
-                                  `${API}${filteredBlog.Image}`
-                                }
+                                // src={
+                                //   filteredBlog.Image &&
+                                //   `${API}${filteredBlog.Image}`
+                                // }
+                                src={filteredBlog.Image !== 'undefined' ? `${API}${filteredBlog.Image}` : ''}
                                 className=""
                                 style={{
                                   width: 190,
                                   height: 110,
                                 }}
                                 alt=""
-                              />{" "}
-                              {/* Assuming the blog object has an 'image' property */}
+                              />
                               <h4
                                 className="text-white m-0 mt-2"
                                 style={{
@@ -109,7 +95,6 @@ export const Nav = (props) => {
                               >
                                 {filteredBlog.Heading}
                               </h4>{" "}
-                              {/* Assuming the blog object has a 'name' property */}
                             </div>
                           </li>
                         ))}
@@ -131,64 +116,7 @@ export const Nav = (props) => {
                         backgroundColor: "rgb(14 197 5)",
                       }}
                     >
-                      {blogs
-                        .filter((blog) => {
-                          // Check if Category is an array
-                          if (Array.isArray(blog.Category)) {
-                            // Check if the specified category is included in the Category array
-                            return blog.Category.includes(`${item.StateName}`);
-                          } else {
-                            // Otherwise, directly compare with the Category value
-                            return blog.Category === `${item.StateName}`;
-                          }
-                        })
-                        .map((filteredBlog, key) => (
-                          <li key={key}>
-                            <a
-                              href={`inner/${filteredBlog._id}/${item.StateName}`}
-                            >
-                              <div className="d-grid align-items-center justify-content-around p-2">
-                                <Image
-                                  width={180}
-                                  height={110}
-                                  src={
-                                    filteredBlog.Image &&
-                                    `${API}${filteredBlog.Image}`
-                                  }
-                                  className=""
-                                  style={{
-                                    width: 180,
-                                    height: 110,
-                                  }}
-                                  alt=""
-                                />{" "}
-                                {/* Assuming the blog object has an 'image' property */}
-                                <h3
-                                  className="text-white m-0  text-center"
-                                  style={{
-                                    textDecoration: "underline",
-                                    fontSize: "16px",
-                                    fontWeight: 800,
-                                  }}
-                                >
-                                  {item.StateName.slice()}
-                                </h3>{" "}
-                                {/* Assuming the blog object has a 'name' property */}
-                                <h4
-                                  className="text-white m-0 "
-                                  style={{
-                                    fontSize: "14px",
-                                    fontWeight: 600,
-                                    lineHeight: "22px",
-                                  }}
-                                >
-                                  {filteredBlog.Heading.slice()}
-                                </h4>{" "}
-                                {/* Assuming the blog object has a 'name' property */}
-                              </div>
-                            </a>
-                          </li>
-                        ))}
+                      <li>{item.data.map((item) => <>item</>)}</li>
                     </Scrollbars>
                   </ul>
                 ))}

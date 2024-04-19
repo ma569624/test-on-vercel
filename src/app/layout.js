@@ -1,4 +1,3 @@
-import { Inter } from "next/font/google";
 import "./global.css";
 import "./style.scss";
 import "./bootstrap.min.css";
@@ -11,35 +10,96 @@ export const metadata = {
   description: "Third Eye World News",
 };
 
-export default async function RootLayout({ children }) {
-  const API = process.env.API;
-  let advert = [];
 
+const API = process.env.API;
+
+async function fetchtoplinks() {
+  const res = await fetch(`${process.env.API}/api/toplinks`, { cache: 'force-cache' });
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+  return res.json();
+}
+async function fetchAdvert() {
   try {
-    advert = await fetch(`${process.env.API}/api/advert?Status=active`).then(
-      (res) => res.json()
+    const advert = await fetch(
+      `${process.env.API}/api/advert?Status=active`, { cache: 'force-cache' }
     );
-  } catch (error) {}
+    return advert.json();
+  } catch (error) {
+    console.error("Error fetching advert:", error);
+    throw error;
+  }
+}
 
-  const tagline = await fetch(
-    `${process.env.API}/api/tagline?_id=6602a87711e47f88c9059347`
-  ).then((res) => res.json());
+async function fetchTagline() {
+  try {
+    const tagline = await fetch(
+      `${process.env.API}/api/tagline?_id=6602a87711e47f88c9059347`, { cache: 'force-cache' }
+    );
+    return tagline.json();
+  } catch (error) {
+    console.error("Error fetching tagline:", error);
+    throw error;
+  }
+}
 
-  const topKhabare = await fetch(
-    `${process.env.API}/api/blogs?Category=TopKhabare&Status=active`
-  ).then((res) => res.json());
-  const idharbhi = await fetch(
-    `${process.env.API}/api/blogs?Category=idharbhi&Status=active`
-  ).then((res) => res.json());
-  const toplinks = await fetch(`${process.env.API}/api/toplinks`).then((res) =>
-    res.json()
-  );
-  const allblogs = await fetch(
-    `${process.env.API}/api/allblogs?name=block`
-  ).then((res) => res.json());
-  const Rajiyablogs = await fetch(
-    `${process.env.API}/api/allblogs?name=rajiya`
-  ).then((res) => res.json());
+async function fetchTopKhabare() {
+  try {
+    const topKhabare = await fetch(
+      `${process.env.API}/api/blogs?Category=TopKhabare&Status=active`, { cache: 'force-cache' }
+    );
+    return topKhabare.json();
+  } catch (error) {
+    console.error("Error fetching top khabare:", error);
+    throw error;
+  }
+}
+
+async function fetchIdharbhi() {
+  try {
+    const idharbhi = await fetch(
+      `${process.env.API}/api/blogs?Category=idharbhi&Status=active`, { cache: 'force-cache' }
+    );
+    return idharbhi.json();
+  } catch (error) {
+    console.error("Error fetching idharbhi:", error);
+    throw error;
+  }
+}
+
+async function fetchAllBlogs() {
+  try {
+    const allblogs = await fetch(
+      `${process.env.API}/api/allblogs?name=block`, { cache: 'force-cache' }
+    );
+    return allblogs.json();
+  } catch (error) {
+    console.error("Error fetching all blogs:", error);
+    throw error;
+  }
+}
+
+async function fetchRajiyablogs() {
+  try {
+    const Rajiyablogs = await fetch(
+      `${process.env.API}/api/allblogs?name=rajiya`, { cache: 'force-cache' }
+    );
+    return Rajiyablogs.json();
+  } catch (error) {
+    console.error("Error fetching Rajiyablogs:", error);
+    throw error;
+  }
+}
+
+export default async function RootLayout({ children }) {
+  const toplinks = await fetchtoplinks();
+  const advert = await fetchAdvert();
+  const tagline = await fetchTagline();
+  const topKhabare = await fetchTopKhabare();
+  const idharbhi = await fetchIdharbhi();
+  const allblogs = await fetchAllBlogs();
+  const Rajiyablogs = await fetchRajiyablogs();
 
   return (
     <html lang="en">
@@ -53,6 +113,7 @@ export default async function RootLayout({ children }) {
             Rajiyablogs={Rajiyablogs.data}
             topKhabare={topKhabare.data}
           />
+
           {children}
           <Footer
             API={API}
