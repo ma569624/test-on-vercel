@@ -71,7 +71,7 @@ async function fetchIdharbhi() {
 async function fetchAllBlogs() {
   try {
     const allblogs = await fetch(
-      `${process.env.API}/api/allblogs?name=block`, { next: { revalidate: 120 } }
+      `${process.env.API}/api/allblogs?name=block`, { cache: 'no-store' }
     );
     return allblogs.json();
   } catch (error) {
