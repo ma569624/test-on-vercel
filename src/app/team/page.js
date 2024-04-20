@@ -1,4 +1,4 @@
-  'use client'
+"use client";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
@@ -12,22 +12,21 @@ const Page = () => {
     const fetchTeamData = async () => {
       try {
         const response = await fetch(`${API}/api/team`);
-        
+
         if (!response.ok) {
-          throw new Error('Failed to fetch team data');
+          throw new Error("Failed to fetch team data");
         }
         const data = await response.json();
 
         setTeam(data);
       } catch (error) {
-        console.error('Error fetching team data:', error);
+        console.error("Error fetching team data:", error);
       }
     };
     fetchTeamData();
-
   }, []);
 
-  console.warn(team)
+  console.warn(team);
 
   return (
     <div className="container mt-3 mb-3 team p-lg-0">
@@ -42,35 +41,45 @@ const Page = () => {
         </div>
       </div>
       <div className="row main-row">
-        {
-          team.map((item, key) => <div className="col-lg-6">
-          <div className="card box-shodow  p-3" key={key}>
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="card-top">
-                  <Image width={200} height={200} src={item.EmployeeImage ? `${API}${item.EmployeeImage}` : '/default_repoter.png' } alt="" />
-                  <div>
-                    <h4 className="text-Shadow">{item.EmployeeName}</h4>
-                    <h5 className="text-Shadow">{item.EmployeeDesignation}</h5>
-                    <h5 className="text-Shadow">{item.place}</h5>
+        {team.map((item, key) => (
+          <div className="col-lg-6">
+            <div className="card box-shodow  p-3" key={key}>
+              <div className="row">
+                <div className="col-lg-12">
+                  <div className="card-top">
+                    <Image
+                      width={200}
+                      height={200}
+                      src={
+                        item.EmployeeImage
+                          ? `${API}${item.EmployeeImage}`
+                          : "/default_repoter.png"
+                      }
+                      alt=""
+                    />
+                    <div>
+                      <h4 className="text-Shadow">{item.EmployeeName}</h4>
+                      <h5 className="text-Shadow">
+                        {item.EmployeeDesignation}
+                      </h5>
+                      <h5 className="text-Shadow">{item.place}</h5>
+                    </div>
                   </div>
-                </div>
 
-                <div
-                  className="containt"
-                  dangerouslySetInnerHTML={{
-                    __html:
-                    item && item.EmployeeDetails
-                        ? item.EmployeeDetails
-                        : "",
-                  }}
-                />
+                  <div
+                    className="containt"
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        item && item.EmployeeDetails
+                          ? item.EmployeeDetails
+                          : "",
+                    }}
+                  />
+                </div>
               </div>
             </div>
           </div>
-        </div>)
-        }
-       
+        ))}
       </div>
       <div className="row">
         <div className="col-lg-12">

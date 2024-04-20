@@ -116,7 +116,7 @@ export const Nav = (props) => {
                         backgroundColor: "rgb(14 197 5)",
                       }}
                     >
-                      <li>{item.data.map((item) => <>item</>)}</li>
+                      {/* <li>{item.data.map((item) => <>item</>)}</li> */}
                     </Scrollbars>
                   </ul>
                 ))}
