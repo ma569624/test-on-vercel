@@ -72,7 +72,7 @@ const KhabreRajiyoki = (props) => {
               <Image
                 width={500}
                 height={275}
-                src={data[0].Image && `${API}${data[0].Image}`}
+                src={data[0].Image ? `${API}${data[0].Image}` : "/default.jpg"}
                 alt="hero image"
                 onClick={() => handleClick(data[0]._id)}
               />

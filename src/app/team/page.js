@@ -1,7 +1,34 @@
+  'use client'
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Page = () => {
+  const API = process.env.NEXT_PUBLIC_API_URL;
+
+  const [team, setTeam] = useState([]);
+
+  useEffect(() => {
+    // Define an async function to fetch team data
+    const fetchTeamData = async () => {
+      try {
+        const response = await fetch(`${API}/api/team`);
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch team data');
+        }
+        const data = await response.json();
+
+        setTeam(data);
+      } catch (error) {
+        console.error('Error fetching team data:', error);
+      }
+    };
+    fetchTeamData();
+
+  }, []);
+
+  console.warn(team)
+
   return (
     <div className="container mt-3 mb-3 team p-lg-0">
       <div className="row">
@@ -15,123 +42,45 @@ const Page = () => {
         </div>
       </div>
       <div className="row main-row">
-        <div className="col-lg-6">
-          <div className="card box-shodow  p-3">
+        {
+          team.map((item, key) => <div className="col-lg-6">
+          <div className="card box-shodow  p-3" key={key}>
             <div className="row">
               <div className="col-lg-12">
                 <div className="card-top">
-                  <Image width={200} height={200} src="/team.jpeg" alt="" />
+                  <Image width={200} height={200} src={item.EmployeeImage ? `${API}${item.EmployeeImage}` : '/default_repoter.png' } alt="" />
                   <div>
-                    <h4 className="text-Shadow">राम कुमार यादव</h4>
-                    <h5 className="text-Shadow">पुणे, महाराष्ट्र</h5>
+                    <h4 className="text-Shadow">{item.EmployeeName}</h4>
+                    <h5 className="text-Shadow">{item.EmployeeDesignation}</h5>
+                    <h5 className="text-Shadow">{item.place}</h5>
                   </div>
                 </div>
 
-                <p>
-                  राम कुमार यादव सामाजिक हितों को लेकर हमेशा जागरूक रहे हैं।
-                  समय-समय पर समाज हित और देशहित में आवाज उठाते रहे हैं। राम
-                  कुमार यादव अब 'थर्ड आई वर्ल्ड न्यूज़' जो एक ऑन लाइन (वेब
-                  न्यूज़ चैनल) है जिसे 24 घंटे पूरे देश-दुनिया में कहीं भी देखा
-                  सकता है, (www.thirdeyeworldnews.com) के साथ जुड़कर अपना
-                  स्वतंत्र योगदान दे रहे हैं। वर्तमान समय में राम कुमार यादव
-                  पुणे, महाराष्ट्र से 'थर्ड आई वर्ल्ड न्यूज़' के साथ जुड़कर अपना
-                  स्वतंत्र योगदान दे रहे हैं।
-                </p>
+                <div
+                  className="containt"
+                  dangerouslySetInnerHTML={{
+                    __html:
+                    item && item.EmployeeDetails
+                        ? item.EmployeeDetails
+                        : "",
+                  }}
+                />
               </div>
             </div>
           </div>
-        </div>
-        <div className="col-lg-6">
-          <div className="card box-shodow  p-3">
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="card-top">
-                  <Image width={200} height={200} src="/team.jpeg" alt="" />
-                  <div>
-                    <h4 className="text-Shadow">राम कुमार यादव</h4>
-                    <h5 className="text-Shadow">पुणे, महाराष्ट्र</h5>
-                  </div>
-                </div>
-
-                <p>
-                  राम कुमार यादव सामाजिक हितों को लेकर हमेशा जागरूक रहे हैं।
-                  समय-समय पर समाज हित और देशहित में आवाज उठाते रहे हैं। राम
-                  कुमार यादव अब 'थर्ड आई वर्ल्ड न्यूज़' जो एक ऑन लाइन (वेब
-                  न्यूज़ चैनल) है जिसे 24 घंटे पूरे देश-दुनिया में कहीं भी देखा
-                  सकता है, (www.thirdeyeworldnews.com) के साथ जुड़कर अपना
-                  स्वतंत्र योगदान दे रहे हैं। वर्तमान समय में राम कुमार यादव
-                  पुणे, महाराष्ट्र से 'थर्ड आई वर्ल्ड न्यूज़' के साथ जुड़कर अपना
-                  स्वतंत्र योगदान दे रहे हैं।
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-lg-6">
-          <div className="card box-shodow  p-3">
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="card-top">
-                  <Image width={200} height={200} src="/team.jpeg" alt="" />
-
-                  <div>
-                    <h4 className="text-Shadow">राम कुमार यादव</h4>
-                    <h5 className="text-Shadow">पुणे, महाराष्ट्र</h5>
-                  </div>
-                </div>
-
-                <p>
-                  राम कुमार यादव सामाजिक हितों को लेकर हमेशा जागरूक रहे हैं।
-                  समय-समय पर समाज हित और देशहित में आवाज उठाते रहे हैं। राम
-                  कुमार यादव अब 'थर्ड आई वर्ल्ड न्यूज़' जो एक ऑन लाइन (वेब
-                  न्यूज़ चैनल) है जिसे 24 घंटे पूरे देश-दुनिया में कहीं भी देखा
-                  सकता है, (www.thirdeyeworldnews.com) के साथ जुड़कर अपना
-                  स्वतंत्र योगदान दे रहे हैं। वर्तमान समय में राम कुमार यादव
-                  पुणे, महाराष्ट्र से 'थर्ड आई वर्ल्ड न्यूज़' के साथ जुड़कर अपना
-                  स्वतंत्र योगदान दे रहे हैं।
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-lg-6">
-          <div className="card box-shodow  p-3">
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="card-top">
-                  <Image width={200} height={200} src="/team.jpeg" alt="" />
-
-                  <div>
-                    <h4 className="text-Shadow">राम कुमार यादव</h4>
-                    <h5 className="text-Shadow">पुणे, महाराष्ट्र</h5>
-                  </div>
-                </div>
-
-                <p>
-                  राम कुमार यादव सामाजिक हितों को लेकर हमेशा जागरूक रहे हैं।
-                  समय-समय पर समाज हित और देशहित में आवाज उठाते रहे हैं। राम
-                  कुमार यादव अब 'थर्ड आई वर्ल्ड न्यूज़' जो एक ऑन लाइन (वेब
-                  न्यूज़ चैनल) है जिसे 24 घंटे पूरे देश-दुनिया में कहीं भी देखा
-                  सकता है, (www.thirdeyeworldnews.com) के साथ जुड़कर अपना
-                  स्वतंत्र योगदान दे रहे हैं। वर्तमान समय में राम कुमार यादव
-                  पुणे, महाराष्ट्र से 'थर्ड आई वर्ल्ड न्यूज़' के साथ जुड़कर अपना
-                  स्वतंत्र योगदान दे रहे हैं।
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
+        </div>)
+        }
+       
       </div>
       <div className="row">
-      <div className="col-lg-12">
-          <div className="card card-note box-shodow  p-2" >
-                <p className="m-0">
-                  नोट: आई वर्ल्ड न्यूज़ डॉट कॉम (www.thirdeyeworldnews.com) से
-                  जुड़े सभी सहयोगी अवैतानिक है जो स्वतंत्र रूप से अपना योगदान दे
-                  रहे हैं। ©Third Eye World News , www.thirdeyeworldnews.com
-                  नियम व शर्तें लागू।
-                </p>
+        <div className="col-lg-12">
+          <div className="card card-note box-shodow  p-2">
+            <p className="m-0">
+              नोट: आई वर्ल्ड न्यूज़ डॉट कॉम (www.thirdeyeworldnews.com) से जुड़े
+              सभी सहयोगी अवैतानिक है जो स्वतंत्र रूप से अपना योगदान दे रहे हैं।
+              ©Third Eye World News , www.thirdeyeworldnews.com नियम व शर्तें
+              लागू।
+            </p>
           </div>
         </div>
       </div>

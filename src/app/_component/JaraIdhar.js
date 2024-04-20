@@ -124,7 +124,7 @@ const JaraIdhar = (props) => {
                         <Image
                           width={227}
                           height={189}
-                          src={item.Image && `${API}${item.Image}`}
+                          src={item.Image ? `${API}${item.Image}` : "/default.jpg"}
                           alt="hero image"
                           onClick={handleClick}
                         />

@@ -77,7 +77,7 @@ export const Nav = (props) => {
                                 //   filteredBlog.Image &&
                                 //   `${API}${filteredBlog.Image}`
                                 // }
-                                src={filteredBlog.Image !== 'undefined' ? `${API}${filteredBlog.Image}` : ''}
+                                src={filteredBlog.Image !== 'undefined' && filteredBlog.Image !== undefined ? `${API}${filteredBlog.Image}` : '/default.jpg'}
                                 className=""
                                 style={{
                                   width: 190,

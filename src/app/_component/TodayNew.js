@@ -2,26 +2,26 @@ import News from "./News";
 import MainNews from "./MainNews";
 
 import YouTube from "react-youtube";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useContext } from "react";
 import { MdDoubleArrow } from "react-icons/md";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import AppContext from "../_context/AppContext";
 
 const TodayNew = (props) => {
-  
+  const { badikhabar, todaynews, toplinks } = useContext(AppContext);
 
   const [data, setdata] = useState([]);
-  const [category, setCategory] = useState([]);
-  const [toplink, setToplink] = useState([]);
 
+  // console.warn(todaynews)
   useEffect(() => {
-    setCategory(props.toplinks);
-    setdata(props.todaynews);
-  }, [props]);
+    // settoplinks(toplinks);
+    // setdata(todaynews);
+  }, []);
 
-  const API = props.API;
+  const API = process.env.NEXT_PUBLIC_BASE_URL;
   const router = useRouter();
 
   const MAX_WORDS = 16;
@@ -49,19 +49,21 @@ const TodayNew = (props) => {
       // Check if the iframe exists and if it has contentDocument
       if (iframe && iframe.contentDocument) {
         const doc = iframe.contentDocument || iframe.contentWindow.document;
-        const titleElement = doc.querySelector('.ytp-title');
-        const channelElement = doc.querySelector('.ytp-title-channel');
-        
+        const titleElement = doc.querySelector(".ytp-title");
+        const channelElement = doc.querySelector(".ytp-title-channel");
+
         if (titleElement && channelElement) {
-          titleElement.style.display = 'none';
-          channelElement.style.display = 'none';
+          titleElement.style.display = "none";
+          channelElement.style.display = "none";
         }
       }
     }
   }, [videos]);
   const fetchData = async () => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/youtube`);
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/youtube`
+      );
       const data = await response.json();
       setVideos(data.data);
     } catch (error) {
@@ -71,7 +73,7 @@ const TodayNew = (props) => {
 
   useEffect(() => {
     fetchData();
-  },[]);
+  }, []);
 
   return (
     <section className="news-area new_post_area mt-2 mb-3">
@@ -82,43 +84,44 @@ const TodayNew = (props) => {
               <Image
                 width={200}
                 height={200}
-                src={category.length > 0 ? `${API}${category[1].Image}` : ""}
+                
+                src={toplinks.length > 0 && toplinks[1].Image !== undefined  && toplinks[1].Image !== 'undefined'  ? `${API}${toplinks[1].Image}` : ""}
                 alt=""
               />
               <MdDoubleArrow size={50} />
               <h2 className="title_text">
-                {category.length > 0 ? category[1].name : <></>}
+                {toplinks.length > 0 ? toplinks[1].name : <></>}
               </h2>
             </div>
             <div className="news_postbox_wrapper">
               {/* <div className="col-lg-6"> */}
-              {data.length > 0 ? (
+              {todaynews.length > 0 ? (
                 <div className="single_post">
                   <div className="image-container">
                     <Image
                       width={500}
                       height={275}
-                      src={data[0].Image && `${API}${data[0].Image}`}
+                      src={todaynews[0].Image ? `${API}${todaynews[0].Image}` : "/default.jpg"}
                       alt="hero image"
-                      onClick={() => handleClick(data[0]._id)}
+                      onClick={() => handleClick(todaynews[0]._id)}
                     />
                   </div>
                   <div className="">
                     <h4
                       className="mainheading"
                       style={{ cursor: "pointer" }}
-                      onClick={() => handleClick(data[0]._id)}
+                      onClick={() => handleClick(todaynews[0]._id)}
                     >
                       {/* {data.Heading}   */}
-                      {data[0].Heading &&
-                        sliceByWords(data[0].Heading, 20)}
+                      {todaynews[0].Heading &&
+                        sliceByWords(todaynews[0].Heading, 20)}
                     </h4>
                     <div
-                    className="containt"
+                      className="containt"
                       dangerouslySetInnerHTML={{
                         __html:
-                          data && data[0].Matter
-                            ? sliceByWords(data[0].Matter, 45)
+                          todaynews && todaynews[0].Matter
+                            ? sliceByWords(todaynews[0].Matter, 45)
                             : "",
                       }}
                     />
@@ -128,22 +131,24 @@ const TodayNew = (props) => {
                 <></>
               )}
               <div className="mutiple_small_post_wrapper">
-                {data.slice(1, 5).map((data, index) => (
+                {todaynews.slice(1, 5).map((todaynews, index) => (
                   <div className="mutiple_small_post" key={index}>
                     <div className="image-container">
                       <Image
                         width={228}
                         height={165}
                         src={
-                          data.Image ? `${API}${data.Image}` : "/default.jpg"
+                          todaynews.Image && todaynews.Image !== undefined
+                            ? `${API}${todaynews.Image}`
+                            : "/default.jpg"
                         }
                         alt="hero image"
-                        onClick={() => handleClick(data._id)}
+                        onClick={() => handleClick(todaynews._id)}
                       />
                     </div>
 
-                    <h4 className="" onClick={() => handleClick(data._id)}>
-                      {data.Heading && sliceByWords(data.Heading, 14)}
+                    <h4 className="" onClick={() => handleClick(todaynews._id)}>
+                      {todaynews.Heading && sliceByWords(todaynews.Heading, 14)}
                     </h4>
                   </div>
                 ))}
@@ -157,12 +162,12 @@ const TodayNew = (props) => {
                 <Image
                   width={200}
                   height={200}
-                  src={category.length > 0 ? `${API}${category[2].Image}` : ""}
+                  src={toplinks.length > 0 ? `${API}${toplinks[2].Image}` : ""}
                   alt=""
                 />
 
                 <h2 className="title_text_side">
-                  {category.length > 0 ? category[2].name : <></>}
+                  {toplinks.length > 0 ? toplinks[2].name : <></>}
                 </h2>
               </Link>
             </div>
@@ -200,7 +205,7 @@ const TodayNew = (props) => {
                         height: "280",
                         borderRadius: "20px",
                         playerVars: {
-                          'playsinline': 1,
+                          playsinline: 1,
                           autoplay: 1, // Disable autoplay
                           controls: 0, // Show player controls
                           modestbranding: 1, // Hide YouTube branding
@@ -221,11 +226,11 @@ const TodayNew = (props) => {
                 <Image
                   width={200}
                   height={200}
-                  src={category.length > 0 ? `${API}${category[3].Image}` : ""}
+                  src={toplinks.length > 0 ? `${API}${toplinks[3].Image}` : ""}
                   alt=""
                 />
                 <h2 className="title_text_side">
-                  {category.length > 0 ? category[3].name : <></>}
+                  {toplinks.length > 0 ? toplinks[3].name : <></>}
                 </h2>
               </a>
             </div>

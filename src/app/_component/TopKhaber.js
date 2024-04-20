@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useContext } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import React from "react";
@@ -9,9 +9,11 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { useRouter } from "next/navigation";
+import AppContext from "../_context/AppContext";
 
 const TopKhaber = (props) => {
   const router = useRouter();
+  const { topKhabare } = useContext(AppContext)
 
   const handleClick = (id) => {
     router.push(`/inner/${id}`);
@@ -37,9 +39,7 @@ const TopKhaber = (props) => {
   const [data, setdata] = useState([]);
   const API = props.API;
 
-  useEffect(() => {
-    setdata(props.topKhabare);
-  }, [props]);
+
 
   const MAX_WORDS = 8;
   const isClient = typeof window !== "undefined";
@@ -80,9 +80,9 @@ const TopKhaber = (props) => {
                   className="mySwiper"
                   speed={isClient && window.innerWidth > 768 ? 1000 : 0}
                 >
-                  {data &&
-                    Array.isArray(data) &&
-                    data.map((item, key) => (
+                  {topKhabare &&
+                    Array.isArray(topKhabare) &&
+                    topKhabare.map((item, key) => (
                       <SwiperSlide key={key}>
                         <div
                           className="hero_post_box"
@@ -97,7 +97,7 @@ const TopKhaber = (props) => {
                             <Image
                               width={165}
                               height={165}
-                              src={`${API}${item.Image}`}
+                              src={item.Image !== undefined ? `${API}${item.Image}` : "/default.jpg"}
                               alt="hero image"
                             />
                           )}

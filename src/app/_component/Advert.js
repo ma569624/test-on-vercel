@@ -22,7 +22,7 @@ const Advert = ({ advert, endpoint }) => {
                         width={900}
                         height={160}
                         style={{ width: "900px", height: "160px" }}
-                        src={`${API}${item.Image1}`}
+                        src={item.Image1 && `${API}${item.Image1}`}
                         alt=""
                       />
                     </a>

@@ -10,11 +10,12 @@ export const metadata = {
   description: "Third Eye World News",
 };
 
-
 const API = process.env.API;
 
 async function fetchtoplinks() {
-  const res = await fetch(`${process.env.API}/api/toplinks`, { cache: 'no-store' } );
+  const res = await fetch(`${process.env.API}/api/toplinks`, {
+    cache: "no-store",
+  });
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
@@ -22,9 +23,9 @@ async function fetchtoplinks() {
 }
 async function fetchAdvert() {
   try {
-    const advert = await fetch(
-      `${process.env.API}/api/advert?Status=active`, { cache: 'no-store' }
-    );
+    const advert = await fetch(`${process.env.API}/api/advert?Status=active`, {
+      cache: "no-store",
+    });
     return advert.json();
   } catch (error) {
     console.error("Error fetching advert:", error);
@@ -35,7 +36,8 @@ async function fetchAdvert() {
 async function fetchTagline() {
   try {
     const tagline = await fetch(
-      `${process.env.API}/api/tagline?_id=6602a87711e47f88c9059347`, { cache: 'no-store' }
+      `${process.env.API}/api/tagline?_id=6602a87711e47f88c9059347`,
+      { cache: "no-store" }
     );
     return tagline.json();
   } catch (error) {
@@ -47,7 +49,8 @@ async function fetchTagline() {
 async function fetchTopKhabare() {
   try {
     const topKhabare = await fetch(
-      `${process.env.API}/api/blogs?Category=TopKhabare&Status=active`, { cache: 'no-store' }
+      `${process.env.API}/api/blogs?Category=TopKhabare&Status=active`,
+      { cache: "no-store" }
     );
     return topKhabare.json();
   } catch (error) {
@@ -59,7 +62,8 @@ async function fetchTopKhabare() {
 async function fetchIdharbhi() {
   try {
     const idharbhi = await fetch(
-      `${process.env.API}/api/blogs?Category=idharbhi&Status=active`, { cache: 'no-store' }
+      `${process.env.API}/api/blogs?Category=idharbhi&Status=active`,
+      { cache: "no-store" }
     );
     return idharbhi.json();
   } catch (error) {
@@ -70,9 +74,9 @@ async function fetchIdharbhi() {
 
 async function fetchAllBlogs() {
   try {
-    const allblogs = await fetch(
-      `${process.env.API}/api/allblogs?name=block`, { cache: 'no-store' }
-    );
+    const allblogs = await fetch(`${process.env.API}/api/allblogs?name=block`, {
+      cache: "no-store",
+    });
     return allblogs.json();
   } catch (error) {
     console.error("Error fetching all blogs:", error);
@@ -83,7 +87,8 @@ async function fetchAllBlogs() {
 async function fetchRajiyablogs() {
   try {
     const Rajiyablogs = await fetch(
-      `${process.env.API}/api/allblogs?name=rajiya`, { cache: 'no-store' }
+      `${process.env.API}/api/allblogs?name=rajiya`,
+      { cache: "no-store" }
     );
     return Rajiyablogs.json();
   } catch (error) {
@@ -92,7 +97,41 @@ async function fetchRajiyablogs() {
   }
 }
 
+async function fetchtodaynews() {
+  try {
+    const todaynews = await fetch(
+      `${API}/api/blogs?Status=active&Category=primenews`,
+      { cache: "no-store" }
+    );
+    return todaynews.json();
+  } catch (error) {
+    console.error("Error fetching Rajiyablogs:", error);
+    throw error;
+  }
+}
+
+async function fetchbadikhabar() {
+  try {
+    const badikhabar = await fetch(
+      `${API}/api/blogs?page=1&limit=12&Status=active&Category=mainnews`,
+      { cache: "no-store" }
+    );
+    return badikhabar.json();
+  } catch (error) {
+    console.error("Error fetching Rajiyablogs:", error);
+    throw error;
+  }
+}
+
+
 export default async function RootLayout({ children }) {
+
+ 
+  // const toplinks = await fetchtoplinks();
+  // const advert = await fetchAdvert();
+  const todaynews = await fetchtodaynews();
+  const badikhabar = await fetchbadikhabar();
+
   const toplinks = await fetchtoplinks();
   const advert = await fetchAdvert();
   const tagline = await fetchTagline();
@@ -100,18 +139,22 @@ export default async function RootLayout({ children }) {
   const idharbhi = await fetchIdharbhi();
   const allblogs = await fetchAllBlogs();
   const Rajiyablogs = await fetchRajiyablogs();
-
+  
   return (
     <html lang="en">
       <body>
-        <AppProvider API={API}>
+        <AppProvider >
           <Header
             API={API}
             advert={advert}
             tagline={tagline}
             allblogs={allblogs.data}
             Rajiyablogs={Rajiyablogs.data}
+
+            toplinks={toplinks}
             topKhabare={topKhabare.data}
+            todaynews={todaynews.data}
+            badikhabar={badikhabar.data}
           />
 
           {children}

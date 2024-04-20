@@ -14,9 +14,25 @@ export const AppProvider = ({ children }) => {
   const [topKhabare, setTopKhabare] = useState({});
   const [idharbhi, setIdharbhi] = useState({});
   const [toplinks, setToplinks] = useState([]);
+  const [todaynews, setTodayNews] = useState([]);
+  const [badikhabar, setBadikhabar] = useState([]);
 
+  const contextValue = {
+    toplinks, setToplinks,
+    idharbhi, setIdharbhi,
+    topKhabare, setTopKhabare,
+    data, setData,
+    advert, setAdvert,
+    toplink, setToplink,
+    AllBlogs, setAllBlogs,
+    Rajiya, setRajiya,
+    tagline, setTagline,
+    todaynews, setTodayNews,
+    badikhabar, setBadikhabar
+  };
+  
   return (
-    <AppContext.Provider value={{ toplinks, setToplinks,idharbhi, setIdharbhi,topKhabare, setTopKhabare,data, setData, advert, setAdvert, toplink, setToplink, AllBlogs, setAllBlogs, Rajiya, setRajiya, tagline, setTagline}}>
+    <AppContext.Provider value={contextValue}>
       {children}
     </AppContext.Provider>
   );

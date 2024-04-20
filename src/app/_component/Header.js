@@ -9,14 +9,20 @@ import HeaderTop from "./HeaderTop";
 import HeaderMiddle from "./HeaderMiddle";
 import { Container } from "react-bootstrap";
 import { useContext, useEffect } from "react";
+import AppContext from "../_context/AppContext";
 
 const Header = (props) => {
   const API = props.API;
-  // const{setAllBlogs, setRajiya} = useContext(AppContext)
-  // useEffect(() => {
-  //  setAllBlogs(props.allblogs)
-  //  setRajiya(props.Rajiyablogs)
-  // },[])
+  const { setTopKhabare, setToplinks, setBadikhabar, setTodayNews } = useContext(AppContext);
+
+  useEffect(() => {
+      setTopKhabare(props.topKhabare),
+      console.warn(props.todaynews)
+      setToplinks(props.toplinks),
+      setBadikhabar(props.badikhabar);
+      setTodayNews(props.todaynews);
+  }, []);
+
   return (
     <>
       <header>
@@ -25,8 +31,7 @@ const Header = (props) => {
           position={"left"}
           endpoint={"below breaking News"}
         />
-        
-        
+
         <Container className="px-lg-0" fluid>
           {props.advert.filter((item) =>
             item.location.includes("top of header")
@@ -82,6 +87,7 @@ const Header = (props) => {
               </div>
             </div>
           )}
+
         </Container>
         <FixedAdvert
           advert={props.advert}
