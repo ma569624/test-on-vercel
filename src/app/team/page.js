@@ -42,8 +42,8 @@ const Page = () => {
       </div>
       <div className="row main-row">
         {team.map((item, key) => (
-          <div className="col-lg-6">
-            <div className="card box-shodow  p-3" key={key}>
+          <div className="col-lg-6" key={key}>
+            <div className="card box-shodow  p-3" >
               <div className="row">
                 <div className="col-lg-12">
                   <div className="card-top">
