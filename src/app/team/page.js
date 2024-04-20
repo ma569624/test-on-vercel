@@ -3,8 +3,8 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 const Page = () => {
-  const API = process.env.NEXT_PUBLIC_API_URL;
-
+  const API = process.env.NEXT_PUBLIC_BASE_URL;
+  console.warn(API)
   const [team, setTeam] = useState([]);
 
   useEffect(() => {
