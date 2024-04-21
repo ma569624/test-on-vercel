@@ -6,6 +6,10 @@ $header__menu_area_bg: #921111;
 $space_bottom: 1px;
 $font-family_1: "Mangal Devanagari", sans-serif;
 
+h1, h2, h3, h4, h5, h6, p, span, li , a, div{
+  font-family: $font-family_1 !important;
+  font-style: normal;
+}
 
 @keyframes bg-animation {
   0% {
@@ -35,10 +39,11 @@ $font-family_1: "Mangal Devanagari", sans-serif;
 
 html {
   text-align: -webkit-center;
+  font-family: $font-family_1 !important;
 }
 
 body {
-  font-family: $font-family_1;
+  font-family: $font-family_1 !important;
   font-weight: normal;
   font-style: normal;
   color: $color_1;
