@@ -40,13 +40,13 @@ const Page = () => {
           </div>
         </div>
       </div>
-      <div className="row main-row">
+      <div className="row mx-1 mb-3">
         {team.map((item, key) => (
-          <div className="col-lg-6" key={key}>
-            <div className="card box-shodow  p-3" >
+          <div className="col-lg-12" key={key}>
+            <div className="card box-shodow  p-3 mt-3" >
               <div className="row">
                 <div className="col-lg-12">
-                  <div className="card-top">
+                  <div className="card-top mb-3">
                     <Image
                       width={200}
                       height={200}

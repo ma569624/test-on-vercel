@@ -71,8 +71,7 @@ const Detail = (props) => {
   // const whatsAppUrl = `https://web.whatsapp.com/send?text=${encodeURIComponent(`*${message}*%0A%0A*${sectionname}*%0A${data.Heading}%0A%0A*${youtubeheading}*%0A${youtubechannel}`)}&url=${currentPageUrl}`;
   const [sidename, setSideName] = useState([]);
   const [sidenamerajiya, setSideNameRajiya] = useState([]);
-  const [total, setSettotal] = useState('');
-
+  const [total, setSettotal] = useState("");
 
   const getdata = async () => {
     setCategory(props.toplinks);
@@ -88,7 +87,6 @@ const Detail = (props) => {
     setCurrentPage(1);
   }, [id]);
 
-
   const getblogs = async () => {
     const blogs = await fetch(
       `${API}/api/blogs?Status=active&page=${currentPage}&limit=${limit}&Category=${data.Category}`
@@ -96,27 +94,25 @@ const Detail = (props) => {
     const blogdata = await blogs.json();
     // console.warn(blogdata);
     setBlogs(blogdata.data);
-    setSettotal(blogdata.nbHits)
+    setSettotal(blogdata.nbHits);
   };
   // console.warn(`this is ${data.Category}`)
 
   useEffect(() => {
     getblogs();
   }, [currentPage, limit, data.Category]);
-  
 
   const getsection = async () => {
     const cat = await fetch(
       `${API}/api/blogdisplay?SectionName=${data.Category}`
     );
     const sectiondata = await cat.json();
-    setSideName(sectiondata)
+    setSideName(sectiondata);
     console.warn(sectiondata);
-    
   };
   useEffect(() => {
-    getsection()
-  },[blogs])
+    getsection();
+  }, [blogs]);
 
   const nextPage = () => {
     setCurrentPage(currentPage + 1);
@@ -140,12 +136,12 @@ const Detail = (props) => {
           style={{ border: "4px solid yellow" }}
         >
           <h2 className="m-0">
-            {sidename[0] ? sidename[0].SecondSection : 'संबंधित की खबरें और भी'}
+            {sidename[0] ? sidename[0].SecondSection : "संबंधित की खबरें और भी"}
             {sidenamerajiya && sidenamerajiya.FirstLink}
           </h2>
         </div>
 
-        {blogs.map((item, key) => {
+        {blogs.slice(1, 10).map((item, key) => {
           return (
             <div className="hero pos-relative mb-2 post-more" key={key}>
               <div className="hero__thumb">
@@ -169,12 +165,14 @@ const Detail = (props) => {
             </div>
           );
         })}
-        <h6 className="text-center fs-6 bg-danger p-2 rounded-5 fw-bold text-white shadow">कुल खबरें: {total}</h6>
+        <h6 className=" total-count text-center fs-6 bg-danger p-2 rounded-5 fw-bold text-white shadow">
+          इस सेक्शन की कुल खबरें: {total}
+        </h6>
         <div className="pagination text-center justify-content-center">
           <ul>
             <li>
               <a
-                className="hover-effect"
+                className="hover-effect me-3"
                 onClick={prevPage}
                 disabled={currentPage === 1}
               >
@@ -182,10 +180,11 @@ const Detail = (props) => {
                 पिछली ख़बर
               </a>
             </li>
-              
+
             <li>
               <a className="hover-effect" onClick={nextPage}>
-                अगली ख़बर <TbPlayerTrackNextFilled size={25} className="ms-2 pb-1" />
+                अगली ख़बर{" "}
+                <TbPlayerTrackNextFilled size={25} className="ms-2 pb-1" />
               </a>
             </li>
           </ul>
@@ -207,6 +206,14 @@ const Detail = (props) => {
           <div className="row" ref={componentRef}>
             <div className="col-xl-8 col-lg-8">
               <div className="patti-bg" style={{ border: "4px solid yellow" }}>
+                
+                {sidenamerajiya.Image1 && (
+                  <Image
+                    height={25}
+                    width={25}
+                    src={`${API}${sidenamerajiya.Image1}`}
+                  />
+                )}
                 <h2 className="text-center mb-0">{data.Category}</h2>
               </div>
               <div className="post-details ">
@@ -235,7 +242,9 @@ const Detail = (props) => {
                     />
                     <div className="postbox__text-meta ">
                       <div className="small-meta-text">
-                        <span>आकाश श्रीवास्तव,थर्ड आई वर्ल्ड न्यूज़ नेटवर्क</span>
+                        <span>
+                          आकाश श्रीवास्तव,थर्ड आई वर्ल्ड न्यूज़ नेटवर्क
+                        </span>
                         <div className="gourp">
                           <span>update 16 feb 2024</span>
                           <span>12:03:00</span>

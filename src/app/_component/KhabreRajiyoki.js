@@ -79,8 +79,6 @@ const KhabreRajiyoki = (props) => {
             </div>
             <div className="">
               <h4
-                className="mainheading"
-                style={{ cursor: "pointer" }}
                 onClick={() => handleClick(data[0]._id)}
               >
                 {/* {data.Heading}   */}
@@ -183,7 +181,7 @@ const KhabreRajiyoki = (props) => {
             </div>
           </div>
         </div>
-        {props.allblogs.map((item, key) => (
+        {props.allblogs.slice(0, 5).map((item, key) => (
           <div className="row mb-1" key={key}>
             <div className="col-lg-9">
               <div className="new_post_title">

@@ -1,7 +1,7 @@
 "use client";
 
 import ApradJagat from "./ApradJagat";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import VotPoll from "./VotPoll";
 import KhabreRajiyoki from "./KhabreRajiyoki";
 
@@ -11,20 +11,23 @@ import Model from "./model";
 import Advert from "./Advert";
 import Follow from "./follow";
 import Image from "next/image";
-import HitCounter from "./hitCounter";
 import { MdAirplanemodeActive } from "react-icons/md";
+import AppContext from "../_context/AppContext";
 
 const Footer = (props) => {
+  const {setRajiya} = useContext(AppContext)
   const API = props.API;
 
   const [open, setOpen] = useState(false);
 
   const toggleModal = () => {
+    
     setOpen(!open);
   };
   const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
+    setRajiya(props.Rajiyablogs)
     const handleScroll = () => {
       const scrollTop = window.pageYOffset;
 

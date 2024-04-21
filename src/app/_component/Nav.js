@@ -6,6 +6,7 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export const Nav = (props) => {
   const API = props.API;
@@ -17,7 +18,13 @@ export const Nav = (props) => {
     setdata(props.allblogs.filter((item) => item.section.isHeader === true));
     setRajiya(props.Rajiyablogs);
   }, [props]);
-  
+
+  const router = useRouter();
+
+  // Function to handle link click
+  const handleClick = (id) => {
+    router.push(`/inner/${id}`);
+  };
 
   return (
     <>
@@ -48,11 +55,10 @@ export const Nav = (props) => {
 
               {data.map((item, key) => (
                 <li key={key}>
-                  <a className="hover-effect">
-                   
+                  <Link className="hover-effect" href={`${item.data[0]._id}`}>
                     {item.section.SectionName}
                     <IoMdArrowDropdown size={30} />
-                  </a>
+                  </Link>
                   <ul className="submenu">
                     <Scrollbars
                       style={{
@@ -63,52 +69,57 @@ export const Nav = (props) => {
                       }}
                     >
                       {item.data.map((filteredBlog, key) => (
-                          <li key={key}>
-                            <div
-                              className="d-grid align-items-center justify-content-around p-2"
+                        <li key={key}>
+                          <div
+                            className="d-grid align-items-center justify-content-around p-2"
+                            style={{
+                              backgroundColor: "#ddd !impotant",
+                            }}
+                          >
+                            <Image
+                              width={190}
+                              height={110}
+                              // src={
+                              //   filteredBlog.Image &&
+                              //   `${API}${filteredBlog.Image}`
+                              // }
+                              src={
+                                filteredBlog.Image !== "undefined" &&
+                                filteredBlog.Image !== undefined
+                                  ? `${API}${filteredBlog.Image}`
+                                  : "/default.jpg"
+                              }
+                              className=""
                               style={{
-                                backgroundColor: "#ddd !impotant",
+                                width: 190,
+                                height: 110,
                               }}
+                              alt=""
+                            />
+                            <h4
+                              className="text-white m-0 mt-2"
+                              style={{
+                                fontSize: "14px",
+                                fontWeight: 600,
+                                lineHeight: "22px",
+                              }}
+                              onClick={() => handleClick(filteredBlog._id)}
                             >
-                              <Image
-                                width={190}
-                                height={110}
-                                // src={
-                                //   filteredBlog.Image &&
-                                //   `${API}${filteredBlog.Image}`
-                                // }
-                                src={filteredBlog.Image !== 'undefined' && filteredBlog.Image !== undefined ? `${API}${filteredBlog.Image}` : '/default.jpg'}
-                                className=""
-                                style={{
-                                  width: 190,
-                                  height: 110,
-                                }}
-                                alt=""
-                              />
-                              <h4
-                                className="text-white m-0 mt-2"
-                                style={{
-                                  fontSize: "14px",
-                                  fontWeight: 600,
-                                  lineHeight: "22px",
-                                }}
-                              >
-                                {filteredBlog.Heading}
-                              </h4>{" "}
-                            </div>
-                          </li>
-                        ))}
+                              {filteredBlog.Heading}
+                            </h4>{" "}
+                          </div>
+                        </li>
+                      ))}
                     </Scrollbars>
                   </ul>
                 </li>
               ))}
               <li>
-                <a href={`/rajiya`}className="hover-effect">
+                <a href={`/rajiya`} className="hover-effect">
                   ख़बरें राज्यों से
                   <IoMdArrowDropdown size={30} />
                 </a>
-                {rajiya.map((item, key) => (
-                  <ul className="submenu" key={key}>
+                  <ul className="submenu">
                     <Scrollbars
                       style={{
                         width: "auto",
@@ -116,16 +127,60 @@ export const Nav = (props) => {
                         backgroundColor: "rgb(14 197 5)",
                       }}
                     >
-                      {/* <li>{item.data.map((item) => <>item</>)}</li> */}
+                      {rajiya.map((item, key) => (
+                        <div key={key}>
+                          <h6 className="mb-0 mt-2 fw-bold text-center bg-danger py-2" >{item.section.StateName}</h6>
+                          {item.data.map((filteredBlog, key) => (
+                            <li key={key}>
+                              <div
+                                className="d-grid align-items-center justify-content-around p-2"
+                                style={{
+                                  backgroundColor: "#ddd !impotant",
+                                }}
+                              >
+                                <Image
+                                  width={190}
+                                  height={110}
+                                  // src={
+                                  //   filteredBlog.Image &&
+                                  //   `${API}${filteredBlog.Image}`
+                                  // }
+                                  src={
+                                    filteredBlog.Image !== "undefined" &&
+                                    filteredBlog.Image !== undefined
+                                      ? `${API}${filteredBlog.Image}`
+                                      : "/default.jpg"
+                                  }
+                                  className=""
+                                  style={{
+                                    width: 190,
+                                    height: 110,
+                                  }}
+                                  alt=""
+                                />
+                                <h4
+                                  className="text-white m-0 mt-2"
+                                  style={{
+                                    fontSize: "14px",
+                                    fontWeight: 600,
+                                    lineHeight: "22px",
+                                  }}
+                                  onClick={() => handleClick(filteredBlog._id)}
+                                >
+                                  {filteredBlog.Heading}
+                                </h4>{" "}
+                              </div>
+                            </li>
+                          ))}
+                        </div>
+                      ))}
                     </Scrollbars>
                   </ul>
-                ))}
               </li>
             </ul>
           </nav>
         </div>
       </div>
-      
     </>
   );
 };

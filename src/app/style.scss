@@ -6,7 +6,17 @@ $header__menu_area_bg: #921111;
 $space_bottom: 1px;
 $font-family_1: "Mangal Devanagari", sans-serif;
 
-h1, h2, h3, h4, h5, h6, p, span, li , a, div{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+li,
+a,
+div {
   font-family: $font-family_1 !important;
   font-style: normal;
 }
@@ -537,10 +547,8 @@ footer {
         margin-top: 15px;
         font-size: 22px;
         font-weight: 700;
+        text-shadow: #777a84 1px 1px !important;
         cursor: pointer;
-        cursor: pointer;
-        font-size: 22px !important;
-        font-weight: bold !important;
         text-decoration: none;
         line-height: 33px;
 
@@ -557,7 +565,7 @@ footer {
         p {
           margin-left: 10px;
           font-weight: 600;
-          color: #4b3939bb;
+          color: rgb(51 36 36);
         }
       }
 
@@ -595,14 +603,17 @@ footer {
         }
 
         h4 {
+          text-shadow: #777a84 1px 1px !important;
+
           cursor: pointer;
-          padding-left: 8px;
+          padding-left: 4px;
           // max-width: 188px;
           font-size: 16px;
           margin-top: 10px;
           font-weight: 800;
           line-height: 28px;
           color: #133c6e;
+
           &:hover {
             color: #b42e08;
           }
@@ -615,10 +626,11 @@ footer {
           max-height: 190px;
 
           p {
-            padding-left: 8px;
+            
+            padding-left: 4px;
             padding-right: 8px;
             font-weight: 600;
-            color: rgb(75 57 57 / 88%);
+            color: rgb(0 0 0 / 88%);
             font-size: 14px;
             letter-spacing: 0px;
           }
@@ -652,6 +664,8 @@ footer {
     }
 
     h4 {
+      text-shadow: #777a84 1px 1px !important;
+
       color: #133c6e;
       max-width: 46%;
       flex: 0 0 46%;
@@ -760,6 +774,12 @@ footer {
       line-height: 26px;
       font-weight: 700;
       cursor: pointer;
+      text-shadow: #777a84 1px 1px !important;
+
+      &:hover{
+        color: #4006ee;
+      }
+
     }
   }
 }
@@ -879,19 +899,70 @@ footer {
 }
 
 
+.rajiya-post {
+  .main-sec {
+    background-color: #222;
+    box-shadow: rgb(204 148 148 / 53%) 1px 1px 1px 1px;
+    border: 4px solid yellow;
+    padding: 2px 3px 2px 3px;
+    justify-content: center;
+    text-align: center;
+    border-radius: 20px;
+    background-color: rgb(8 104 92);
+
+    h2 {
+      text-shadow: #777a84 1px 1px !important;
+      font-size: 21px;
+      font-weight: 700;
+      color: #fff;
+    }
+  }
+
+  .sec {
+
+    display: flex;
+    justify-content: center;
+    background-color: #009dff;
+    border-radius: 40px;
+
+    img {
+      color: transparent;
+      border-radius: 8px;
+      width: 80px;
+      height: 50px;
+      margin-right: 24px;
+      padding: 2px;
+      filter: drop-shadow(rgb(132, 85, 99) 4px 3px 1px);
+    }
+
+    h2 {
+      color: #fff;
+      font-size: 22px;
+      text-shadow: #777a84 1px 1px !important;
+      font-weight: 700;
+    }
+  }
+ 
+}
+.total-count{
+  text-shadow: #777a84 1px 1px !important;
+}
+
 .post-more h3 {
- background-color: #23125aa1;
- padding: 3px 15px;
- font-size: 17px;
- margin: 0;
- width: 100%;
- color: #fff !important;
- &:hover{
-  color: rgb(253, 253, 8) !important;
- }
- a{
+  background-color: #23125aa1;
+  padding: 3px 15px;
+  font-size: 17px;
+  margin: 0;
+  width: 100%;
   color: #fff !important;
- }
+
+  &:hover {
+    color: rgb(253, 253, 8) !important;
+  }
+
+  a {
+    color: #fff !important;
+  }
 }
 
 

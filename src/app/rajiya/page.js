@@ -1,27 +1,36 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { MdDoubleArrow } from "react-icons/md";
 import Image from "next/image";
-const Page = ({ color }) => {
+import AppContext from "../_context/AppContext";
+
+import { TbPlayerTrackNextFilled } from "react-icons/tb";
+import { TbPlayerTrackPrevFilled } from "react-icons/tb";
+const Page = () => {
+  // const [Rajiya, setRajiya] = useState([]);
+  const { Rajiya } = useContext(AppContext);
+  const newdata = Rajiya;
   const router = useRouter();
-  const API = "http://89.116.20.142:5000";
-  const [data, setdata] = useState([]);
+  const API = process.env.NEXT_PUBLIC_BASE_URL;
+  const [data, setData] = useState([]);
   const [blogs, setBlogs] = useState([]);
+  console.warn(newdata);
+  useEffect(() => {
+    const sections = Rajiya.map((item) => item.section).flat();
+    const blogData = Rajiya.map((item) => item.data).flat();
 
-  const getdata = async () => {
-    const allblogs = await fetch(`${API}/api/allblogs`).then((res) =>
-      res.json()
-    );
-    setBlogs(allblogs.data);
+    setData(sections);
+    setBlogs(blogData);
+  }, [Rajiya]);
 
-    const rajiya = await fetch(`${API}/api/rajiya`).then((res) => res.json());
-    setdata(rajiya);
-    console.warn();
-  };
-
+  useEffect(() => {
+    console.warn("Rajiya:", Rajiya);
+    console.warn("data:", data);
+    console.warn("blogs:", blogs);
+  }, [Rajiya, data, blogs]);
   const MAX_WORDS = 16;
 
   function sliceByWords(text, maxWords) {
@@ -33,14 +42,15 @@ const Page = ({ color }) => {
     }
   }
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [showitem, setShowitems] = useState(1);
+
+  const limit = 10;
+
   const handleClick = (id) => {
+    console.warn(id);
     router.push(`/inner/${id}`);
   };
-
-  useEffect(() => {
-    // setBlogs(Allblog)
-    getdata();
-  }, []);
 
   const NewsRow = ({ Rajiya }) => {
     const [data, setData] = useState([]);
@@ -51,6 +61,16 @@ const Page = ({ color }) => {
       console.warn(filter);
     }, [Rajiya]);
 
+    const nextPage = () => {
+      setCurrentPage(currentPage + 1);
+      setShowitems(showitem + 4);
+    };
+
+    const prevPage = () => {
+      setCurrentPage(currentPage - 1);
+      setShowitems(showitem - 4);
+    };
+
     return (
       <>
         <div className="row ">
@@ -58,27 +78,32 @@ const Page = ({ color }) => {
             <div className="section-title mt-2">
               <div className="container">
                 <div className="row rajiya">
-                  {data.map((item, key) => (
+                  {data.slice(showitem, showitem + 4).map((item, key) => (
                     <div className="col-lg-3" key={key}>
                       <div className="postbox mb-25">
                         <div className="postbox__thumb image-container">
-                          <a href="#">
-                            <Image
-                              width={800}
-                              height={300}
-                              src={item.Image !== 'undefined' ? `${API}${item.Image}` : ""}
-                              style={{
-                                width: 722,
-                                height: 200,
-                                filter:
-                                  "drop-shadow(rgb(102, 102, 102) 4px 4px 1px )",
-                              }}
-                              alt="hero image"
-                            />
-                          </a>
+                          <Image
+                            width={800}
+                            height={300}
+                            src={
+                              item.Image !== undefined
+                                ? `${API}${item.Image}`
+                                : "/default.jpg"
+                            }
+                            style={{
+                              width: 722,
+                              height: 200,
+                              filter:
+                                "drop-shadow(rgb(102, 102, 102) 4px 4px 1px )",
+                            }}
+                            alt="hero image"
+                          />
                         </div>
                         <div className="postbox__text mt-4">
-                          <h4 className="title-18 pr-0" onClick={handleClick}>
+                          <h4
+                            className="title-18 pr-0"
+                            onClick={() => handleClick(item._id)}
+                          >
                             {item.Heading &&
                               sliceByWords(item.Heading, MAX_WORDS)}
                           </h4>
@@ -104,14 +129,31 @@ const Page = ({ color }) => {
 
         <div className="row ">
           <div className="col-lg-12">
-            <div className="justify-content-center pagination text-center">
+            <div className="row">
+              <div className="col-3 mx-auto">
+                <h6 className="total-count text-center fs-6 bg-danger p-2 rounded-5 fw-bold text-white shadow">
+                  इस सेक्शन की कुल खबरें:{" "}
+                </h6>
+              </div>
+            </div>
+            <div className="pagination text-center justify-content-center">
               <ul>
                 <li>
-                  <a className="hover-effect">पिछली ख़बर</a>
+                  <a
+                    className="hover-effect me-4"
+                    onClick={prevPage}
+                    disabled={currentPage === 1}
+                  >
+                    <TbPlayerTrackPrevFilled className="me-2 pb-1" size={25} />
+                    पिछली ख़बर
+                  </a>
                 </li>
 
                 <li>
-                  <a className="hover-effect">अगली ख़बर</a>
+                  <a className="hover-effect" onClick={nextPage}>
+                    अगली ख़बर{" "}
+                    <TbPlayerTrackNextFilled size={25} className="ms-2 pb-1" />
+                  </a>
                 </li>
               </ul>
             </div>
@@ -122,17 +164,25 @@ const Page = ({ color }) => {
   };
   return (
     <>
-      <section className="news-area pt-2 pb-2">
+
+    
+    
+      <section className=" pt-2 pb-2 rajiya-post">
         <div className="container p-lg-0">
           <div className="row">
             <div className="col-lg-12">
               <div
-                className="patti-bg  mb-3 section-title text-center section-title2  box-shodow "
-                style={{ border: "4px solid yellow" }}
+                className=" main-sec mb-3 "
+                
               >
                 <h2 className="m-0 p-0">
-                  <MdDoubleArrow size={50} className="mr-2" />
+                  <MdDoubleArrow size={50} className="me-2" />
                   ख़बरें राज्यों से
+                  <MdDoubleArrow
+                    size={50}
+                    style={{ transform: "rotate(180deg)" }}
+                    className="ms-2"
+                  />
                 </h2>
               </div>
             </div>
@@ -143,28 +193,21 @@ const Page = ({ color }) => {
             <div className="row ">
               <div className="col-lg-12">
                 <div
-                  className="section-title2 d-flex justify-content-center"
-                  style={{ backgroundColor: "#3e256e" }}
+                  className="sec "
                 >
                   <Image
                     width={100}
                     height={100}
-                    style={{
-                      borderRadius: "8px",
-                      width: "80px",
-                      height: "50px",
-                      marginRight: "24px",
-                      padding: "2px",
-                      filter: "drop-shadow(rgb(132, 85, 99) 4px 3px 1px)",
-                    }}
+                    
                     className="me-4 ml-1"
-                    src={item.Image1 !== undefined ? `${API}${item.Image1}` : ''}
+                    src={
+                      item.Image1 !== undefined ? `${API}${item.Image1}` : ""
+                    }
                     alt=""
                   />
                   <h2 className="m-0 ">
                     {/* {data[0].Heading} */}
                     <MdDoubleArrow size={50} className="mr-2" />
-
                     {item.StateName}
                   </h2>
                 </div>
