@@ -108,8 +108,6 @@ const TodayNew = (props) => {
                   </div>
                   <div className="">
                     <h4
-                      className="mainheading"
-                      style={{ cursor: "pointer" }}
                       onClick={() => handleClick(todaynews[0]._id)}
                     >
                       {/* {data.Heading}   */}
@@ -206,7 +204,7 @@ const TodayNew = (props) => {
                         borderRadius: "20px",
                         playerVars: {
                           playsinline: 1,
-                          autoplay: 1, // Disable autoplay
+                          autoplay: 0, // Disable autoplay
                           controls: 0, // Show player controls
                           modestbranding: 1, // Hide YouTube branding
                           rel: 0, // Do not show related videos at the end

@@ -68,7 +68,7 @@ const Page = () => {
     height: "280",
     playerVars: {
       playsinline: 1,
-      autoplay: 1, // Disable autoplay
+      autoplay: 0, // Disable autoplay
       controls: 0, // Show player controls
       modestbranding: 1, // Hide YouTube branding
       rel: 0, // Do not show related videos at the end
@@ -140,7 +140,7 @@ const Page = () => {
                     </div>
                   ))}
 
-                  {videos.slice(1, 12).map((video, key) => (
+                  {videos.slice(1, 10).map((video, key) => (
                     <div key={key} className="col-lg-4 mb-5">
                       <div
                         class="card pt-2"

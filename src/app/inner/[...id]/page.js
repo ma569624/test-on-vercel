@@ -8,12 +8,15 @@ export const page = async ({ params }) => {
   const newsdata = await fetch(`${process.env.API}/api/blogs?_id=${id}`).then(
     (res) => res.json()
   );
+
   const toplinks = await fetch(`${process.env.API}/api/toplinks`).then((res) =>
     res.json()
   );
+
   const blogdisplay = await fetch(`${process.env.API}/api/blogdisplay`).then(
     (res) => res.json()
   );
+  
   const rajiya = await fetch(`${process.env.API}/api/rajiya`).then((res) =>
     res.json()
   );

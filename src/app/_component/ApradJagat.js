@@ -86,8 +86,6 @@ const ApradJagat = (props) => {
             </div>
             <div className="">
               <h4
-                className="mainheading"
-                style={{ cursor: "pointer" }}
                 onClick={() => handleClick(data[0]._id)}
               >
                 {/* {data.Heading}   */}
@@ -134,7 +132,7 @@ const ApradJagat = (props) => {
                   dangerouslySetInnerHTML={{
                     __html:
                     item && item.Matter
-                        ? extractFirstPTag(item.Matter, 46, 25)
+                        ? extractFirstPTag(item.Matter, 46, 20)
                         : "",
                   }}
                 />

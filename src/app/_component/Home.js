@@ -54,12 +54,12 @@ const Home = () => {
               <Image
                 width={200}
                 height={80}
-                src={category.length > 0 ? `${API}${category[4].Image}` : "/default.jpg"}
+                src={toplinks.length > 0 ? `${API}${toplinks[4].Image}` : "/default.jpg"}
                 alt=""
               />
               <MdDoubleArrow size={50} />
               <h2 className="title_text">
-                {category.length > 4 ? category[4].name : <></>}
+                {toplinks.length > 4 ? toplinks[4].name : <></>}
               </h2>
             </div>
             <div className="row">
