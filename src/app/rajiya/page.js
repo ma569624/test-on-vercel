@@ -63,9 +63,9 @@ const Page = () => {
 
     const nextPage = () => {
       setCurrentPage(currentPage + 1);
-      if (showitem > 4) {
+      // if (showitem > 4) {
         setShowitems(showitem + 4);
-      }
+      // }
     };
 
     const prevPage = () => {

@@ -21,17 +21,17 @@ const BreakingNew = () => {
   };
 
   const handleMouseEnter = () => {
-    if (swiperRef.current && !autoplayPaused) {
-      swiperRef.current.swiper.autoplay.stop();
-      setAutoplayPaused(true);
-    }
+    // if (swiperRef.current && !autoplayPaused) {
+    //   swiperRef.current.swiper.autoplay.stop();
+    //   setAutoplayPaused(true);
+    // }
   };
 
   const handleMouseLeave = () => {
-    if (swiperRef.current && autoplayPaused) {
-      swiperRef.current.swiper.autoplay.start();
-      setAutoplayPaused(false);
-    }
+    // if (swiperRef.current && autoplayPaused) {
+    //   swiperRef.current.swiper.autoplay.start();
+    //   setAutoplayPaused(false);
+    // }
   };
 
   useEffect(() => {
@@ -52,10 +52,9 @@ const BreakingNew = () => {
                   </h5>
                 </div>
                 <div className="col-lg-9" style={{ height: "fit-content" }} onMouseEnter={handleMouseEnter} // Call handleMouseEnter when mouse enters Swiper
-              onMouseLeave={handleMouseLeave} >
+                  onMouseLeave={handleMouseLeave} >
                   <Swiper
-                  ref={swiperRef} // Attach ref to the Swiper component
-
+                  // ref={swiperRef} // Attach ref to the Swiper component
                     centeredSlides={true}
                     spaceBetween={0}
                     loop={true}

@@ -21,7 +21,6 @@ import { TbPlayerTrackNextFilled } from "react-icons/tb";
 import { TbPlayerTrackPrevFilled } from "react-icons/tb";
 import { useRouter } from "next/navigation";
 
-
 const Detail = (props) => {
   const router = useRouter();
   const { id, section } = props.params;
@@ -54,9 +53,10 @@ const Detail = (props) => {
   }
 
   const currentPageUrl =
-  router.asPath;
+    typeof window !== "undefined" ? window.location.href : "";
   //   const currentPageUrl = "dkjdjhf";
   // console.warn(data);
+  const newwindow = typeof window !== "undefined" && window;
   const title = data.Heading;
   const message = `Third Eye World News`;
   const sectionname = data.Category;
@@ -64,17 +64,17 @@ const Detail = (props) => {
     "https://whatsapp.com/channel/0029Va65zjQKbYMGyJFMnh0y";
   const youtubeheading = "हमारे वाट्सअप चैनल को फॉलो करें।";
 
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState(newwindow.innerWidth);
 
   useEffect(() => {
     const handleResize = () => {
-      setWindowWidth(window.innerWidth);
+      setWindowWidth(newwindow.innerWidth);
     };
 
-    window.addEventListener("resize", handleResize);
+    newwindow.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      newwindow.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -225,6 +225,20 @@ const Detail = (props) => {
     setOpen(!open);
   };
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const formattedDate = date.toLocaleString("hi-IN", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+      hour12: true, // for AM/PM format
+    });
+    return formattedDate;
+  };
+
   return (
     <>
       <section className="post-details-area pt-3 pb-3">
@@ -266,35 +280,34 @@ const Detail = (props) => {
                       alt=""
                     />
                     <div className="postbox__text-meta ">
-                      <div className="small-meta-text">
-                        <span>
-                          आकाश श्रीवास्तव,थर्ड आई वर्ल्ड न्यूज़ नेटवर्क
-                        </span>
-                        <div className="gourp">
-                          <span>update 16 feb 2024</span>
-                          <span>12:03:00</span>
-                          <span>Delhi</span>
-                          <span>(03)</span>
-                        </div>
+                      <div className="small-meta-text d-grid">
+                        <strong style={{ fontSize: 14, color: "#000" }}>
+                          {data !== undefined &&
+                            data.ReporterName !== undefined &&
+                            data.ReporterName}
+                        </strong>
+                        <strong style={{ fontSize: 14, color: "#000" }}>
+                          {data &&
+                            data.Designation !== undefined &&
+                            data.Designation}
+                        </strong>
+                        <strong style={{ fontSize: 14, color: "#000" }}>
+                          {data && data.DatePlace !== undefined
+                            ? data.DatePlace
+                            : ""}
+                        </strong>
+                        <strong style={{ fontSize: 14, color: "#000" }}>
+                        अपडेटेड {formatDate(data.CreationDate)} 
+                          {data && data.DatePlace !== undefined
+                            ? data.DatePlace
+                            : ""}
+                        </strong>
                       </div>
                     </div>
-                    <div className="mb-4" style={{ display: "grid", gap: 2 }}>
-                      <strong style={{ fontSize: 15, color: "#000" }}>
-                        {data !== undefined &&
-                          data.ReporterName !== undefined &&
-                          data.ReporterName}
-                      </strong>
-                      <strong style={{ fontSize: 15, color: "#000" }}>
-                        {data && data.DatePlace !== undefined
-                          ? data.DatePlace
-                          : ""}
-                      </strong>
-                      <strong style={{ fontSize: 15, color: "#000" }}>
-                        {data &&
-                          data.Designation !== undefined &&
-                          data.Designation}
-                      </strong>
-                    </div>
+                    <div
+                      className="mb-4"
+                      style={{ display: "grid", gap: 2 }}
+                    ></div>
                     <div className="post-thumbmb-25">
                       {
                         <Image
@@ -314,7 +327,10 @@ const Detail = (props) => {
                       </strong>
                     </div>
 
-                    <p className="mt-4" style={{ fontSize: 18, lineHeight: 1.5 }}>
+                    <p
+                      className="mt-4"
+                      style={{ fontSize: 18, lineHeight: 1.5 }}
+                    >
                       {data && data.Matter && (
                         <div
                           dangerouslySetInnerHTML={{ __html: data.Matter }}

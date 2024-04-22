@@ -55,7 +55,7 @@ export const Nav = (props) => {
 
               {data.map((item, key) => (
                 <li key={key}>
-                  <Link className="hover-effect" href={`${item.data[0]._id}`}>
+                  <Link className="hover-effect" href={`/inner/${item.data[0]._id}`}>
                     {item.section.SectionName}
                     <IoMdArrowDropdown size={30} />
                   </Link>
@@ -130,7 +130,7 @@ export const Nav = (props) => {
                       {rajiya.map((item, key) => (
                         <div key={key}>
                           <h6 className="mb-0 mt-2 fw-bold text-center bg-danger py-2" >{item.section.StateName}</h6>
-                          {item.data.map((filteredBlog, key) => (
+                          {item.data.slice(0, 2).map((filteredBlog, key) => (
                             <li key={key}>
                               <div
                                 className="d-grid align-items-center justify-content-around p-2"
