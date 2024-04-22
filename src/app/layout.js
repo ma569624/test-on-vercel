@@ -74,10 +74,10 @@ async function fetchIdharbhi() {
 
 async function fetchAllBlogs() {
   try {
-    const allblogs = await fetch(`${process.env.API}/api/allblogs?name=block`, {
-      cache: "no-store",
-    });
-    return allblogs.json();
+    // const allblogs = await fetch(`${process.env.API}/api/allblogs?name=block`, {
+    //   cache: "no-store",
+    // });
+    // return allblogs.json();
   } catch (error) {
     console.error("Error fetching all blogs:", error);
     throw error;
@@ -158,14 +158,14 @@ export default async function RootLayout({ children }) {
           />
 
           {children}
-          <Footer
+          {/* <Footer
             API={API}
             advert={advert}
             idharbhi={idharbhi.data}
             toplinks={toplinks}
             allblogs={allblogs.data}
             Rajiyablogs={Rajiyablogs.data}
-          />
+          /> */}
         </AppProvider>
       </body>
     </html>
