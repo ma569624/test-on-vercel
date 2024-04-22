@@ -253,7 +253,6 @@ const Detail = (props) => {
                     src={`${API}${sidenamerajiya.Image1}`}
                   />
                 )}
-                {/* sjbhf */}
                 <h2 className="text-center mb-0">{data.Category}</h2>
               </div>
               <div className="post-details ">
