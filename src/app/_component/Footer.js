@@ -28,6 +28,10 @@ const Footer = (props) => {
 
   useEffect(() => {
     setRajiya(props.Rajiyablogs)
+  },[props])
+
+  useEffect(() => {
+    
     const handleScroll = () => {
       const scrollTop = window.pageYOffset;
 

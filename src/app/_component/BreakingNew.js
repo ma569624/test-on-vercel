@@ -10,12 +10,12 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import Link from "next/link";
 
 const BreakingNew = () => {
-  const [autoplayPaused, setAutoplayPaused] = useState(true);
+  const [autoplayPaused, setAutoplayPaused] = useState(false);
   const swiperRef = useRef(null);
   const API = process.env.NEXT_PUBLIC_BASE_URL;
   const [breakingNews, setBreakingNews] = useState([]);
   const getbreaking = async () => {
-    const res = await fetch(`${API}/api/blogs?Headline=true`);
+    const res = await fetch(`${API}/api/blogs?Status=active&Headline=true`);
     const data = await res.json();
     setBreakingNews(data.data);
   };

@@ -9,6 +9,10 @@ export default async function Main() {
   return (
     <>
       <Home/>
+      <div class="box">
+  <div class="box-inner">
+  </div>
+</div>
     </>
   );
 }

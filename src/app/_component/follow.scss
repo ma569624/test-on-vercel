@@ -1,0 +1,157 @@
+$color_1: #ffffff;
+
+.share-button-wrap__share-icon {
+  background: radial-gradient(ellipse at top, yellowgreen 0%, #14f47c 100%);
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 2px solid hwb(259 2% 3% / 0.837);
+  position: absolute;
+  padding: 10px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 2px 1px 10px #9f6e6e;
+  visibility: visible;
+  cursor: pointer;
+  z-index: 999;
+
+  .fa-share-alt {
+    margin: 0 auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 43%;
+    transform: translateY(-50%);
+    text-align: center;
+    font-size: 26px;
+    color: $color_1;
+  }
+}
+
+.share-button-wrap__center-icon {
+  height: 125px;
+  width: 125px;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 61px;
+  right: 12px;
+  transition: 0.3s linear all;
+  margin: 0 auto;
+  z-index: 99;
+}
+
+.share-button-wrap__social-icon-wrap {
+  ul {
+    li {
+      list-style: none;
+      width: min-content;
+      width: 28px;
+      height: 28px;
+      
+      text-align: center;
+      
+
+      &:nth-child(1) {
+        position: absolute;
+        top: 7px;
+        line-height: 22px;
+        left: 48px;
+        svg{
+          color: #ffffff;
+        }
+        
+      }
+
+      &:nth-child(2) {
+        position: absolute;
+        top: 23px;
+        line-height: 20px;
+        left: 84px;
+        svg{
+          color: #ffffff;
+        }
+      }
+
+      &:nth-child(3) {
+        position: absolute;
+        line-height: 20px;
+        top: 61px;
+        left: 90px;
+        svg{
+          color: #ffffff;
+          border-radius: 8px;
+          // background-color: rgb(41, 162, 19);
+        }
+      }
+
+      &:nth-child(4) {
+        position: absolute;
+        line-height: 20px;
+        top: 91px;
+        left: 51px;
+        svg{
+          color: red;
+          border-radius: 8px;
+          // background-color: rgb(41, 162, 19);
+        }
+      }
+
+      &:nth-child(5) {
+        position: absolute;
+        line-height: 20px;
+        top: 66px;
+        left: 12px;
+        svg{
+          color: #ffffff;
+          border-radius: 8px;
+          background-color: rgb(41, 162, 19);
+        }
+        
+      }
+
+      &:nth-child(6) {
+        position: absolute;
+        line-height: 22px;
+        top: 25px;
+        left: 13px;
+        svg{
+          color: #ffffff;
+          border-radius: 5px;
+          background-color: red;
+        }
+      }
+
+      &:hover {
+        background-color: #01020378;
+        border-radius: 50%;
+        border: 3px solid yellow;
+        // padding: 4px;
+      }
+    }
+  }
+
+  position: absolute;
+  background: #1050f5;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  transition: 0.3s linear all;
+  transform: scale(0);
+}
+
+.open-icon {
+  .share-button-wrap__center-icon {
+    .share-button-wrap__social-icon-wrap {
+      transform: scale(1);
+      position: absolute;
+    }
+  }
+}
+
+.title-show {
+  position: absolute;
+  left: 14px;
+}

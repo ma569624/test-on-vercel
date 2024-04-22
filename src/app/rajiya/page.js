@@ -43,7 +43,7 @@ const Page = () => {
   }
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [showitem, setShowitems] = useState(1);
+  const [showitem, setShowitems] = useState(0);
 
   const limit = 10;
 
@@ -63,12 +63,16 @@ const Page = () => {
 
     const nextPage = () => {
       setCurrentPage(currentPage + 1);
-      setShowitems(showitem + 4);
+      if (showitem > 4) {
+        setShowitems(showitem + 4);
+      }
     };
 
     const prevPage = () => {
       setCurrentPage(currentPage - 1);
-      setShowitems(showitem - 4);
+      if (showitem > 4) {
+        setShowitems(showitem - 4);
+      }
     };
 
     return (

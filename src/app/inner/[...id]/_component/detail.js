@@ -17,11 +17,13 @@ import { useReactToPrint } from "react-to-print";
 import { FcShare } from "react-icons/fc";
 import YouTube from "react-youtube";
 import Model from "@/app/_component/model";
-import { useRouter } from "next/router";
 import { TbPlayerTrackNextFilled } from "react-icons/tb";
 import { TbPlayerTrackPrevFilled } from "react-icons/tb";
+import { useRouter } from "next/navigation";
+
 
 const Detail = (props) => {
+  const router = useRouter();
   const { id, section } = props.params;
   const Category = section;
 
@@ -52,7 +54,7 @@ const Detail = (props) => {
   }
 
   const currentPageUrl =
-    typeof window !== "undefined" ? window.location.href : "";
+  router.asPath;
   //   const currentPageUrl = "dkjdjhf";
   // console.warn(data);
   const title = data.Heading;
@@ -62,9 +64,33 @@ const Detail = (props) => {
     "https://whatsapp.com/channel/0029Va65zjQKbYMGyJFMnh0y";
   const youtubeheading = "हमारे वाट्सअप चैनल को फॉलो करें।";
 
-  const whatsAppUrl = `whatsapp://send?text= ${encodeURIComponent(
-    `\r *${message}* \n\n *${sectionname}* \n\n ${data.Heading} \n *Link*:- ${currentPageUrl} \n\n *${youtubeheading}* \n ${youtubechannel} `
-  )}`;
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  let whatsAppUrl;
+
+  if (windowWidth <= 768) {
+    // Mobile
+    whatsAppUrl = `whatsapp://send?text=${encodeURIComponent(
+      `\r*${message}*\n\n*${sectionname}*\n\n${data.Heading}\n*Link*:- ${currentPageUrl}\n\n*${youtubeheading}*\n${youtubechannel}`
+    )}`;
+  } else {
+    // Desktop
+    whatsAppUrl = `https://web.whatsapp.com/send?text=${encodeURIComponent(
+      `\r*${message}*\n*${sectionname}*\n${data.Heading}\n*Link*:- ${currentPageUrl}\n\n*${youtubeheading}*\n${youtubechannel}`
+    )}`;
+  }
 
   const newfburl = `https://www.facebook.com/share.php?u=${currentPageUrl}&title=${title}`;
 
@@ -81,7 +107,7 @@ const Detail = (props) => {
 
   useEffect(() => {
     getdata();
-  }, [data]);
+  }, [props]);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -141,7 +167,7 @@ const Detail = (props) => {
           </h2>
         </div>
 
-        {blogs.slice(1, 10).map((item, key) => {
+        {blogs.slice(0, 10).map((item, key) => {
           return (
             <div className="hero pos-relative mb-2 post-more" key={key}>
               <div className="hero__thumb">
@@ -206,7 +232,6 @@ const Detail = (props) => {
           <div className="row" ref={componentRef}>
             <div className="col-xl-8 col-lg-8">
               <div className="patti-bg" style={{ border: "4px solid yellow" }}>
-                
                 {sidenamerajiya.Image1 && (
                   <Image
                     height={25}
@@ -282,13 +307,14 @@ const Detail = (props) => {
                       }
                       <strong
                         className="mt-2"
-                        style={{ fontSize: 15, color: "#000" }}
+                        style={{ fontSize: 14, color: "#000" }}
                       >
-                        this is capition
+                        {console.log(data)}
+                        {data.Capton && data.Capton}
                       </strong>
                     </div>
 
-                    <p style={{ fontSize: 18, lineHeight: 1.5 }}>
+                    <p className="mt-4" style={{ fontSize: 18, lineHeight: 1.5 }}>
                       {data && data.Matter && (
                         <div
                           dangerouslySetInnerHTML={{ __html: data.Matter }}
