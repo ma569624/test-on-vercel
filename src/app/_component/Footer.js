@@ -15,17 +15,20 @@ import { MdAirplanemodeActive } from "react-icons/md";
 import AppContext from "../_context/AppContext";
 
 const Footer = (props) => {
-  const {Rajiya, AllBlogs} = useContext(AppContext)
+  const {setRajiya} = useContext(AppContext)
   const API = props.API;
-  console.warn(AllBlogs)
+
   const [open, setOpen] = useState(false);
 
   const toggleModal = () => {
+    
     setOpen(!open);
   };
   const [showButton, setShowButton] = useState(false);
 
-  
+  useEffect(() => {
+    setRajiya(props.Rajiyablogs)
+  },[props])
 
   useEffect(() => {
     
@@ -73,10 +76,10 @@ const Footer = (props) => {
         toplinks={props.toplinks}
       />
       <Advert advert={props.advert} endpoint={"jara idhar below"} />
-      <ApradJagat allblogs={AllBlogs} />
+      <ApradJagat allblogs={props.allblogs} />
       <Advert advert={props.advert} endpoint={"khabare rajiyo top"} />
 
-      <KhabreRajiyoki allblogs={Rajiya} />
+      <KhabreRajiyoki allblogs={props.Rajiyablogs} />
       <Advert advert={props.advert} endpoint={"upper vote poll"} />
 
       <VotPoll />
