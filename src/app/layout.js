@@ -33,31 +33,31 @@ async function fetchAdvert() {
   }
 }
 
-async function fetchTagline() {
-  try {
-    const tagline = await fetch(
-      `${process.env.API}/api/tagline?_id=6602a87711e47f88c9059347`,
-      { cache: "no-store" }
-    );
-    return tagline.json();
-  } catch (error) {
-    console.error("Error fetching tagline:", error);
-    throw error;
-  }
-}
+// async function fetchTagline() {
+//   try {
+//     const tagline = await fetch(
+//       `${process.env.API}/api/tagline?_id=6602a87711e47f88c9059347`,
+//       { cache: "no-store" }
+//     );
+//     return tagline.json();
+//   } catch (error) {
+//     console.error("Error fetching tagline:", error);
+//     throw error;
+//   }
+// }
 
-async function fetchTopKhabare() {
-  try {
-    const topKhabare = await fetch(
-      `${process.env.API}/api/blogs?Category=TopKhabare&Status=active`,
-      { cache: "no-store" }
-    );
-    return topKhabare.json();
-  } catch (error) {
-    console.error("Error fetching top khabare:", error);
-    throw error;
-  }
-}
+// async function fetchTopKhabare() {
+//   try {
+//     const topKhabare = await fetch(
+//       `${process.env.API}/api/blogs?Category=TopKhabare&Status=active`,
+//       { cache: "no-store" }
+//     );
+//     return topKhabare.json();
+//   } catch (error) {
+//     console.error("Error fetching top khabare:", error);
+//     throw error;
+//   }
+// }
 
 async function fetchIdharbhi() {
   try {
@@ -111,8 +111,8 @@ export default async function RootLayout({ children }) {
 
   const toplinks = await fetchtoplinks();
   const advert = await fetchAdvert();
-  const tagline = await fetchTagline();
-  const topKhabare = await fetchTopKhabare();
+  // const tagline = await fetchTagline();
+  // const topKhabare = await fetchTopKhabare();
   const idharbhi = await fetchIdharbhi();
   // const allblogs = await fetchAllBlogs();
   // const Rajiyablogs = await fetchRajiyablogs();
@@ -121,7 +121,7 @@ export default async function RootLayout({ children }) {
     <html lang="en">
       <body>
         <AppProvider>
-          <Header
+          {/* <Header
             API={API}
             advert={advert}
             tagline={tagline}
@@ -131,7 +131,7 @@ export default async function RootLayout({ children }) {
             topKhabare={topKhabare.data}
             todaynews={todaynews.data}
             badikhabar={badikhabar.data}
-          />
+          /> */}
 
           {children}
           <Footer
