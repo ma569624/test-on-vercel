@@ -8,6 +8,7 @@ import AppContext from "../_context/AppContext";
 
 const KhabreRajiyoki = (props) => {
   const {Rajiya} = useContext(AppContext)
+
   const router = useRouter();
 
   const MAX_WORDS = 16;
@@ -53,7 +54,7 @@ const KhabreRajiyoki = (props) => {
 
   useEffect(() => {
     getdata();
-  }, [props]);
+  }, [Rajiya]);
 
   const NewsRow = ({ Rajiya }) => {
     // console.warn(Object.values(Rajiya)[0])
@@ -183,7 +184,7 @@ const KhabreRajiyoki = (props) => {
             </div>
           </div>
         </div>
-        {props.allblogs.slice(0, 5).map((item, key) => (
+        {Rajiya.slice(0, 5).map((item, key) => (
           <div className="row mb-1" key={key}>
             <div className="col-lg-9">
               <div className="new_post_title">
