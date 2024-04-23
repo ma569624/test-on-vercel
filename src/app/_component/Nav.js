@@ -7,17 +7,22 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useContext } from "react";
+import AppContext from "../_context/AppContext";
 
 export const Nav = (props) => {
+  const {Rajiya, AllBlogs} = useContext(AppContext)
+
+
   const API = props.API;
   const [blogs, setBlogs] = useState([]);
   const [data, setdata] = useState([]);
   const [rajiya, setRajiya] = useState([]);
-
+ console.warn(AllBlogs)
   useEffect(() => {
-    setdata(props.allblogs.filter((item) => item.section.isHeader === true));
-    setRajiya(props.Rajiyablogs);
-  }, [props]);
+    setdata(AllBlogs.filter((item) => item.section.isHeader === true));
+    setRajiya(Rajiya);
+  }, [Rajiya, AllBlogs, props]);
 
   const router = useRouter();
 

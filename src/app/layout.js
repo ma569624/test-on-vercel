@@ -127,6 +127,8 @@ export default async function RootLayout({ children }) {
   const idharbhi = await fetchIdharbhi();
   const allblogs = await fetchAllBlogs();
   const Rajiyablogs = await fetchRajiyablogs();
+
+  
   
   return (
     <html lang="en">

@@ -49,7 +49,8 @@ const Header = (props) => {
       throw error;
     }
   }
-  useEffect(() => {
+  useEffect(() => { 
+    
     const fetchData = async () => {
       try {
         const allBlogsResponse = await fetch(`${API}/api/allblogs?name=block`);

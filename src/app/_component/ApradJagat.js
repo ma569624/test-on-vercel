@@ -1,12 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MdDoubleArrow } from "react-icons/md";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import ImageTag from "./ImageTag";
+import AppContext from "../_context/AppContext";
 
 const ApradJagat = (props) => {
+  const {AllBlogs} = useContext(AppContext)
+   console.warn(AllBlogs)
   const All = props.allblogs;
   const router = useRouter();
 
@@ -181,7 +184,7 @@ const ApradJagat = (props) => {
   return (
     <section className="news-area new_post_area">
       <div className="container p-lg-0">
-        {props.allblogs.map((item, key) => (
+        {AllBlogs.map((item, key) => (
           <div className="row mb-1" key={key}>
             <div className="col-lg-9">
               <div className="new_post_title">

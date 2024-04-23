@@ -1,11 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MdDoubleArrow } from "react-icons/md";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import AppContext from "../_context/AppContext";
 
 const KhabreRajiyoki = (props) => {
+  const {Rajiya} = useContext(AppContext)
   const router = useRouter();
 
   const MAX_WORDS = 16;
