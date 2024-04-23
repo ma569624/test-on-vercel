@@ -45,6 +45,7 @@ export async function generateMetadata({ params }, parent) {
   const product = await fetch(`${process.env.API}/api/blogs?_id=${id}`).then(
     (res) => res.json()
   );
+  console.log(product.data)
   const previousImages = (await parent).openGraph?.images || [];
   return {
     title: product.data[0].Heading,

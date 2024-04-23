@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import {
   FacebookIcon,
@@ -20,8 +20,11 @@ import Model from "@/app/_component/model";
 import { TbPlayerTrackNextFilled } from "react-icons/tb";
 import { TbPlayerTrackPrevFilled } from "react-icons/tb";
 import { useRouter } from "next/navigation";
+import { MdDoubleArrow } from "react-icons/md";
+import AppContext from "@/app/_context/AppContext";
 
 const Detail = (props) => {
+  const {Rajiya} = useContext(AppContext)
   const router = useRouter();
   const { id, section } = props.params;
   const Category = section;
@@ -83,12 +86,12 @@ const Detail = (props) => {
   if (windowWidth <= 768) {
     // Mobile
     whatsAppUrl = `whatsapp://send?text=${encodeURIComponent(
-      `\r*${message}*\n\n*${sectionname}*\n\n${data.Heading}\n*Link*:- ${currentPageUrl}\n\n*${youtubeheading}*\n${youtubechannel}`
+      `\r*${message}*\n*${sectionname}*\n${data.Heading}\n*Link*:- ${currentPageUrl}\n\n*${youtubeheading}*\n${youtubechannel}`
     )}`;
   } else {
     // Desktop
     whatsAppUrl = `https://web.whatsapp.com/send?text=${encodeURIComponent(
-      `\r*${message}*\n*${sectionname}*\n${data.Heading}\n*Link*:- ${currentPageUrl}\n\n*${youtubeheading}*\n${youtubechannel}`
+      `\r*${message}*\n\n*${sectionname}*\n*${data.Heading}*\n${currentPageUrl}\n\n*${youtubeheading}*\n${youtubechannel}`
     )}`;
   }
 
@@ -104,6 +107,8 @@ const Detail = (props) => {
     setSideNameRajiya(props.rajiya);
     setdata(props.newsdata);
   };
+  const filterlogo = Rajiya.filter(item => item)
+  console.warn(Rajiya[0].section)
 
   useEffect(() => {
     getdata();
@@ -161,7 +166,7 @@ const Detail = (props) => {
           className="section-title2 text-center mb-2 box-shodow"
           style={{ border: "4px solid yellow" }}
         >
-          <h2 className="m-0">
+          <h2 className="m-0 py-2">
             {sidename[0] ? sidename[0].SecondSection : "संबंधित की खबरें और भी"}
             {sidenamerajiya && sidenamerajiya.FirstLink}
           </h2>
@@ -245,15 +250,31 @@ const Detail = (props) => {
         <div className="container p-0">
           <div className="row" ref={componentRef}>
             <div className="col-xl-8 col-lg-8">
-              <div className="patti-bg" style={{ border: "4px solid yellow" }}>
-                {sidenamerajiya.Image1 && (
+              <div
+                className="patti-bg p-1 d-flex gap-2 align-items-center"
+                style={{ border: "4px solid yellow" }}
+              >
+                
+                {sidename && sidename[0] && sidename[0].Image1 && (
                   <Image
-                    height={25}
-                    width={25}
-                    src={`${API}${sidenamerajiya.Image1}`}
+                    height={45}
+                    width={105}
+                    className="ms-4 rounded-3"
+                    src={`${API}${sidename[0].Image1}`}
                   />
                 )}
-                <h2 className="text-center mb-0">{data.Category}</h2>
+                
+                {sidenamerajiya && sidenamerajiya[0] && sidenamerajiya[0].Image1 && (
+                  <Image
+                    height={45}
+                    width={105}
+                    className="ms-4 rounded-3"
+                    src={`${API}${sidenamerajiya[0].Image1}`}
+                  />
+                )}
+                <MdDoubleArrow size={50} className="text-white" />
+
+                <h2 className="text-center mb-0 ms-4">{data.Category}</h2>
               </div>
               <div className="post-details ">
                 <div ref={componentRef}>
@@ -297,7 +318,7 @@ const Detail = (props) => {
                             : ""}
                         </strong>
                         <strong style={{ fontSize: 14, color: "#000" }}>
-                        अपडेटेड {formatDate(data.CreationDate)} 
+                          अपडेटेड {formatDate(data.CreationDate)}
                           {data && data.DatePlace !== undefined
                             ? data.DatePlace
                             : ""}

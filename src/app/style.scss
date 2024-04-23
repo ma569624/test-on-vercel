@@ -146,12 +146,13 @@ header {
 
       .animate-charcter {
         text-align: center;
-        background-image: linear-gradient(-225deg,
+        background-image: linear-gradient(-215deg,
             /* #4c17fb 40%, */
-            red 69%,
+            rgb(63, 28, 221) 19%,
             rgb(28, 242, 31) 29%,
+            rgb(255, 72, 0) 44%,
             #ffffff 29%,
-            hsl(58, 95%, 50%) 100%);
+            hsl(58, 95%, 50%) 60%);
         background-size: auto auto;
         background-clip: border-box;
         background-size: 200% auto;
@@ -159,13 +160,13 @@ header {
         font-family: "Times New Roman", Times, serif;
         font-size: 40px;
         text-align: center;
-        filter: drop-shadow(7px 7px 4px #464b43);
+        filter: drop-shadow(7px 7px 4px #010b11);
         font-weight: 900;
         background-clip: text;
         /* text-fill-color: transparent; */
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        animation: textclip 12s linear infinite;
+        animation: textclip 4s linear infinite;
         display: inline-block;
         font-size: 40px;
       }

@@ -21,57 +21,60 @@ const Header = (props) => {
     setBadikhabar,
     setTodayNews,
     setIdharbhi,
+    Rajiya,
     setRajiya,
     setAllBlogs,
   } = useContext(AppContext);
-  async function fetchAllBlogs() {
-    try {
-      const allblogs = await fetch(
-        `${API}/api/allblogs?name=block`
-      );
 
-      return await allblogs.json();
-    
-    } catch (error) {
-      console.error("Error fetching all blogs:", error);
-      throw error;
-    }
-  }
+  // async function fetchAllBlogs() {
+  //   try {
+  //     const allblogs = await fetch(
+  //       `${API}/api/allblogs?name=block`
+  //     );
 
-  async function fetchRajiyablogs() {
-    try {
-      const Rajiyablogs = await fetch(
-        `${API}/api/allblogs?name=rajiya`
-      );
-      return await Rajiyablogs.json();
-    } catch (error) {
-      console.error("Error fetching Rajiyablogs:", error);
-      throw error;
-    }
-  }
-  useEffect(() => { 
-    
+  //     return await allblogs.json();
+
+  //   } catch (error) {
+  //     console.error("Error fetching all blogs:", error);
+  //     throw error;
+  //   }
+  // }
+
+  // async function fetchRajiyablogs() {
+  //   try {
+  //     const Rajiyablogs = await fetch(
+  //       `${API}/api/allblogs?name=rajiya`
+  //     );
+  //     return await Rajiyablogs.json();
+  //   } catch (error) {
+  //     console.error("Error fetching Rajiyablogs:", error);
+  //     throw error;
+  //   }
+  // }
+  console.warn(props.Rajiyablogs)
+  
+  useEffect(() => {
     const fetchData = async () => {
       try {
-        const allBlogsResponse = await fetch(`${API}/api/allblogs?name=block`);
-        const rajiyablogsResponse = await fetch(`${API}/api/allblogs?name=rajiya`);
-
-        const allBlogsData = await allBlogsResponse.json();
-        const rajiyablogsData = await rajiyablogsResponse.json();
-        console.warn(allBlogsData)
-        setAllBlogs(allBlogsData.data);
-        setRajiya(rajiyablogsData.data);
-        setTopKhabare(props.topKhabare);
-        setToplinks(props.toplinks);
-        setBadikhabar(props.badikhabar);
-        setTodayNews(props.todaynews);
+        // const allBlogsResponse = await fetch(`${API}/api/allblogs?name=block`);
+        // const rajiyablogsResponse = await fetch(`${API}/api/allblogs?name=state`);
+        // const allBlogsData = await allBlogsResponse.json();
+        // const rajiyablogsData = await rajiyablogsResponse.json();
+        // console.warn(allBlogsData)
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       }
     };
 
+    setAllBlogs(props.allblogs);
+   
+    setTopKhabare(props.topKhabare);
+    setToplinks(props.toplinks);
+    setBadikhabar(props.badikhabar);
+    setTodayNews(props.topKhabare);
     fetchData();
-  }, []);
+    
+  }, [props]);
 
   return (
     <>

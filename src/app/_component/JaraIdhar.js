@@ -117,6 +117,7 @@ const JaraIdhar = (props) => {
                   }}
                   modules={[Autoplay, Pagination, Navigation]}
                   className="mySwiper"
+                  style={{backgroundColor: '#7a7171'}}
                 >
                   {data.map((item, index) => (
                     <SwiperSlide key={index}>

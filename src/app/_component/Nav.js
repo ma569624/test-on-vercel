@@ -12,15 +12,13 @@ import AppContext from "../_context/AppContext";
 
 export const Nav = (props) => {
   const {Rajiya, AllBlogs} = useContext(AppContext)
-
-
   const API = props.API;
   const [blogs, setBlogs] = useState([]);
   const [data, setdata] = useState([]);
   const [rajiya, setRajiya] = useState([]);
  console.warn(AllBlogs)
   useEffect(() => {
-    setdata(AllBlogs.filter((item) => item.section.isHeader === true));
+    setdata(AllBlogs && AllBlogs.filter((item) => item.section.isHeader === true));
     setRajiya(Rajiya);
   }, [Rajiya, AllBlogs, props]);
 
@@ -58,10 +56,10 @@ export const Nav = (props) => {
                 </Link>
               </li>
 
-              {data.map((item, key) => (
+              {data && data.map((item, key) => (
                 <li key={key}>
                   <Link className="hover-effect" href={`/inner/${item.data[0]._id}`}>
-                    {item.section.SectionName}
+                    {item.section.category}
                     <IoMdArrowDropdown size={30} />
                   </Link>
                   <ul className="submenu">
@@ -132,9 +130,9 @@ export const Nav = (props) => {
                         backgroundColor: "rgb(14 197 5)",
                       }}
                     >
-                      {rajiya.map((item, key) => (
+                      {rajiya && rajiya.map((item, key) => (
                         <div key={key}>
-                          <h6 className="mb-0 mt-2 fw-bold text-center bg-danger py-2" >{item.section.StateName}</h6>
+                          <h6 className="mb-0 mt-2 fw-bold text-center bg-danger py-2" >{item.section.category}</h6>
                           {item.data.slice(0, 2).map((filteredBlog, key) => (
                             <li key={key}>
                               <div

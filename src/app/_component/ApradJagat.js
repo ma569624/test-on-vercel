@@ -184,21 +184,20 @@ const ApradJagat = (props) => {
   return (
     <section className="news-area new_post_area">
       <div className="container p-lg-0">
-        {AllBlogs.map((item, key) => (
+        {AllBlogs &&  AllBlogs.map((item, key) => (
           <div className="row mb-1" key={key}>
             <div className="col-lg-9">
               <div className="new_post_title">
                 <Image
                   width={200}
                   height={200}
-                  src={item.section.Image2 && `${API}${item.section.Image1}`}
+                  src={item.section.categorylogo && `${API}${item.section.categorylogo}`}
                   alt=""
                 />
                 <MdDoubleArrow size={50} />
                 {/* {console.warn(item.data)} */}
-                <h2 className="title_text">{item.section.SectionName}</h2>
+                <h2 className="title_text">{item.section.category}</h2>
               </div>
-
               <NewsRow Rajiya={item.data} />
             </div>
             <div className="col-lg-3">
@@ -206,11 +205,11 @@ const ApradJagat = (props) => {
                 <Image
                   width={200}
                   height={200}
-                  src={item.section.Image2 && `${API}${item.section.Image2}`}
+                  src={item.section.headinglogo && `${API}${item.section.headinglogo}`}
                   alt=""
                 />
                 <h2 className="title_text_side">
-                  {item.section.SecondSection}
+                  {item.section.heading}
                 </h2>
               </div>
               <SideRow Rajiya={item.data} />

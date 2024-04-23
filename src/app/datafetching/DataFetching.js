@@ -1,15 +1,5 @@
-import "./global.css";
-import "./style.scss";
-import "./bootstrap.min.css";
-import Header from "./_component/Header";
-import Footer from "./_component/Footer";
-import { AppProvider } from "./_context/AppContext";
-// import DataFetching from "./datafetching/DataFetching";
-
-export const metadata = {
-  title: "Third Eye World News",
-  description: "Third Eye World News",
-};
+"use client"
+import React from "react";
 
 const API = process.env.API;
 
@@ -20,7 +10,6 @@ async function fetchtoplinks() {
   }
   return res.json();
 }
-
 
 async function fetchtodaynews() {
   try {
@@ -46,7 +35,6 @@ async function fetchbadikhabar() {
   }
 }
 
-
 async function fetchAdvert() {
   try {
     const advert = await fetch(`${process.env.API}/api/advert?Status=active`);
@@ -60,7 +48,8 @@ async function fetchAdvert() {
 async function fetchTagline() {
   try {
     const tagline = await fetch(
-      `${process.env.API}/api/tagline?_id=6602a87711e47f88c9059347`);
+      `${process.env.API}/api/tagline?_id=6602a87711e47f88c9059347`
+    );
     return tagline.json();
   } catch (error) {
     console.error("Error fetching tagline:", error);
@@ -71,7 +60,8 @@ async function fetchTagline() {
 async function fetchTopKhabare() {
   try {
     const topKhabare = await fetch(
-      `${process.env.API}/api/blogs?Category=TopKhabare&Status=active`, { cache: 'force-cache' });
+      `${process.env.API}/api/blogs?Category=TopKhabare&Status=active`
+    );
     return topKhabare.json();
   } catch (error) {
     console.error("Error fetching top khabare:", error);
@@ -82,7 +72,8 @@ async function fetchTopKhabare() {
 async function fetchIdharbhi() {
   try {
     const idharbhi = await fetch(
-      `${process.env.API}/api/blogs?Category=idharbhi&Status=active`);
+      `${process.env.API}/api/blogs?Category=idharbhi&Status=active`
+    );
     return idharbhi.json();
   } catch (error) {
     console.error("Error fetching idharbhi:", error);
@@ -92,7 +83,7 @@ async function fetchIdharbhi() {
 
 async function fetchAllBlogs() {
   try {
-    const allblogs = await fetch(`${process.env.API}/api/allblogs?name=block`, { cache: 'force-cache' });
+    const allblogs = await fetch(`${process.env.API}/api/allblogs?name=block`);
     return allblogs.json();
   } catch (error) {
     console.error("Error fetching all blogs:", error);
@@ -102,7 +93,9 @@ async function fetchAllBlogs() {
 
 async function fetchRajiyablogs() {
   try {
-    const Rajiyablogs = await fetch(`${process.env.API}/api/allblogs?name=state`, );
+    const Rajiyablogs = await fetch(
+      `${process.env.API}/api/allblogs?name=rajiya`
+    );
     return Rajiyablogs.json();
   } catch (error) {
     console.error("Error fetching Rajiyablogs:", error);
@@ -110,11 +103,7 @@ async function fetchRajiyablogs() {
   }
 }
 
-
-export default async function RootLayout({ children }) {
-
-  
-  
+const DataFetching = async () => {
   const todaynews = await fetchtodaynews();
   const badikhabar = await fetchbadikhabar();
   const toplinks = await fetchtoplinks();
@@ -124,36 +113,17 @@ export default async function RootLayout({ children }) {
   const idharbhi = await fetchIdharbhi();
   const allblogs = await fetchAllBlogs();
   const Rajiyablogs = await fetchRajiyablogs();
-
-  
-  
   return (
-    <html lang="en">
-      <body>
-        <AppProvider>
-         {/* <DataFetching /> */}
-          <Header
-            API={API}
-            advert={advert}
-            tagline={tagline}
-            allblogs={allblogs.data}
-            Rajiyablogs={Rajiyablogs.data}
-            toplinks={toplinks}
-            topKhabare={topKhabare.data}
-            todaynews={todaynews.data}
-            badikhabar={badikhabar.data}
-          />
-          {children}
-          <Footer
-            API={API}
-            advert={advert}
-            idharbhi={idharbhi.data}
-            toplinks={toplinks}
-            Rajiyablogs={Rajiyablogs.data}
-
-          />
-        </AppProvider>
-      </body>
-    </html>
+    todaynews,
+    badikhabar,
+    toplinks,
+    advert,
+    tagline,
+    topKhabare,
+    idharbhi,
+    allblogs,
+    Rajiyablogs
   );
-}
+};
+
+export default DataFetching;
