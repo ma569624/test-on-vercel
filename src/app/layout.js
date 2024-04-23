@@ -19,6 +19,33 @@ async function fetchtoplinks() {
   }
   return res.json();
 }
+
+
+async function fetchtodaynews() {
+  try {
+    const todaynews = await fetch(
+      `${API}/api/blogs?Status=active&Category=primenews`
+    );
+    return todaynews.json();
+  } catch (error) {
+    console.error("Error fetching Rajiyablogs:", error);
+    throw error;
+  }
+}
+
+async function fetchbadikhabar() {
+  try {
+    const badikhabar = await fetch(
+      `${API}/api/blogs?page=1&limit=12&Status=active&Category=mainnews`
+    );
+    return badikhabar.json();
+  } catch (error) {
+    console.error("Error fetching Rajiyablogs:", error);
+    throw error;
+  }
+}
+
+
 async function fetchAdvert() {
   try {
     const advert = await fetch(`${process.env.API}/api/advert?Status=active`);
@@ -78,30 +105,6 @@ async function fetchRajiyablogs() {
       `${process.env.API}/api/allblogs?name=rajiya`
     );
     return Rajiyablogs.json();
-  } catch (error) {
-    console.error("Error fetching Rajiyablogs:", error);
-    throw error;
-  }
-}
-
-async function fetchtodaynews() {
-  try {
-    const todaynews = await fetch(
-      `${API}/api/blogs?Status=active&Category=primenews`
-    );
-    return todaynews.json();
-  } catch (error) {
-    console.error("Error fetching Rajiyablogs:", error);
-    throw error;
-  }
-}
-
-async function fetchbadikhabar() {
-  try {
-    const badikhabar = await fetch(
-      `${API}/api/blogs?page=1&limit=12&Status=active&Category=mainnews`
-    );
-    return badikhabar.json();
   } catch (error) {
     console.error("Error fetching Rajiyablogs:", error);
     throw error;
