@@ -121,7 +121,7 @@ export default async function RootLayout({ children }) {
     <html lang="en">
       <body>
         <AppProvider>
-          {/* <Header
+          <Header
             API={API}
             advert={advert}
             tagline={tagline}
@@ -131,17 +131,17 @@ export default async function RootLayout({ children }) {
             topKhabare={topKhabare.data}
             todaynews={todaynews.data}
             badikhabar={badikhabar.data}
-          /> */}
+          />
 
           {children}
-          <Footer
+          {/* <Footer
             API={API}
             advert={advert}
             idharbhi={idharbhi.data}
             toplinks={toplinks}
             // allblogs={allblogs.data}
             // Rajiyablogs={Rajiyablogs.data}
-          />
+          /> */}
         </AppProvider>
       </body>
     </html>

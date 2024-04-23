@@ -58,8 +58,8 @@ const Header = (props) => {
         const allBlogsData = await allBlogsResponse.json();
         const rajiyablogsData = await rajiyablogsResponse.json();
         console.warn(allBlogsData)
-        setAllBlogs(allBlogsData.data);
-        setRajiya(rajiyablogsData.data);
+        // setAllBlogs(allBlogsData.data);
+        // setRajiya(rajiyablogsData.data);
         setTopKhabare(props.topKhabare);
         setToplinks(props.toplinks);
         setBadikhabar(props.badikhabar);
@@ -124,7 +124,7 @@ const Header = (props) => {
 
           <div className="row patti-margin-bottom">
             <div className="col-lg-12">
-              <Nav {...props} />
+              {/* <Nav {...props} /> */}
             </div>
           </div>
 
