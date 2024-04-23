@@ -12,15 +12,64 @@ import { useContext, useEffect } from "react";
 import AppContext from "../_context/AppContext";
 
 const Header = (props) => {
-  const API = props.API;
-  const { setTopKhabare, setToplinks, setBadikhabar, setTodayNews } = useContext(AppContext);
+  // const API = props.API;
+  const API = process.env.NEXT_PUBLIC_BASE_URL;
 
+  const {
+    setTopKhabare,
+    setToplinks,
+    setBadikhabar,
+    setTodayNews,
+    setIdharbhi,
+    setRajiya,
+    setAllBlogs,
+  } = useContext(AppContext);
+  async function fetchAllBlogs() {
+    try {
+      const allblogs = await fetch(
+        `${API}/api/allblogs?name=block`
+      );
+
+      return await allblogs.json();
+    
+    } catch (error) {
+      console.error("Error fetching all blogs:", error);
+      throw error;
+    }
+  }
+
+  async function fetchRajiyablogs() {
+    try {
+      const Rajiyablogs = await fetch(
+        `${API}/api/allblogs?name=rajiya`
+      );
+      return await Rajiyablogs.json();
+    } catch (error) {
+      console.error("Error fetching Rajiyablogs:", error);
+      throw error;
+    }
+  }
   useEffect(() => {
-      setTopKhabare(props.topKhabare),
-      console.warn(props.todaynews)
-      setToplinks(props.toplinks),
-      setBadikhabar(props.badikhabar);
-      setTodayNews(props.todaynews);
+    const fetchData = async () => {
+      try {
+        const allBlogsResponse = await fetch(`${API}/api/allblogs?name=block`);
+        const rajiyablogsResponse = await fetch(`${API}/api/allblogs?name=rajiya`);
+
+        const allBlogsData = await allBlogsResponse.json();
+        const rajiyablogsData = await rajiyablogsResponse.json();
+        console.warn(allBlogsData)
+        setAllBlogs(allBlogsData.data);
+        setRajiya(rajiyablogsData.data);
+        setTopKhabare(props.topKhabare);
+        setToplinks(props.toplinks);
+        setBadikhabar(props.badikhabar);
+        setTodayNews(props.todaynews);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   return (
@@ -87,7 +136,6 @@ const Header = (props) => {
               </div>
             </div>
           )}
-
         </Container>
         <FixedAdvert
           advert={props.advert}
