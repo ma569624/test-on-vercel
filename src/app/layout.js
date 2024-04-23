@@ -73,28 +73,28 @@ async function fetchIdharbhi() {
 }
 
 async function fetchAllBlogs() {
-  try {
-    const allblogs = await fetch(`${process.env.API}/api/allblogs?name=block`, {
-      cache: "no-store",
-    });
-    return allblogs.json();
-  } catch (error) {
-    console.error("Error fetching all blogs:", error);
-    throw error;
-  }
+  // try {
+  //   const allblogs = await fetch(`${process.env.API}/api/allblogs?name=block`, {
+  //     cache: "no-store",
+  //   });
+  //   return allblogs.json();
+  // } catch (error) {
+  //   console.error("Error fetching all blogs:", error);
+  //   throw error;
+  // }
 }
 
 async function fetchRajiyablogs() {
-  try {
-    const Rajiyablogs = await fetch(
-      `${process.env.API}/api/allblogs?name=rajiya`,
-      { cache: "no-store" }
-    );
-    return Rajiyablogs.json();
-  } catch (error) {
-    console.error("Error fetching Rajiyablogs:", error);
-    throw error;
-  }
+  // try {
+  //   const Rajiyablogs = await fetch(
+  //     `${process.env.API}/api/allblogs?name=rajiya`,
+  //     { cache: "no-store" }
+  //   );
+  //   return Rajiyablogs.json();
+  // } catch (error) {
+  //   console.error("Error fetching Rajiyablogs:", error);
+  //   throw error;
+  // }
 }
 
 async function fetchtodaynews() {
@@ -144,7 +144,7 @@ export default async function RootLayout({ children }) {
     <html lang="en">
       <body>
         <AppProvider >
-          <Header
+          {/*<Header
             API={API}
             advert={advert}
             tagline={tagline}
@@ -155,17 +155,18 @@ export default async function RootLayout({ children }) {
             topKhabare={topKhabare.data}
             todaynews={todaynews.data}
             badikhabar={badikhabar.data}
-          />
+          />*/}
 
           {children}
-        <Footer
+
+       {/* <Footer
             API={API}
             advert={advert}
             idharbhi={idharbhi.data}
             toplinks={toplinks}
             allblogs={allblogs.data}
             Rajiyablogs={Rajiyablogs.data}
-          /> 
+          /> */}
         </AppProvider>
       </body>
     </html>
