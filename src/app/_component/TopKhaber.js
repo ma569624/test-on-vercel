@@ -16,7 +16,7 @@ const TopKhaber = (props) => {
   const { topKhabare } = useContext(AppContext)
 
   const handleClick = (id) => {
-    router.push(`/inner/${id}`);
+    router.push(`/Top/${id}`);
   };
 
   const [autoplayPaused, setAutoplayPaused] = useState(false);
@@ -102,7 +102,7 @@ const TopKhaber = (props) => {
                             />
                           )}
 
-                          <h3 onClick={() => handleClick(item._id)}>
+                          <h3 onClick={() => handleClick(item.order)}>
                             {item.Heading &&
                               sliceByWords(item.Heading, MAX_WORDS)}
                           </h3>

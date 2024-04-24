@@ -16,9 +16,9 @@ const Page = () => {
         if (!response.ok) {
           throw new Error("Failed to fetch team data");
         }
-        const data = await response.json();
-
-        setTeam(data);
+        let data = await response.json();
+        data.reverse();
+        setTeam(data);  
       } catch (error) {
         console.error("Error fetching team data:", error);
       }

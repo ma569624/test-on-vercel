@@ -19,7 +19,7 @@ const Home = () => {
   const router = useRouter();
 
   const handleClick = (id) => {
-    router.push(`/inner/${id}`);
+    router.push(`/Top/${id}`);
   };
 
   console.warn(API);
@@ -81,7 +81,7 @@ const Home = () => {
                         alt="hero image"
                       />
                     </div>
-                    <h4 className="title" onClick={() => handleClick(item._id)}>
+                    <h4 className="title" onClick={() => handleClick(item.order)}>
                       {item.Heading && sliceByWords(item.Heading, MAX_WORDS)}
                     </h4>
                   </div>

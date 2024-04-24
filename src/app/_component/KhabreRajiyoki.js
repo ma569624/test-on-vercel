@@ -44,7 +44,7 @@ const KhabreRajiyoki = (props) => {
 
   // Function to handle link click
   const handleClick = (id) => {
-    router.push(`/inner/${id}`);
+    router.push(`/Top/${id}`,{ scroll: true });
   };
 
   const API = process.env.NEXT_PUBLIC_BASE_URL;
@@ -80,14 +80,14 @@ const KhabreRajiyoki = (props) => {
                 height={275}
                 src={data[0].Image ? `${API}${data[0].Image}` : "/default.jpg"}
                 alt="hero image"
-                onClick={() => handleClick(data[0]._id)}
+                onClick={() => handleClick(data[0].order)}
               />
               {/* <ImageTag width={500}
                 height={275}
                 src={`${data[0].Image}`} /> */}
             </div>
             <div className="">
-              <h4 onClick={() => handleClick(data[0]._id)}>
+              <h4 onClick={() => handleClick(data[0].order)}>
                 {/* {data.Heading}   */}
                 {data[0].Heading && sliceByWords(data[0].Heading, 20)}
               </h4>
@@ -120,11 +120,11 @@ const KhabreRajiyoki = (props) => {
                     // src={data.Image && `${API}${data.Image}`}
                     src={item.Image ? `${API}${item.Image}` : "/default.jpg"}
                     alt="hero image"
-                    onClick={() => handleClick(item._id)}
+                    onClick={() => handleClick(item.order)}
                   />
                 </div>
 
-                <h4 onClick={() => handleClick(item._id)}>
+                <h4 onClick={() => handleClick(item.order)}>
                   {item.Heading && sliceByWords(item.Heading, 14)}
                 </h4>
                 <div
@@ -165,10 +165,10 @@ const KhabreRajiyoki = (props) => {
                   // src={`${API}${data.Image}`}
                   src={item.Image ? `${API}${item.Image}` : "/default.jpg"}
                   alt="hero image"
-                  onClick={() => handleClick(item._id)}
+                  onClick={() => handleClick(item.order)}
                 />
               </div>
-              <h4 onClick={() => handleClick(item._id)}>
+              <h4 onClick={() => handleClick(item.order)}>
                 {item.Heading && sliceByWords(item.Heading, MAX_WORDS)}
               </h4>
             </div>

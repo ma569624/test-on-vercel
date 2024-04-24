@@ -34,7 +34,7 @@ const JaraIdhar = (props) => {
   const router = useRouter();
 
   const handleClick = (id, category) => {
-    router.push(`/inner/${id}`);
+    router.push(`/Top/${id}`,{ scroll: true });
   };
 
   const [data, setdata] = useState([]);
@@ -133,7 +133,7 @@ const JaraIdhar = (props) => {
                         <div className="text_box">
                           <h4
                             className=""
-                            onClick={() => handleClick(item._id)}
+                            onClick={() => handleClick(item.order)}
                           >
                             {item.Heading &&
                               sliceByWords(item.Heading, MAX_WORDS)}

@@ -20,6 +20,7 @@ const Header = (props) => {
     setToplinks,
     setBadikhabar,
     setTodayNews,
+    idharbhi, 
     setIdharbhi,
     Rajiya,
     setRajiya,
@@ -65,11 +66,12 @@ const Header = (props) => {
         console.error("Error fetching data:", error);
       }
     };
-
+    console.warn(props.idharbhi)
+    setIdharbhi(props.idharbhi)
     setAllBlogs(props.allblogs);
-   
     setTopKhabare(props.topKhabare);
     setToplinks(props.toplinks);
+    
     setBadikhabar(props.badikhabar);
     setTodayNews(props.topKhabare);
     fetchData();

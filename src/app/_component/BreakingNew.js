@@ -51,15 +51,14 @@ const BreakingNew = () => {
                     <MdDoubleArrow style={{ color: "#fff" }} size={28} />
                   </h5>
                 </div>
-                <div className="col-lg-9" style={{ height: "fit-content" }} onMouseEnter={handleMouseEnter} // Call handleMouseEnter when mouse enters Swiper
-                  onMouseLeave={handleMouseLeave} >
+                <div className="col-lg-9" style={{ height: "fit-content" }} >
                   <Swiper
                   // ref={swiperRef} // Attach ref to the Swiper component
                     centeredSlides={true}
                     spaceBetween={0}
                     loop={true}
                     autoplay={{
-                      delay: 0,
+                      delay: 6500,
                       disableOnInteraction: false,
                     }}
                     pagination={{
@@ -70,12 +69,13 @@ const BreakingNew = () => {
                     allowTouchMove={true}
                     modules={[Autoplay, Pagination, Navigation]}
                     className="mySwiper"
-                    speed={8000}
+                    speed={5000}
+
                   >
                     {breakingNews.map((item, key) => (
                       <SwiperSlide key={key}>
-                        <Link className="breaking__text" href={`/inner/${item._id}`}>
-                          {item.Heading}
+                        <Link className="breaking__text" href={`/Top/${item.order}`}>
+                        {item.Heading}
                         </Link>
                       </SwiperSlide>
                     ))}

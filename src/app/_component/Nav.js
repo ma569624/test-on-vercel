@@ -26,7 +26,7 @@ export const Nav = (props) => {
 
   // Function to handle link click
   const handleClick = (id) => {
-    router.push(`/inner/${id}`);
+    router.push(`/Top/${id}`);
   };
 
   return (
@@ -58,7 +58,7 @@ export const Nav = (props) => {
 
               {data && data.map((item, key) => (
                 <li key={key}>
-                  <Link className="hover-effect" href={`/inner/${item.data[0]._id}`}>
+                  <Link className="hover-effect" href={`/Top/${item.data[0].order}`}>
                     {item.section.category}
                     <IoMdArrowDropdown size={30} />
                   </Link>
@@ -106,7 +106,7 @@ export const Nav = (props) => {
                                 fontWeight: 600,
                                 lineHeight: "22px",
                               }}
-                              onClick={() => handleClick(filteredBlog._id)}
+                              onClick={() => handleClick(filteredBlog.order)}
                             >
                               {filteredBlog.Heading}
                             </h4>{" "}
@@ -168,7 +168,7 @@ export const Nav = (props) => {
                                     fontWeight: 600,
                                     lineHeight: "22px",
                                   }}
-                                  onClick={() => handleClick(filteredBlog._id)}
+                                  onClick={() => handleClick(filteredBlog.order)}
                                 >
                                   {filteredBlog.Heading}
                                 </h4>{" "}

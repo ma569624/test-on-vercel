@@ -3804,7 +3804,7 @@ iframe {
 .team img {
   width: 110px;
   height: 110px;
-  border-radius: 50%;
+  border-radius: 40%;
   border: 2px solid yellow;
   filter: drop-shadow(rgb(135, 126, 126) 1px 0px 1px);
 }

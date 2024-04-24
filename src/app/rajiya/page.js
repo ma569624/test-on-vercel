@@ -12,25 +12,14 @@ import { TbPlayerTrackPrevFilled } from "react-icons/tb";
 const Page = () => {
   // const [Rajiya, setRajiya] = useState([]);
   const { Rajiya } = useContext(AppContext);
+  
   const newdata = Rajiya;
   const router = useRouter();
   const API = process.env.NEXT_PUBLIC_BASE_URL;
-  const [data, setData] = useState([]);
-  const [blogs, setBlogs] = useState([]);
   console.warn(newdata);
-  useEffect(() => {
-    const sections = Rajiya.map((item) => item.section).flat();
-    const blogData = Rajiya.map((item) => item.data).flat();
+  
 
-    setData(sections);
-    setBlogs(blogData);
-  }, [Rajiya]);
-
-  useEffect(() => {
-    console.warn("Rajiya:", Rajiya);
-    console.warn("data:", data);
-    console.warn("blogs:", blogs);
-  }, [Rajiya, data, blogs]);
+ 
   const MAX_WORDS = 16;
 
   function sliceByWords(text, maxWords) {
@@ -49,17 +38,17 @@ const Page = () => {
 
   const handleClick = (id) => {
     console.warn(id);
-    router.push(`/inner/${id}`);
+    router.push(`/Top/${id}`);
   };
 
   const NewsRow = ({ Rajiya }) => {
-    const [data, setData] = useState([]);
-    useEffect(() => {
-      console.warn(Rajiya);
-      let filter = blogs.filter((item) => item.Category.includes(Rajiya));
-      setData(filter);
-      console.warn(filter);
-    }, [Rajiya]);
+    // const [data, setData] = useState([]);
+    // useEffect(() => {
+    //   console.warn(Rajiya);
+    //   let filter = blogs.filter((item) => item.Category.includes(Rajiya));
+    //   setData(filter);
+    //   console.warn(filter);
+    // }, [Rajiya]);
 
     const nextPage = () => {
       setCurrentPage(currentPage + 1);
@@ -82,7 +71,7 @@ const Page = () => {
             <div className="section-title mt-2">
               <div className="container">
                 <div className="row rajiya">
-                  {data.slice(showitem, showitem + 4).map((item, key) => (
+                  {Rajiya && Rajiya.slice(showitem, showitem + 4).map((item, key) => (
                     <div className="col-lg-3" key={key}>
                       <div className="postbox mb-25">
                         <div className="postbox__thumb image-container">
@@ -106,7 +95,7 @@ const Page = () => {
                         <div className="postbox__text mt-4">
                           <h4
                             className="title-18 pr-0"
-                            onClick={() => handleClick(item._id)}
+                            onClick={() => handleClick(item.order)}
                           >
                             {item.Heading &&
                               sliceByWords(item.Heading, MAX_WORDS)}
@@ -192,7 +181,7 @@ const Page = () => {
             </div>
           </div>
         </div>
-        {data.map((item, key) => (
+        {Rajiya && Rajiya.map((item, key) => (
           <div className="container p-lg-0 pb-5" key={key}>
             <div className="row ">
               <div className="col-lg-12">
@@ -205,19 +194,19 @@ const Page = () => {
                     
                     className="me-4 ml-1"
                     src={
-                      item.Image1 !== undefined ? `${API}${item.Image1}` : ""
+                      item.section.categorylogo !== undefined ? `${API}${item.section.categorylogo}` : ""
                     }
                     alt=""
                   />
                   <h2 className="m-0 ">
                     {/* {data[0].Heading} */}
                     <MdDoubleArrow size={50} className="mr-2" />
-                    {item.StateName}
+                    {item.section.category}
                   </h2>
                 </div>
               </div>
             </div>
-            <NewsRow Rajiya={item.StateName} />
+            <NewsRow Rajiya={item.data} />
           </div>
         ))}
       </section>

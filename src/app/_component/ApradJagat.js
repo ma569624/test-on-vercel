@@ -41,11 +41,15 @@ const ApradJagat = (props) => {
     }
     return "";
 }
-  
 
+
+// const handleRouteChange = () => {
+//   window.scrollTo({ top: 500, behavior: 'smooth' }); // Scroll to the desired position
+// };
   // Function to handle link click
   const handleClick = (id) => {
-    router.push(`/inner/${id}`);
+    window.scrollTo({ top: 500, behavior: 'smooth' });
+    router.push(`/Top/${id}`);
   };
 
   const API = process.env.NEXT_PUBLIC_BASE_URL;
@@ -81,7 +85,7 @@ const ApradJagat = (props) => {
                 height={275}
                 src={data[0].Image ? `${API}${data[0].Image}`: "/default.jpg"}
                 alt="hero image"
-                onClick={() => handleClick(data[0]._id)}
+                onClick={() => handleClick(data[0].order)}
               />
               {/* <ImageTag width={500}
                 height={275}
@@ -89,7 +93,7 @@ const ApradJagat = (props) => {
             </div>
             <div className="">
               <h4
-                onClick={() => handleClick(data[0]._id)}
+                onClick={() => handleClick(data[0].order)}
               >
                 {/* {data.Heading}   */}
                 {data[0].Heading && sliceByWords(data[0].Heading, 20)}
@@ -123,11 +127,11 @@ const ApradJagat = (props) => {
                     // src={data.Image && `${API}${data.Image}`}
                     src={item.Image ? `${API}${item.Image}` : "/default.jpg"}
                     alt="hero image"
-                    onClick={() => handleClick(item._id)}
+                    onClick={() => handleClick(item.order)}
                   />
                 </div>
 
-                <h4 onClick={() => handleClick(item._id)}>
+                <h4 onClick={() => handleClick(item.order)}>
                   {item.Heading && sliceByWords(item.Heading, 14)}
                 </h4>
                 <div
@@ -168,10 +172,10 @@ const ApradJagat = (props) => {
                   // src={`${API}${data.Image}`}
                   src={item.Image ? `${API}${item.Image}` : "/default.jpg"}
                   alt="hero image"
-                  onClick={() => handleClick(item._id)}
+                  onClick={() => handleClick(item.order)}
                 />
               </div>
-              <h4 onClick={() => handleClick(item._id)}>
+              <h4 onClick={() => handleClick(item.order)}>
                 {item.Heading && sliceByWords(item.Heading, MAX_WORDS)}
               </h4>
             </div>

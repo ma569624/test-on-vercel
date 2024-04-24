@@ -100,8 +100,17 @@ header {
     @include main-border;
     @include shadow;
     display: flex;
+    flex-wrap: wrap;
     padding: 5px;
     justify-content: space-between;
+
+    @media screen and (max-width: 768px) {
+      & {
+        // display: grid;
+        gap: 5px;
+      }
+
+    }
 
     .header__top-menu {
       @include hover-effect;
@@ -135,9 +144,41 @@ header {
     padding: 5px;
     display: flex;
 
+    ul {
+      justify-content: center;
+    }
+
     .first {
       flex: 0 1 27%;
       max-width: 50%;
+    }
+
+    @media screen and (max-width: 768px) {
+
+      & {
+        display: grid;
+      }
+
+      /* Styles for screens up to 768px width */
+      .first {
+        margin-bottom: 10px;
+        flex: 0 1 100%;
+        max-width: 100%;
+        padding: 0 !important;
+        margin: 0 !important;
+
+        img {
+          width: 300px;
+        }
+      }
+
+      .second {
+        max-width: 100% !important;
+
+        .animate-charcter {
+          font-size: 20px !important;
+        }
+      }
     }
 
     .second {
@@ -190,6 +231,22 @@ header {
         padding: 0;
 
         li {
+
+
+          @media screen and (max-width: 768px) {
+
+            /* Styles for screens up to 768px width */
+            a {
+              font-size: 15px !important;
+            }
+
+            .submenu {
+              display: none;
+            }
+          }
+
+
+
           color: white;
           display: inline-block;
           position: relative;
@@ -245,6 +302,7 @@ header {
             }
           }
 
+
           &:hover {
             ul.submenu {
               opacity: 1;
@@ -272,28 +330,64 @@ header {
 
 footer {
 
+  @media screen and (max-width: 768px) {
+
+    /* Styles for screens up to 768px width */
+    & {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+  }
+
   @include main;
   border-radius: 10px;
   margin-top: 4px;
   padding: 8px 10px 8px 10px;
 
+
+
   .header__top-area {
+
+
+
     margin-bottom: $space_bottom;
 
     display: flex;
+    flex-wrap: wrap;
     padding: 2px;
     justify-content: space-between;
 
     .header__top-menu {
+
+      @media screen and (max-width: 768px) {
+
+        /* Styles for screens up to 768px width */
+        & {
+          font-size: 12px;
+        }
+      }
+
       @include hover-effect;
       color: $color_2;
       font-weight: bold;
       border-radius: 9px;
       text-shadow: rgb(21, 47, 130) 2px 2px;
-      background: linear-gradient(90deg, yellow 50%, transparent 50%), linear-gradient(90deg, yellow 50%, transparent 50%), linear-gradient(0deg, yellow 50%, transparent 50%), linear-gradient(0deg, yellow 50%, transparent 50%);
-      background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
-      background-size: 6px 3px, 6px 3px, 3px 6px, 3px 6px;
-      background-position: 0% 0%, 100% 100%, 0% 100%, 100% 0px;
+      background: linear-gradient(90deg, yellow 50%, transparent 50%),
+      linear-gradient(90deg, yellow 50%, transparent 50%),
+      linear-gradient(0deg, yellow 50%, transparent 50%),
+      linear-gradient(0deg, yellow 50%, transparent 50%);
+      background-repeat: repeat-x,
+      repeat-x,
+      repeat-y,
+      repeat-y;
+      background-size: 6px 3px,
+      6px 3px,
+      3px 6px,
+      3px 6px;
+      background-position: 0% 0%,
+      100% 100%,
+      0% 100%,
+      100% 0px;
       cursor: pointer;
       padding: 10px;
       animation: dash 10s linear infinite;
@@ -324,6 +418,8 @@ footer {
   .sec-tag {
     display: flex;
     gap: 2rem;
+    margin-bottom: 7px;
+
 
     li {
       border: 2px solid yellow;
@@ -349,7 +445,31 @@ footer {
   margin-bottom: $space_bottom;
   border: 2px solid #000;
 
+
+  @media screen and (max-width: 768px) {
+
+    /* Styles for screens up to 768px width */
+    .swiper-slide {
+      margin: 6px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    a {
+      padding: 0;
+    }
+  }
+
   .breaking__title {
+    @media screen and (max-width: 768px) {
+
+      /* Styles for screens up to 768px width */
+      & {
+        text-align: center;
+        width: 100%;
+      }
+    }
+
     font-size: 20px;
     font-weight: 900;
     text-transform: uppercase;
@@ -364,12 +484,12 @@ footer {
     line-height: 1.2;
 
     background: -webkit-gradient(linear,
-        left top,
-        right top,
-        from(yellow),
-        color-stop(#fff),
-        color-stop(blue),
-        to(#fff));
+      left top,
+      right top,
+      from(yellow),
+      color-stop(#fff),
+      color-stop(blue),
+      to(#fff));
     background: -o-linear-gradient(left, yellow, yellow, blue, #fff, #fff);
     background: linear-gradient(to right, yellow, yellow, blue, #fff, #fff);
     background-clip: text;
@@ -412,6 +532,17 @@ footer {
 }
 
 .hero_post_area {
+
+  @media screen and (max-width: 768px) {
+
+    /* Styles for screens up to 768px width */
+    & {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+  }
+
+
   margin-bottom: $space_bottom;
 
   .container {
@@ -593,6 +724,18 @@ footer {
           overflow: hidden;
           cursor: pointer;
 
+          @media screen and (max-width: 768px) {
+
+            /* Styles for screens up to 768px width */
+            & {
+              height: 117px;
+            }
+
+            img {
+              height: 117px;
+            }
+          }
+
           img {
             transition: transform 0.3s ease-in-out;
             transform: scale(1);
@@ -627,7 +770,7 @@ footer {
           max-height: 190px;
 
           p {
-            
+
             padding-left: 4px;
             padding-right: 8px;
             font-weight: 600;
@@ -777,7 +920,7 @@ footer {
       cursor: pointer;
       text-shadow: #777a84 1px 1px !important;
 
-      &:hover{
+      &:hover {
         color: #4006ee;
       }
 
@@ -790,6 +933,24 @@ footer {
   $background-color_1: #a01f1f;
   margin-bottom: $space_bottom;
 
+  .cat-sm-post {
+    img {
+      width: 100%;
+      border-bottom: 3px solid yellow;
+    }
+    
+  }
+
+  @media screen and (max-width: 768px) {
+    /* Styles for screens up to 768px width */
+
+    .cat-sm-post {
+      img {
+        width: 100%;
+      }
+      
+    }
+  }
 
   .jaraidhar_post_title {
     margin-bottom: 8px;
@@ -802,6 +963,26 @@ footer {
     align-items: center;
     gap: 154px;
     justify-content: space-around;
+
+    @media screen and (max-width: 768px) {
+      
+      /* Styles for screens up to 768px width */
+      & {
+        gap: 0px !important;
+      }
+
+      .cat-sm-post {
+
+        img {
+          width: 100%;
+          
+          margin-left: 0;
+        }
+      }
+    }
+    
+
+
 
     .title_text {
       font-family: $font-family_1;
@@ -943,9 +1124,10 @@ footer {
       font-weight: 700;
     }
   }
- 
+
 }
-.total-count{
+
+.total-count {
   text-shadow: #777a84 1px 1px !important;
 }
 
@@ -1094,6 +1276,9 @@ $background-color_1: #eee6e6;
     }
 
     h2 {
+
+
+
       text-align: center;
       width: 100%;
       text-shadow: rgb(21, 47, 130) 4px 4px;
@@ -1114,8 +1299,40 @@ $background-color_1: #eee6e6;
 }
 
 
+.post-details-area{
+  @media screen and (max-width: 768px) {
+    .patti-bg {
+      img{
+        padding: 0 !important;
+      margin: 0 !important;
+      width: 80px;
+      }
+      h2{
+        margin-left: 0px !important;
+      }
+    }
+  }
+}
+.post-details {
+
+  
+
+  .post-thumbmb-25 {
 
 
+    @media screen and (max-width: 768px) {
 
+      /* Styles for screens up to 768px width */
+      img {
+        height: 220px;
+      }
+    }
+  }
 
+}
 
+.repo-img{
+   border-radius: 50%;
+   filter: drop-shadow(rgb(102, 102, 102) 4px 4px 1px);
+   border: 2px solid yellow;
+}

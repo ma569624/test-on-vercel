@@ -24,7 +24,7 @@ import { MdDoubleArrow } from "react-icons/md";
 import AppContext from "@/app/_context/AppContext";
 
 const Detail = (props) => {
-  const {Rajiya} = useContext(AppContext)
+  const { Rajiya } = useContext(AppContext);
   const router = useRouter();
   const { id, section } = props.params;
   const Category = section;
@@ -107,8 +107,6 @@ const Detail = (props) => {
     setSideNameRajiya(props.rajiya);
     setdata(props.newsdata);
   };
-  const filterlogo = Rajiya.filter(item => item)
-  console.warn(Rajiya[0].section)
 
   useEffect(() => {
     getdata();
@@ -131,32 +129,46 @@ const Detail = (props) => {
 
   useEffect(() => {
     getblogs();
-  }, [currentPage, limit, data.Category]);
+  }, [currentPage, sidename, limit, data.Category]);
 
   const getsection = async () => {
     const cat = await fetch(
-      `${API}/api/blogdisplay?SectionName=${data.Category}`
+      // `http://localhost:5000/api/categories?category=${data.Category}`
+      `${API}/api/categories?category=${data.Category}`
     );
     const sectiondata = await cat.json();
-    setSideName(sectiondata);
-    console.warn(sectiondata);
+    setSideName(sectiondata.data);
+    // console.warn(sectiondata);
   };
+
+
   useEffect(() => {
     getsection();
-  }, [blogs]);
+  }, [data.Category]);
 
   const nextPage = () => {
-    setCurrentPage(currentPage + 1);
+    if (currentPage - 9 < total) {
+      setCurrentPage(currentPage + 1);
+      window.scrollTo({ top: 500, behavior: "smooth" });
+    }
   };
 
   const prevPage = () => {
-    setCurrentPage(currentPage - 1);
+    if (currentPage > 0) {
+      setCurrentPage(currentPage - 1);
+      window.scrollTo({ top: 500, behavior: "smooth" });
+      setdata(filteredBlog[0]);
+    }
   };
+
   const LoadingNewdata = (NewId) => {
+    console.log("bbhjbj");
     const filteredBlog = blogs.filter(
       (item) => item._id.toString() == NewId.toString()
     );
-    setdata(filteredBlog[0]);
+    router.push(`/Top/${filteredBlog[0].order}`);
+    window.scrollTo({ top: 500, behavior: "smooth" });
+    // setdata(filteredBlog[0]);
   };
 
   const Khabare = () => {
@@ -166,10 +178,7 @@ const Detail = (props) => {
           className="section-title2 text-center mb-2 box-shodow"
           style={{ border: "4px solid yellow" }}
         >
-          <h2 className="m-0 py-2">
-            {sidename[0] ? sidename[0].SecondSection : "संबंधित की खबरें और भी"}
-            {sidenamerajiya && sidenamerajiya.FirstLink}
-          </h2>
+          <h2 className="m-0 py-2">{sidename[0] ? sidename[0].heading : 'इस सेक्शन से जुड़ी और ख़बरें'}</h2>
         </div>
 
         {blogs.slice(0, 10).map((item, key) => {
@@ -196,6 +205,7 @@ const Detail = (props) => {
             </div>
           );
         })}
+
         <h6 className=" total-count text-center fs-6 bg-danger p-2 rounded-5 fw-bold text-white shadow">
           इस सेक्शन की कुल खबरें: {total}
         </h6>
@@ -247,31 +257,22 @@ const Detail = (props) => {
   return (
     <>
       <section className="post-details-area pt-3 pb-3">
-        <div className="container p-0">
+        <div className="container p-lg-0">
           <div className="row" ref={componentRef}>
             <div className="col-xl-8 col-lg-8">
               <div
                 className="patti-bg p-1 d-flex gap-2 align-items-center"
                 style={{ border: "4px solid yellow" }}
               >
-                
-                {sidename && sidename[0] && sidename[0].Image1 && (
+                {sidename && sidename[0] && sidename[0].categorylogo && (
                   <Image
                     height={45}
                     width={105}
                     className="ms-4 rounded-3"
-                    src={`${API}${sidename[0].Image1}`}
+                    src={`${API}${sidename[0].categorylogo}`}
                   />
                 )}
-                
-                {sidenamerajiya && sidenamerajiya[0] && sidenamerajiya[0].Image1 && (
-                  <Image
-                    height={45}
-                    width={105}
-                    className="ms-4 rounded-3"
-                    src={`${API}${sidenamerajiya[0].Image1}`}
-                  />
-                )}
+
                 <MdDoubleArrow size={50} className="text-white" />
 
                 <h2 className="text-center mb-0 ms-4">{data.Category}</h2>
@@ -288,6 +289,7 @@ const Detail = (props) => {
                     <Image
                       width={87}
                       height={99}
+                      className="m-1"
                       src={
                         data.ReporterImage
                           ? `${API}${data.ReporterImage}`
@@ -318,7 +320,7 @@ const Detail = (props) => {
                             : ""}
                         </strong>
                         <strong style={{ fontSize: 14, color: "#000" }}>
-                          अपडेटेड {formatDate(data.CreationDate)}
+                        ताज़ा अपडेट {formatDate(data.CreationDate)}
                           {data && data.DatePlace !== undefined
                             ? data.DatePlace
                             : ""}

@@ -36,7 +36,7 @@ const Footer = (props) => {
       const scrollTop = window.pageYOffset;
 
       // Show button when user scrolls beyond a certain threshold (e.g., 100 pixels)
-      setShowButton(scrollTop > 1400 && scrollTop !== 0);
+      setShowButton(scrollTop > 1200 && scrollTop !== 0);
     };
 
     // Add scroll event listener
@@ -86,7 +86,7 @@ const Footer = (props) => {
       <Advert advert={props.advert} endpoint={"footer upper"} />
 
       <footer>
-        <div className="container p-lg-0">
+        <div className="container p-0">
           <div className="footer_box">
             <div className="row">
               <div className="col-lg-12">
@@ -115,7 +115,10 @@ const Footer = (props) => {
               <div className="col-xl-4">
                 <div className="footer_name_sec">
                   <div className="row">
+                  
                     <div className="col-lg-6">
+                    <div className="d-flex gap-2">
+                    <Image src={'/default_repoter.png'} className="repo-img" width={87} height={99} alt="default_repoter" />
                       <ul>
                         <li>
                           <span>नाम</span>
@@ -130,6 +133,7 @@ const Footer = (props) => {
                           <span>मोबाइल नंबर</span>
                         </li>
                       </ul>
+                    </div>
                     </div>
                   </div>
                 </div>

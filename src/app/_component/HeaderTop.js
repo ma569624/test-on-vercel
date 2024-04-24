@@ -17,7 +17,9 @@ const HeaderTop = () => {
         <div className="hover-effect header__top-menu">
           विज्ञापन के लिए संपर्क करें 👈
         </div>
-
+        <div className="top header__top-menu">
+          ख़ोजें <FaSearch />
+        </div>
         <div className="header__top-menu model" onClick={toggleModal}>
           <div>अपना सहयोग दें</div>
           <Image width={24} height={25} src={"/Donate.svg"} alt="" />
@@ -27,9 +29,6 @@ const HeaderTop = () => {
           सब्सक्राइब करें <FaBell size={17} />
         </div>
 
-        <div className="top header__top-menu">
-          ख़ोजें <FaSearch />
-        </div>
       </div>
       <Model open={open} />
     </>

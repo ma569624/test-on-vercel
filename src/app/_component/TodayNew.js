@@ -36,7 +36,7 @@ const TodayNew = (props) => {
   }
   // Function to handle link click
   const handleClick = (id) => {
-    router.push(`/inner/${id}`);
+    router.push(`/Top/${id}`);
   };
 
   const [videos, setVideos] = useState([]);
@@ -103,12 +103,12 @@ const TodayNew = (props) => {
                       height={275}
                       src={todaynews[0].Image ? `${API}${todaynews[0].Image}` : "/default.jpg"}
                       alt="hero image"
-                      onClick={() => handleClick(todaynews[0]._id)}
+                      onClick={() => handleClick(todaynews[0].order)}
                     />
                   </div>
                   <div className="">
                     <h4
-                      onClick={() => handleClick(todaynews[0]._id)}
+                      onClick={() => handleClick(todaynews[0].order)}
                     >
                       {/* {data.Heading}   */}
                       {todaynews[0].Heading &&
@@ -141,11 +141,11 @@ const TodayNew = (props) => {
                             : "/default.jpg"
                         }
                         alt="hero image"
-                        onClick={() => handleClick(todaynews._id)}
+                        onClick={() => handleClick(todaynews.order)}
                       />
                     </div>
 
-                    <h4 className="" onClick={() => handleClick(todaynews._id)}>
+                    <h4 className="" onClick={() => handleClick(todaynews.order)}>
                       {todaynews.Heading && sliceByWords(todaynews.Heading, 14)}
                     </h4>
                   </div>
@@ -156,7 +156,7 @@ const TodayNew = (props) => {
           </div>
           <div className="col-lg-3">
             <div className="new_post_title">
-              <Link href="/youtube" className="d-flex align-items-center">
+              <Link href="/VideoNews" className="d-flex align-items-center">
                 <Image
                   width={200}
                   height={200}
