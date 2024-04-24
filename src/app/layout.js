@@ -40,6 +40,17 @@ async function fetchAdvert() {
   }
 }
 
+
+async function fetchTopKhabare() {
+  try {
+    const topKhabare = await fetch(
+      `${process.env.API}/api/blogs?Category=title1&Status=active`, { cache: 'no-store' });
+    return topKhabare.json();
+  } catch (error) {
+    console.error("Error fetching top khabare:", error);
+    throw error;
+  }
+}
 async function fetchtodaynews() {
   try {
     const todaynews = await fetch(
@@ -65,21 +76,12 @@ async function fetchbadikhabar() {
 }
 
 
-async function fetchTopKhabare() {
-  try {
-    const topKhabare = await fetch(
-      `${process.env.API}/api/blogs?Category=title1&Status=active`, { cache: 'no-store' });
-    return topKhabare.json();
-  } catch (error) {
-    console.error("Error fetching top khabare:", error);
-    throw error;
-  }
-}
+
 
 async function fetchIdharbhi() {
   try {
     const idharbhi = await fetch(
-      `${process.env.API}/api/blogs?Category=title1&Status=active`, { cache: 'no-store' });
+      `${process.env.API}/api/blogs?Category=title4&Status=active`, { cache: 'no-store' });
     return idharbhi.json();
   } catch (error) {
     console.error("Error fetching idharbhi:", error);

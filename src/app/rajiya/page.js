@@ -123,7 +123,7 @@ const Page = () => {
         <div className="row ">
           <div className="col-lg-12">
             <div className="row">
-              <div className="col-3 mx-auto">
+              <div className="col-lg-3 mx-auto">
                 <h6 className="total-count text-center fs-6 bg-danger p-2 rounded-5 fw-bold text-white shadow">
                   इस सेक्शन की कुल खबरें:{" "}
                 </h6>

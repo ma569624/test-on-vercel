@@ -113,7 +113,7 @@ const Page = () => {
                         }}
                       >
                         {/* style={{ filter: 'drop-shadow(rgb(23, 137, 60) 7px 8px 13px)' }} */}
-                        <div className="video">
+                        <div className="video respo-youtube-video">
                           <YouTube
                             className="card-img-top mt-5 mx-auto text-center"
                             videoId={video.id[0].videoId}
@@ -141,7 +141,7 @@ const Page = () => {
                   ))}
 
                   {videos.slice(1, 10).map((video, key) => (
-                    <div key={key} className="col-lg-4 mb-5">
+                    <div key={key} className="col-lg-4 mb-3">
                       <div
                         class="card pt-2"
                         style={{
@@ -154,7 +154,7 @@ const Page = () => {
                       >
                         {/* style={{ filter: 'drop-shadow(rgb(23, 137, 60) 7px 8px 13px)' }} */}
                         <div
-                          className="video"
+                          className="video respo-youtube-small"
                           onClick={() => mainvideo(video._id)}
                         >
                           <YouTube
@@ -182,11 +182,8 @@ const Page = () => {
                   ))}
                 </div>
 
-                <div
-                  className="row align-items-sm-center"
-                  style={{ marginTop: "50px" }}
-                >
-                  <div className="col-lg-12 d-flex justify-content-between">
+                <div className="row align-items-sm-center resp-youtbe-bottom">
+                  <div className="col-lg-12 d-flex justify-content-between ">
                     <div className="text-center">
                       <div
                         style={{
@@ -206,8 +203,8 @@ const Page = () => {
                           अपना सहयोग दें
                         </h4>
                       </div>
-                      <button
-                        className="border-0 bg-white mt-2"
+                      <div
+                        className="border-0"
                         onClick={toggleModal}
                       >
                         <Image
@@ -221,10 +218,10 @@ const Page = () => {
                             width: "30px",
                           }}
                         />
-                      </button>
+                      </div>
                     </div>
 
-                    <div>
+                    <div  className="btn-logo">
                       <div
                         style={{
                           backgroundColor: "red",

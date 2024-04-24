@@ -26,7 +26,8 @@ export const Nav = (props) => {
 
   // Function to handle link click
   const handleClick = (id) => {
-    router.push(`/Top/${id}`);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    router.push(`/Top/${id}`, { scroll: true });
   };
 
   return (

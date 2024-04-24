@@ -73,7 +73,7 @@ const Header = (props) => {
     setToplinks(props.toplinks);
     
     setBadikhabar(props.badikhabar);
-    setTodayNews(props.topKhabare);
+    setTodayNews(props.todaynews);
     fetchData();
     
   }, [props]);
