@@ -89,7 +89,7 @@ async function fetchIdharbhi() {
 
 async function fetchAllBlogs() {
   try {
-    const allblogs = await fetch(`${process.env.API}/api/allblogs?name=block`, { cache: 'no-store' });
+    const allblogs = await fetch(`${process.env.API}/api/allblogs?name=block`);
     return allblogs.json();
   } catch (error) {
     console.error("Error fetching all blogs:", error);
@@ -99,7 +99,7 @@ async function fetchAllBlogs() {
 
 async function fetchRajiyablogs() {
   try {
-    const Rajiyablogs = await fetch(`${process.env.API}/api/allblogs?name=state`, { cache: 'no-store' } );
+    const Rajiyablogs = await fetch(`${process.env.API}/api/allblogs?name=state`);
     return Rajiyablogs.json();
   } catch (error) {
     console.error("Error fetching Rajiyablogs:", error);
