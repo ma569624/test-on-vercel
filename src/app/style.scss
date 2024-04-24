@@ -101,16 +101,10 @@ header {
     @include shadow;
     display: flex;
     flex-wrap: wrap;
-    padding: 5px;
+    // padding: 5px;
     justify-content: space-between;
 
-    @media screen and (max-width: 768px) {
-      & {
-        // display: grid;
-        gap: 5px;
-      }
-
-    }
+    
 
     .header__top-menu {
       @include hover-effect;
@@ -127,7 +121,6 @@ header {
       animation: dash 10s linear infinite;
       text-shadow: rgb(21, 47, 130) 4px 4px !important;
       cursor: pointer;
-
     }
 
     .header__top-menu.model {
@@ -350,13 +343,12 @@ footer {
 
   .header__top-area {
 
-
-
+    
     margin-bottom: $space_bottom;
 
     display: flex;
     flex-wrap: wrap;
-    padding: 2px;
+    // padding: 2px;
     justify-content: space-between;
 
     .header__top-menu {
@@ -452,7 +444,7 @@ footer {
 
     /* Styles for screens up to 768px width */
     .swiper-slide {
-      margin: 6px;
+      // margin: 6px;
       padding-left: 10px;
       padding-right: 10px;
     }
@@ -1332,6 +1324,9 @@ $background-color_1: #eee6e6;
 
       h2 {
         margin-left: 0px !important;
+        text-align: left !important;
+        font-size: 20px;
+        font-weight: 600;
       }
     }
   }

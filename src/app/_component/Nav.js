@@ -63,6 +63,7 @@ export const Nav = (props) => {
                     {item.section.category}
                     <IoMdArrowDropdown size={30} />
                   </Link>
+                  
                   <ul className="submenu">
                     <Scrollbars
                       style={{
