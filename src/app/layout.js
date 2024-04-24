@@ -23,7 +23,9 @@ async function fetchtoplinks() {
 async function fetchTagline() {
   try {
     const tagline = await fetch(
-      `${process.env.API}/api/tagline?_id=6602a87711e47f88c9059347`,{ cache: 'no-store' });
+      `${process.env.API}/api/tagline?_id=6602a87711e47f88c9059347`,
+      { cache: "no-store" }
+    );
     return tagline.json();
   } catch (error) {
     console.error("Error fetching tagline:", error);
@@ -40,11 +42,12 @@ async function fetchAdvert() {
   }
 }
 
-
 async function fetchTopKhabare() {
   try {
     const topKhabare = await fetch(
-      `${process.env.API}/api/blogs?Category=title1&Status=active`, { cache: 'no-store' });
+      `${process.env.API}/api/blogs?Category=title1&Status=active`,
+      { cache: "no-store" }
+    );
     return topKhabare.json();
   } catch (error) {
     console.error("Error fetching top khabare:", error);
@@ -54,7 +57,8 @@ async function fetchTopKhabare() {
 async function fetchtodaynews() {
   try {
     const todaynews = await fetch(
-      `${API}/api/blogs?Status=active&Category=title2`, { cache: 'no-store' }
+      `${API}/api/blogs?Status=active&Category=title2`,
+      { cache: "no-store" }
     );
     return todaynews.json();
   } catch (error) {
@@ -75,13 +79,12 @@ async function fetchbadikhabar() {
   }
 }
 
-
-
-
 async function fetchIdharbhi() {
   try {
     const idharbhi = await fetch(
-      `${process.env.API}/api/blogs?Category=title4&Status=active`, { cache: 'no-store' });
+      `${process.env.API}/api/blogs?Category=title4&Status=active`,
+      { cache: "no-store" }
+    );
     return idharbhi.json();
   } catch (error) {
     console.error("Error fetching idharbhi:", error);
@@ -101,7 +104,9 @@ async function fetchAllBlogs() {
 
 async function fetchRajiyablogs() {
   try {
-    const Rajiyablogs = await fetch(`${process.env.API}/api/allblogs?name=state`);
+    const Rajiyablogs = await fetch(
+      `${process.env.API}/api/allblogs?name=state`
+    );
     return Rajiyablogs.json();
   } catch (error) {
     console.error("Error fetching Rajiyablogs:", error);
@@ -119,12 +124,10 @@ async function fetchRajiyablogs() {
 //   }
 // }
 
-
 export default async function RootLayout({ children }) {
-
   // const data = await fetchother();
   // console.log(data)
-  
+
   const todaynews = await fetchtodaynews();
   const badikhabar = await fetchbadikhabar();
   const toplinks = await fetchtoplinks();
@@ -135,13 +138,14 @@ export default async function RootLayout({ children }) {
   const allblogs = await fetchAllBlogs();
   const Rajiyablogs = await fetchRajiyablogs();
 
-  
-  
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+      </head>
       <body>
         <AppProvider>
-         {/* <DataFetching /> */}
+          {/* <DataFetching /> */}
           <Header
             API={API}
             advert={advert}
