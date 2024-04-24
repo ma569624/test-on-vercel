@@ -72,7 +72,7 @@ const BreakingNew = () => {
                     speed={5000}
 
                   >
-                    {breakingNews.map((item, key) => (
+                    {breakingNews && breakingNews.map((item, key) => (
                       <SwiperSlide key={key}>
                         <Link className="breaking__text" href={`/Top/${item.order}`}>
                         {item.Heading}

@@ -55,7 +55,7 @@ async function fetchtodaynews() {
 async function fetchbadikhabar() {
   try {
     const badikhabar = await fetch(
-      `${API}/api/blogs?page=1&limit=12&Status=active&Category=title3`, { cache: 'no-store' }
+      `${API}/api/blogs?page=1&limit=12&Status=active&Category=title3`
     );
     return badikhabar.json();
   } catch (error) {

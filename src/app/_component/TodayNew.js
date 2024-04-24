@@ -95,7 +95,7 @@ const TodayNew = (props) => {
             </div>
             <div className="news_postbox_wrapper">
               {/* <div className="col-lg-6"> */}
-              {todaynews.length > 0 ? (
+              {todaynews && todaynews.length > 0 ? (
                 <div className="single_post">
                   <div className="image-container">
                     <Image
@@ -129,7 +129,7 @@ const TodayNew = (props) => {
                 <></>
               )}
               <div className="mutiple_small_post_wrapper">
-                {todaynews.slice(1, 5).map((todaynews, index) => (
+                {todaynews && todaynews.slice(1, 5).map((todaynews, index) => (
                   <div className="mutiple_small_post" key={index}>
                     <div className="image-container">
                       <Image

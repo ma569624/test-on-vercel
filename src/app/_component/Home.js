@@ -66,7 +66,7 @@ const Home = () => {
               </h2>
             </div>
             <div className="row">
-              {badikhabar.slice(0, 12).map((item, key) => (
+              {badikhabar && badikhabar.slice(0, 12).map((item, key) => (
                 <div className="col-lg-4" key={key}>
                   <div className="post_wraper">
                     <div className="image-container">

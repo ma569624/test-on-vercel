@@ -119,7 +119,7 @@ const JaraIdhar = (props) => {
                   className="mySwiper"
                   style={{backgroundColor: '#7a7171'}}
                 >
-                  {data.map((item, index) => (
+                  {data && data.map((item, index) => (
                     <SwiperSlide key={index}>
                       <div className="cat-sm-post">
                         <Image
