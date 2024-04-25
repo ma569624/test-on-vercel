@@ -132,19 +132,22 @@ const Detail = (props) => {
   }, [currentPage, sidename, limit, data.Category]);
 
   const getsection = async () => {
-    const cat = await fetch(
-      // `http://localhost:5000/api/categories?category=${data.Category}`
-      `${API}/api/categories?category=${data.Category}`
-    );
-    const sectiondata = await cat.json();
-    setSideName(sectiondata.data);
-    // console.warn(sectiondata);
+    if (data.Category) {
+      const cat = await fetch(
+        `http://localhost:5000/api/categories?category=${data.Category}`
+        // `${API}/api/categories?category=${data.Category}`
+      );
+      const sectiondata = await cat.json();
+      setSideName(sectiondata.data);
+      console.warn(sectiondata);
+      console.warn(data.Category);
+    }
   };
 
 
   useEffect(() => {
     getsection();
-  }, [data.Category]);
+  }, [data]);
 
   const nextPage = () => {
     if (currentPage - 9 < total) {
@@ -178,7 +181,7 @@ const Detail = (props) => {
           className="section-title2 text-center mb-2 box-shodow"
           style={{ border: "4px solid yellow" }}
         >
-          <h2 className="m-0 py-2">{sidename[0] ? sidename[0].heading : 'इस सेक्शन से जुड़ी और ख़बरें'}</h2>
+          <h2 className="m-0 py-2">{sidename && sidename[0] ? sidename[0].heading : 'इस सेक्शन से जुड़ी और ख़बरें'}</h2>
         </div>
 
         {blogs.slice(0, 10).map((item, key) => {
