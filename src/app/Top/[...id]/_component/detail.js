@@ -1,39 +1,31 @@
 "use client";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import {
   FacebookIcon,
-  FacebookShareButton,
-  LinkedinIcon,
-  LinkedinShareButton,
   TelegramIcon,
   TelegramShareButton,
   TwitterIcon,
   TwitterShareButton,
   WhatsappIcon,
 } from "react-share";
+
 import React, { useRef } from "react";
 import { useReactToPrint } from "react-to-print";
 import { FcShare } from "react-icons/fc";
-import YouTube from "react-youtube";
 import Model from "@/app/_component/model";
 import { TbPlayerTrackNextFilled } from "react-icons/tb";
 import { TbPlayerTrackPrevFilled } from "react-icons/tb";
 import { useRouter } from "next/navigation";
 import { MdDoubleArrow } from "react-icons/md";
-import AppContext from "@/app/_context/AppContext";
 
 const Detail = (props) => {
-  const { Rajiya } = useContext(AppContext);
   const router = useRouter();
-  const { id, section } = props.params;
-  const Category = section;
+  const { id } = props.params;
 
+  const [category, setcategory] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const limit = 10;
-  // const [totalPages, setTotalPages] = useState(1);
-  const [category, setCategory] = useState([]);
-  const [videos, setVideos] = useState([]);
 
   const [blogs, setBlogs] = useState([]);
   const [data, setdata] = useState({});
@@ -97,14 +89,10 @@ const Detail = (props) => {
 
   const newfburl = `https://www.facebook.com/share.php?u=${currentPageUrl}&title=${title}`;
 
-  // const whatsAppUrl = `https://web.whatsapp.com/send?text=${encodeURIComponent(`*${message}*%0A%0A*${sectionname}*%0A${data.Heading}%0A%0A*${youtubeheading}*%0A${youtubechannel}`)}&url=${currentPageUrl}`;
-  const [sidename, setSideName] = useState([]);
-  const [sidenamerajiya, setSideNameRajiya] = useState([]);
+ 
   const [total, setSettotal] = useState("");
 
   const getdata = async () => {
-    setCategory(props.toplinks);
-    setSideNameRajiya(props.rajiya);
     setdata(props.newsdata);
   };
 
@@ -116,36 +104,35 @@ const Detail = (props) => {
     setCurrentPage(1);
   }, [id]);
 
+
   const getblogs = async () => {
     const blogs = await fetch(
       `${API}/api/blogs?Status=active&page=${currentPage}&limit=${limit}&Category=${data.Category}`
     );
     const blogdata = await blogs.json();
-    // console.warn(blogdata);
     setBlogs(blogdata.data);
     setSettotal(blogdata.nbHits);
   };
-  // console.warn(`this is ${data.Category}`)
 
   useEffect(() => {
     getblogs();
-  }, [currentPage, sidename, limit, data.Category]);
+  }, [currentPage, category, limit, data.Category]);
 
-  const getsection = async () => {
-    if (data.Category) {
-      const cat = await fetch(
-        `http://localhost:5000/api/categories?category=${data.Category}`
-        // `${API}/api/categories?category=${data.Category}`
-      );
-      const sectiondata = await cat.json();
-      setSideName(sectiondata.data);
-      console.warn(sectiondata);
-      console.warn(data.Category);
-    }
-  };
+  
 
 
   useEffect(() => {
+    const getsection = async () => {
+      if (data.Category) {
+        const cat = await fetch(
+          // `http://localhost:5000/api/categories?category=${data.Category}`
+          `${API}/api/categories?category=${data.Category}`
+        );
+        const sectiondata = await cat.json();
+        setcategory(sectiondata);
+      }
+    };
+
     getsection();
   }, [data]);
 
@@ -165,7 +152,6 @@ const Detail = (props) => {
   };
 
   const LoadingNewdata = (NewId) => {
-    console.log("bbhjbj");
     const filteredBlog = blogs.filter(
       (item) => item._id.toString() == NewId.toString()
     );
@@ -179,9 +165,10 @@ const Detail = (props) => {
       <div className="col-lg-4">
         <div
           className="section-title2 text-center mb-2 box-shodow"
-          style={{ border: "4px solid yellow" }}
+          style={{ border: "4px solid yellow" }}  
         >
-          <h2 className="m-0 py-2">{sidename && sidename[0] ? sidename[0].heading : 'इस सेक्शन से जुड़ी और ख़बरें'}</h2>
+        {console.warn(category)}
+          <h2 className="m-0 py-2">{category && category[0] ? category[0].heading : 'इस सेक्शन से जुड़ी और ख़बरें'}</h2>
         </div>
 
         {blogs.slice(0, 10).map((item, key) => {
@@ -267,12 +254,13 @@ const Detail = (props) => {
                 className="patti-bg p-1 d-flex gap-2 align-items-center"
                 style={{ border: "4px solid yellow" }}
               >
-                {sidename && sidename[0] && sidename[0].categorylogo && (
+              
+                {category && category[0] && category[0].categorylogo && (
                   <Image
                     height={45}
                     width={105}
                     className="ms-4 rounded-3"
-                    src={`${API}${sidename[0].categorylogo}`}
+                    src={`${API}${category[0].categorylogo}`}
                   />
                 )}
 
