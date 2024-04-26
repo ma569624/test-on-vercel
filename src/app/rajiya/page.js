@@ -12,14 +12,12 @@ import { TbPlayerTrackPrevFilled } from "react-icons/tb";
 const Page = () => {
   // const [Rajiya, setRajiya] = useState([]);
   const { Rajiya } = useContext(AppContext);
-  
+
   const newdata = Rajiya;
   const router = useRouter();
   const API = process.env.NEXT_PUBLIC_BASE_URL;
   console.warn(newdata);
-  
 
- 
   const MAX_WORDS = 16;
 
   function sliceByWords(text, maxWords) {
@@ -53,7 +51,7 @@ const Page = () => {
     const nextPage = () => {
       setCurrentPage(currentPage + 1);
       // if (showitem > 4) {
-        setShowitems(showitem + 4);
+      setShowitems(showitem + 4);
       // }
     };
 
@@ -71,49 +69,51 @@ const Page = () => {
             <div className="section-title mt-2">
               <div className="container">
                 <div className="row rajiya">
-                  {Rajiya && Rajiya.slice(showitem, showitem + 4).map((item, key) => (
-                    <div className="col-lg-3" key={key}>
-                      <div className="postbox mb-25">
-                        <div className="postbox__thumb image-container">
-                          <Image
-                            width={800}
-                            height={300}
-                            src={
-                              item.Image !== undefined
-                                ? `${API}${item.Image}`
-                                : "/default.jpg"
-                            }
-                            style={{
-                              width: 722,
-                              height: 200,
-                              filter:
-                                "drop-shadow(rgb(102, 102, 102) 4px 4px 1px )",
-                            }}
-                            alt="hero image"
-                          />
-                        </div>
-                        <div className="postbox__text mt-4">
-                          <h4
-                            className="title-18 pr-0"
-                            onClick={() => handleClick(item.order)}
-                          >
-                            {item.Heading &&
-                              sliceByWords(item.Heading, MAX_WORDS)}
-                          </h4>
+                  {Rajiya &&
+                    Rajiya.slice(showitem, showitem + 4).map((item, key) => (
+                      <div className="col-lg-3" key={key}>
+                        <div className="postbox mb-25">
+                          <div className="postbox__thumb image-container">
+                            <Image
+                              width={800}
+                              height={300}
+                              src={
+                                item.Image !== undefined
+                                  ? `${API}${item.Image}`
+                                  : "/default.jpg"
+                              }
+                              style={{
+                                width: 722,
+                                height: 200,
+                                filter:
+                                  "drop-shadow(rgb(102, 102, 102) 4px 4px 1px )",
+                              }}
+                              alt="hero image"
+                            />
+                          </div>
+                          <div className="postbox__text mt-4">
+                            <h4 className="title-18 pr-0"
+                              onClick={() => handleClick(item.order)}>
+                              
+                              {item.Heading &&
+                                sliceByWords(item.Heading, MAX_WORDS)}
+                            </h4>
 
-                          <h4 className="title-16 pr-0">
-                            <div>
-                              <div
-                                dangerouslySetInnerHTML={{
-                                  __html: item.Matter.slice(0, 140),
-                                }}
-                              />
-                            </div>
-                          </h4>
+                            {item.Matter && (
+                              <h4 className="title-16 pr-0">
+                                <div>
+                                  <div
+                                    dangerouslySetInnerHTML={{
+                                      __html: item.Matter.slice(0, 140),
+                                    }}
+                                  />
+                                </div>
+                              </h4>
+                            )}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
                 </div>
               </div>
             </div>
@@ -157,17 +157,11 @@ const Page = () => {
   };
   return (
     <>
-
-    
-    
       <section className=" pt-2 pb-2 rajiya-post">
         <div className="container p-lg-0">
           <div className="row">
             <div className="col-lg-12">
-              <div
-                className=" main-sec mb-3 "
-                
-              >
+              <div className=" main-sec mb-3 ">
                 <h2 className="m-0 p-0">
                   <MdDoubleArrow size={50} className="me-2" />
                   ख़बरें राज्यों से
@@ -181,34 +175,34 @@ const Page = () => {
             </div>
           </div>
         </div>
-        {Rajiya && Rajiya.map((item, key) => (
-          <div className="container p-lg-0 pb-5" key={key}>
-            <div className="row ">
-              <div className="col-lg-12">
-                <div
-                  className="sec "
-                >
-                  <Image
-                    width={100}
-                    height={100}
-                    
-                    className="me-4 ml-1"
-                    src={
-                      item.section.categorylogo !== undefined ? `${API}${item.section.categorylogo}` : ""
-                    }
-                    alt=""
-                  />
-                  <h2 className="m-0 ">
-                    {/* {data[0].Heading} */}
-                    <MdDoubleArrow size={50} className="mr-2" />
-                    {item.section.category}
-                  </h2>
+        {Rajiya &&
+          Rajiya.map((item, key) => (
+            <div className="container p-lg-0 pb-5" key={key}>
+              <div className="row ">
+                <div className="col-lg-12">
+                  <div className="sec ">
+                    <Image
+                      width={100}
+                      height={100}
+                      className="me-4 ml-1"
+                      src={
+                        item.section.categorylogo !== undefined
+                          ? `${API}${item.section.categorylogo}`
+                          : ""
+                      }
+                      alt=""
+                    />
+                    <h2 className="m-0 ">
+                      {/* {data[0].Heading} */}
+                      <MdDoubleArrow size={50} className="mr-2" />
+                      {item.section.category}
+                    </h2>
+                  </div>
                 </div>
               </div>
+              <NewsRow Rajiya={item.data} />
             </div>
-            <NewsRow Rajiya={item.data} />
-          </div>
-        ))}
+          ))}
       </section>
     </>
   );

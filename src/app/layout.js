@@ -142,6 +142,11 @@ export default async function RootLayout({ children }) {
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.ico" />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1916128346888150"
+          crossorigin="anonymous"
+        />
       </head>
       <body>
         <AppProvider>
