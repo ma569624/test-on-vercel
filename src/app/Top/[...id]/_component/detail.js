@@ -120,7 +120,6 @@ const Detail = (props) => {
 
   
 
-
   useEffect(() => {
     const getsection = async () => {
       if (data.Category) {
@@ -538,7 +537,6 @@ const Detail = (props) => {
 
             {data &&
               data.Category &&
-              Array.isArray(data.Category) &&
               data.Category.length > 0 && <Khabare Rajiya={data.Category[0]} />}
           </div>
         </div>
