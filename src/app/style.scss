@@ -397,9 +397,10 @@ footer {
   }
 
   .footer_name_sec {
-    ul {
-      li {
-        span {
+    table {
+      tr {
+        td {
+          padding: 0px 15px 0px 0px;
           font-weight: 700;
           color: #fff;
           text-shadow: rgb(21, 47, 130) 4px 4px;

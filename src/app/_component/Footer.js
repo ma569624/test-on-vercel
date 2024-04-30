@@ -15,23 +15,31 @@ import { MdAirplanemodeActive } from "react-icons/md";
 import AppContext from "../_context/AppContext";
 
 const Footer = (props) => {
-  const {setRajiya} = useContext(AppContext)
-  const API = props.API;
+  const [founder, setFounder] = useState({});
+  const { setRajiya } = useContext(AppContext);
+  const API = process.env.NEXT_PUBLIC_BASE_URL;
 
   const [open, setOpen] = useState(false);
 
   const toggleModal = () => {
-    
     setOpen(!open);
   };
   const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
-    setRajiya(props.Rajiyablogs)
-  },[props])
+    setRajiya(props.Rajiyablogs);
+  }, [props]);
+  useEffect(() => {
+    const getfounderdetails = async () => {
+      const res = await fetch(`${API}/api/founder`);
+      const data = await res.json();
+
+      setFounder(data[0]);
+    };
+    getfounderdetails();
+  }, []);
 
   useEffect(() => {
-    
     const handleScroll = () => {
       const scrollTop = window.pageYOffset;
 
@@ -112,16 +120,61 @@ const Footer = (props) => {
               </div>
             </div>
             <div className="row">
-              <div className="col-xl-4">
+              <div className="col-xl-5">
                 <div className="footer_name_sec">
-                  <div className="row">
-                  
-                    <div className="col-lg-6">
-                    <div className="d-flex gap-2">
-                    <Image src={'/default_repoter.png'} className="repo-img" width={87} height={99} alt="default_repoter" />
-                      <ul>
+                  <div className="">
+                    <div className="">
+                      <div className="d-flex gap-3">
+                        <Image
+                          // src={"/default_repoter.png"}
+                          src={founder.EmployeeImage ? founder.EmployeeImage : ''}
+                          className="repo-img"
+                          width={87}
+                          height={99}
+                          alt="default_repoter"
+                        />
+                        <table className="">
+                          <tbody>
+                            <tr>
+                              <td>
+                                नाम
+                              </td>
+                              <td>
+                                {founder.EmployeeName}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                डेजीनेशन
+                              </td>
+                              <td>
+                                {founder.EmployeeDesignation}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                ईमेल आईडी 
+                              </td>
+                              <td>
+                                {founder.EmailAddress}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                मोबाइल नंबर
+                              </td>
+                              <td>
+                                {founder.ContactNumber}
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        {/* <ul>
                         <li>
+                          <div className="d-flex gap-3">
                           <span>नाम</span>
+                          <span>{founder.EmployeeName}</span>
+                          </div>
                         </li>
                         <li>
                           <span>डेजीनेशन</span>
@@ -132,8 +185,8 @@ const Footer = (props) => {
                         <li>
                           <span>मोबाइल नंबर</span>
                         </li>
-                      </ul>
-                    </div>
+                      </ul> */}
+                      </div>
                     </div>
                   </div>
                 </div>
