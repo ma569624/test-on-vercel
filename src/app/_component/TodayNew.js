@@ -11,9 +11,8 @@ import { useRouter } from "next/navigation";
 import AppContext from "../_context/AppContext";
 
 const TodayNew = (props) => {
-  const { badikhabar, todaynews, toplinks } = useContext(AppContext);
-
-  const [data, setdata] = useState([]);
+  const { todaynews, toplinks } = useContext(AppContext);
+  
 
   // console.warn(todaynews)
   useEffect(() => {
@@ -84,7 +83,6 @@ const TodayNew = (props) => {
               <Image
                 width={200}
                 height={200}
-                
                 src={toplinks.length > 0 && toplinks[1].Image !== undefined  && toplinks[1].Image !== 'undefined'  ? `${API}${toplinks[1].Image}` : ""}
                 alt=""
               />

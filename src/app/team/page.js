@@ -26,7 +26,6 @@ const Page = () => {
     fetchTeamData();
   }, []);
 
-  console.warn(team);
 
   return (
     <div className="container mt-3 mb-3 team p-lg-0">
@@ -62,7 +61,7 @@ const Page = () => {
                       <h5 className="text-Shadow">
                         {item.EmployeeDesignation}
                       </h5>
-                      <h5 className="text-Shadow">{item.place}</h5>
+                      <h5 className="text-Shadow">{item.Place}</h5>
                     </div>
                   </div>
 

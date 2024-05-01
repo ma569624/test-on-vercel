@@ -194,7 +194,7 @@ const KhabreRajiyoki = (props) => {
         {Rajiya && Rajiya.map((item, key) => (
           <div className="row mb-1" key={key}>
             <div className="col-lg-9">
-              <div className="new_post_title">
+              <div className="new_post_title" style={{backgroundColor: item.section.categorybackground}}>
                 <Image
                   width={200}
                   height={200}
@@ -211,7 +211,7 @@ const KhabreRajiyoki = (props) => {
               <NewsRow Rajiya={item.data} />
             </div>
             <div className="col-lg-3">
-              <div className="new_post_title">
+              <div className="new_post_title" style={{backgroundColor: item.section.headingbackground}}>
                 <Image
                   width={200}
                   height={200}

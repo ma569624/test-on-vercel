@@ -126,10 +126,10 @@ const Footer = (props) => {
                     <div className="">
                       <div className="d-flex gap-3">
                         <Image
-                          // src={"/default_repoter.png"}
-                          src={
-                            founder.EmployeeImage ? founder.EmployeeImage : ""
-                          }
+                          src={"/default_repoter.png"}
+                          // src={
+                          //   founder.EmployeeImage ? founder.EmployeeImage : ""
+                          // }
                           className="repo-img"
                           width={87}
                           height={99}
