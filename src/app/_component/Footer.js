@@ -127,7 +127,9 @@ const Footer = (props) => {
                       <div className="d-flex gap-3">
                         <Image
                           // src={"/default_repoter.png"}
-                          src={founder.EmployeeImage ? founder.EmployeeImage : ''}
+                          src={
+                            founder.EmployeeImage ? founder.EmployeeImage : ""
+                          }
                           className="repo-img"
                           width={87}
                           height={99}
@@ -136,36 +138,16 @@ const Footer = (props) => {
                         <table className="">
                           <tbody>
                             <tr>
-                              <td>
-                                नाम
-                              </td>
-                              <td>
-                                {founder.EmployeeName}
-                              </td>
+                              <td>{founder.EmployeeName}</td>
                             </tr>
                             <tr>
-                              <td>
-                                डेजीनेशन
-                              </td>
-                              <td>
-                                {founder.EmployeeDesignation}
-                              </td>
+                              <td>{founder.EmployeeDesignation}</td>
                             </tr>
                             <tr>
-                              <td>
-                                ईमेल आईडी 
-                              </td>
-                              <td>
-                                {founder.EmailAddress}
-                              </td>
+                              <td>{founder.EmailAddress}</td>
                             </tr>
                             <tr>
-                              <td>
-                                मोबाइल नंबर
-                              </td>
-                              <td>
-                                {founder.ContactNumber}
-                              </td>
+                              <td>{founder.ContactNumber}</td>
                             </tr>
                           </tbody>
                         </table>
