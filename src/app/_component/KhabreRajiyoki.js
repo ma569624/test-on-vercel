@@ -6,11 +6,14 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import ImageTag from "./ImageTag";
 import AppContext from "../_context/AppContext";
+import InfiniteScroll from "react-infinite-scroll-component";
+
 
 const KhabreRajiyoki = (props) => {
-  const { Rajiya } = useContext(AppContext);
-  console.warn(Rajiya);
-  const All = props.Rajiya;
+  // const { Rajiya } = useContext(AppContext);
+  const [Rajiya, setRajiya] = useState([]);
+  const [page, setPage] = useState(1);
+  const [Totalpage, setTotalPage] = useState(0);
   const router = useRouter();
 
   const MAX_WORDS = 10;
@@ -48,16 +51,32 @@ const KhabreRajiyoki = (props) => {
   };
 
   const API = process.env.NEXT_PUBLIC_BASE_URL;
-  const [data, setdata] = useState([]);
-  const getdata = async () => {
-    // const response = await fetch(`${API}/api/blogdisplay?Status=active`);
-    // const data = await response.json();
-    // setdata(data);
+  const fetchMoreData = async () => {
+    try {
+      const response = await fetch(
+        `${API}/api/allblogs?name=state&page=${page}`
+      );
+      const data = await response.json();
+      if (page === 1) {
+        // For the initial load, set totalPage and AllBlogs directly
+        setTotalPage(data.nbHits);
+        setRajiya(data.data);
+      } else {
+        // For subsequent page loads, append new data to existing AllBlogs
+        setRajiya((prevBlogs) => [...prevBlogs, ...data.data]);
+      }
+
+      setPage(page + 1);
+    } catch (error) {
+      console.error("Error fetching all blogs:", error);
+    } finally {
+      // setLoading(false); // Set loading state to false after fetch operation completes
+    }
   };
 
   useEffect(() => {
-    getdata();
-  }, [props]);
+    fetchMoreData();
+  }, []);
 
   const NewsRow = ({ Rajiya }) => {
     // console.warn(Object.values(Rajiya)[0])
@@ -191,7 +210,25 @@ const KhabreRajiyoki = (props) => {
             </div>
           </div>
         </div>
-        {Rajiya && Rajiya.map((item, key) => (
+        <InfiniteScroll
+        dataLength={Rajiya.length}
+        next={fetchMoreData}
+        hasMore={page <= Totalpage}
+        loader={
+          <div className="row">
+            <div className="col-lg-2 mx-auto">
+            <div class="spinner-border text-center" role="status">
+              <span class="visually-hidden text-center">Loading...</span>
+            </div>
+            </div>
+          </div>
+        }
+        style={{ overflow: "hidden" }}
+        // endMessage={setShowFooter(false)}
+      >
+
+     
+        {Rajiya && Rajiya.slice(0, 5).map((item, key) => (
           <div className="row mb-1" key={key}>
             <div className="col-lg-9">
               <div className="new_post_title" style={{backgroundColor: item.section.categorybackground}}>
@@ -227,6 +264,7 @@ const KhabreRajiyoki = (props) => {
             </div>
           </div>
         ))}
+        </InfiniteScroll>
       </div>
     </section>
   );

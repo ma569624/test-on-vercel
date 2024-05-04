@@ -17,9 +17,10 @@ export const Nav = (props) => {
   const [data, setdata] = useState([]);
   const [rajiya, setRajiya] = useState([]);
  console.warn(AllBlogs)
+ console.warn(props.Rajiyablogs)
   useEffect(() => {
     setdata(AllBlogs && AllBlogs.filter((item) => item.section.isHeader === true));
-    setRajiya(Rajiya);
+    setRajiya(props.Rajiyablogs);
   }, [Rajiya, AllBlogs, props]);
 
   const router = useRouter();
@@ -130,6 +131,7 @@ export const Nav = (props) => {
                         width: "auto",
                         height: 400,
                         backgroundColor: "rgb(14 197 5)",
+                        overflow: "hidden !important"
                       }}
                     >
                       {rajiya && rajiya.map((item, key) => (

@@ -16,6 +16,7 @@ export const AppProvider = ({ children }) => {
   const [toplinks, setToplinks] = useState([]);
   const [todaynews, setTodayNews] = useState([]);
   const [badikhabar, setBadikhabar] = useState([]);
+  const [showfooter, setShowFooter] = useState(false);
 
   const contextValue = {
     toplinks, setToplinks,
@@ -28,7 +29,8 @@ export const AppProvider = ({ children }) => {
     Rajiya, setRajiya,
     tagline, setTagline,
     todaynews, setTodayNews,
-    badikhabar, setBadikhabar
+    badikhabar, setBadikhabar,
+    showfooter, setShowFooter
   };
   
   return (

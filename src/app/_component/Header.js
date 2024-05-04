@@ -71,7 +71,7 @@ const Header = (props) => {
     setAllBlogs(props.allblogs);
     setTopKhabare(props.topKhabare);
     setToplinks(props.toplinks);
-    
+    setRajiya(props.Rajiyablogs)
     setBadikhabar(props.badikhabar);
     setTodayNews(props.todaynews);
     fetchData();

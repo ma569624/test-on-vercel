@@ -6,12 +6,16 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import ImageTag from "./ImageTag";
 import AppContext from "../_context/AppContext";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const ApradJagat = (props) => {
-  const { AllBlogs } = useContext(AppContext);
-  console.warn(AllBlogs);
-  const All = props.allblogs;
+  const { setShowFooter } = useContext(AppContext);
+  // console.warn(AllBlogs);
+  const [AllBlogs, setAllBlogs] = useState([]);
+  const [page, setPage] = useState(1);
+  const [Totalpage, setTotalPage] = useState(0);
   const router = useRouter();
+ 
 
   const MAX_WORDS = 10;
 
@@ -52,16 +56,39 @@ const ApradJagat = (props) => {
   };
 
   const API = process.env.NEXT_PUBLIC_BASE_URL;
-  const [data, setdata] = useState([]);
-  const getdata = async () => {
-    // const response = await fetch(`${API}/api/blogdisplay?Status=active`);
-    // const data = await response.json();
-    // setdata(data);
+
+  const fetchMoreData = async () => {
+    try {
+      const response = await fetch(
+        `${API}/api/allblogs?name=block&page=${page}`
+      );
+      const data = await response.json();
+      if (page === 1) {
+        // For the initial load, set totalPage and AllBlogs directly
+        setTotalPage(data.nbHits);
+        setAllBlogs(data.data);
+      } else {
+        // For subsequent page loads, append new data to existing AllBlogs
+        setAllBlogs((prevBlogs) => [...prevBlogs, ...data.data]);
+      }
+
+      setPage(page + 1);
+    } catch (error) {
+      console.error("Error fetching all blogs:", error);
+    } finally {
+      // setLoading(false); // Set loading state to false after fetch operation completes
+    }
   };
 
   useEffect(() => {
-    getdata();
-  }, [props]);
+    fetchMoreData();
+  }, []);
+  
+  useEffect(() => {
+    if (page === Totalpage) {
+      setShowFooter(true)
+    }
+  }, [page]);
 
   const NewsRow = ({ Rajiya }) => {
     // console.warn(Object.values(Rajiya)[0])
@@ -184,45 +211,68 @@ const ApradJagat = (props) => {
 
   return (
     <section className="news-area new_post_area">
-      <div className="container p-lg-0">
-        {AllBlogs &&
-          AllBlogs.map((item, key) => (
-            <div className="row mb-1" key={key}>
-              <div className="col-lg-9">
-                <div className="new_post_title" style={{backgroundColor: item.section.categorybackground}}>
-                  <Image
-                    width={200}
-                    height={200}
-                    src={
-                      item.section.categorylogo &&
-                      `${API}${item.section.categorylogo}`
-                    }
-                    alt=""
-                  />
-                  <MdDoubleArrow size={50} />
-                  {/* {console.warn(item.data)} */}
-                  <h2 className="title_text">{item.section.category}</h2>
-                </div>
-                <NewsRow Rajiya={item.data} />
-              </div>
-              <div className="col-lg-3">
-                <div className="new_post_title" style={{backgroundColor: item.section.headingbackground}}>
-                  <Image
-                    width={200}
-                    height={200}
-                    src={
-                      item.section.headinglogo &&
-                      `${API}${item.section.headinglogo}`
-                    }
-                    alt=""
-                  />
-                  <h2 className="title_text_side">{item.section.heading}</h2>
-                </div>
-                <SideRow Rajiya={item.data} />
-              </div>
+      <InfiniteScroll
+        dataLength={AllBlogs.length}
+        next={fetchMoreData}
+        hasMore={page <= Totalpage}
+        loader={
+          <div className="row">
+            <div className="col-lg-2 mx-auto">
+            <div class="spinner-border text-center" role="status">
+              <span class="visually-hidden text-center">Loading...</span>
             </div>
-          ))}
-      </div>
+            </div>
+          </div>
+        }
+        style={{ overflow: "hidden" }}
+        // endMessage={setShowFooter(false)}
+      >
+        <div className="container p-lg-0">
+          {AllBlogs &&
+            AllBlogs.map((item, key) => (
+              <div className="row mb-1" key={key}>
+                <div className="col-lg-9">
+                  <div
+                    className="new_post_title"
+                    style={{ backgroundColor: item.section.categorybackground }}
+                  >
+                    <Image
+                      width={200}
+                      height={200}
+                      src={
+                        item.section.categorylogo &&
+                        `${API}${item.section.categorylogo}`
+                      }
+                      alt=""
+                    />
+                    <MdDoubleArrow size={50} />
+                    {/* {console.warn(item.data)} */}
+                    <h2 className="title_text">{item.section.category}</h2>
+                  </div>
+                  <NewsRow Rajiya={item.data} />
+                </div>
+                <div className="col-lg-3">
+                  <div
+                    className="new_post_title"
+                    style={{ backgroundColor: item.section.headingbackground }}
+                  >
+                    <Image
+                      width={200}
+                      height={200}
+                      src={
+                        item.section.headinglogo &&
+                        `${API}${item.section.headinglogo}`
+                      }
+                      alt=""
+                    />
+                    <h2 className="title_text_side">{item.section.heading}</h2>
+                  </div>
+                  <SideRow Rajiya={item.data} />
+                </div>
+              </div>
+            ))}
+        </div>
+      </InfiniteScroll>
     </section>
   );
 };

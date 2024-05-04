@@ -311,9 +311,7 @@ const Detail = (props) => {
                         </strong>
                         <strong style={{ fontSize: 14, color: "#000" }}>
                         ताज़ा अपडेट {formatDate(data.CreationDate)}
-                          {data && data.DatePlace !== undefined
-                            ? data.DatePlace
-                            : ""}
+                          
                         </strong>
                       </div>
                     </div>

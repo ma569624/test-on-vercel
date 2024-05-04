@@ -11,12 +11,31 @@ import { TbPlayerTrackNextFilled } from "react-icons/tb";
 import { TbPlayerTrackPrevFilled } from "react-icons/tb";
 const Page = () => {
   // const [Rajiya, setRajiya] = useState([]);
-  const { Rajiya } = useContext(AppContext);
+  // const { Rajiya } = useContext(AppContext);
 
+  const [Rajiya, setRajiya] = useState([]);
   const newdata = Rajiya;
   const router = useRouter();
   const API = process.env.NEXT_PUBLIC_BASE_URL;
   console.warn(newdata);
+  const fetchMoreData = async () => {
+    try {
+      const response = await fetch(`${API}/api/headerblogs?name=state`);
+      const data = await response.json();
+
+      setRajiya(data.data);
+
+      setPage(page + 1);
+    } catch (error) {
+      console.error("Error fetching all blogs:", error);
+    } finally {
+      // setLoading(false); // Set loading state to false after fetch operation completes
+    }
+  };
+
+  useEffect(() => {
+    fetchMoreData();
+  }, []);
 
   const MAX_WORDS = 16;
 
@@ -92,9 +111,10 @@ const Page = () => {
                             />
                           </div>
                           <div className="postbox__text mt-4">
-                            <h4 className="title-18 pr-0"
-                              onClick={() => handleClick(item.order)}>
-                              
+                            <h4
+                              className="title-18 pr-0"
+                              onClick={() => handleClick(item.order)}
+                            >
                               {item.Heading &&
                                 sliceByWords(item.Heading, MAX_WORDS)}
                             </h4>

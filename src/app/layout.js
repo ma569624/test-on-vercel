@@ -94,7 +94,7 @@ async function fetchIdharbhi() {
 
 async function fetchAllBlogs() {
   try {
-    const allblogs = await fetch(`${process.env.API}/api/allblogs?name=block`);
+    const allblogs = await fetch(`${process.env.API}/api/headerblogs?name=block`);
     return allblogs.json();
   } catch (error) {
     console.error("Error fetching all blogs:", error);
@@ -105,7 +105,7 @@ async function fetchAllBlogs() {
 async function fetchRajiyablogs() {
   try {
     const Rajiyablogs = await fetch(
-      `${process.env.API}/api/allblogs?name=state`
+      `${process.env.API}/api/headerblogs?name=state`
     );
     return Rajiyablogs.json();
   } catch (error) {
@@ -168,7 +168,7 @@ export default async function RootLayout({ children }) {
             advert={advert}
             idharbhi={idharbhi.data}
             toplinks={toplinks}
-            Rajiyablogs={Rajiyablogs.data}
+            // Rajiyablogs={Rajiyablogs.data}
           />
         </AppProvider>
       </body>
