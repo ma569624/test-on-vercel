@@ -34,7 +34,7 @@ async function fetchTagline() {
 }
 async function fetchAdvert() {
   try {
-    const advert = await fetch(`${process.env.API}/api/advert?Status=active`);
+    const advert = await fetch(`${process.env.API}/api/advert?Status=true`);
     return advert.json();
   } catch (error) {
     console.error("Error fetching advert:", error);
@@ -45,7 +45,7 @@ async function fetchAdvert() {
 async function fetchTopKhabare() {
   try {
     const topKhabare = await fetch(
-      `${process.env.API}/api/blogs?Category=title1&Status=active`,
+      `${process.env.API}/api/blogs?Category=title1&Status=true`,
       { cache: "no-store" }
     );
     return topKhabare.json();
@@ -57,10 +57,12 @@ async function fetchTopKhabare() {
 async function fetchtodaynews() {
   try {
     const todaynews = await fetch(
-      `${API}/api/blogs?Status=active&Category=title2`,
+      `${API}/api/allblogs?Status=true&name=title2`,
+      // /api/allblogs?name=block&page=${page}
       { cache: "no-store" }
     );
     return todaynews.json();
+    
   } catch (error) {
     console.error("Error fetching Rajiyablogs:", error);
     throw error;
@@ -70,7 +72,7 @@ async function fetchtodaynews() {
 async function fetchbadikhabar() {
   try {
     const badikhabar = await fetch(
-      `${API}/api/blogs?page=1&limit=12&Status=active&Category=title3`
+      `${API}/api/allblogs?page=1&limit=12&Status=true&name=title3`
     );
     return badikhabar.json();
   } catch (error) {
@@ -82,7 +84,7 @@ async function fetchbadikhabar() {
 async function fetchIdharbhi() {
   try {
     const idharbhi = await fetch(
-      `${process.env.API}/api/blogs?Category=title4&Status=active`,
+      `${process.env.API}/api/allblogs?Status=true&name=title4`,
       { cache: "no-store" }
     );
     return idharbhi.json();

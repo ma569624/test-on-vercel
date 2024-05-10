@@ -1,10 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MdDoubleArrow } from "react-icons/md";
 import Image from "next/image";
+import AppContext from "../_context/AppContext";
 const VotPoll = () => {
   const [data, setdata] = useState([]);
   const API = process.env.NEXT_PUBLIC_BASE_URL;
   const [advert, setAdvert] = useState([]);
+  const {  toplinks } = useContext(AppContext);
+  
+
 
   const getdata = async () => {
     const response = await fetch(`${API}/api/advert`);
@@ -31,7 +35,7 @@ const VotPoll = () => {
                 <div className="box-shodow tag">
                     <MdDoubleArrow size={30} />
                   <h2>
-                    इस पर आपकी क्या राय है?
+                    {toplinks[3].name}
                   </h2>
                 </div>
               </div>
@@ -139,7 +143,7 @@ const VotPoll = () => {
                 <div className="box-shodow tag">
                     <MdDoubleArrow size={30} />
                   <h2>
-                    शेयर बाज़ार का ताज़ा ग्राफ
+                  {toplinks[4].name}
                   </h2>
                 </div>
               </div>
@@ -150,7 +154,7 @@ const VotPoll = () => {
                 <div className="box-shodow tag">
                     <MdDoubleArrow size={30} />
                   <h2>
-                    मौसम का हाल
+                  {toplinks[5].name}
                   </h2>
                 </div>
               </div>
@@ -163,7 +167,7 @@ const VotPoll = () => {
                 <div className="box-shodow tag mb-1">
                     <MdDoubleArrow size={30} />
                   <h2>
-                    विज्ञापन
+                  {toplinks[6].name}
                   </h2>
                 </div>
               </div>

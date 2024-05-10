@@ -11,6 +11,8 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 const KhabreRajiyoki = (props) => {
   // const { Rajiya } = useContext(AppContext);
+  const {  toplinks } = useContext(AppContext);
+
   const [Rajiya, setRajiya] = useState([]);
   const [page, setPage] = useState(1);
   const [Totalpage, setTotalPage] = useState(0);
@@ -54,7 +56,7 @@ const KhabreRajiyoki = (props) => {
   const fetchMoreData = async () => {
     try {
       const response = await fetch(
-        `${API}/api/allblogs?name=state&page=${page}`
+        `${API}/api/allblogs?Status=true&name=state&page=${page}`
       );
       const data = await response.json();
       if (page === 1) {
@@ -205,7 +207,7 @@ const KhabreRajiyoki = (props) => {
             <div className="new_post_title main">
               <h2 className="title_text">
                 <MdDoubleArrow size={50} className="mr-2" />
-                ख़बरें राज्यों से
+                {toplinks[2].name}
               </h2>
             </div>
           </div>

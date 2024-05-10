@@ -1,21 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const HitCounter = () => {
-    // Initialize hit count state
-    const [hits, setHits] = useState(5113161);
+  // Initialize hit count state
+  const [hits, setHits] = useState("");
+  const API = process.env.NEXT_PUBLIC_BASE_URL;
 
-    // Load hit count from local storage on component mount
-    useEffect(() => {
-      const storedHits = localStorage.getItem('hitCount');
-      if (storedHits) {
-        setHits(parseInt(storedHits));
-      }
+  const getdata = async () => {
+    const res = await fetch(`${API}/api/hits`);
+    const result = await res.json()
+    setHits(result[0].hits)
+  };
 
-      localStorage.setItem('hitCount', hits + 1);
-    }, []);
-  
+  // Load hit count from local storage on component mount
+  useEffect(() => {
+    getdata()
+  }, []);
+
   return (
-      <span className='mb-0 visitor flex-lg-shrink-0 hover-effect'>Number of Visitors: {hits}</span>
+    <span className="mb-0 visitor flex-lg-shrink-0 hover-effect">
+      Number of Visitors: {hits}
+    </span>
   );
 };
 

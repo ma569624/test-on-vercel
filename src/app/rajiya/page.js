@@ -57,6 +57,7 @@ const Page = () => {
     console.warn(id);
     router.push(`/Top/${id}`);
   };
+  console.warn(Rajiya)
 
   const NewsRow = ({ Rajiya }) => {
     // const [data, setData] = useState([]);

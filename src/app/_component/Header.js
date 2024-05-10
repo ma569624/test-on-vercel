@@ -66,7 +66,7 @@ const Header = (props) => {
         console.error("Error fetching data:", error);
       }
     };
-    console.warn(props.idharbhi)
+    console.warn(props.todaynews)
     setIdharbhi(props.idharbhi)
     setAllBlogs(props.allblogs);
     setTopKhabare(props.topKhabare);
@@ -74,9 +74,12 @@ const Header = (props) => {
     setRajiya(props.Rajiyablogs)
     setBadikhabar(props.badikhabar);
     setTodayNews(props.todaynews);
+    
     fetchData();
     
   }, [props]);
+  console.warn(props.todaynews)
+
 
   return (
     <>

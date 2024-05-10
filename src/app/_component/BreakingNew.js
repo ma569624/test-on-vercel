@@ -14,25 +14,17 @@ const BreakingNew = () => {
   const swiperRef = useRef(null);
   const API = process.env.NEXT_PUBLIC_BASE_URL;
   const [breakingNews, setBreakingNews] = useState([]);
+  const [tajasamachar, settajasamachar] = useState([]);
   const getbreaking = async () => {
+    
+    const tajasamachar = await fetch(`${API}/api/tajasamachar?Status=true`);
     const res = await fetch(`${API}/api/blogs?Status=active&Headline=true`);
     const data = await res.json();
+    const tajasamachardata = await tajasamachar.json();
+    settajasamachar(tajasamachardata);
     setBreakingNews(data.data);
   };
 
-  const handleMouseEnter = () => {
-    // if (swiperRef.current && !autoplayPaused) {
-    //   swiperRef.current.swiper.autoplay.stop();
-    //   setAutoplayPaused(true);
-    // }
-  };
-
-  const handleMouseLeave = () => {
-    // if (swiperRef.current && autoplayPaused) {
-    //   swiperRef.current.swiper.autoplay.start();
-    //   setAutoplayPaused(false);
-    // }
-  };
 
   useEffect(() => {
     getbreaking();
@@ -58,7 +50,7 @@ const BreakingNew = () => {
                     spaceBetween={0}
                     loop={true}
                     autoplay={{
-                      delay: 6500,
+                      delay: 500,
                       disableOnInteraction: false,
                     }}
                     pagination={{
@@ -66,12 +58,20 @@ const BreakingNew = () => {
                       dots: false,
                     }}
                     slidesPerView={1}
-                    allowTouchMove={true}
                     modules={[Autoplay, Pagination, Navigation]}
                     className="mySwiper"
                     speed={5000}
 
                   >
+                  {
+                    tajasamachar && tajasamachar.map((item, key) => (
+                      <SwiperSlide key={key}>
+                        <Link className="breaking__text" href={`/Top/${item.order}`}>
+                        {item.Heading}
+                        </Link>
+                      </SwiperSlide>
+                    ))
+                  }
                     {breakingNews && breakingNews.map((item, key) => (
                       <SwiperSlide key={key}>
                         <Link className="breaking__text" href={`/Top/${item.order}`}>

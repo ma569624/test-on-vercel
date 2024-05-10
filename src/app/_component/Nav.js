@@ -121,10 +121,10 @@ export const Nav = (props) => {
                 </li>
               ))}
               <li>
-                <a href={`/rajiya`} className="hover-effect">
+                <Link href={`/rajiya`} className="hover-effect">
                   ख़बरें राज्यों से
                   <IoMdArrowDropdown size={30} />
-                </a>
+                </Link>
                   <ul className="submenu">
                     <Scrollbars
                       style={{

@@ -60,7 +60,7 @@ const ApradJagat = (props) => {
   const fetchMoreData = async () => {
     try {
       const response = await fetch(
-        `${API}/api/allblogs?name=block&page=${page}`
+        `${API}/api/allblogs?Status=true&name=block&page=${page}`
       );
       const data = await response.json();
       if (page === 1) {

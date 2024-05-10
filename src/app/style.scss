@@ -95,6 +95,7 @@ body {
 
 header {
   .header__top-area {
+    align-items: center;
     margin-bottom: $space_bottom;
     @include main;
     @include main-border;

@@ -239,8 +239,8 @@ const Detail = (props) => {
       minute: "numeric",
       second: "numeric",
       hour12: true, // for AM/PM format
-    });
-    return formattedDate;
+    }).replace("am", "").replace("pm", "");
+    return formattedDate.replace("am", "");
   };
 
   return (

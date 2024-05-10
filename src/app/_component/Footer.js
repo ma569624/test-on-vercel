@@ -13,9 +13,13 @@ import Follow from "./follow";
 import Image from "next/image";
 import { MdAirplanemodeActive } from "react-icons/md";
 import AppContext from "../_context/AppContext";
+import HitCounter from "./hitCounter";
 
 const Footer = (props) => {
   const [founder, setFounder] = useState({});
+  
+  const {  toplinks } = useContext(AppContext);
+
   const { setRajiya, showfooter } = useContext(AppContext);
   const API = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -101,19 +105,19 @@ const Footer = (props) => {
                     <ul className="sec-tag">
                       <li>
                         <Link href={"/team"} className="hover-effect">
-                          हमारी टीम
+                          {toplinks[7].name}
                         </Link>
                       </li>
 
                       <li>
                         <Link href={"/contact"} className="hover-effect">
-                          हमारा पता / संपर्क करें
+                        {toplinks[8].name}
                         </Link>
                       </li>
 
                       <li>
                         <Link href={"/rules"} className="hover-effect">
-                          नियम और शर्तें
+                        {toplinks[9].name}
                         </Link>
                       </li>
                     </ul>
@@ -161,10 +165,14 @@ const Footer = (props) => {
                 <div className="row">
                   <div className="col-lg-12">
                     <div className="header__top-area">
-                      <div className="hover-effect header__top-menu">
+                      <Link
+                        href="https://wa.link/anurkr"
+                        target="_blank"
+                        className="hover-effect header__top-menu"
+                      >
                         विज्ञापन के लिए संपर्क करें 👈
-                      </div>
-
+                      </Link>
+                      <HitCounter />
                       <div
                         className="header__top-menu model"
                         onClick={toggleModal}
@@ -201,8 +209,7 @@ const Footer = (props) => {
           </div>
           <Advert advert={props.advert} endpoint={"copyright upper"} />
         </>
-      ) 
-      }
+      )}
 
       <Follow />
     </>

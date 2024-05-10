@@ -30,11 +30,11 @@ const JaraIdhar = (props) => {
       setAutoplayPaused(false);
     }
   };
-  const [category, setCategory] = useState([]);
+  const [category, setCategory] = useState({});
   const router = useRouter();
 
   const handleClick = (id, category) => {
-    router.push(`/Top/${id}`,{ scroll: true });
+    router.push(`/Top/${id}`, { scroll: true });
   };
 
   const [data, setdata] = useState([]);
@@ -51,10 +51,9 @@ const JaraIdhar = (props) => {
     }
   }
   const isClient = typeof window !== "undefined";
-
   useEffect(() => {
-    setdata(props.idharbhi);
-    setCategory(props.toplinks);
+    setdata(props.idharbhi[0].data);
+    setCategory(props.idharbhi[0].section);
   }, [props]);
 
   const handleNextButtonClick = () => {
@@ -78,17 +77,16 @@ const JaraIdhar = (props) => {
               <IoIosArrowBack size={35} />
             </button>
             <div className="d-flex align-items-center">
+              
               <Image
                 width={71}
                 height={50}
                 className="me-4 ml-1"
-                src={category.length > 0 ? `${API}${category[0].Image}` : ""}
+                src={category.categorylogo && `${API}${category.categorylogo}`}
                 alt=""
               />
               <MdDoubleArrow size={50} />
-              <h2 className="title_text">
-                {category.length > 0 ? category[0].name : <></>}
-              </h2>
+              <h2 className="title_text">{category.category}</h2>
             </div>
             <button className="next" onClick={handleNextButtonClick}>
               <IoIosArrowForward size={35} />
@@ -117,31 +115,36 @@ const JaraIdhar = (props) => {
                   }}
                   modules={[Autoplay, Pagination, Navigation]}
                   className="mySwiper"
-                  style={{backgroundColor: '#7a7171'}}
+                  style={{ backgroundColor: "#7a7171" }}
                 >
-                  {data && data.map((item, index) => (
-                    <SwiperSlide key={index}>
-                      <div className="cat-sm-post">
-                        <Image
-                          width={227}
-                          height={189}
-                          src={item.Image ? `${API}${item.Image}` : "/default.jpg"}
-                          alt="hero image"
-                          onClick={handleClick}
-                        />
+                  {data &&
+                    data.map((item, index) => (
+                      <SwiperSlide key={index}>
+                        <div className="cat-sm-post">
+                          <Image
+                            width={227}
+                            height={189}
+                            src={
+                              item.Image
+                                ? `${API}${item.Image}`
+                                : "/default.jpg"
+                            }
+                            alt="hero image"
+                            onClick={handleClick}
+                          />
 
-                        <div className="text_box">
-                          <h4
-                            className=""
-                            onClick={() => handleClick(item.order)}
-                          >
-                            {item.Heading &&
-                              sliceByWords(item.Heading, MAX_WORDS)}
-                          </h4>
+                          <div className="text_box">
+                            <h4
+                              className=""
+                              onClick={() => handleClick(item.order)}
+                            >
+                              {item.Heading &&
+                                sliceByWords(item.Heading, MAX_WORDS)}
+                            </h4>
+                          </div>
                         </div>
-                      </div>
-                    </SwiperSlide>
-                  ))}
+                      </SwiperSlide>
+                    ))}
                 </Swiper>
               </div>
             </div>
