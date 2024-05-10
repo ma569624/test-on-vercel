@@ -107,7 +107,7 @@ const Detail = (props) => {
 
   const getblogs = async () => {
     const blogs = await fetch(
-      `${API}/api/blogs?Status=active&page=${currentPage}&limit=${limit}&Category=${data.Category}`
+      `${API}/api/blogs?Status=true&page=${currentPage}&limit=${limit}&Category=${data.Category}`
     );
     const blogdata = await blogs.json();
     setBlogs(blogdata.data);
