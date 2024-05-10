@@ -66,9 +66,9 @@ const BreakingNew = () => {
                   {
                     tajasamachar && tajasamachar.map((item, key) => (
                       <SwiperSlide key={key}>
-                        <Link className="breaking__text" href={`/Top/${item.order}`}>
+                        <div className="breaking__text">
                         {item.Heading}
-                        </Link>
+                        </div>
                       </SwiperSlide>
                     ))
                   }
