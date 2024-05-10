@@ -80,7 +80,7 @@ const TodayNew = (props) => {
         
         {todaynews &&
           todaynews.map((item, key) => (
-            <div className="row res-lg-space">
+            <div className="row res-lg-space" key={key}>
               <div className="col-lg-9">
               <div
                   className="new_post_title"
