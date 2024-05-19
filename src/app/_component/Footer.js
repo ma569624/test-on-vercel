@@ -14,7 +14,7 @@ import Image from "next/image";
 import { MdAirplanemodeActive } from "react-icons/md";
 import AppContext from "../_context/AppContext";
 import HitCounter from "./hitCounter";
-import AdvertiseModel from "./advertiseModel";
+import AdvertiseModel from "./AdvertiseModel";
 
 const Footer = (props) => {
   const [founder, setFounder] = useState({});

@@ -8,7 +8,7 @@ import { FaBell } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import SubscribersModel from "./SubscribersModel";
 import SearchModel from "./SearchModel";
-import AdvertiseModel from "./advertiseModel";
+import AdvertiseModel from "./AdvertiseModel";
 const HeaderTop = () => {
   const [open, setOpen] = useState(false);
   const [opensubscribermodel, setOpensubScriberModel] = useState(false);
