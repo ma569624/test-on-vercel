@@ -11,13 +11,13 @@ const Page = () => {
     // Define an async function to fetch team data
     const fetchTeamData = async () => {
       try {
-        const response = await fetch(`${API}/api/team`);
+        const response = await fetch(`${API}/api/team?Status=true`);
 
         if (!response.ok) {
           throw new Error("Failed to fetch team data");
         }
         let data = await response.json();
-        data.reverse();
+        // data.reverse();
         setTeam(data);  
       } catch (error) {
         console.error("Error fetching team data:", error);

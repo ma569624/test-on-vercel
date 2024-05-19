@@ -102,7 +102,7 @@ const SearchModel = ({ open }) => {
       contentLabel="Example Modal"
     >
       <div className="text-center">
-        <div className="container model-container">
+        <div className="container model-container" style={{backgroundColor: 'darkblue'}}>
           <div className="row">
             <div className="col-lg-12">
               <div className="">
