@@ -4,6 +4,7 @@ import "./bootstrap.min.css";
 import Header from "./_component/Header";
 import Footer from "./_component/Footer";
 import { AppProvider } from "./_context/AppContext";
+import Script from "next/script";
 // import DataFetching from "./datafetching/DataFetching";
 
 export const metadata = {
@@ -62,7 +63,6 @@ async function fetchtodaynews() {
       { cache: "no-store" }
     );
     return todaynews.json();
-    
   } catch (error) {
     console.error("Error fetching Rajiyablogs:", error);
     throw error;
@@ -96,7 +96,9 @@ async function fetchIdharbhi() {
 
 async function fetchAllBlogs() {
   try {
-    const allblogs = await fetch(`${process.env.API}/api/headerblogs?name=block`);
+    const allblogs = await fetch(
+      `${process.env.API}/api/headerblogs?name=block`
+    );
     return allblogs.json();
   } catch (error) {
     console.error("Error fetching all blogs:", error);
@@ -144,6 +146,19 @@ export default async function RootLayout({ children }) {
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.ico" />
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-E7NY2W59JZ"
+        />
+
+        <Script id="google-analytics">
+          {`
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');
+  `}
+        </Script>
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1916128346888150"

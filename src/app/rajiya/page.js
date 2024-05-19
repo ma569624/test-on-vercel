@@ -24,7 +24,6 @@ const Page = () => {
       const data = await response.json();
 
       setRajiya(data.data);
-
       setPage(page + 1);
     } catch (error) {
       console.error("Error fetching all blogs:", error);
@@ -59,7 +58,7 @@ const Page = () => {
   };
   console.warn(Rajiya)
 
-  const NewsRow = ({ Rajiya }) => {
+  const NewsRow = ({ Rajiya, totalpage }) => {
     // const [data, setData] = useState([]);
     // useEffect(() => {
     //   console.warn(Rajiya);
@@ -146,7 +145,7 @@ const Page = () => {
             <div className="row">
               <div className="col-lg-3 mx-auto">
                 <h6 className="total-count text-center fs-6 bg-danger p-2 rounded-5 fw-bold text-white shadow">
-                  इस सेक्शन की कुल खबरें:{" "}
+                  इस सेक्शन की कुल खबरें: {totalpage}
                 </h6>
               </div>
             </div>
@@ -221,7 +220,7 @@ const Page = () => {
                   </div>
                 </div>
               </div>
-              <NewsRow Rajiya={item.data} />
+              <NewsRow Rajiya={item.data} totalpage={item.totalnews} />
             </div>
           ))}
       </section>

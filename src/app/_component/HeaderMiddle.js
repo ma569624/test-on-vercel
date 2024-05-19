@@ -24,6 +24,15 @@ const HeaderMiddle = (props) => {
     setTagline(props.tagline[0]);
   }, [props]);
 
+  const formattedDate = date instanceof Date && !isNaN(date)
+    ? date.toLocaleDateString("hi-IN", {
+          weekday: "long",
+          day: "numeric",
+          month: "short",
+          year: "numeric",
+      })
+    : "";
+
   return (
     <div className="header__middle_area">
       <div className="first">
@@ -45,12 +54,7 @@ const HeaderMiddle = (props) => {
               }}
             />
             <span style={{ fontSize: "13px", fontWeight: 800 }}>
-              {date.toLocaleDateString("hi-IN", {
-                weekday: "long",
-                day: "numeric",
-                month: "short",
-                year: "numeric",
-              })}
+              {formattedDate}
             </span>
           </li>
           <li>
@@ -69,12 +73,12 @@ const HeaderMiddle = (props) => {
                 fontSize: "13px",
               }}
             >
-              {date.toLocaleString("en-US", {
+              {date instanceof Date && !isNaN(date) ?date.toLocaleString("en-US", {
                 hour: "numeric",
                 minute: "numeric",
                 second: "numeric",
                 hour12: true,
-              })}
+              }) : ''}
             </span>
           </li>
         </ul>

@@ -95,6 +95,7 @@ const SubscribersModel = ({ open }) => {
                         className="form-control"
                         id="exampleInputEmail1"
                         aria-describedby="emailHelp"
+                        required
                       />
                       <div id="emailHelp" className="form-text text-dark">
                         We'll never share your email with anyone else.
@@ -114,6 +115,7 @@ const SubscribersModel = ({ open }) => {
                         className="form-control"
                         id="exampleInputEmail1"
                         aria-describedby="emailHelp"
+                        required
                       />
                       <div id="emailHelp" className="form-text text-dark">
                         We'll never share your email with anyone else.
@@ -132,6 +134,7 @@ const SubscribersModel = ({ open }) => {
                         type="number"
                         className="form-control"
                         id="exampleInputPassword1"
+                        required
                       />
                     </div>
 

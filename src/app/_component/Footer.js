@@ -4,7 +4,7 @@ import ApradJagat from "./ApradJagat";
 import { useContext, useEffect, useState } from "react";
 import VotPoll from "./VotPoll";
 import KhabreRajiyoki from "./KhabreRajiyoki";
-
+import { useRouter } from "next/navigation";
 import JaraIdhar from "./JaraIdhar";
 import Link from "next/link";
 import Model from "./model";
@@ -14,12 +14,12 @@ import Image from "next/image";
 import { MdAirplanemodeActive } from "react-icons/md";
 import AppContext from "../_context/AppContext";
 import HitCounter from "./hitCounter";
+import AdvertiseModel from "./advertiseModel";
 
 const Footer = (props) => {
   const [founder, setFounder] = useState({});
-  
+  const router = useRouter();
   const {  toplinks } = useContext(AppContext);
-
   const { setRajiya, showfooter } = useContext(AppContext);
   const API = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -28,7 +28,15 @@ const Footer = (props) => {
   const toggleModal = () => {
     setOpen(!open);
   };
+  const [openAdvert, setOpenAdvert] = useState(false);
+  const OpenAdvertModel = () => {
+    setOpenAdvert(!openAdvert);
+  }
   const [showButton, setShowButton] = useState(false);
+  const handleClick = (id) => {
+    window.scrollTo({ top: 500, behavior: "smooth" });
+    router.push(`/team`);
+  };
 
   useEffect(() => {
     setRajiya(props.Rajiyablogs);
@@ -81,6 +89,7 @@ const Footer = (props) => {
       )}
 
       <Model open={open} />
+      <AdvertiseModel open={openAdvert} />
 
       <JaraIdhar
         API={API}
@@ -129,11 +138,14 @@ const Footer = (props) => {
                       <div className="">
                         <div className="">
                           <div className="d-flex gap-3">
+                          
                             <Image
-                              src={"/default_repoter.png"}
+                              src={founder.EmployeeImage ? `${API}${founder.EmployeeImage}`: "/default_repoter.png"}
                               // src={
                               //   founder.EmployeeImage ? founder.EmployeeImage : ""
                               // }
+                              onClick={handleClick}
+                              style={{cursor: 'pointer'}}
                               className="repo-img"
                               width={87}
                               height={99}
@@ -142,16 +154,16 @@ const Footer = (props) => {
                             <table className="">
                               <tbody>
                                 <tr>
-                                  <td>{founder.EmployeeName}</td>
+                                  <td style={{cursor: 'pointer'}} onClick={handleClick}>{founder.EmployeeName}</td>
                                 </tr>
                                 <tr>
-                                  <td>{founder.EmployeeDesignation}</td>
+                                  <td style={{cursor: 'pointer'}} onClick={handleClick}>{founder.EmployeeDesignation}</td>
                                 </tr>
                                 <tr>
-                                  <td>{founder.EmailAddress}</td>
+                                  <td style={{cursor: 'pointer'}} onClick={handleClick}>{founder.EmailAddress}</td>
                                 </tr>
                                 <tr>
-                                  <td>{founder.ContactNumber}</td>
+                                  <td style={{cursor: 'pointer'}} onClick={handleClick}>{founder.ContactNumber}</td>
                                 </tr>
                               </tbody>
                             </table>
@@ -165,13 +177,12 @@ const Footer = (props) => {
                 <div className="row">
                   <div className="col-lg-12">
                     <div className="header__top-area">
-                      <Link
-                        href="https://wa.link/anurkr"
-                        target="_blank"
+                      <div
+                       onClick={OpenAdvertModel}
                         className="hover-effect header__top-menu"
                       >
                         विज्ञापन के लिए संपर्क करें 👈
-                      </Link>
+                      </div>
                       <HitCounter />
                       <div
                         className="header__top-menu model"

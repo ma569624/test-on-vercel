@@ -89,7 +89,6 @@ const Detail = (props) => {
 
   const newfburl = `https://www.facebook.com/share.php?u=${currentPageUrl}&title=${title}`;
 
- 
   const [total, setSettotal] = useState("");
 
   const getdata = async () => {
@@ -104,7 +103,6 @@ const Detail = (props) => {
     setCurrentPage(1);
   }, [id]);
 
-
   const getblogs = async () => {
     const blogs = await fetch(
       `${API}/api/blogs?Status=true&page=${currentPage}&limit=${limit}&Category=${data.Category}`
@@ -117,8 +115,6 @@ const Detail = (props) => {
   useEffect(() => {
     getblogs();
   }, [currentPage, category, limit, data.Category]);
-
-  
 
   useEffect(() => {
     const getsection = async () => {
@@ -164,10 +160,14 @@ const Detail = (props) => {
       <div className="col-lg-4">
         <div
           className="section-title2 text-center mb-2 box-shodow"
-          style={{ border: "4px solid yellow" }}  
+          style={{ border: "4px solid yellow" }}
         >
-        {console.warn(category)}
-          <h2 className="m-0 py-2">{category && category[0] ? category[0].heading : 'इस सेक्शन से जुड़ी और ख़बरें'}</h2>
+          {console.warn(category)}
+          <h2 className="m-0 py-2">
+            {category && category[0]
+              ? category[0].heading
+              : "इस सेक्शन से जुड़ी और ख़बरें"}
+          </h2>
         </div>
 
         {blogs.slice(0, 10).map((item, key) => {
@@ -231,16 +231,21 @@ const Detail = (props) => {
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    const formattedDate = date.toLocaleString("hi-IN", {
-      month: "long",
-      day: "numeric",
-      year: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      second: "numeric",
-      hour12: true, // for AM/PM format
-    }).replace("am", "").replace("pm", "");
-    return formattedDate.replace("am", "");
+    const formattedDate = date instanceof Date && !isNaN(date)
+    ? date
+      .toLocaleString("hi-IN", {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+        hour12: true, // for AM/PM format
+      })
+      .replace("am", "AM")
+      .replace("बजे", "")
+      .replace("pm", "PM") : '';
+    return formattedDate;
   };
 
   return (
@@ -253,7 +258,6 @@ const Detail = (props) => {
                 className="patti-bg p-1 d-flex gap-2 align-items-center"
                 style={{ border: "4px solid yellow" }}
               >
-              
                 {category && category[0] && category[0].categorylogo && (
                   <Image
                     height={45}
@@ -310,8 +314,7 @@ const Detail = (props) => {
                             : ""}
                         </strong>
                         <strong style={{ fontSize: 14, color: "#000" }}>
-                        ताज़ा अपडेट {formatDate(data.CreationDate)}
-                          
+                          ताज़ा अपडेट {formatDate(data.CreationDate)}
                         </strong>
                       </div>
                     </div>
@@ -533,9 +536,9 @@ const Detail = (props) => {
               </div>
             </div>
 
-            {data &&
-              data.Category &&
-              data.Category.length > 0 && <Khabare Rajiya={data.Category[0]} />}
+            {data && data.Category && data.Category.length > 0 && (
+              <Khabare Rajiya={data.Category[0]} />
+            )}
           </div>
         </div>
       </section>

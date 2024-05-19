@@ -50,13 +50,13 @@ const ApradJagat = (props) => {
   //   window.scrollTo({ top: 500, behavior: 'smooth' }); // Scroll to the desired position
   // };
   // Function to handle link click
+
   const handleClick = (id) => {
     window.scrollTo({ top: 500, behavior: "smooth" });
     router.push(`/Top/${id}`);
   };
 
   const API = process.env.NEXT_PUBLIC_BASE_URL;
-
   const fetchMoreData = async () => {
     try {
       const response = await fetch(
@@ -71,7 +71,6 @@ const ApradJagat = (props) => {
         // For subsequent page loads, append new data to existing AllBlogs
         setAllBlogs((prevBlogs) => [...prevBlogs, ...data.data]);
       }
-
       setPage(page + 1);
     } catch (error) {
       console.error("Error fetching all blogs:", error);
