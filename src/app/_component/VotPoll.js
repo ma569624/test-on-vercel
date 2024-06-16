@@ -6,9 +6,7 @@ const VotPoll = () => {
   const [data, setdata] = useState([]);
   const API = process.env.NEXT_PUBLIC_BASE_URL;
   const [advert, setAdvert] = useState([]);
-  const {  toplinks } = useContext(AppContext);
-  
-
+  const { toplinks } = useContext(AppContext);
 
   const getdata = async () => {
     const response = await fetch(`${API}/api/advert`);
@@ -33,10 +31,8 @@ const VotPoll = () => {
             <div className="col-lg-3">
               <div className=" section-title">
                 <div className="box-shodow tag">
-                    <MdDoubleArrow size={30} />
-                  <h2>
-                    {toplinks[3].name}
-                  </h2>
+                  <MdDoubleArrow size={30} />
+                  <h2>{toplinks[3].name}</h2>
                 </div>
               </div>
               {data.map((item, key) => (
@@ -141,36 +137,44 @@ const VotPoll = () => {
             <div className="col-lg-3">
               <div className="section-title">
                 <div className="box-shodow tag">
-                    <MdDoubleArrow size={30} />
-                  <h2>
-                  {toplinks[4].name}
-                  </h2>
+                  <MdDoubleArrow size={30} />
+                  <h2>{toplinks[4].name}</h2>
                 </div>
               </div>
+              <a href="/_next/image?url=%2Faddvert%20image.jpg&w=1080&q=75" target="_blank">
+              <Image
+                  width={900}
+                  height={236}
+                  src="/addvert image.jpg"
+                  alt="hero image"
+                  style={{
+                    borderRadius: "8px",
+                    width: "100%",
+                    height: 235,
+                    filter: "drop-shadow(rgb(102, 102, 102) 4px 4px 1px )",
+                  }}
+                />
+              </a>
+              
             </div>
 
             <div className="col-lg-3">
               <div className="section-title">
                 <div className="box-shodow tag">
-                    <MdDoubleArrow size={30} />
-                  <h2>
-                  {toplinks[5].name}
-                  </h2>
+                  <MdDoubleArrow size={30} />
+                  <h2>{toplinks[5].name}</h2>
                 </div>
               </div>
             </div>
-            
 
             <div className="col-lg-3">
               <div className="section-title ">
-              <div className="section-title">
-                <div className="box-shodow tag mb-1">
+                <div className="section-title">
+                  <div className="box-shodow tag mb-1">
                     <MdDoubleArrow size={30} />
-                  <h2>
-                  {toplinks[6].name}
-                  </h2>
+                    <h2>{toplinks[6].name}</h2>
+                  </div>
                 </div>
-              </div>
                 <Image
                   width={900}
                   height={236}

@@ -129,8 +129,6 @@ async function fetchRajiyablogs() {
 // }
 
 export default async function RootLayout({ children }) {
-  // const data = await fetchother();
-  // console.log(data)
 
   const todaynews = await fetchtodaynews();
   const badikhabar = await fetchbadikhabar();

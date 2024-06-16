@@ -31,7 +31,7 @@ const Footer = (props) => {
   const [openAdvert, setOpenAdvert] = useState(false);
   const OpenAdvertModel = () => {
     setOpenAdvert(!openAdvert);
-  }
+  };
   const [showButton, setShowButton] = useState(false);
   const handleClick = (id) => {
     window.scrollTo({ top: 500, behavior: "smooth" });
@@ -120,13 +120,13 @@ const Footer = (props) => {
 
                       <li>
                         <Link href={"/contact"} className="hover-effect">
-                        {toplinks[8].name}
+                          {toplinks[8].name}
                         </Link>
                       </li>
 
                       <li>
                         <Link href={"/rules"} className="hover-effect">
-                        {toplinks[9].name}
+                          {toplinks[9].name}
                         </Link>
                       </li>
                     </ul>
@@ -138,14 +138,15 @@ const Footer = (props) => {
                       <div className="">
                         <div className="">
                           <div className="d-flex gap-3">
-                          
                             <Image
-                              src={founder.EmployeeImage ? `${API}${founder.EmployeeImage}`: "/default_repoter.png"}
-                              // src={
-                              //   founder.EmployeeImage ? founder.EmployeeImage : ""
-                              // }
+                              src={
+                                founder.EmployeeImage
+                                  ? `${API}${founder.EmployeeImage}`
+                                  : "/default_repoter.png"
+                              }
+
                               onClick={handleClick}
-                              style={{cursor: 'pointer'}}
+                              style={{ cursor: "pointer" }}
                               className="repo-img"
                               width={87}
                               height={99}
@@ -154,16 +155,36 @@ const Footer = (props) => {
                             <table className="">
                               <tbody>
                                 <tr>
-                                  <td style={{cursor: 'pointer'}} onClick={handleClick}>{founder.EmployeeName}</td>
+                                  <td
+                                    style={{ cursor: "pointer" }}
+                                    onClick={handleClick}
+                                  >
+                                    {founder.EmployeeName}
+                                  </td>
                                 </tr>
                                 <tr>
-                                  <td style={{cursor: 'pointer'}} onClick={handleClick}>{founder.EmployeeDesignation}</td>
+                                  <td
+                                    style={{ cursor: "pointer" }}
+                                    onClick={handleClick}
+                                  >
+                                    {founder.EmployeeDesignation}
+                                  </td>
                                 </tr>
                                 <tr>
-                                  <td style={{cursor: 'pointer'}} onClick={handleClick}>{founder.EmailAddress}</td>
+                                  <td
+                                    style={{ cursor: "pointer" }}
+                                    onClick={handleClick}
+                                  >
+                                    {founder.EmailAddress}
+                                  </td>
                                 </tr>
                                 <tr>
-                                  <td style={{cursor: 'pointer'}} onClick={handleClick}>{founder.ContactNumber}</td>
+                                  <td
+                                    style={{ cursor: "pointer" }}
+                                    onClick={handleClick}
+                                  >
+                                    {founder.ContactNumber}
+                                  </td>
                                 </tr>
                               </tbody>
                             </table>
@@ -178,7 +199,7 @@ const Footer = (props) => {
                   <div className="col-lg-12">
                     <div className="header__top-area">
                       <div
-                       onClick={OpenAdvertModel}
+                        onClick={OpenAdvertModel}
                         className="hover-effect header__top-menu"
                       >
                         विज्ञापन के लिए संपर्क करें 👈
