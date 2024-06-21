@@ -24,7 +24,7 @@ const Footer = (props) => {
   const API = process.env.NEXT_PUBLIC_BASE_URL;
 
   const [open, setOpen] = useState(false);
-
+ console.log(props)
   const toggleModal = () => {
     setOpen(!open);
   };

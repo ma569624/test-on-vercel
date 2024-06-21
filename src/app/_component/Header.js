@@ -20,53 +20,14 @@ const Header = (props) => {
     setToplinks,
     setBadikhabar,
     setTodayNews,
-    idharbhi, 
     setIdharbhi,
-    Rajiya,
     setRajiya,
     setAllBlogs,
   } = useContext(AppContext);
 
-  // async function fetchAllBlogs() {
-  //   try {
-  //     const allblogs = await fetch(
-  //       `${API}/api/allblogs?name=block`
-  //     );
-
-  //     return await allblogs.json();
-
-  //   } catch (error) {
-  //     console.error("Error fetching all blogs:", error);
-  //     throw error;
-  //   }
-  // }
-
-  // async function fetchRajiyablogs() {
-  //   try {
-  //     const Rajiyablogs = await fetch(
-  //       `${API}/api/allblogs?name=rajiya`
-  //     );
-  //     return await Rajiyablogs.json();
-  //   } catch (error) {
-  //     console.error("Error fetching Rajiyablogs:", error);
-  //     throw error;
-  //   }
-  // }
-  console.warn(props.Rajiyablogs)
+ 
   
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // const allBlogsResponse = await fetch(`${API}/api/allblogs?name=block`);
-        // const rajiyablogsResponse = await fetch(`${API}/api/allblogs?name=state`);
-        // const allBlogsData = await allBlogsResponse.json();
-        // const rajiyablogsData = await rajiyablogsResponse.json();
-        // console.warn(allBlogsData)
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    console.warn(props.todaynews)
     setIdharbhi(props.idharbhi)
     setAllBlogs(props.allblogs);
     setTopKhabare(props.topKhabare);
@@ -75,11 +36,7 @@ const Header = (props) => {
     setBadikhabar(props.badikhabar);
     setTodayNews(props.todaynews);
     
-    fetchData();
-    
   }, [props]);
-  console.warn(props.todaynews)
-
 
   return (
     <>
