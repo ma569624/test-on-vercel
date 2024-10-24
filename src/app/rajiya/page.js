@@ -14,7 +14,7 @@ const Page = () => {
   const [Rajiya, setRajiya] = useState([]);
   const newdata = Rajiya;
   const router = useRouter();
-  const API = process.env.NEXT_PUBLIC_BASE_URL;
+  const API = process.env.NEXT_PUBLIC_IMAGE_BASE_URL;
   console.warn(newdata);
   const fetchMoreData = async () => {
     try {

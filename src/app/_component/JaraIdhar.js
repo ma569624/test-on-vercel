@@ -12,8 +12,9 @@ import { IoIosArrowForward } from "react-icons/io";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { fetchIdharbhi } from "../_service_Api/ServiceAPI";
 
-const JaraIdhar = (props) => {
+const JaraIdhar = () => {
   const [autoplayPaused, setAutoplayPaused] = useState(false);
   const swiperRef = useRef(null);
 
@@ -38,7 +39,8 @@ const JaraIdhar = (props) => {
   };
 
   const [data, setdata] = useState([]);
-  const API = props.API;
+  const API = process.env.NEXT_PUBLIC_IMAGE_BASE_URL;
+
 
   const MAX_WORDS = 12;
 
@@ -51,10 +53,19 @@ const JaraIdhar = (props) => {
     }
   }
   const isClient = typeof window !== "undefined";
+
+  const getdata = async () => {
+    const response = await fetchIdharbhi();
+    console.warn('response',response.data[0])
+    if (response) {
+      setdata(response?.data?.[0]?.data);
+      setCategory(response?.data?.[0]?.section);
+    }
+  }
+
   useEffect(() => {
-    setdata(props.idharbhi[0].data);
-    setCategory(props.idharbhi[0].section);
-  }, [props]);
+    getdata()
+  }, []);
 
   const handleNextButtonClick = () => {
     if (swiperRef.current) {
@@ -82,11 +93,11 @@ const JaraIdhar = (props) => {
                 width={71}
                 height={50}
                 className="me-4 ml-1"
-                src={category.categorylogo && `${API}${category.categorylogo}`}
+                src={category?.categorylogo && `${API}${category.categorylogo}`}
                 alt=""
               />
               <MdDoubleArrow size={50} />
-              <h2 className="title_text">{category.category}</h2>
+              <h2 className="title_text">{category?.category}</h2>
             </div>
             <button className="next" onClick={handleNextButtonClick}>
               <IoIosArrowForward size={35} />

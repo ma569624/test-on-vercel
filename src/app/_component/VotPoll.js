@@ -2,27 +2,28 @@ import { useContext, useEffect, useState } from "react";
 import { MdDoubleArrow } from "react-icons/md";
 import Image from "next/image";
 import AppContext from "../_context/AppContext";
-import { fetchAdvert, fetchoption } from "../_service_Api/ServiceAPI";
+import { fetchAdvert, fetchoption, fetchTopLinks } from "../_service_Api/ServiceAPI";
 const VotPoll = () => {
   const [data, setdata] = useState([]);
   const API = process.env.NEXT_PUBLIC_BASE_URL;
   const [advert, setAdvert] = useState([]);
-  const { toplinks } = useContext(AppContext);
+  // const { toplinks } = useContext(AppContext);
+  const [toplinks,settoplinks] = useState([])
 
   const getdata = async () => {
-    
+    const responsetop = await fetchTopLinks();
     const advdata = await fetchAdvert()
-
     setAdvert(advdata);
-
-    
     const data = await fetchoption()
     setdata(data);
-  };
-
+    if (responsetop) {
+      settoplinks(responsetop)
+    }
+  }
   useEffect(() => {
-    getdata();
-  }, []);
+    getdata()
+  },[])
+
 
   return (
     <section className="features-area footer_sec_top">
@@ -33,12 +34,12 @@ const VotPoll = () => {
               <div className=" section-title">
                 <div className="box-shodow tag">
                   <MdDoubleArrow size={30} />
-                  <h2>{toplinks[3].name}</h2>
+                  <h2>{toplinks?.[3]?.name}</h2>
                 </div>
               </div>
               {data.map((item, key) => (
                 <div key={key}>
-                  <h4>{item.heading}</h4>
+                  <h4>{item?.heading}</h4>
                   <form>
                     <table width="97%" border={0} cellSpacing={0}>
                       <tbody>
@@ -64,7 +65,7 @@ const VotPoll = () => {
                                   }}
                                 >
                                   {" "}
-                                  {item.option1}
+                                  {item?.option1}
                                 </label>
                               </div>
                             </div>
@@ -89,7 +90,7 @@ const VotPoll = () => {
                                   textShadow: "rgb(21, 47, 130) 1px 1px",
                                 }}
                               >
-                                {item.option3}
+                                {item?.option3}
                               </label>
                             </div>
                           </td>
@@ -139,7 +140,7 @@ const VotPoll = () => {
               <div className="section-title">
                 <div className="box-shodow tag">
                   <MdDoubleArrow size={30} />
-                  <h2>{toplinks[4].name}</h2>
+                  <h2>{toplinks?.[4]?.name}</h2>
                 </div>
               </div>
               <a href="/_next/image?url=%2Faddvert%20image.jpg&w=1080&q=75" target="_blank">
@@ -163,7 +164,7 @@ const VotPoll = () => {
               <div className="section-title">
                 <div className="box-shodow tag">
                   <MdDoubleArrow size={30} />
-                  <h2>{toplinks[5].name}</h2>
+                  <h2>{toplinks?.[5]?.name}</h2>
                 </div>
               </div>
             </div>
@@ -173,7 +174,7 @@ const VotPoll = () => {
                 <div className="section-title">
                   <div className="box-shodow tag mb-1">
                     <MdDoubleArrow size={30} />
-                    <h2>{toplinks[6].name}</h2>
+                    <h2>{toplinks?.[6]?.name}</h2>
                   </div>
                 </div>
                 <Image

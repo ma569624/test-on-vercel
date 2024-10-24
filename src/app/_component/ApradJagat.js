@@ -9,7 +9,7 @@ import AppContext from "../_context/AppContext";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchallblogsbyblock } from "../_service_Api/ServiceAPI";
 
-const ApradJagat = (props) => {
+const ApradJagat = () => {
   const { setShowFooter } = useContext(AppContext);
   // console.warn(AllBlogs);
   const [AllBlogs, setAllBlogs] = useState([]);
@@ -57,7 +57,7 @@ const ApradJagat = (props) => {
     router.push(`/Top/${id}`);
   };
 
-  const API = process.env.NEXT_PUBLIC_BASE_URL;
+  const API = process.env.NEXT_PUBLIC_IMAGE_BASE_URL;
   const fetchMoreData = async () => {
     try {
       

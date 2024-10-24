@@ -7,21 +7,25 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useContext } from "react";
-import AppContext from "../_context/AppContext";
+import { fetchAllBlogs, fetchRajiyablogs } from "../_service_Api/ServiceAPI";
 
-export const Nav = (props) => {
-  const {Rajiya, AllBlogs} = useContext(AppContext)
-  const API = props.API;
-  const [blogs, setBlogs] = useState([]);
+export const Nav = () => {
+  const API = process.env.NEXT_PUBLIC_BASE_URL;
   const [data, setdata] = useState([]);
   const [rajiya, setRajiya] = useState([]);
- console.warn(AllBlogs)
- console.warn(props.Rajiyablogs)
+  const getdata = async () => {
+    const allblogs = await fetchAllBlogs();
+    if (allblogs) {
+      setdata(allblogs.data && allblogs?.data?.filter((item) => item.section.isHeader === true));
+    }
+    const Rajiyablogs = await fetchRajiyablogs();
+    if (Rajiyablogs) {
+      setRajiya(Rajiyablogs.data);
+    }
+  }
   useEffect(() => {
-    setdata(AllBlogs && AllBlogs.filter((item) => item.section.isHeader === true));
-    setRajiya(props.Rajiyablogs);
-  }, [Rajiya, AllBlogs, props]);
+    getdata()
+  }, []);
 
   const router = useRouter();
 

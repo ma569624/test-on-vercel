@@ -1,11 +1,11 @@
 import Image from "next/image";
 const Advert = ({ advert, endpoint }) => {
-  const API = process.env.NEXT_PUBLIC_BASE_URL;
+  const API = process.env.NEXT_PUBLIC_IMAGE_BASE_URL;
   
   return (
     <>
       {
-        advert.length > 0 && 
+        advert?.length > 0 && 
         <div className="container">
           <div className="row">
             <div className="col-lg-12">

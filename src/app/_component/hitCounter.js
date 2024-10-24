@@ -11,7 +11,9 @@ const HitCounter =  () => {
     (
       async () => {
         const result = await fetchhits();
-        setHits(result[0].hits)
+        if(result){
+          setHits(result?.data)
+        }
       }
     )()
   }, []);

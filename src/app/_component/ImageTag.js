@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 const ImageTag = ({ src, width, height }) => {
-  const API = `${process.env.NEXT_PUBLIC_BASE_URL}`;
+  const API = `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}`;
 
   return (
     <>

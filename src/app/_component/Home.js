@@ -7,28 +7,43 @@ import Advert from "./Advert";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import AppContext from "../_context/AppContext";
+import { fetchBadikhabar, fetchTopLinks } from "../_service_Api/ServiceAPI";
 
 const Home = () => {
-  const { badikhabar, toplinks } = useContext(AppContext);
+  // const { badikhabar, toplinks } = useContext(AppContext);
 
   const [blogs, setBlogs] = useState([]);
   const [category, setCategory] = useState([]);
-  const API = process.env.NEXT_PUBLIC_BASE_URL;
+  const API = process.env.NEXT_PUBLIC_IMAGE_BASE_URL;
   const [advert, setAdvert] = useState([]);
-  console.warn(toplinks);
+
   const router = useRouter();
 
   const handleClick = (id) => {
     router.push(`/Top/${id}`);
   };
 
-  console.warn(API);
-
+  const getdata = async () => {
+    const response = await fetchBadikhabar();
+    const responsetop = await fetchTopLinks();
+    // console.warn('fetchTodayNews',response)
+    // console.warn('fetchTopLinks',responsetop)
+    if (response) {
+      setBlogs(response.data)
+    }
+    if (responsetop) {
+      setCategory(responsetop.data)
+    }
+  }
   useEffect(() => {
-    setCategory(toplinks);
+    getdata()
     setAdvert(advert);
-    setBlogs(badikhabar);
-  }, []);
+  },[])
+
+  // useEffect(() => {
+  //   // setCategory(toplinks);
+  //   // setBlogs(badikhabar);
+  // }, []);
 
   const MAX_WORDS = 11;
 
@@ -48,8 +63,8 @@ const Home = () => {
 
       <section className="features_post_area">
         <div className="container p-lg-0">
-          {badikhabar &&
-            badikhabar.map((item, key) => (
+          {blogs &&
+            blogs?.map((item, key) => (
               <div className="" key={key}>
                 <div
                   className="features_post_title"

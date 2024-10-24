@@ -25,7 +25,7 @@ export async function fetchTagline() {
 
 export async function fetchAdvert() {
   try {
-    const response = await axios.get(`${API}/api/user/advert?Status=true`);
+    const response = await axios.get(`${API}/api/user/advert`);
     return await response.data;
   } catch (error) {
     console.error("Error fetching advert:", error);

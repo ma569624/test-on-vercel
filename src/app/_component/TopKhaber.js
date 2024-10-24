@@ -10,10 +10,23 @@ import "swiper/css/pagination";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { useRouter } from "next/navigation";
 import AppContext from "../_context/AppContext";
+import { fetchTopKhabare } from "../_service_Api/ServiceAPI";
 
 const TopKhaber = (props) => {
   const router = useRouter();
-  const { topKhabare } = useContext(AppContext)
+  // const { topKhabare } = useContext(AppContext)
+  const [topKhabare, settopKhabare] = useState([]);
+
+
+  const getdata = async () => {
+    const khabare = await await fetchTopKhabare();
+    if (khabare) {
+      settopKhabare(khabare.data)
+    }
+  }
+  useEffect(() => {
+    getdata()
+  },[])
 
   const handleClick = (id) => {
     router.push(`/Top/${id}`);
@@ -36,8 +49,7 @@ const TopKhaber = (props) => {
     }
   };
 
-  const [data, setdata] = useState([]);
-  const API = props.API;
+  const API = process.env.NEXT_PUBLIC_IMAGE_BASE_URL;
 
 
 

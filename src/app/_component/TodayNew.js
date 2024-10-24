@@ -9,12 +9,30 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import AppContext from "../_context/AppContext";
-import { fetchyoutube } from "../_service_Api/ServiceAPI";
+import { fetchTodayNews, fetchTopLinks, fetchyoutube } from "../_service_Api/ServiceAPI";
 
-const TodayNew = (props) => {
-  const { todaynews, toplinks } = useContext(AppContext);
+const TodayNew = () => {
+  // const { todaynews, toplinks } = useContext(AppContext);
+  const [todaynews,settodaynews] = useState([])
+  const [toplinks,settoplinks] = useState([])
 
-  const API = process.env.NEXT_PUBLIC_BASE_URL;
+  const getdata = async () => {
+    const response = await fetchTodayNews();
+    const responsetop = await fetchTopLinks();
+    // console.warn('fetchTodayNews',response)
+    console.warn('fetchTopLinks',responsetop)
+    if (response) {
+      settodaynews(response.data)
+    }
+    if (responsetop) {
+      settoplinks(responsetop)
+    }
+  }
+  useEffect(() => {
+    getdata()
+  },[])
+
+  const API = process.env.NEXT_PUBLIC_IMAGE_BASE_URL;
   const router = useRouter();
 
   const MAX_WORDS = 16;
@@ -40,6 +58,7 @@ const TodayNew = (props) => {
     try {
       
       const data = await fetchyoutube()
+      console.warn("fetchyoutube",data)
       setVideos(data.data);
     } catch (error) {
       console.error("Error fetching videos:", error);
@@ -148,13 +167,13 @@ const TodayNew = (props) => {
                       width={200}
                       height={200}
                       src={
-                        toplinks[0].Image !== undefined ? `${API}${toplinks[0].Image}` : ""
+                        toplinks?.[0]?.Image !== undefined ? `${API}${toplinks[0].Image}` : ""
                       }
                       alt=""
                     />
 
                     <h2 className="title_text_side">
-                      {toplinks ? toplinks[0].name : <></>}
+                      {toplinks ? toplinks?.[0]?.name : <></>}
                     </h2>
                   </Link>
                 </div>
@@ -214,12 +233,12 @@ const TodayNew = (props) => {
                       width={200}
                       height={200}
                       src={
-                        toplinks[1].Image !== undefined ? `${API}${toplinks[1].Image}` : ""
+                        toplinks?.[1]?.Image !== undefined ? `${API}${toplinks[1].Image}` : ""
                       }
                       alt=""
                     />
                     <h2 className="title_text_side">
-                      {toplinks.length > 1 ? toplinks[1].name : <></>}
+                      {toplinks?.length > 1 ? toplinks?.[1]?.name : <></>}
                     </h2>
                   </a>
                 </div>

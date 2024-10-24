@@ -10,8 +10,8 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchRajiyablogsBypage } from "../_service_Api/ServiceAPI";
 
 
-const KhabreRajiyoki = (props) => {
-  const {  toplinks } = useContext(AppContext);
+const KhabreRajiyoki = () => {
+  const { toplinks } = useContext(AppContext);
 //  const [toplinks, setToplinks] = useState([]);
   
   const [Rajiya, setRajiya] = useState([]);
@@ -53,7 +53,7 @@ const KhabreRajiyoki = (props) => {
     router.push(`/Top/${id}`,{ scroll: true });
   };
 
-  const API = process.env.NEXT_PUBLIC_BASE_URL;
+  const API = process.env.NEXT_PUBLIC_IMAGE_BASE_URL;
   const fetchMoreData = async () => {
     try {
       const data = await fetchRajiyablogsBypage(page)
@@ -206,7 +206,7 @@ const KhabreRajiyoki = (props) => {
             <div className="new_post_title main">
               <h2 className="title_text">
                 <MdDoubleArrow size={50} className="mr-2" />
-                {toplinks[2].name}
+                {toplinks?.[2]?.name}
               </h2>
             </div>
           </div>

@@ -1,16 +1,13 @@
-import React from "react";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdAccessTime } from "react-icons/md";
 import { RxCalendar } from "react-icons/rx";
 import Image from "next/image";
-import { Col, Container, Row } from "react-bootstrap";
+import { fetchTagline } from "../_service_Api/ServiceAPI";
 
 const HeaderMiddle = (props) => {
-  const API = props.API;
   const [tagline, setTagline] = useState([]);
-  const [advert, setAdvert] = useState([]);
-  const serverTimestamp = props.serverTimestamp;
-  const [date, setDate] = useState(new Date(serverTimestamp));
+  const [date, setDate] = useState(new Date());
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -20,18 +17,24 @@ const HeaderMiddle = (props) => {
   }, []);
 
   useEffect(() => {
-    setAdvert(props.advert);
-    setTagline(props.tagline[0]);
-  }, [props]);
+    const getdata = async () => {
+      const tagline = await fetchTagline();
+      console.warn("tagline", tagline);
+      if (tagline) {
+        setTagline(tagline?.[0]);
+      }
+    };
 
-  const formattedDate = date instanceof Date && !isNaN(date)
-    ? date.toLocaleDateString("hi-IN", {
-          weekday: "long",
-          day: "numeric",
-          month: "short",
-          year: "numeric",
-      })
-    : "";
+    getdata();
+    setIsMounted(true); // Set mounted to true after data fetching
+  }, []);
+
+  const formattedDate = date.toLocaleDateString("en-US", {
+    weekday: "long",
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
 
   return (
     <div className="header__middle_area">
@@ -66,20 +69,22 @@ const HeaderMiddle = (props) => {
                 color: "white",
               }}
             />
-            <span
-              style={{
-                color: "white",
-                fontWeight: 800,
-                fontSize: "13px",
-              }}
-            >
-              {date instanceof Date && !isNaN(date) ?date.toLocaleString("en-US", {
-                hour: "numeric",
-                minute: "numeric",
-                second: "numeric",
-                hour12: true,
-              }) : ''}
-            </span>
+            {isMounted && ( // Only render time after component mounts
+              <span
+                style={{
+                  color: "white",
+                  fontWeight: 800,
+                  fontSize: "13px",
+                }}
+              >
+                {date.toLocaleString("en-US", {
+                  hour: "numeric",
+                  minute: "numeric",
+                  second: "numeric",
+                  hour12: true,
+                })}
+              </span>
+            )}
           </li>
         </ul>
       </div>
@@ -91,12 +96,6 @@ const HeaderMiddle = (props) => {
               tagline && tagline.Heading && tagline.Heading.length > 70
                 ? "35px"
                 : "52px",
-                    "@media (max-width: 768px)": {
-                  fontSize:
-                  tagline && tagline.Heading && tagline.Heading.length > 70
-                  ? "25px"
-                  : "32px",
-            },
           }}
         >
           {tagline && tagline.Heading}
