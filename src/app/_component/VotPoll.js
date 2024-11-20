@@ -23,7 +23,7 @@ const VotPoll = () => {
   useEffect(() => {
     getdata()
   },[])
-
+//lelo
 
   return (
     <section className="features-area footer_sec_top">
